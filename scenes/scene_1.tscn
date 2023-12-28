@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://lj41sjie0xdw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d73n1"]
+size = Vector2(1754, 320)
+
+[node name="Scene1" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -4096
+offset_left = -955.0
+offset_top = -79.0
+offset_right = 698.0
+offset_bottom = 75.0
+color = Color(0.462745, 0.462745, 0.462745, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -4096
+y_sort_enabled = true
+offset_left = -731.0
+offset_top = -398.0
+offset_right = 696.0
+offset_bottom = -78.0
+color = Color(0.662745, 0.662745, 0.662745, 1)
+
+[node name="Node2D" type="StaticBody2D" parent="ColorRect2"]
+position = Vector2(476, 398)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect2/Node2D"]
+position = Vector2(400, 236)
+shape = SubResource("RectangleShape2D_d73n1")
+
+[node name="Node2D2" type="StaticBody2D" parent="ColorRect2"]
+position = Vector2(476, 398)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect2/Node2D2"]
+position = Vector2(40, -237)
+shape = SubResource("RectangleShape2D_d73n1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -76.165)
+zoom = Vector2(2, 2)
