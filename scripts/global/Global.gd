@@ -13,6 +13,7 @@ var main_camera : CameraController
 # region GLOBAL VARS
 
 static var game_paused := true
+signal game_unpaused
 
 # endregion
 
@@ -34,8 +35,12 @@ func _ready():
 	shadow_canvas_group = load("res://Scripts/Global/ShadowGroup.tscn").instantiate()
 
 	setup_player()
-
-	current_scene.get_node("MainViewport/ViewportContainer").add_child(shadow_canvas_group)
+	
+	var viewport = current_scene.get_node_or_null("MainViewport/ViewportContainer")
+	if viewport == null:
+		game_paused = false
+		return
+	viewport.add_child(shadow_canvas_group)
 
 func load_stage(stage_scene : PackedScene):
 	var oldscene = current_scene
@@ -55,8 +60,14 @@ func load_stage(stage_scene : PackedScene):
 func setup_player():
 	var player_scene = load("res://scenes/character/player.tscn").instantiate();
 	player = player_scene
-	current_scene.get_node("MainViewport/ViewportContainer").add_child(player)
+	var viewport = current_scene.get_node_or_null("MainViewport/ViewportContainer")
+	if viewport == null:
+		current_scene.add_child(player)
+		game_paused = false
+		return
+	viewport.add_child(player)
 
 
 func hide_menu():
 	menu_scene.hide()
+	game_unpaused.emit()

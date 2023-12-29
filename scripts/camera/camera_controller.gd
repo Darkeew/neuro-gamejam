@@ -60,9 +60,9 @@ func transition_to(target : CameraMimic):
 	transitioned = true
 
 
-func transition_free():
+func transition_free(target : CameraMimic):
 	if transitioned:
-		var duration = old_duration
+		var duration = target.transition_time_out
 		transitioned = false
 
 		var transition = create_tween()
