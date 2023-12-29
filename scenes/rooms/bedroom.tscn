@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=16 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
 [ext_resource type="Texture2D" uid="uid://xuyu2o3n4x7e" path="res://assets/rooms/bedroom/Bed-0001.png" id="2_iouxf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://lj41sjie0xdw" path="res://scenes/rooms/hallway.tscn" id="5_iy646"]
 [ext_resource type="Script" path="res://scripts/camera/camera_mimic.gd" id="7_r2gvb"]
 [ext_resource type="Script" path="res://scripts/camera/camera_transition_zone.gd" id="8_kcjao"]
+[ext_resource type="Script" path="res://scripts/camera/main_menu_camera.gd" id="10_y18ac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33vgn"]
 size = Vector2(1172, 326)
@@ -18,6 +19,9 @@ size = Vector2(1172, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6grpq"]
 size = Vector2(187, 206)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhexv"]
+size = Vector2(1151, 643)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ba18x"]
 size = Vector2(197, 173)
@@ -106,6 +110,22 @@ room = ExtResource("5_iy646")
 [node name="CollisionPolygon2D" parent="RoomTransitionRegion" index="0"]
 polygon = PackedVector2Array(450, 51, 449, 99, 467, 99, 468, 51)
 
+[node name="MainMenuCamera" type="Camera2D" parent="."]
+script = ExtResource("7_r2gvb")
+transition_time = 0.0
+transition_time_out = 2.0
+
+[node name="CameraTransitionZone" type="Area2D" parent="MainMenuCamera"]
+monitorable = false
+script = ExtResource("8_kcjao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainMenuCamera/CameraTransitionZone"]
+position = Vector2(4.5, -4.5)
+shape = SubResource("RectangleShape2D_nhexv")
+
+[node name="MainMenuScript" type="Node2D" parent="MainMenuCamera/CameraTransitionZone"]
+script = ExtResource("10_y18ac")
+
 [node name="Camera_Mimic2" type="Camera2D" parent="."]
 position = Vector2(395, 71)
 zoom = Vector2(3.63, 3.63)
@@ -132,5 +152,7 @@ script = ExtResource("8_kcjao")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera_Mimic/CameraTransitionZone"]
 position = Vector2(12.5, 1.5)
 shape = SubResource("RectangleShape2D_ba18x")
+
+[connection signal="on_transitioned_exited" from="MainMenuCamera/CameraTransitionZone" to="MainMenuCamera/CameraTransitionZone/MainMenuScript" method="_on_camera_transition_zone_on_transitioned_exited"]
 
 [editable path="RoomTransitionRegion"]
