@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://iss2basbtm4o"]
+
+[ext_resource type="Script" path="res://scripts/global/SoundManager.gd" id="1_si81l"]
+[ext_resource type="AudioStream" uid="uid://cxt77v2p2wone" path="res://assets/sfx/woodstep-01.ogg" id="2_t37vf"]
+[ext_resource type="AudioStream" uid="uid://b74aklth7b4ip" path="res://assets/sfx/woodstep-02.ogg" id="3_8g66u"]
+[ext_resource type="AudioStream" uid="uid://cc1n31hmkvdem" path="res://assets/sfx/woodstep-03.ogg" id="4_yh3ib"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hrq3c"]
+streams_count = 3
+stream_0/stream = ExtResource("2_t37vf")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_8g66u")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("4_yh3ib")
+stream_2/weight = 1.0
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_si81l")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -80.0
+bus = &"Music"
+
+[node name="FootstepsPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_hrq3c")
+bus = &"SFX"
