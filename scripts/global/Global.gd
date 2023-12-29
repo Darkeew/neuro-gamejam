@@ -1,11 +1,14 @@
 extends Node
 
+signal change_stage(stage_scene: PackedScene)
+
 var player : CharacterBody2D
-
 var shadow_canvas_group : CanvasGroup
-
 var current_scene = null
+
 func _ready():
+	change_stage.connect(load_stage)
+	
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	var root = get_tree().root
@@ -32,8 +35,7 @@ func load_stage(stage_scene : PackedScene):
 	shadow_canvas_group = load("res://Scripts/Global/ShadowGroup.tscn").instantiate()
 	current_scene.add_child(shadow_canvas_group)
 	
-	get_tree().root.add_child(stage)
-
+	get_tree().root.call_deferred("add_child", stage) 
 	setup_player()
 
 	oldscene.queue_free()

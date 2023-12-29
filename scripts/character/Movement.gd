@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player 
 
 @export var BASE_MAX_SPEED := 100.0
 @export var ACCELERATION := 500.0 
@@ -26,8 +27,8 @@ func _physics_process(delta):
 func update_animation() -> void:
 	if velocity == Vector2.ZERO: 
 		animation_tree["parameters/conditions/idle"] = true 
-		animation_tree["parameters/conditions/is_moving_forward"] = false 
+		animation_tree["parameters/conditions/is_walking"] = false 
 	else: 
 		animation_tree["parameters/conditions/idle"] = false 
-		animation_tree["parameters/conditions/is_moving_forward"] = true
+		animation_tree["parameters/conditions/is_walking"] = true
 	 

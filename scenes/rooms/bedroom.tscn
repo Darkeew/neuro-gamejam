@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=9 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
 [ext_resource type="Texture2D" uid="uid://xuyu2o3n4x7e" path="res://assets/rooms/bedroom/Bed-0001.png" id="2_iouxf"]
 [ext_resource type="Texture2D" uid="uid://djws22iw7t47i" path="res://assets/rooms/bedroom/Book_case-0001.png" id="3_j433k"]
-[ext_resource type="PackedScene" uid="uid://b4uwauj5ouvuy" path="res://scenes/items/item.tscn" id="4_pedap"]
+[ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="4_b76gf"]
+[ext_resource type="PackedScene" uid="uid://lj41sjie0xdw" path="res://scenes/rooms/hallway.tscn" id="5_iy646"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33vgn"]
 size = Vector2(1172, 326)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17xfd"]
 size = Vector2(1172, 122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6grpq"]
+size = Vector2(187, 206)
 
 [node name="Bedroom" type="Node2D"]
 
@@ -59,13 +63,23 @@ texture = ExtResource("3_j433k")
 position = Vector2(1, -171)
 shape = SubResource("RectangleShape2D_33vgn")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Boundaries"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
 position = Vector2(0, 259)
 shape = SubResource("RectangleShape2D_17xfd")
 
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+position = Vector2(-494, 94)
+shape = SubResource("RectangleShape2D_6grpq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundaries/StaticBody2D"]
+polygon = PackedVector2Array(409, -8, 409, 5, 424, 5, 424, 45, 448, 45, 471, 45, 469, 103, 425, 103, 425, 146, 409, 146, 409, 198, 575, 198, 576, -8)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Collectible" parent="." instance=ExtResource("4_pedap")]
-position = Vector2(52, 64)
+[node name="RoomTransitionRegion" parent="." instance=ExtResource("4_b76gf")]
+room = ExtResource("5_iy646")
+
+[node name="CollisionPolygon2D" parent="RoomTransitionRegion" index="0"]
+polygon = PackedVector2Array(450, 51, 449, 99, 467, 99, 468, 51)
+
+[editable path="RoomTransitionRegion"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjifi78fl6xtd"]
+
+[ext_resource type="Script" path="res://scripts/rooms/room_transition_region.gd" id="1_lfre1"]
+
+[node name="RoomTransitionRegion" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_lfre1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

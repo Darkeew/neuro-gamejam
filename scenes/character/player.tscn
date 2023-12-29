@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dummnx83yh0vj" path="res://assets/character/nuerowalk_sheet.png" id="2_nuk7r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86qf5"]
-radius = 6.0
-height = 32.0
+radius = 5.5
+height = 13.0
 
 [sub_resource type="Animation" id="Animation_73qlf"]
 length = 0.001
@@ -63,11 +63,11 @@ _data = {
 "idle": SubResource("Animation_g67tv")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wwbm2"]
-animation = &"forward"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qppvd"]
 animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wwbm2"]
+animation = &"forward"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6r5ov"]
 advance_mode = 2
@@ -78,14 +78,14 @@ advance_condition = &"idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wg3q5"]
 advance_mode = 2
-advance_condition = &"is_moving_forward"
+advance_condition = &"is_walking"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_eap5n"]
-states/forward/node = SubResource("AnimationNodeAnimation_wwbm2")
-states/forward/position = Vector2(554, 100)
 states/idle/node = SubResource("AnimationNodeAnimation_qppvd")
 states/idle/position = Vector2(361, 100)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_6r5ov"), "forward", "idle", SubResource("AnimationNodeStateMachineTransition_pxm1k"), "idle", "forward", SubResource("AnimationNodeStateMachineTransition_wg3q5")]
+states/walking/node = SubResource("AnimationNodeAnimation_wwbm2")
+states/walking/position = Vector2(554, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_6r5ov"), "walking", "idle", SubResource("AnimationNodeStateMachineTransition_pxm1k"), "idle", "walking", SubResource("AnimationNodeStateMachineTransition_wg3q5")]
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -114,4 +114,4 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_eap5n")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/idle = false
-parameters/conditions/is_moving_forward = false
+parameters/conditions/is_walking = false
