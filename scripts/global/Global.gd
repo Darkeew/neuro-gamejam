@@ -4,11 +4,22 @@ signal change_stage(stage_scene: PackedScene)
 
 var player : CharacterBody2D
 var shadow_canvas_group : CanvasGroup
-var current_scene = null
+@onready var current_scene := get_tree().current_scene
+
+@onready var menu_scene := current_scene.get_node("MainMenu")
 
 var main_camera : CameraController
 
+# region GLOBAL VARS
+
+static var game_paused := true
+
+# endregion
+
 func _ready():
+
+	print(menu_scene)
+
 	change_stage.connect(load_stage)
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -22,11 +33,9 @@ func _ready():
 
 	shadow_canvas_group = load("res://Scripts/Global/ShadowGroup.tscn").instantiate()
 
-	current_scene = get_tree().current_scene
-	
 	setup_player()
 
-	current_scene.add_child(shadow_canvas_group)
+	current_scene.get_node("MainViewport/ViewportContainer").add_child(shadow_canvas_group)
 
 func load_stage(stage_scene : PackedScene):
 	var oldscene = current_scene
@@ -46,4 +55,8 @@ func load_stage(stage_scene : PackedScene):
 func setup_player():
 	var player_scene = load("res://scenes/character/player.tscn").instantiate();
 	player = player_scene
-	current_scene.add_child(player)
+	current_scene.get_node("MainViewport/ViewportContainer").add_child(player)
+
+
+func hide_menu():
+	menu_scene.hide()
