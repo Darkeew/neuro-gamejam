@@ -27,8 +27,6 @@ func _physics_process(_delta):
 		#copy_transform.update_scale = false
 		#copy_transform.update_rotation = false
 		copy_transform.remote_path = dummysprite2d.get_path()
-		copy_transform.scale = Vector2(1,-0.5)
-		copy_transform.skew = 60
 		sprite.add_child(copy_transform)
 	if copy_transform != null :
 		copy_transform.position = sprite.position
