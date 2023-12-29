@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=14 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
 [ext_resource type="Texture2D" uid="uid://xuyu2o3n4x7e" path="res://assets/rooms/bedroom/Bed-0001.png" id="2_iouxf"]
 [ext_resource type="Texture2D" uid="uid://djws22iw7t47i" path="res://assets/rooms/bedroom/Book_case-0001.png" id="3_j433k"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://scripts/character/AccurateShadows.tscn" id="3_pmjfu"]
 [ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="4_b76gf"]
+[ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="5_dnnhi"]
 [ext_resource type="PackedScene" uid="uid://lj41sjie0xdw" path="res://scenes/rooms/hallway.tscn" id="5_iy646"]
+[ext_resource type="Script" path="res://scripts/camera/camera_mimic.gd" id="7_r2gvb"]
+[ext_resource type="Script" path="res://scripts/camera/camera_transition_zone.gd" id="8_kcjao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33vgn"]
 size = Vector2(1172, 326)
@@ -15,6 +18,9 @@ size = Vector2(1172, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6grpq"]
 size = Vector2(187, 206)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ba18x"]
+size = Vector2(197, 173)
 
 [node name="Bedroom" type="Node2D"]
 
@@ -88,11 +94,43 @@ shape = SubResource("RectangleShape2D_6grpq")
 polygon = PackedVector2Array(409, -8, 409, 5, 424, 5, 424, 45, 448, 45, 471, 45, 469, 103, 425, 103, 425, 146, 409, 146, 409, 198, 575, 198, 576, -8)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+editor_draw_limits = true
+script = ExtResource("5_dnnhi")
+follow_offset = Vector2(0, -35)
+look_ahead_distance = 0.5
 
 [node name="RoomTransitionRegion" parent="." instance=ExtResource("4_b76gf")]
 room = ExtResource("5_iy646")
 
 [node name="CollisionPolygon2D" parent="RoomTransitionRegion" index="0"]
 polygon = PackedVector2Array(450, 51, 449, 99, 467, 99, 468, 51)
+
+[node name="Camera_Mimic2" type="Camera2D" parent="."]
+position = Vector2(395, 71)
+zoom = Vector2(3.63, 3.63)
+script = ExtResource("7_r2gvb")
+
+[node name="CameraTransitionZone" type="Area2D" parent="Camera_Mimic2"]
+monitorable = false
+script = ExtResource("8_kcjao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera_Mimic2/CameraTransitionZone"]
+position = Vector2(12.5, 1.5)
+shape = SubResource("RectangleShape2D_ba18x")
+
+[node name="Camera_Mimic" type="Camera2D" parent="."]
+position = Vector2(-235, -10)
+zoom = Vector2(3.63, 3.63)
+script = ExtResource("7_r2gvb")
+
+[node name="CameraTransitionZone" type="Area2D" parent="Camera_Mimic"]
+position = Vector2(-34, 0)
+monitorable = false
+script = ExtResource("8_kcjao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera_Mimic/CameraTransitionZone"]
+position = Vector2(12.5, 1.5)
+shape = SubResource("RectangleShape2D_ba18x")
 
 [editable path="RoomTransitionRegion"]

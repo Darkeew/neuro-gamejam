@@ -6,6 +6,8 @@ var player : CharacterBody2D
 var shadow_canvas_group : CanvasGroup
 var current_scene = null
 
+var main_camera : CameraController
+
 func _ready():
 	change_stage.connect(load_stage)
 	
