@@ -3,5 +3,4 @@
 [node name="ShadowGroup" type="CanvasGroup"]
 self_modulate = Color(0, 0, 0, 0.439216)
 top_level = true
-z_index = -4000
-z_as_relative = false
+z_index = -1

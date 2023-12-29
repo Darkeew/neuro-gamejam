@@ -5,6 +5,10 @@ extends Node
 var dummysprite2d : Sprite2D
 var copy_transform : RemoteTransform2D
 
+@export var shadow_offset : Vector2 = Vector2(0,0)
+@export var shadow_scale : Vector2 = Vector2(1,1)
+@export var static_shadow : bool = false
+
 func _ready():
 	dummysprite2d = Sprite2D.new()
 	dummysprite2d.scale = sprite.scale
@@ -15,18 +19,23 @@ func _ready():
 		dummysprite2d.hframes = sprite.hframes
 		dummysprite2d.vframes = sprite.vframes
 	dummysprite2d.offset = Vector2(sprite.offset.x, -sprite.offset.y)
-	dummysprite2d.position = sprite.position
+	dummysprite2d.position = sprite.position + shadow_offset
+	dummysprite2d.scale = shadow_scale
 	dummysprite2d.show_behind_parent = true
 	
 	Global.shadow_canvas_group.add_child.call_deferred(dummysprite2d)
 	
 
 func _physics_process(_delta):
+	if static_shadow:
+		return
 	if dummysprite2d.is_inside_tree() and copy_transform == null :
 		copy_transform = RemoteTransform2D.new()
 		#copy_transform.update_scale = false
 		#copy_transform.update_rotation = false
 		copy_transform.remote_path = dummysprite2d.get_path()
+		copy_transform.position = sprite.position + shadow_offset
+		copy_transform.scale = shadow_scale
 		sprite.add_child(copy_transform)
 	if copy_transform != null :
 		copy_transform.position = sprite.position
