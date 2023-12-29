@@ -14,16 +14,18 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta):
 	if not Global.game_paused:
-		var input_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-		var target_velocity: Vector2 = input_vector * BASE_MAX_SPEED
-		target_velocity.y /= 2 
+		return
 		
-		if input_vector != Vector2.ZERO: 
-			velocity = velocity.move_toward(input_vector * BASE_MAX_SPEED, ACCELERATION * delta)
-		else: 
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-		
-		move_and_slide()
+	var input_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	var target_velocity: Vector2 = input_vector * BASE_MAX_SPEED
+	target_velocity.y /= 2 
+	
+	if input_vector != Vector2.ZERO: 
+		velocity = velocity.move_toward(input_vector * BASE_MAX_SPEED, ACCELERATION * delta)
+	else: 
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	
+	move_and_slide()
 
 func update_animation() -> void:
 	if velocity == Vector2.ZERO: 
