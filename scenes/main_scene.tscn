@@ -17,3 +17,13 @@ render_target_update_mode = 4
 [node name="Bedroom" parent="MainViewport/ViewportContainer" instance=ExtResource("1_xsjt5")]
 
 [node name="MainMenu" parent="." instance=ExtResource("2_aq383")]
+
+[node name="AudioController" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="AudioController"]
+volume_db = -80.0
+bus = &"Music"
