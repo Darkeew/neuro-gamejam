@@ -3,7 +3,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d73n1"]
 size = Vector2(1754, 320)
 
-[node name="Scene1" type="Node2D"]
+[node name="Hallway" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -4096

@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="Neuro-gamejam"
-run/main_scene="res://scenes/scene_1.tscn"
+run/main_scene="res://scenes/rooms/bedroom.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://scripts/global/Global.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -42,7 +46,13 @@ move_right={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Collision"
+2d_physics/layer_2="Collectible "
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

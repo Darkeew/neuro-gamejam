@@ -10,6 +10,7 @@ func _ready():
 
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
+	print(current_scene)
 
 	if get_tree().current_scene is Control:
 		return
@@ -21,7 +22,6 @@ func _ready():
 	setup_player()
 
 	current_scene.add_child(shadow_canvas_group)
-		
 
 func load_stage(stage_scene : PackedScene):
 	var oldscene = current_scene
@@ -31,7 +31,6 @@ func load_stage(stage_scene : PackedScene):
 
 	shadow_canvas_group = load("res://Scripts/Global/ShadowGroup.tscn").instantiate()
 	current_scene.add_child(shadow_canvas_group)
-
 	
 	get_tree().root.add_child(stage)
 

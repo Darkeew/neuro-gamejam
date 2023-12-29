@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0vo28sl5gwxi"]
+
+[ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
+[ext_resource type="Texture2D" uid="uid://xuyu2o3n4x7e" path="res://assets/rooms/bedroom/Bed-0001.png" id="2_iouxf"]
+[ext_resource type="Texture2D" uid="uid://djws22iw7t47i" path="res://assets/rooms/bedroom/Book_case-0001.png" id="3_j433k"]
+[ext_resource type="PackedScene" uid="uid://b4uwauj5ouvuy" path="res://scenes/items/item.tscn" id="4_pedap"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33vgn"]
+size = Vector2(1172, 326)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17xfd"]
+size = Vector2(1172, 122)
+
+[node name="Bedroom" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -323.5
+offset_right = 576.0
+offset_bottom = 323.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -288.0
+offset_right = 512.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_njdfq")
+
+[node name="Furniture" type="Node2D" parent="."]
+
+[node name="Bed-0001" type="Sprite2D" parent="Furniture"]
+position = Vector2(-257, 21)
+texture = ExtResource("2_iouxf")
+
+[node name="BookCase-0001" type="Sprite2D" parent="Furniture"]
+position = Vector2(-341, -37)
+texture = ExtResource("3_j433k")
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+position = Vector2(1, -171)
+shape = SubResource("RectangleShape2D_33vgn")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundaries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D2"]
+position = Vector2(0, 259)
+shape = SubResource("RectangleShape2D_17xfd")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Collectible" parent="." instance=ExtResource("4_pedap")]
+position = Vector2(52, 64)

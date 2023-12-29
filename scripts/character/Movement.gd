@@ -1,20 +1,33 @@
 extends CharacterBody2D
 
-@export var movement_speed :float = 100
+@export var BASE_MAX_SPEED := 100.0
+@export var ACCELERATION := 500.0 
+@export var FRICTION := 500.0 
 
-func _physics_process(_delta):
-	# Handle Jump.
+#region NODES
+@onready var animation_tree = $AnimationTree
+#endregion 
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var updirection :float =Input.get_axis("move_up", "move_down")
-	var direction :float = Input.get_axis("move_left", "move_right")
-	var wishvelocity :Vector2 = Vector2(direction, updirection)
-	wishvelocity = wishvelocity.normalized() * movement_speed
+func _process(delta: float) -> void:
+	update_animation() 
 
-
-	wishvelocity.y /= 2
-	# Move the character.
-	velocity = velocity.lerp(wishvelocity, 0.6)
-
+func _physics_process(delta):
+	var input_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	var target_velocity: Vector2 = input_vector * BASE_MAX_SPEED
+	target_velocity.y /= 2 
+	
+	if input_vector != Vector2.ZERO: 
+		velocity = velocity.move_toward(input_vector * BASE_MAX_SPEED, ACCELERATION * delta)
+	else: 
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	
 	move_and_slide()
+
+func update_animation() -> void:
+	if velocity == Vector2.ZERO: 
+		animation_tree["parameters/conditions/idle"] = true 
+		animation_tree["parameters/conditions/is_moving_forward"] = false 
+	else: 
+		animation_tree["parameters/conditions/idle"] = false 
+		animation_tree["parameters/conditions/is_moving_forward"] = true
+	 
