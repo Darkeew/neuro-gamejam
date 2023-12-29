@@ -1,6 +1,6 @@
 extends Node
 
-@onready var music_player := get_node("/root/MainScene/AudioController/MusicPlayer")
+@onready var music_player := get_node("AudioController/MusicPlayer")
 
 var music_bus := AudioServer.get_bus_index("Music")
 var sfx_bus := AudioServer.get_bus_index("SFX")
