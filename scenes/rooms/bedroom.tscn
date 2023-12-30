@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=18 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
+[ext_resource type="PackedScene" uid="uid://b4uwauj5ouvuy" path="res://scenes/items/item_container.tscn" id="2_8rf5e"]
 [ext_resource type="Texture2D" uid="uid://xuyu2o3n4x7e" path="res://assets/rooms/bedroom/Bed-0001.png" id="2_iouxf"]
 [ext_resource type="Texture2D" uid="uid://djws22iw7t47i" path="res://assets/rooms/bedroom/Book_case-0001.png" id="3_j433k"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://scripts/character/AccurateShadows.tscn" id="3_pmjfu"]
+[ext_resource type="Resource" uid="uid://bxsmfty04pteq" path="res://resources/items/key.tres" id="3_ujdnv"]
 [ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="4_b76gf"]
 [ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="5_dnnhi"]
 [ext_resource type="PackedScene" uid="uid://lj41sjie0xdw" path="res://scenes/rooms/hallway.tscn" id="5_iy646"]
@@ -58,19 +60,24 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_njdfq")
 
+[node name="ItemContainer" parent="." instance=ExtResource("2_8rf5e")]
+item = ExtResource("3_ujdnv")
+
 [node name="Furniture" type="Node2D" parent="."]
 
 [node name="Bed-0001" type="Sprite2D" parent="Furniture"]
-position = Vector2(-257, 21)
+position = Vector2(-258, 5)
+scale = Vector2(2, 2)
 texture = ExtResource("2_iouxf")
 
 [node name="Node" parent="Furniture/Bed-0001" instance=ExtResource("3_pmjfu")]
-shadow_offset = Vector2(-5, 5)
+shadow_offset = Vector2(-10, 10)
 shadow_scale = Vector2(1.1, 1)
 static_shadow = true
 
 [node name="BookCase-0001" type="Sprite2D" parent="Furniture"]
-position = Vector2(-341, -37)
+position = Vector2(-293, 27)
+scale = Vector2(2, 2)
 texture = ExtResource("3_j433k")
 
 [node name="Node" parent="Furniture/BookCase-0001" instance=ExtResource("3_pmjfu")]
@@ -96,6 +103,9 @@ shape = SubResource("RectangleShape2D_6grpq")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundaries/StaticBody2D"]
 polygon = PackedVector2Array(409, -8, 409, 5, 424, 5, 424, 45, 448, 45, 471, 45, 469, 103, 425, 103, 425, 146, 409, 146, 409, 198, 575, 198, 576, -8)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Boundaries/StaticBody2D"]
+polygon = PackedVector2Array(-389, 27, -294, 27, -288, 27, -289, 69, -226, 69, -226, -8, -226, -26, -294, -26, -389, -26)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)

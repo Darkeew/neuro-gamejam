@@ -15,9 +15,9 @@ func _ready():
 	dummysprite2d.flip_v = true
 	if sprite is Sprite2D:
 		dummysprite2d.texture = sprite.texture
-		dummysprite2d.frame_coords = sprite.frame_coords
 		dummysprite2d.hframes = sprite.hframes
 		dummysprite2d.vframes = sprite.vframes
+		dummysprite2d.frame_coords = sprite.frame_coords
 	dummysprite2d.offset = Vector2(sprite.offset.x, -sprite.offset.y)
 	dummysprite2d.position = sprite.position + shadow_offset
 	dummysprite2d.scale = shadow_scale
@@ -48,4 +48,3 @@ func _physics_process(_delta):
 		dummysprite2d.texture =sprite.sprite_frames.get_frame_texture(sprite.animation,sprite.frame)
 	else:
 		dummysprite2d.texture = null
-

@@ -1,10 +1,12 @@
 extends Node
 
 signal change_stage(stage_scene: PackedScene)
+signal pickup_item(item: Item)
 
 var player: CharacterBody2D
 var shadow_canvas_group: CanvasGroup
 var main_menu: CanvasLayer = preload("res://scenes/interface/main_menu.tscn").instantiate()
+var hud: CanvasLayer = preload("res://scenes/interface/hud.tscn").instantiate()
 var current_scene = null
 
 var main_camera : CameraController
@@ -36,6 +38,7 @@ func _ready():
 	SoundManager.change_stage.emit(current_scene.name)
 
 	setup_main_menu()
+	setup_hud() 
 
 func load_stage(stage_scene : PackedScene):
 	var oldscene = current_scene
@@ -53,6 +56,7 @@ func load_stage(stage_scene : PackedScene):
 	oldscene.queue_free()
 	
 	get_tree().root.call_deferred("move_child", main_menu, -1) 
+	get_tree().root.call_deferred("move_child", hud, -2)
 	SoundManager.change_stage.emit(stage.name)
 
 func setup_player():
@@ -61,6 +65,9 @@ func setup_player():
 
 func setup_main_menu():
 	get_tree().root.call_deferred("add_child", main_menu) 
+
+func setup_hud():
+	get_tree().root.call_deferred("add_child", hud)
 
 func hide_menu():
 	get_node("/root/MainMenu").hide()
