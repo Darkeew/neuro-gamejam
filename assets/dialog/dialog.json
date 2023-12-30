@@ -1,0 +1,24 @@
+[
+	{
+		"trigger": "test",
+		"condition": [
+			"test_condition"
+		],
+		"dialog": [
+			"test_dialog",
+			"test_dialog2"
+		],
+		"next": "test_next"
+	},
+	{
+		"trigger": "test2",
+		"condition": [
+			"test_condition2"
+		],
+		"dialog": [
+			"test_dialog3",
+			"test_dialog4"
+		],
+		"next": "test_next2"
+	}
+]

@@ -22,6 +22,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://scripts/global/Global.gd"
+EventBus="*res://scripts/eventsystem/event_bus.gd"
+Dialog="*res://scripts/eventsystem/dialog_bus.gd"
 
 [display]
 
