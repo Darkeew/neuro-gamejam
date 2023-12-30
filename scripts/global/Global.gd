@@ -44,8 +44,8 @@ func _ready():
 	current_scene.add_child(shadow_canvas_group)
 	SoundManager.change_stage.emit(current_scene.name)
 
-	setup_main_menu()
 	setup_hud() 
+	setup_main_menu()
 
 func load_stage(stage_scene : PackedScene):
 	var oldscene = current_scene
@@ -62,7 +62,7 @@ func load_stage(stage_scene : PackedScene):
 	
 	oldscene.queue_free()
 	
-	get_tree().root.call_deferred("move_child", main_menu, -1) 
+	# get_tree().root.call_deferred("move_child", main_menu, -1) 
 	get_tree().root.call_deferred("move_child", hud, -2)
 	SoundManager.change_stage.emit(stage.name)
 
@@ -77,13 +77,16 @@ func setup_hud():
 	get_tree().root.call_deferred("add_child", hud)
 
 func hide_menu():
-	get_node("/root/MainMenu").hide()
+	get_node("/root/MainMenu").queue_free()
 	game_unpaused.emit()
 
-func tween_property(id: String, node: Node, prop: String, value: float, time := 1) -> void:
+func tween_property(id: String, node: Node, prop: String, value: float, time := 1.0, callback = null) -> void:
 	var tween_name := "%s_%s_%s" % [id, node.name, prop]
 	if tweens.has(tween_name):
 		tweens[tween_name].kill()
 
 	tweens[tween_name] = create_tween()
 	tweens[tween_name].tween_property(node, prop, value, time)
+
+	if callback is Callable:
+		tweens[tween_name].tween_callback(callback)

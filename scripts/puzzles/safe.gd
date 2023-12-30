@@ -1,11 +1,12 @@
 extends Node2D
 
-@onready var label = $Label
+@onready var pickup_line = $PickupLine
 
 func _ready() -> void: 
+	pickup_line.modulate.a = 0	
 	Global.send_password.connect(_on_send_password) 
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	if Global.game_paused:
 		return 
 	
@@ -18,11 +19,11 @@ func _process(delta) -> void:
 		Global.hide_password_inputs.emit()
 		Global.hide_sticky_note.emit()
 
-func _on_interactible_area_entered(area):
-	label.visible = true 
+func _on_interactible_area_entered(_area):
+	Global.tween_property(name, pickup_line, "modulate:a", 1) 
 
-func _on_interactible_area_exited(area):
-	label.visible = false
+func _on_interactible_area_exited(_area):
+	Global.tween_property(name, pickup_line, "modulate:a", 0)
 
 func _on_send_password(password: int) -> void:
 	if password == 1234:

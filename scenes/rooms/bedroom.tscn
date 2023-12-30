@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=21 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
 [ext_resource type="PackedScene" uid="uid://b4uwauj5ouvuy" path="res://scenes/items/item_container.tscn" id="2_8rf5e"]
@@ -11,8 +11,17 @@
 [ext_resource type="PackedScene" uid="uid://lj41sjie0xdw" path="res://scenes/rooms/hallway.tscn" id="5_iy646"]
 [ext_resource type="Script" path="res://scripts/camera/camera_mimic.gd" id="7_r2gvb"]
 [ext_resource type="Script" path="res://scripts/camera/camera_transition_zone.gd" id="8_kcjao"]
+[ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="8_naw2y"]
 [ext_resource type="Script" path="res://scripts/camera/main_menu_camera.gd" id="10_y18ac"]
 [ext_resource type="PackedScene" uid="uid://c8l2ynnqjgfwy" path="res://scenes/puzzles/safe.tscn" id="13_dbmu4"]
+
+[sub_resource type="Theme" id="Theme_m5j0a"]
+Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("8_naw2y")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33vgn"]
 size = Vector2(1172, 326)
@@ -94,6 +103,8 @@ offset_left = 162.0
 offset_top = -117.0
 offset_right = 203.0
 offset_bottom = -94.0
+theme = SubResource("Theme_m5j0a")
+theme_override_font_sizes/font_size = 16
 text = "1234 "
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
