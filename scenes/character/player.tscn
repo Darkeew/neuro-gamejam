@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/character/Movement.gd" id="1_evn5i"]
 [ext_resource type="Texture2D" uid="uid://dummnx83yh0vj" path="res://assets/character/nuerowalk_sheet.png" id="2_nuk7r"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://scripts/character/AccurateShadows.tscn" id="3_11rep"]
-[ext_resource type="Script" path="res://scenes/character/test.gd" id="4_os32y"]
+[ext_resource type="Script" path="res://scripts/eventsystem/test.gd" id="4_os32y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86qf5"]
 radius = 5.5
