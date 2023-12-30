@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://iss2basbtm4o"]
+
+[ext_resource type="Script" path="res://scripts/global/SoundManager.gd" id="1_si81l"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_si81l")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="FootstepsPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="MiscPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

@@ -9,7 +9,7 @@ class_name Player
 @onready var animation_tree = $AnimationTree
 #endregion 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_animation() 
 
 func _physics_process(delta):
@@ -34,4 +34,6 @@ func update_animation() -> void:
 	else: 
 		animation_tree["parameters/conditions/idle"] = false 
 		animation_tree["parameters/conditions/is_walking"] = true
-	 
+
+func random_footsteps_sound():
+	SoundManager.play_footstep_sound.emit()

@@ -23,7 +23,6 @@ func _ready():
 
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
-	print(current_scene)
 
 	if get_tree().current_scene is Control:
 		return
@@ -34,6 +33,7 @@ func _ready():
 
 	shadow_canvas_group = preload("res://scripts/global/ShadowGroup.tscn").instantiate()
 	current_scene.add_child(shadow_canvas_group)
+	SoundManager.change_stage.emit(current_scene.name)
 
 	setup_main_menu()
 
@@ -51,8 +51,9 @@ func load_stage(stage_scene : PackedScene):
 	setup_player()	
 	
 	oldscene.queue_free()
-
+	
 	get_tree().root.call_deferred("move_child", main_menu, -1) 
+	SoundManager.change_stage.emit(stage.name)
 
 func setup_player():
 	player = preload("res://scenes/character/player.tscn").instantiate()
