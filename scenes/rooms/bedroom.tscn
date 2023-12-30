@@ -85,26 +85,24 @@ shadow_offset = Vector2(-9.315, 8.95)
 shadow_scale = Vector2(1.2, 1)
 static_shadow = true
 
-[node name="Boundaries" type="Node2D" parent="."]
+[node name="Boundaries" type="StaticBody2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]
 position = Vector2(1, -171)
 shape = SubResource("RectangleShape2D_33vgn")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries"]
 position = Vector2(0, 259)
 shape = SubResource("RectangleShape2D_17xfd")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries"]
 position = Vector2(-494, 94)
 shape = SubResource("RectangleShape2D_6grpq")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundaries/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundaries"]
 polygon = PackedVector2Array(409, -8, 409, 5, 424, 5, 424, 45, 448, 45, 471, 45, 469, 103, 425, 103, 425, 146, 409, 146, 409, 198, 575, 198, 576, -8)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Boundaries/StaticBody2D"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Boundaries"]
 polygon = PackedVector2Array(-389, 27, -294, 27, -288, 27, -289, 69, -226, 69, -226, -8, -226, -26, -294, -26, -389, -26)
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -1,41 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://lj41sjie0xdw"]
+[gd_scene load_steps=6 format=3 uid="uid://lj41sjie0xdw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d73n1"]
-size = Vector2(1754, 320)
+[ext_resource type="Texture2D" uid="uid://ml5rio378erl" path="res://assets/rooms/hallway/Hallway-0002.png" id="1_x21f8"]
+[ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="2_u3e3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06xgf"]
+size = Vector2(1152, 260)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1w0in"]
+size = Vector2(1186, 260)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojgv8"]
+size = Vector2(129, 414)
 
 [node name="Hallway" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -4096
-offset_left = -955.0
-offset_top = -79.0
-offset_right = 698.0
-offset_bottom = 75.0
-color = Color(0.462745, 0.462745, 0.462745, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2061.0
+offset_top = -1631.0
+offset_right = 2014.0
+offset_bottom = 1865.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-z_index = -4096
-y_sort_enabled = true
-offset_left = -731.0
-offset_top = -398.0
-offset_right = 696.0
-offset_bottom = -78.0
-color = Color(0.662745, 0.662745, 0.662745, 1)
+[node name="Hallway-0002" type="Sprite2D" parent="."]
+position = Vector2(-493, -93)
+texture = ExtResource("1_x21f8")
 
-[node name="Node2D" type="StaticBody2D" parent="ColorRect2"]
-position = Vector2(476, 398)
+[node name="Boundaries" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect2/Node2D"]
-position = Vector2(400, 236)
-shape = SubResource("RectangleShape2D_d73n1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-558, -211)
+shape = SubResource("RectangleShape2D_06xgf")
 
-[node name="Node2D2" type="StaticBody2D" parent="ColorRect2"]
-position = Vector2(476, 398)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-405, 204)
+shape = SubResource("RectangleShape2D_1w0in")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect2/Node2D2"]
-position = Vector2(40, -237)
-shape = SubResource("RectangleShape2D_d73n1")
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-1069.5, 126)
+shape = SubResource("RectangleShape2D_ojgv8")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(83, -133)
+shape = SubResource("RectangleShape2D_ojgv8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -76.165)
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
+editor_draw_limits = true
+script = ExtResource("2_u3e3j")
+follow_offset = Vector2(0, -35)
+look_ahead_distance = 0.5
