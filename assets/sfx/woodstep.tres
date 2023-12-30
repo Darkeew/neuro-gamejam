@@ -1,0 +1,16 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://cuffgoin2dguu"]
+
+[ext_resource type="AudioStream" uid="uid://cxt77v2p2wone" path="res://assets/sfx/woodstep-01.ogg" id="1_lkscl"]
+[ext_resource type="AudioStream" uid="uid://b74aklth7b4ip" path="res://assets/sfx/woodstep-02.ogg" id="2_tky78"]
+[ext_resource type="AudioStream" uid="uid://cc1n31hmkvdem" path="res://assets/sfx/woodstep-03.ogg" id="3_367wr"]
+
+[resource]
+random_pitch = 2.0
+random_volume_offset_db = 2.0
+streams_count = 3
+stream_0/stream = ExtResource("1_lkscl")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_tky78")
+stream_1/weight = 2.0
+stream_2/stream = ExtResource("3_367wr")
+stream_2/weight = 2.0

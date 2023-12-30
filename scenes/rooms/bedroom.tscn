@@ -1,16 +1,28 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=21 format=3 uid="uid://d0vo28sl5gwxi"]
 
+[ext_resource type="Script" path="res://scripts/rooms/bedroom.gd" id="1_22h2h"]
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
 [ext_resource type="Texture2D" uid="uid://xuyu2o3n4x7e" path="res://assets/rooms/bedroom/Bed-0001.png" id="2_iouxf"]
 [ext_resource type="Texture2D" uid="uid://djws22iw7t47i" path="res://assets/rooms/bedroom/Book_case-0001.png" id="3_j433k"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://scripts/character/AccurateShadows.tscn" id="3_pmjfu"]
 [ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="4_b76gf"]
 [ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="5_dnnhi"]
-[ext_resource type="PackedScene" uid="uid://lj41sjie0xdw" path="res://scenes/rooms/hallway.tscn" id="5_iy646"]
 [ext_resource type="Script" path="res://scripts/camera/camera_mimic.gd" id="7_r2gvb"]
 [ext_resource type="Script" path="res://scripts/camera/camera_transition_zone.gd" id="8_kcjao"]
+[ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="8_naw2y"]
 [ext_resource type="Script" path="res://scripts/camera/main_menu_camera.gd" id="10_y18ac"]
 [ext_resource type="Script" path="res://scripts/eventsystem/DialogTest.gd" id="11_u8an4"]
+[ext_resource type="Texture2D" uid="uid://cg3hs2nrhctne" path="res://assets/rooms/bedroom/Rose_Flowerpot-0002.png" id="13_7dyyi"]
+[ext_resource type="PackedScene" uid="uid://c8l2ynnqjgfwy" path="res://scenes/puzzles/first_door.tscn" id="13_dbmu4"]
+[ext_resource type="Texture2D" uid="uid://dfuim35hydl0h" path="res://assets/rooms/bedroom/Table-0003.png" id="13_lm341"]
+
+[sub_resource type="Theme" id="Theme_m5j0a"]
+Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("8_naw2y")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33vgn"]
 size = Vector2(1172, 326)
@@ -31,6 +43,7 @@ size = Vector2(197, 173)
 radius = 51.0098
 
 [node name="Bedroom" type="Node2D"]
+script = ExtResource("1_22h2h")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -4096
@@ -62,44 +75,40 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_njdfq")
 
-[node name="Furniture" type="Node2D" parent="."]
+[node name="Puzzles" type="Node2D" parent="."]
+visible = false
 
-[node name="Bed-0001" type="Sprite2D" parent="Furniture"]
-position = Vector2(-257, 21)
-texture = ExtResource("2_iouxf")
+[node name="Safe" parent="Puzzles" instance=ExtResource("13_dbmu4")]
+position = Vector2(-205, -25)
 
-[node name="Node" parent="Furniture/Bed-0001" instance=ExtResource("3_pmjfu")]
-shadow_offset = Vector2(-5, 5)
-shadow_scale = Vector2(1.1, 1)
-static_shadow = true
+[node name="Label" type="Label" parent="Puzzles"]
+offset_left = 162.0
+offset_top = -117.0
+offset_right = 203.0
+offset_bottom = -94.0
+theme = SubResource("Theme_m5j0a")
+theme_override_font_sizes/font_size = 16
+text = "1234 "
 
-[node name="BookCase-0001" type="Sprite2D" parent="Furniture"]
-position = Vector2(-341, -37)
-texture = ExtResource("3_j433k")
+[node name="Boundaries" type="StaticBody2D" parent="."]
 
-[node name="Node" parent="Furniture/BookCase-0001" instance=ExtResource("3_pmjfu")]
-shadow_offset = Vector2(-9.315, 8.95)
-shadow_scale = Vector2(1.2, 1)
-static_shadow = true
-
-[node name="Boundaries" type="Node2D" parent="."]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]
 position = Vector2(1, -171)
 shape = SubResource("RectangleShape2D_33vgn")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries"]
 position = Vector2(0, 259)
 shape = SubResource("RectangleShape2D_17xfd")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries"]
 position = Vector2(-494, 94)
 shape = SubResource("RectangleShape2D_6grpq")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundaries/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundaries"]
 polygon = PackedVector2Array(409, -8, 409, 5, 424, 5, 424, 45, 448, 45, 471, 45, 469, 103, 425, 103, 425, 146, 409, 146, 409, 198, 575, 198, 576, -8)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Boundaries"]
+polygon = PackedVector2Array(-389, 27, -294, 27, -288, 27, -289, 69, -226, 69, -226, -8, -226, -26, -294, -26, -389, -26)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
@@ -109,7 +118,7 @@ follow_offset = Vector2(0, -35)
 look_ahead_distance = 0.5
 
 [node name="RoomTransitionRegion" parent="." instance=ExtResource("4_b76gf")]
-room = ExtResource("5_iy646")
+scene_path = "res://scenes/rooms/hallway.tscn"
 
 [node name="CollisionPolygon2D" parent="RoomTransitionRegion" index="0"]
 polygon = PackedVector2Array(450, 51, 449, 99, 467, 99, 468, 51)
@@ -164,6 +173,45 @@ script = ExtResource("11_u8an4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_7f1oi")
+[node name="PlayerStartPos" type="Marker2D" parent="."]
+position = Vector2(-106, 11)
+
+[node name="PlayerEnterPos" type="Marker2D" parent="."]
+position = Vector2(388, 73)
+
+[node name="Furniture" type="Node2D" parent="."]
+
+[node name="Bed-0001" type="Sprite2D" parent="Furniture"]
+position = Vector2(-258, 5)
+scale = Vector2(2, 2)
+texture = ExtResource("2_iouxf")
+
+[node name="Node" parent="Furniture/Bed-0001" instance=ExtResource("3_pmjfu")]
+shadow_offset = Vector2(-2, 5)
+static_shadow = true
+
+[node name="BookCase-0001" type="Sprite2D" parent="Furniture"]
+position = Vector2(-342, -37)
+scale = Vector2(2, 2)
+texture = ExtResource("3_j433k")
+
+[node name="Node" parent="Furniture/BookCase-0001" instance=ExtResource("3_pmjfu")]
+shadow_offset = Vector2(-2, 5)
+static_shadow = true
+
+[node name="SecondIteration" type="Node2D" parent="."]
+visible = false
+position = Vector2(473, -174)
+
+[node name="Table-0003" type="Sprite2D" parent="SecondIteration"]
+position = Vector2(-355, 179)
+scale = Vector2(2, 2)
+texture = ExtResource("13_lm341")
+
+[node name="RoseFlowerpot-0002" type="Sprite2D" parent="SecondIteration"]
+position = Vector2(-327, 119)
+scale = Vector2(2, 2)
+texture = ExtResource("13_7dyyi")
 
 [connection signal="on_transitioned_exited" from="MainMenuCamera/CameraTransitionZone" to="MainMenuCamera/CameraTransitionZone/MainMenuScript" method="_on_camera_transition_zone_on_transitioned_exited"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

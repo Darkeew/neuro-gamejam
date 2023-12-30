@@ -7,9 +7,12 @@ class_name Player
 
 #region NODES
 @onready var animation_tree = $AnimationTree
+@onready var animation_player = $AnimationPlayer
 #endregion 
 
-func _process(delta: float) -> void:
+var direction: Vector2 = Vector2.ZERO
+
+func _process(_delta: float) -> void:
 	update_animation() 
 
 func _physics_process(delta):
@@ -17,12 +20,12 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		return
 		
-	var input_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-	var target_velocity: Vector2 = input_vector * BASE_MAX_SPEED
-	target_velocity.y /= 2 
+	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	var target_velocity: Vector2 = direction * BASE_MAX_SPEED
+	target_velocity.y = target_velocity.y * 0.7
 	
-	if input_vector != Vector2.ZERO: 
-		velocity = velocity.move_toward(input_vector * BASE_MAX_SPEED, ACCELERATION * delta)
+	if direction != Vector2.ZERO: 
+		velocity = velocity.move_toward(target_velocity, ACCELERATION * delta)
 	else: 
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
@@ -32,7 +35,15 @@ func update_animation() -> void:
 	if velocity == Vector2.ZERO: 
 		animation_tree["parameters/conditions/idle"] = true 
 		animation_tree["parameters/conditions/is_walking"] = false 
+
 	else: 
 		animation_tree["parameters/conditions/idle"] = false 
 		animation_tree["parameters/conditions/is_walking"] = true
-	 
+	
+	if direction != Vector2.ZERO:
+		animation_tree["parameters/Idle/blend_position"] = direction
+		animation_tree["parameters/Walk/blend_position"] = direction
+	
+
+func random_footsteps_sound():
+	SoundManager.play_footstep_sound.emit()

@@ -1,41 +1,95 @@
-[gd_scene load_steps=2 format=3 uid="uid://lj41sjie0xdw"]
+[gd_scene load_steps=12 format=3 uid="uid://lj41sjie0xdw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d73n1"]
-size = Vector2(1754, 320)
+[ext_resource type="Script" path="res://scripts/rooms/hallway.gd" id="1_4q25n"]
+[ext_resource type="Texture2D" uid="uid://ml5rio378erl" path="res://assets/rooms/hallway/Hallway-0002.png" id="1_x21f8"]
+[ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="2_u3e3j"]
+[ext_resource type="PackedScene" uid="uid://b4uwauj5ouvuy" path="res://scenes/items/item_container.tscn" id="3_iok3i"]
+[ext_resource type="Resource" uid="uid://bxsmfty04pteq" path="res://resources/items/iter_1_key.tres" id="4_ae17g"]
+[ext_resource type="PackedScene" uid="uid://c8l2ynnqjgfwy" path="res://scenes/puzzles/first_door.tscn" id="5_k6a6p"]
+[ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="6_s6qr8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06xgf"]
+size = Vector2(1152, 260)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1w0in"]
+size = Vector2(1186, 260)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojgv8"]
+size = Vector2(129, 414)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_75y1n"]
+load_path = "res://.godot/imported/Table-0003.png-063deb6bcb99f14dafa49d027ed94600.ctex"
 
 [node name="Hallway" type="Node2D"]
+script = ExtResource("1_4q25n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -4096
-offset_left = -955.0
-offset_top = -79.0
-offset_right = 698.0
-offset_bottom = 75.0
-color = Color(0.462745, 0.462745, 0.462745, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2061.0
+offset_top = -1631.0
+offset_right = 2014.0
+offset_bottom = 1865.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-z_index = -4096
-y_sort_enabled = true
-offset_left = -731.0
-offset_top = -398.0
-offset_right = 696.0
-offset_bottom = -78.0
-color = Color(0.662745, 0.662745, 0.662745, 1)
+[node name="Hallway-0002" type="Sprite2D" parent="."]
+position = Vector2(-493, -93)
+texture = ExtResource("1_x21f8")
 
-[node name="Node2D" type="StaticBody2D" parent="ColorRect2"]
-position = Vector2(476, 398)
+[node name="Boundaries" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect2/Node2D"]
-position = Vector2(400, 236)
-shape = SubResource("RectangleShape2D_d73n1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-558, -211)
+shape = SubResource("RectangleShape2D_06xgf")
 
-[node name="Node2D2" type="StaticBody2D" parent="ColorRect2"]
-position = Vector2(476, 398)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-410, 197)
+shape = SubResource("RectangleShape2D_1w0in")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect2/Node2D2"]
-position = Vector2(40, -237)
-shape = SubResource("RectangleShape2D_d73n1")
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(52, -132)
+shape = SubResource("RectangleShape2D_ojgv8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundaries"]
+position = Vector2(-31, -1)
+polygon = PackedVector2Array(-943, -37, -1005, -38, -1005, 21, -943, 22, -942, 68, -1077, 68, -1078, -81, -943, -79)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -76.165)
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
+editor_draw_limits = true
+script = ExtResource("2_u3e3j")
+follow_offset = Vector2(0, -35)
+look_ahead_distance = 0.5
+
+[node name="RoomTransitionRegion" parent="." instance=ExtResource("6_s6qr8")]
+scene_path = "res://scenes/rooms/bedroom.tscn"
+
+[node name="CollisionPolygon2D" parent="RoomTransitionRegion" index="0"]
+position = Vector2(-36, 64)
+polygon = PackedVector2Array(-968, -102, -968, -43, -1000, -43, -1000, -102)
+
+[node name="PlayerEnterPos" type="Marker2D" parent="."]
+position = Vector2(-956, 4)
+
+[node name="Furniture" type="Node2D" parent="."]
+
+[node name="Table-0003" type="Sprite2D" parent="Furniture"]
+position = Vector2(-956, -77)
+texture = SubResource("CompressedTexture2D_75y1n")
+
+[node name="SecondIteration" type="Node2D" parent="."]
+
+[node name="FirstDoor" parent="SecondIteration" instance=ExtResource("5_k6a6p")]
+position = Vector2(-105, -136)
+
+[node name="FirstKey" parent="." instance=ExtResource("3_iok3i")]
+position = Vector2(-915, -88)
+item = ExtResource("4_ae17g")
+
+[editable path="RoomTransitionRegion"]
