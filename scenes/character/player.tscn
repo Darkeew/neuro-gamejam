@@ -44,6 +44,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [8, 4, 12, 4]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"random_footsteps_sound"
+}, {
+"args": [],
+"method": &"random_footsteps_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_g5gut"]
 resource_name = "forward"
@@ -61,6 +78,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [6, 10, 6, 14]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"random_footsteps_sound"
+}, {
+"args": [],
+"method": &"random_footsteps_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_kaijs"]
@@ -149,6 +183,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [3, 7, 3, 11]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"random_footsteps_sound"
+}, {
+"args": [],
+"method": &"random_footsteps_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_grlmu"]
 resource_name = "right"
@@ -166,6 +217,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [5, 9, 5, 13]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"random_footsteps_sound"
+}, {
+"args": [],
+"method": &"random_footsteps_sound"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7m078"]
