@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://70hg2m7ws2re"
-path="res://.godot/imported/notneuro.png-47662d4756bb233ea3549ecab931fc4b.ctex"
+uid="uid://bo1n75x2mtge8"
+path="res://.godot/imported/notneuro1.png-58357319890db4fa7e7b6148228e5e39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/notneuro.png"
-dest_files=["res://.godot/imported/notneuro.png-47662d4756bb233ea3549ecab931fc4b.ctex"]
+source_file="res://assets/character/notneuro1.png"
+dest_files=["res://.godot/imported/notneuro1.png-58357319890db4fa7e7b6148228e5e39.ctex"]
 
 [params]
 
