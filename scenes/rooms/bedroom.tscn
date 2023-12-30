@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=23 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Script" path="res://scripts/rooms/bedroom.gd" id="1_22h2h"]
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
@@ -173,6 +173,7 @@ script = ExtResource("11_u8an4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_7f1oi")
+
 [node name="PlayerStartPos" type="Marker2D" parent="."]
 position = Vector2(-106, 11)
 
