@@ -2,8 +2,8 @@ extends Node
 
 signal change_stage(stage_scene: PackedScene)
 
-var player : CharacterBody2D
-var shadow_canvas_group : CanvasGroup
+var player: CharacterBody2D = preload("res://scenes/character/player.tscn").instantiate()
+var shadow_canvas_group: CanvasGroup = preload("res://scripts/global/ShadowGroup.tscn").instantiate()
 var main_menu: CanvasLayer = preload("res://scenes/interface/main_menu.tscn").instantiate()
 var current_scene = null
 
@@ -27,8 +27,6 @@ func _ready():
 	if get_tree().current_scene is Control:
 		return
 
-	shadow_canvas_group = load("res://Scripts/Global/ShadowGroup.tscn").instantiate()
-
 	current_scene = get_tree().current_scene
 	
 	setup_player()
@@ -44,7 +42,6 @@ func load_stage(stage_scene : PackedScene):
 
 	current_scene = stage
 
-	shadow_canvas_group = load("res://Scripts/Global/ShadowGroup.tscn").instantiate()
 	current_scene.add_child(shadow_canvas_group)
 	
 	get_tree().root.call_deferred("add_child", stage) 
@@ -55,10 +52,7 @@ func load_stage(stage_scene : PackedScene):
 	get_tree().root.call_deferred("move_child", main_menu, -1) 
 	SoundManager.change_stage.emit(stage.name)
 
-
 func setup_player():
-	var player_scene = load("res://scenes/character/player.tscn").instantiate();
-	player = player_scene
 	current_scene.add_child(player)
 
 func setup_main_menu():
