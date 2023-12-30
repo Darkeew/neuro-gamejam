@@ -72,18 +72,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_iouxf")
 
 [node name="Node" parent="Furniture/Bed-0001" instance=ExtResource("3_pmjfu")]
-shadow_offset = Vector2(-10, 10)
-shadow_scale = Vector2(1.1, 1)
+shadow_offset = Vector2(-2, 5)
 static_shadow = true
 
 [node name="BookCase-0001" type="Sprite2D" parent="Furniture"]
-position = Vector2(-293, 27)
+position = Vector2(-342, -37)
 scale = Vector2(2, 2)
 texture = ExtResource("3_j433k")
 
 [node name="Node" parent="Furniture/BookCase-0001" instance=ExtResource("3_pmjfu")]
-shadow_offset = Vector2(-9.315, 8.95)
-shadow_scale = Vector2(1.2, 1)
+shadow_offset = Vector2(-2, 5)
 static_shadow = true
 
 [node name="Puzzles" type="Node2D" parent="."]

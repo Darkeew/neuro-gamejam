@@ -28,7 +28,7 @@ func _ready():
 	else:
 		push_warning("Multiple cameras in scene. Only one camera can be active at a time.")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if follow_player:
 		follow_node = Global.player
 	if follow_node != null and !transitioned:
