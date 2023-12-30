@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4uwauj5ouvuy"]
+[gd_scene load_steps=6 format=3 uid="uid://b4uwauj5ouvuy"]
 
 [ext_resource type="Script" path="res://scripts/items/item_container.gd" id="1_kyiie"]
+[ext_resource type="Texture2D" uid="uid://ciw6sitwyd48w" path="res://assets/interface/button-9patch.png" id="2_damgv"]
+[ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="3_qmt5m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4r7h8"]
 radius = 7.07107
+
+[sub_resource type="Theme" id="Theme_rgh5k"]
+Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("3_qmt5m")
 
 [node name="ItemContainer" type="Area2D"]
 collision_layer = 2
@@ -15,8 +25,41 @@ script = ExtResource("1_kyiie")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4r7h8")
 
-[node name="PickupLine" type="Label" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Press F to pickup"
+[node name="PickupLine" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PickupLine"]
+layout_mode = 1
+offset_right = 33.0
+offset_bottom = 33.0
+texture = ExtResource("2_damgv")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Label" type="Label" parent="PickupLine"]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 31.0
+offset_bottom = 36.0
+theme = SubResource("Theme_rgh5k")
+theme_override_font_sizes/font_size = 24
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1

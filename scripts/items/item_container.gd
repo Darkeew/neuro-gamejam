@@ -7,9 +7,11 @@ class_name ItemContainer
 
 func _ready() -> void:
 	$Sprite2D.texture = item.texture
+	pickup_line.modulate.a = 0
 
 func show_pickup_line() -> void:
-	pickup_line.visible = true 
+	Global.tween_property(name, pickup_line, "modulate:a", 1) 
 
-func hide_pickup_line() -> void: 
-	pickup_line.visible = false 
+func hide_pickup_line() -> void:
+	Global.tween_property(name, pickup_line, "modulate:a", 0)
+
