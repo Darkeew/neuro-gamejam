@@ -8,7 +8,9 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	password_inputs.visible = false
 	password_inputs.modulate.a = 0
+	sticky_note.visible = false
 	sticky_note.modulate.a = 0
 
 	Global.pickup_item.connect(_on_pickup_item)
