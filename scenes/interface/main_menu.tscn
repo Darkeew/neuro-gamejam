@@ -132,6 +132,7 @@ _data = {
 }
 
 [node name="MainMenu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_ns5gf")
 metadata/_edit_use_anchors_ = true
 

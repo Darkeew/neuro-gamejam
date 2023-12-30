@@ -59,17 +59,12 @@ func connect_signals() -> void:
 
 func _on_pickup_item(item: Item) -> void:
 	collected_items.append(item)
-	if item.tag == "First Key":
-		await get_tree().process_frame
-		Global.start_next_iteration.emit()
 
 func _on_start_next_iteration() -> void:
 	current_iteration += 1 
 	
 	var stage_scene: PackedScene = load("res://scenes/rooms/bedroom.tscn")
 	load_stage(stage_scene, "PlayerStartPos")
-	
-	setup_main_menu()
 
 func load_stage(stage_scene : PackedScene, player_pos := "PlayerEnterPos"):
 	var old_scene = current_scene

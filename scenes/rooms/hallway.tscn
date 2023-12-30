@@ -83,10 +83,10 @@ position = Vector2(-956, 4)
 position = Vector2(-956, -77)
 texture = SubResource("CompressedTexture2D_75y1n")
 
-[node name="SecondIteration" type="Node2D" parent="."]
+[node name="FirstDoor" parent="Furniture" instance=ExtResource("5_k6a6p")]
+position = Vector2(-854, -136)
 
-[node name="FirstDoor" parent="SecondIteration" instance=ExtResource("5_k6a6p")]
-position = Vector2(-105, -136)
+[node name="SecondIteration" type="Node2D" parent="."]
 
 [node name="FirstKey" parent="." instance=ExtResource("3_iok3i")]
 position = Vector2(-915, -88)

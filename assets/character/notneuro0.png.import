@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dummnx83yh0vj"
-path="res://.godot/imported/nuerowalk_sheet.png-5eef37ded901907ee4448de0ba78938b.ctex"
+uid="uid://dql2if2v23wla"
+path="res://.godot/imported/notneuro0.png-49915855541b9cb56bb7cd053d75a130.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/nuerowalk_sheet.png"
-dest_files=["res://.godot/imported/nuerowalk_sheet.png-5eef37ded901907ee4448de0ba78938b.ctex"]
+source_file="res://assets/character/notneuro0.png"
+dest_files=["res://.godot/imported/notneuro0.png-49915855541b9cb56bb7cd053d75a130.ctex"]
 
 [params]
 

@@ -10,7 +10,9 @@ func _process(_delta) -> void:
 		return 
 	
 	if Input.is_action_just_pressed("choice 1"):
-		print("The game is over, for now... ")
+		for item in Global.collected_items:
+			if item.tag == "First Key":
+				Global.start_next_iteration.emit()
 
 func _on_interactible_area_entered(_area):
 	Global.tween_property(name, pickup_line, "modulate:a", 1) 

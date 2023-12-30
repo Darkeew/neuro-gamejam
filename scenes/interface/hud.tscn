@@ -26,15 +26,14 @@ Label/fonts/font = ExtResource("5_dkt5y")
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_xetvg")
 
-[node name="Inventory" type="ColorRect" parent="."]
+[node name="Inventory" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.392157)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Inventory"]
 layout_mode = 0
