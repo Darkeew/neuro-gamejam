@@ -16,6 +16,8 @@ var main_camera : CameraController
 static var game_paused := true
 signal game_unpaused
 
+var tweens := {}
+
 # endregion
 
 func _ready():
@@ -72,3 +74,11 @@ func setup_hud():
 func hide_menu():
 	get_node("/root/MainMenu").hide()
 	game_unpaused.emit()
+
+func tween_property(id: String, node: Node, prop: String, value: float, time := 1) -> void:
+	var tween_name := "%s_%s_%s" % [id, node.name, prop]
+	if tweens.has(tween_name):
+		tweens[tween_name].kill()
+
+	tweens[tween_name] = create_tween()
+	tweens[tween_name].tween_property(node, prop, value, time)
