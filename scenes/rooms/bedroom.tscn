@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=18 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
 [ext_resource type="Texture2D" uid="uid://xuyu2o3n4x7e" path="res://assets/rooms/bedroom/Bed-0001.png" id="2_iouxf"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/camera/camera_mimic.gd" id="7_r2gvb"]
 [ext_resource type="Script" path="res://scripts/camera/camera_transition_zone.gd" id="8_kcjao"]
 [ext_resource type="Script" path="res://scripts/camera/main_menu_camera.gd" id="10_y18ac"]
+[ext_resource type="Script" path="res://scripts/eventsystem/DialogTest.gd" id="11_u8an4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33vgn"]
 size = Vector2(1172, 326)
@@ -25,6 +26,9 @@ size = Vector2(1151, 643)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ba18x"]
 size = Vector2(197, 173)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7f1oi"]
+radius = 51.0098
 
 [node name="Bedroom" type="Node2D"]
 
@@ -153,6 +157,15 @@ script = ExtResource("8_kcjao")
 position = Vector2(12.5, 1.5)
 shape = SubResource("RectangleShape2D_ba18x")
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(92, -8)
+monitorable = false
+script = ExtResource("11_u8an4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7f1oi")
+
 [connection signal="on_transitioned_exited" from="MainMenuCamera/CameraTransitionZone" to="MainMenuCamera/CameraTransitionZone/MainMenuScript" method="_on_camera_transition_zone_on_transitioned_exited"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 
 [editable path="RoomTransitionRegion"]

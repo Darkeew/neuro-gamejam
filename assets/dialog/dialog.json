@@ -1,14 +1,14 @@
 [
 	{
 		"trigger": "test",
-		"condition": [
-			"test_condition"
-		],
 		"dialog": [
-			"test_dialog",
-			"test_dialog2"
+			"can't do that",
+			"nope",
+			"no",
+			"no way",
+			"not gonna happen"
 		],
-		"next": "test_next"
+		"next": "test2"
 	},
 	{
 		"trigger": "test2",
@@ -18,7 +18,6 @@
 		"dialog": [
 			"test_dialog3",
 			"test_dialog4"
-		],
-		"next": "test_next2"
+		]
 	}
 ]

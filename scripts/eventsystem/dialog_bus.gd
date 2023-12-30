@@ -25,7 +25,16 @@ func _ready():
 		var json = load("res://assets/dialog/"+json_file)
 		var dialog = json.data
 		for i in dialog:
+			var dialogs = null
+			var next = null
+			var condition = null
+
+			if i.has("dialog"):
+				dialogs = i.dialog
+			if i.has("next"):
+				next = i.next
+			if i.has("condition"):
+				condition = i.condition
+			
 			#register the event
-			EventBus.register_event(i.trigger, self, "show_dialog", {"dialog":i.dialog,"next": i.next,"condition": i.condition})
-	
-	EventBus.print_all()
+			EventBus.register_event(i.trigger, self, "show_dialog", {"event_name":i.trigger,"dialog":dialogs,"next": next,"condition": condition})

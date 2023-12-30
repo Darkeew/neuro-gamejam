@@ -45,19 +45,49 @@ func emit(event_name, args):
 		for listener in listeners[event_name]:
 			listener.call(args)
 
-func emit_event(event_name):
+func emit_event(event_name, recursion_safeguard_list=[]):
+	#print_all()
+	print("Emitting event " + event_name + ".")
+	if recursion_safeguard_list.has(event_name):
+		printerr("Recursion safeguard triggered for " + event_name + ".")
+		return
+	recursion_safeguard_list.append(event_name)
 	if events.has(event_name):
 		for event in events[event_name]:
-			if check_conditions(events[event_name]["args"]):
-				event["owner"].call(event["method"],event["args"])
+			if not event.has("args"):
+				_emit_event_noargs(event,event_name)
+				continue
+			if check_conditions(event["args"]):
+				if listeners.has(event_name):
+					for listener in listeners[event_name]:
+						if listener.has_method(event["method"]):
+							await listener[event["method"]].call(event["args"])
+						else:
+							print("Method " + event["method"] + " not found in " + str(listener) + ".")
+				if event["args"].has("next") and event["args"]["next"] != null and event["args"]["next"] != "":
+					emit_event(event["args"]["next"],recursion_safeguard_list)
 #endregion
 
+#region emitters
+func _emit_event_noargs(event,event_name):
+	if listeners.has(event_name):
+		for listener in listeners[event_name]:
+			if listener.has_method(event["method"]):
+				await listener[event["method"]].call()
+			else:
+				print("Method " + event["method"] + " not found in " + str(listener) + ".")
+#endregion
 
 #region Conditions
 func check_conditions(event_obj):
-	if event_obj.has("condition"):
+	if event_obj.has("condition") and event_obj["condition"] != null:
 		for condition in event_obj["condition"]:
-			if not condition_solver[condition].call():
+			if not condition_solver.has(condition):
+				print("Condition solver not found for " + condition + ".")
+				return false
+
+			if not condition_solver[condition].call(event_obj):
+				print("Condition " + condition + " failed.")
 				return false
 	return true
 #endregion
@@ -85,7 +115,9 @@ func print_condition_solver():
 		print("\t\t" + str(condition_solver[condition_name]))
 
 func print_all():
-	print("---------------------")
+	print("#######---------------------")
+	print("All:")
+	print("#######---------------------")
 	print_listeners()
 	print("---------------------")
 	print_events()

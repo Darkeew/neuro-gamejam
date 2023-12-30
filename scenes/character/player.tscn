@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bilwacn6xbv8a"]
+[gd_scene load_steps=16 format=3 uid="uid://bilwacn6xbv8a"]
 
 [ext_resource type="Script" path="res://scripts/character/Movement.gd" id="1_evn5i"]
 [ext_resource type="Texture2D" uid="uid://dummnx83yh0vj" path="res://assets/character/nuerowalk_sheet.png" id="2_nuk7r"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://scripts/character/AccurateShadows.tscn" id="3_11rep"]
+[ext_resource type="Script" path="res://scenes/character/test.gd" id="4_os32y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86qf5"]
 radius = 5.5
@@ -119,3 +120,13 @@ tree_root = SubResource("AnimationNodeStateMachine_eap5n")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/idle = false
 parameters/conditions/is_walking = false
+
+[node name="DialogText" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -20.0
+offset_top = 0.5
+offset_right = 20.0
+offset_bottom = 23.5
+text = "TEXT"
+horizontal_alignment = 1
+script = ExtResource("4_os32y")

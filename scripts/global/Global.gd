@@ -11,7 +11,7 @@ var main_camera : CameraController
 
 # region GLOBAL VARS
 
-static var game_paused := true
+var game_paused := true
 signal game_unpaused
 
 # endregion
