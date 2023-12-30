@@ -15,19 +15,19 @@ signal change_stage(stage_name: String)
 var music_bus := AudioServer.get_bus_index("Music")
 var sfx_bus := AudioServer.get_bus_index("SFX")
 
-var sounds := {
-	"key_collect": "key_collect.ogg",
-	"button_press": "button_sound.ogg"
+@onready var sounds := {
+	"key_collect": load(SFX_PATH % "key_collect.ogg"),
+	"button_press": load(SFX_PATH % "button_sound.ogg")
 }
 
-var footsteps := {
-	"Main": "woodstep.tres",
-	"Hallway": "carpetstep.tres"
+@onready var footsteps := {
+	"Main": load(SFX_PATH % "woodstep.tres"),
+	"Hallway": load(SFX_PATH % "carpetstep.tres")
 }
 
-var music := {
-	"Main": "part2theme.ogg",
-	"Hallway": "part3theme.ogg",
+@onready var music := {
+	"Main": load(MUSIC_PATH % "part2theme.ogg"),
+	"Hallway": load(MUSIC_PATH % "part3theme.ogg"),
 }
 
 var tweens := {}
@@ -59,15 +59,13 @@ func _on_change_stage(stage_name: String) -> void:
 
 func _change_footsteps_soundbank(bank_name: String) -> void:
 	if footsteps.has(bank_name):
-		var bank := load(SFX_PATH % footsteps[bank_name])
-		footsteps_player.stream = bank
+		footsteps_player.stream = footsteps[bank_name]
 	else:
 		printerr("Footsteps sound bank %s was not found" % bank_name)
 
 func _on_play_sound(sound_name: String) -> void:
 	if not misc_player.playing and sounds.has(sound_name):
-		var sound := AudioStreamOggVorbis.load_from_file(SFX_PATH % sounds[sound_name])
-		misc_player.stream = sound
+		misc_player.stream = sounds[sound_name]
 		misc_player.play()
 	else:
 		printerr("Sound file %s was not found" % sound_name)
@@ -79,10 +77,7 @@ func _load_music_file(stage_name: String) -> void:
 	if not music.has(stage_name):
 		printerr("Music file for stage %s was not found" % stage_name)
 
-	var music_name: String = music[stage_name]
-	var music_file := AudioStreamOggVorbis.load_from_file(MUSIC_PATH % music_name)
-	music_player.stream = music_file
-	
+	music_player.stream = music[stage_name]	
 	music_player.volume_db = INIT_VOLUME
 	music_player.play()
 	
