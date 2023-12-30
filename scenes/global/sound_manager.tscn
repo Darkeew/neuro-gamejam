@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://iss2basbtm4o"]
+[gd_scene load_steps=3 format=3 uid="uid://iss2basbtm4o"]
 
 [ext_resource type="Script" path="res://scripts/global/SoundManager.gd" id="1_si81l"]
+[ext_resource type="AudioStream" uid="uid://b7glkkaek5i3x" path="res://assets/music/windloop.ogg" id="2_fxilw"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_si81l")
@@ -13,3 +14,9 @@ bus = &"SFX"
 
 [node name="MiscPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
+
+[node name="WindPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fxilw")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"

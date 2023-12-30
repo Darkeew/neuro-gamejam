@@ -88,7 +88,7 @@ func _tween_volume(value: float, callback = null):
 		tweens["main"].kill()
 
 	tweens["main"] = create_tween().set_trans(Tween.TRANS_QUAD)
-	tweens["main"].tween_property(music_player, "volume_db", value, 2)
+	tweens["main"].tween_property(music_player, "volume_db", value, 1.5)
 
 	if callback is Callable:
 		tweens["main"].tween_callback(callback)
