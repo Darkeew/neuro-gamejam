@@ -16,7 +16,7 @@ var hud: CanvasLayer = preload("res://scenes/interface/hud.tscn").instantiate()
 var current_scene = null
 var current_iteration := 1
 
-var test
+var dialog_label : Label
 
 var main_camera : CameraController
 
@@ -38,6 +38,10 @@ func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
 
+
+	EventBus.register_listener("next_iter",next_iter)
+	EventBus.register_condition_solver("iter_check", iter_check)
+
 	if get_tree().current_scene is Control:
 		return
 
@@ -56,6 +60,9 @@ func connect_signals() -> void:
 	change_stage.connect(load_stage)
 	pickup_item.connect(_on_pickup_item)
 	start_next_iteration.connect(_on_start_next_iteration)
+
+func next_iter():
+	start_next_iteration.emit()
 
 func _on_pickup_item(item: Item) -> void:
 	collected_items.append(item)
@@ -94,7 +101,8 @@ func load_next_stage(stage: Node2D, old_scene: Node2D, player_pos := "PlayerEnte
 
 func setup_player(player_pos: String):
 	player = preload("res://scenes/character/player.tscn").instantiate()
-	player.global_position = current_scene.get_node(player_pos).global_position
+	if current_scene.has_node(player_pos):
+		player.global_position = current_scene.get_node(player_pos).global_position
 	current_scene.add_child(player)
 
 func setup_main_menu():
@@ -117,3 +125,15 @@ func tween_property(id: String, node: Node, prop: String, value: float, time := 
 
 	if callback is Callable:
 		tweens[tween_name].tween_callback(callback)
+
+
+func show_dialog(event):
+	if dialog_label == null:
+		return
+	await dialog_label.show_dialog(event)
+
+func iter_check(event) -> bool:
+	print(str(event))
+	if event["iter"] == current_iteration:
+		return true
+	return false

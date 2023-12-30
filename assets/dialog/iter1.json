@@ -1,0 +1,19 @@
+[
+    {
+        "trigger" : "key_missing",
+        "dialog" : [
+            {"text":"The door is locked.","time":1.5},
+            {"text": "I need a key to open this door.","time":1.8}
+        ]
+    },
+    {
+        "trigger" : "door_open",
+        "dialog" : [
+            {"text":"The door is open.","time":1.5}
+        ],
+        "condition" : ["iter_check"],
+        "iter" : 1,
+        "time" : 1,
+        "next" : "next_iter"
+    }
+]

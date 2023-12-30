@@ -29,6 +29,7 @@ shape = SubResource("CircleShape2D_gmcrg")
 texture = ExtResource("3_mcxem")
 
 [node name="PickupLine" type="Control" parent="."]
+z_index = 2000
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

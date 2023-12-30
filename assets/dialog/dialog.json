@@ -1,23 +1,2 @@
 [
-	{
-		"trigger": "test",
-		"dialog": [
-			"can't do that",
-			"nope",
-			"no",
-			"no way",
-			"not gonna happen"
-		],
-		"next": "test2"
-	},
-	{
-		"trigger": "test2",
-		"condition": [
-			"test_condition2"
-		],
-		"dialog": [
-			"test_dialog3",
-			"test_dialog4"
-		]
-	}
 ]

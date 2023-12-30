@@ -20,13 +20,10 @@ var old_duration : float
 var transitioned : bool = false
 
 
-func _ready():
-	if Global.main_camera == null:
-		Global.main_camera = self
-		# Set Camera to be active
-		make_current()
-	else:
-		push_warning("Multiple cameras in scene. Only one camera can be active at a time.")
+func _enter_tree():
+	Global.main_camera = self
+	# Set Camera to be active
+	make_current()
 
 func _physics_process(_delta):
 	if follow_player:

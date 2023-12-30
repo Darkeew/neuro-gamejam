@@ -61,7 +61,7 @@ position = Vector2(-31, -1)
 polygon = PackedVector2Array(-943, -37, -1005, -38, -1005, 21, -943, 22, -942, 68, -1077, 68, -1078, -81, -943, -79)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 editor_draw_limits = true
 script = ExtResource("2_u3e3j")
 follow_offset = Vector2(0, -35)

@@ -1,19 +1,19 @@
-[gd_scene load_steps=23 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=22 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Script" path="res://scripts/rooms/bedroom.gd" id="1_22h2h"]
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
 [ext_resource type="Texture2D" uid="uid://xuyu2o3n4x7e" path="res://assets/rooms/bedroom/Bed-0001.png" id="2_iouxf"]
 [ext_resource type="Texture2D" uid="uid://djws22iw7t47i" path="res://assets/rooms/bedroom/Book_case-0001.png" id="3_j433k"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://scripts/character/AccurateShadows.tscn" id="3_pmjfu"]
+[ext_resource type="PackedScene" uid="uid://v22c1pxub37n" path="res://scenes/puzzles/safe.tscn" id="4_7o0in"]
 [ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="4_b76gf"]
 [ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="5_dnnhi"]
+[ext_resource type="Script" path="res://scripts/rooms/iter_condition.gd" id="5_hjeht"]
 [ext_resource type="Script" path="res://scripts/camera/camera_mimic.gd" id="7_r2gvb"]
 [ext_resource type="Script" path="res://scripts/camera/camera_transition_zone.gd" id="8_kcjao"]
 [ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="8_naw2y"]
 [ext_resource type="Script" path="res://scripts/camera/main_menu_camera.gd" id="10_y18ac"]
-[ext_resource type="Script" path="res://scripts/eventsystem/DialogTest.gd" id="11_u8an4"]
 [ext_resource type="Texture2D" uid="uid://cg3hs2nrhctne" path="res://assets/rooms/bedroom/Rose_Flowerpot-0002.png" id="13_7dyyi"]
-[ext_resource type="PackedScene" uid="uid://c8l2ynnqjgfwy" path="res://scenes/puzzles/first_door.tscn" id="13_dbmu4"]
 [ext_resource type="Texture2D" uid="uid://dfuim35hydl0h" path="res://assets/rooms/bedroom/Table-0003.png" id="13_lm341"]
 
 [sub_resource type="Theme" id="Theme_m5j0a"]
@@ -38,9 +38,6 @@ size = Vector2(1151, 643)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ba18x"]
 size = Vector2(197, 173)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7f1oi"]
-radius = 51.0098
 
 [node name="Bedroom" type="Node2D"]
 script = ExtResource("1_22h2h")
@@ -78,9 +75,6 @@ texture = ExtResource("1_njdfq")
 [node name="Puzzles" type="Node2D" parent="."]
 visible = false
 
-[node name="Safe" parent="Puzzles" instance=ExtResource("13_dbmu4")]
-position = Vector2(-205, -25)
-
 [node name="Label" type="Label" parent="Puzzles"]
 offset_left = 162.0
 offset_top = -117.0
@@ -89,6 +83,13 @@ offset_bottom = -94.0
 theme = SubResource("Theme_m5j0a")
 theme_override_font_sizes/font_size = 16
 text = "1234 "
+
+[node name="Safe2" parent="Puzzles" instance=ExtResource("4_7o0in")]
+position = Vector2(-205, -25)
+
+[node name="Iteration_Condition" type="Node" parent="Puzzles"]
+script = ExtResource("5_hjeht")
+iter = 3
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
 
@@ -111,7 +112,7 @@ polygon = PackedVector2Array(409, -8, 409, 5, 424, 5, 424, 45, 448, 45, 471, 45,
 polygon = PackedVector2Array(-389, 27, -294, 27, -288, 27, -289, 69, -226, 69, -226, -8, -226, -26, -294, -26, -389, -26)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 editor_draw_limits = true
 script = ExtResource("5_dnnhi")
 follow_offset = Vector2(0, -35)
@@ -124,6 +125,7 @@ scene_path = "res://scenes/rooms/hallway.tscn"
 polygon = PackedVector2Array(450, 51, 449, 99, 467, 99, 468, 51)
 
 [node name="MainMenuCamera" type="Camera2D" parent="."]
+visible = false
 script = ExtResource("7_r2gvb")
 transition_time = 0.0
 transition_time_out = 2.0
@@ -166,14 +168,6 @@ script = ExtResource("8_kcjao")
 position = Vector2(12.5, 1.5)
 shape = SubResource("RectangleShape2D_ba18x")
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(92, -8)
-monitorable = false
-script = ExtResource("11_u8an4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_7f1oi")
-
 [node name="PlayerStartPos" type="Marker2D" parent="."]
 position = Vector2(-106, 11)
 
@@ -214,7 +208,10 @@ position = Vector2(-327, 119)
 scale = Vector2(2, 2)
 texture = ExtResource("13_7dyyi")
 
+[node name="Iteration_Condition" type="Node" parent="SecondIteration"]
+script = ExtResource("5_hjeht")
+iter = 2
+
 [connection signal="on_transitioned_exited" from="MainMenuCamera/CameraTransitionZone" to="MainMenuCamera/CameraTransitionZone/MainMenuScript" method="_on_camera_transition_zone_on_transitioned_exited"]
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 
 [editable path="RoomTransitionRegion"]

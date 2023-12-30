@@ -11,7 +11,12 @@ extends Node
 #   }
 # }
 
-func _ready():
+var dialog_registered = false
+
+func register_dialog(dialog_field):
+	if dialog_registered:
+		return
+	dialog_registered = true
 	#load all dialog files in assets/dialog
 	var json_files = []
 	var dir : PackedStringArray = DirAccess.get_files_at("res://assets/dialog")
@@ -36,5 +41,9 @@ func _ready():
 			if i.has("condition"):
 				condition = i.condition
 			
+			print(str(i))
+			
+			
 			#register the event
-			EventBus.register_event(i.trigger, self, "show_dialog", {"event_name":i.trigger,"dialog":dialogs,"next": next,"condition": condition})
+			EventBus.register_event(i.trigger, dialog_field, "show_dialog", i)
+	EventBus.print_events()

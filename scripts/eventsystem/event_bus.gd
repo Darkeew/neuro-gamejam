@@ -40,10 +40,10 @@ func unregister_event(event_name,owner_node,method):
 #endregion
 
 #region Emit
-func emit(event_name, args):
+func emit(event_name):
 	if listeners.has(event_name):
 		for listener in listeners[event_name]:
-			listener.call(args)
+			await listener.call()
 
 func emit_event(event_name, recursion_safeguard_list=[]):
 	#print_all()
@@ -54,6 +54,7 @@ func emit_event(event_name, recursion_safeguard_list=[]):
 	recursion_safeguard_list.append(event_name)
 	if events.has(event_name):
 		for event in events[event_name]:
+			print("Emitting event " + event_name + " with args " + str(event["args"]) + ".")
 			if not event.has("args"):
 				_emit_event_noargs(event,event_name)
 				continue
@@ -64,8 +65,14 @@ func emit_event(event_name, recursion_safeguard_list=[]):
 							await listener[event["method"]].call(event["args"])
 						else:
 							print("Method " + event["method"] + " not found in " + str(listener) + ".")
+				else:
+					if event["owner"].has_method(event["method"]):
+						await event["owner"][event["method"]].call(event["args"])
 				if event["args"].has("next") and event["args"]["next"] != null and event["args"]["next"] != "":
-					emit_event(event["args"]["next"],recursion_safeguard_list)
+					await emit_event(event["args"]["next"],recursion_safeguard_list)
+				return
+	else:
+		await emit(event_name)
 #endregion
 
 #region emitters

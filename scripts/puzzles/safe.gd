@@ -28,3 +28,6 @@ func _on_interactible_area_exited(_area):
 func _on_send_password(password: int) -> void:
 	if password == 1234:
 		Global.hide_password_inputs.emit()  
+		EventBus.emit_event("safe_unlocked")
+	else:
+		EventBus.emit_event("wrong_password")
