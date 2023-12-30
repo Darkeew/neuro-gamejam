@@ -85,7 +85,8 @@ custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 theme = SubResource("Theme_kac8s")
 bbcode_enabled = true
-text = "[center]Game by TRIPLE AA
+text = "[center]Game by 
+Team \"TRIPLE AA\"
 
 [img]assets/credits/TRIPLE_AA-0002.png[/img]"
 fit_content = true
