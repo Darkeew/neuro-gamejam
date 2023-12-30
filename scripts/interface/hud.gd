@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var inventory_cell = %InventoryCell
 @onready var password_inputs = $PasswordInputsContainer
 @onready var sticky_note = $StickyNoteContainer
+@onready var smooth_transition = $SmoothTransition
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

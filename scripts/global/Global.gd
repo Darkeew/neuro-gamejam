@@ -70,11 +70,17 @@ func _on_start_next_iteration() -> void:
 	setup_main_menu()
 
 func load_stage(stage_scene : PackedScene, player_pos := "PlayerEnterPos"):
-	var oldscene = current_scene
+	var old_scene = current_scene
 	var stage = stage_scene.instantiate()
-
 	current_scene = stage
 
+	SoundManager.change_stage.emit(stage.name)
+	tween_property(
+		hud.name, hud.smooth_transition, "self_modulate:a", 1,  0.5, 
+		func(): load_next_stage(stage, old_scene, player_pos)
+	)
+
+func load_next_stage(stage: Node2D, old_scene: Node2D, player_pos := "PlayerEnterPos") -> void:
 	shadow_canvas_group = preload("res://scripts/global/ShadowGroup.tscn").instantiate()
 	current_scene.add_child(shadow_canvas_group)
 	
@@ -82,11 +88,12 @@ func load_stage(stage_scene : PackedScene, player_pos := "PlayerEnterPos"):
 	
 	setup_player(player_pos)	
 	
-	oldscene.queue_free()
+	old_scene.queue_free()
 	
 	# get_tree().root.call_deferred("move_child", main_menu, -1) 
 	get_tree().root.call_deferred("move_child", hud, -2)
-	SoundManager.change_stage.emit(stage.name)
+
+	tween_property(hud.name, hud.smooth_transition, "self_modulate:a", 0, 0.5)
 
 func setup_player(player_pos: String):
 	player = preload("res://scenes/character/player.tscn").instantiate()
