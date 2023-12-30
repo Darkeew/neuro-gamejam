@@ -3,10 +3,16 @@ extends CanvasLayer
 @onready var inventory = %Inventory
 @onready var inventory_item_container = %InventoryItemContainer
 @onready var inventory_cell = %InventoryCell
+@onready var password_inputs = $PasswordInputs
+@onready var sticky_note = $StickyNote
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.pickup_item.connect(_on_pickup_item)
+	Global.show_password_inputs.connect(_on_show_password_inputs)
+	Global.hide_password_inputs.connect(_on_hide_password_inputs)
+	Global.show_sticky_note.connect(_on_show_sticky_note)
+	Global.hide_sticky_note.connect(_on_hide_sticky_note)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -26,3 +32,15 @@ func _on_pickup_item(item: Item) -> void:
 	new_inventory_cell.visible = true 
 	new_inventory_cell.get_node("TextureRect").texture = item.texture
 	inventory_item_container.call_deferred("add_child", new_inventory_cell)
+
+func _on_show_password_inputs() -> void:
+	password_inputs.visible = true 
+
+func _on_hide_password_inputs() -> void:
+	password_inputs.visible = false 
+
+func _on_show_sticky_note() -> void:
+	sticky_note.visible = true
+	
+func _on_hide_sticky_note() -> void:
+	sticky_note.visible = false

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6j6gmberryov"
-path="res://.godot/imported/notw-0001.png-8e0154685e46548cb334e78013c08816.ctex"
+path="res://.godot/imported/notw-0001.png-04def7b9ddc4c8a32f65780b69733302.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/rooms/bedroom/notw-0001.png"
-dest_files=["res://.godot/imported/notw-0001.png-8e0154685e46548cb334e78013c08816.ctex"]
+source_file="res://assets/puzzles/notw-0001.png"
+dest_files=["res://.godot/imported/notw-0001.png-04def7b9ddc4c8a32f65780b69733302.ctex"]
 
 [params]
 

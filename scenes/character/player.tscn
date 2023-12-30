@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://bilwacn6xbv8a"]
+[gd_scene load_steps=35 format=3 uid="uid://bilwacn6xbv8a"]
 
 [ext_resource type="Script" path="res://scripts/character/Movement.gd" id="1_evn5i"]
 [ext_resource type="Texture2D" uid="uid://70hg2m7ws2re" path="res://assets/character/notneuro.png" id="2_6jdpq"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://scripts/character/AccurateShadows.tscn" id="3_11rep"]
 [ext_resource type="PackedScene" uid="uid://2eep1kypkavl" path="res://scenes/character/collectionrange.tscn" id="4_cex7t"]
+[ext_resource type="PackedScene" uid="uid://bm3dw4juyr1wm" path="res://scenes/character/interactionrange.tscn" id="5_48kfy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86qf5"]
 radius = 5.5
@@ -11,6 +12,10 @@ height = 13.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vnivi"]
 height = 41.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c8rgg"]
+radius = 24.0
+height = 94.0
 
 [sub_resource type="Animation" id="Animation_14r56"]
 length = 0.001
@@ -283,6 +288,13 @@ visible = false
 position = Vector2(0, -18)
 shape = SubResource("CapsuleShape2D_vnivi")
 
+[node name="Interactionrange" parent="." instance=ExtResource("5_48kfy")]
+visible = false
+
+[node name="CollisionShape2D" parent="Interactionrange" index="0"]
+position = Vector2(2, -19)
+shape = SubResource("CapsuleShape2D_c8rgg")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_7m078")
@@ -300,3 +312,4 @@ parameters/Idle/blend_position = Vector2(-0.993209, 0.0194805)
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [editable path="Collectionrange"]
+[editable path="Interactionrange"]

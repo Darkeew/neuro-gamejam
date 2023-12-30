@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bm3dw4juyr1wm"]
+
+[node name="Interactionrange" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

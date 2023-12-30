@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=19 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
 [ext_resource type="PackedScene" uid="uid://b4uwauj5ouvuy" path="res://scenes/items/item_container.tscn" id="2_8rf5e"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/camera/camera_mimic.gd" id="7_r2gvb"]
 [ext_resource type="Script" path="res://scripts/camera/camera_transition_zone.gd" id="8_kcjao"]
 [ext_resource type="Script" path="res://scripts/camera/main_menu_camera.gd" id="10_y18ac"]
+[ext_resource type="PackedScene" uid="uid://c8l2ynnqjgfwy" path="res://scenes/puzzles/safe.tscn" id="13_dbmu4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33vgn"]
 size = Vector2(1172, 326)
@@ -84,6 +85,18 @@ texture = ExtResource("3_j433k")
 shadow_offset = Vector2(-9.315, 8.95)
 shadow_scale = Vector2(1.2, 1)
 static_shadow = true
+
+[node name="Puzzles" type="Node2D" parent="."]
+
+[node name="Safe" parent="Puzzles" instance=ExtResource("13_dbmu4")]
+position = Vector2(-205, -25)
+
+[node name="Label" type="Label" parent="Puzzles"]
+offset_left = 162.0
+offset_top = -117.0
+offset_right = 203.0
+offset_bottom = -94.0
+text = "1234 "
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
 

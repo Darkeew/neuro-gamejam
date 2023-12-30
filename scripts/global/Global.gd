@@ -2,6 +2,11 @@ extends Node
 
 signal change_stage(stage_scene: PackedScene)
 signal pickup_item(item: Item)
+signal show_password_inputs
+signal hide_password_inputs
+signal show_sticky_note
+signal hide_sticky_note
+signal send_password(password: int)
 
 var player: CharacterBody2D
 var shadow_canvas_group: CanvasGroup

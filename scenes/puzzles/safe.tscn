@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8l2ynnqjgfwy"]
+
+[ext_resource type="Script" path="res://scripts/puzzles/safe.gd" id="1_cfu21"]
+[ext_resource type="Texture2D" uid="uid://bpfj8em5ueju8" path="res://assets/puzzles/Safe_closed-0001.png" id="1_si7e2"]
+[ext_resource type="PackedScene" uid="uid://hocsfpblfn07" path="res://scenes/puzzles/interactible.tscn" id="2_omxew"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmcrg"]
+radius = 13.0
+
+[node name="Safe" type="Node2D"]
+script = ExtResource("1_cfu21")
+
+[node name="Interactible" parent="." instance=ExtResource("2_omxew")]
+
+[node name="CollisionShape2D" parent="Interactible" index="0"]
+shape = SubResource("CircleShape2D_gmcrg")
+
+[node name="ClosedSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_si7e2")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = 12.0
+offset_top = -19.0
+offset_right = 129.0
+offset_bottom = 18.0
+theme_override_font_sizes/font_size = 12
+text = "Q: Open the lock 
+E: Read note on lock"
+
+[connection signal="area_entered" from="Interactible" to="." method="_on_interactible_area_entered"]
+[connection signal="area_exited" from="Interactible" to="." method="_on_interactible_area_exited"]
+
+[editable path="Interactible"]
