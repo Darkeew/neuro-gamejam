@@ -9,7 +9,7 @@ func _ready():
 	Global.pickup_item.connect(_on_pickup_item)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Global.game_paused:
 		inventory.visible = false 
 		return 

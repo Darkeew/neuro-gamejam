@@ -2,7 +2,7 @@ extends Area2D
 
 var items_within_range = []
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	if Global.game_paused:
 		return
 	
