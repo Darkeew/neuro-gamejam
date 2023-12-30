@@ -11,11 +11,12 @@ radius = 5.5
 height = 13.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vnivi"]
-height = 41.0
+radius = 23.0
+height = 82.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c8rgg"]
 radius = 24.0
-height = 94.0
+height = 82.0
 
 [sub_resource type="Animation" id="Animation_14r56"]
 length = 0.001
@@ -335,9 +336,6 @@ graph_offset = Vector2(-99, -65)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_evn5i")
-BASE_MAX_SPEED = null
-ACCELERATION = null
-FRICTION = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
@@ -357,14 +355,13 @@ shadow_offset = Vector2(0, 82)
 [node name="Collectionrange" parent="." instance=ExtResource("4_cex7t")]
 
 [node name="CollisionShape2D" parent="Collectionrange" index="0"]
-position = Vector2(0, -18)
+position = Vector2(0, -36)
 shape = SubResource("CapsuleShape2D_vnivi")
 
 [node name="Interactionrange" parent="." instance=ExtResource("5_48kfy")]
-visible = false
 
 [node name="CollisionShape2D" parent="Interactionrange" index="0"]
-position = Vector2(2, -19)
+position = Vector2(0, -36)
 shape = SubResource("CapsuleShape2D_c8rgg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

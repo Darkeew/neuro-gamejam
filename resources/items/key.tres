@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bxsmfty04pteq"]
-
-[ext_resource type="Script" path="res://scripts/items/item.gd" id="1_gi5yj"]
-[ext_resource type="Texture2D" uid="uid://bcvsav4vwjomq" path="res://assets/items/small_pizza.png" id="2_0eci2"]
-
-[resource]
-script = ExtResource("1_gi5yj")
-tag = "Key"
-texture = ExtResource("2_0eci2")

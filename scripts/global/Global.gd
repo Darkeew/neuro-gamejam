@@ -7,12 +7,14 @@ signal hide_password_inputs
 signal show_sticky_note
 signal hide_sticky_note
 signal send_password(password: int)
+signal start_next_iteration 
 
 var player: CharacterBody2D
 var shadow_canvas_group: CanvasGroup
-var main_menu: CanvasLayer = preload("res://scenes/interface/main_menu.tscn").instantiate()
+var main_menu: PackedScene = preload("res://scenes/interface/main_menu.tscn")
 var hud: CanvasLayer = preload("res://scenes/interface/hud.tscn").instantiate()
 var current_scene = null
+var current_iteration := 1
 
 var main_camera : CameraController
 
@@ -21,12 +23,13 @@ var main_camera : CameraController
 static var game_paused := true
 signal game_unpaused
 
+var collected_items := []
 var tweens := {}
 
 # endregion
 
 func _ready():
-	change_stage.connect(load_stage)
+	connect_signals() 
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
@@ -38,7 +41,7 @@ func _ready():
 
 	current_scene = get_tree().current_scene
 	
-	setup_player()
+	setup_player("PlayerStartPos")
 
 	shadow_canvas_group = preload("res://scripts/global/ShadowGroup.tscn").instantiate()
 	current_scene.add_child(shadow_canvas_group)
@@ -47,7 +50,26 @@ func _ready():
 	setup_hud() 
 	setup_main_menu()
 
-func load_stage(stage_scene : PackedScene):
+func connect_signals() -> void:
+	change_stage.connect(load_stage)
+	pickup_item.connect(_on_pickup_item)
+	start_next_iteration.connect(_on_start_next_iteration)
+
+func _on_pickup_item(item: Item) -> void:
+	collected_items.append(item)
+	if item.tag == "First Key":
+		await get_tree().process_frame
+		Global.start_next_iteration.emit()
+
+func _on_start_next_iteration() -> void:
+	current_iteration += 1 
+	
+	var stage_scene: PackedScene = load("res://scenes/rooms/bedroom.tscn")
+	load_stage(stage_scene, "PlayerStartPos")
+	
+	setup_main_menu()
+
+func load_stage(stage_scene : PackedScene, player_pos := "PlayerEnterPos"):
 	var oldscene = current_scene
 	var stage = stage_scene.instantiate()
 
@@ -58,7 +80,7 @@ func load_stage(stage_scene : PackedScene):
 	
 	get_tree().root.call_deferred("add_child", stage) 
 	
-	setup_player()	
+	setup_player(player_pos)	
 	
 	oldscene.queue_free()
 	
@@ -66,12 +88,13 @@ func load_stage(stage_scene : PackedScene):
 	get_tree().root.call_deferred("move_child", hud, -2)
 	SoundManager.change_stage.emit(stage.name)
 
-func setup_player():
+func setup_player(player_pos: String):
 	player = preload("res://scenes/character/player.tscn").instantiate()
+	player.global_position = current_scene.get_node(player_pos).global_position
 	current_scene.add_child(player)
 
 func setup_main_menu():
-	get_tree().root.call_deferred("add_child", main_menu) 
+	get_tree().root.call_deferred("add_child", main_menu.instantiate()) 
 
 func setup_hud():
 	get_tree().root.call_deferred("add_child", hud)

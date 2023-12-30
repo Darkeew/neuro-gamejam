@@ -21,12 +21,12 @@ var sfx_bus := AudioServer.get_bus_index("SFX")
 }
 
 @onready var footsteps := {
-	"Main": load(SFX_PATH % "woodstep.tres"),
+	"Bedroom": load(SFX_PATH % "woodstep.tres"),
 	"Hallway": load(SFX_PATH % "carpetstep.tres")
 }
 
 @onready var music := {
-	"Main": load(MUSIC_PATH % "part2theme.ogg"),
+	"Bedroom": load(MUSIC_PATH % "part2theme.ogg"),
 	"Hallway": load(MUSIC_PATH % "part3theme.ogg"),
 }
 
@@ -42,8 +42,8 @@ func _connect_signals() -> void:
 	change_stage.connect(_on_change_stage)
 
 func _init_players() -> void:
-	_load_music_file("Main")
-	_change_footsteps_soundbank("Main")
+	_load_music_file("Bedroom")
+	_change_footsteps_soundbank("Bedroom")
 
 func _on_change_stage(stage_name: String) -> void:
 	if not stage_name:

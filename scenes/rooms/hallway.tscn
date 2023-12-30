@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://lj41sjie0xdw"]
+[gd_scene load_steps=12 format=3 uid="uid://lj41sjie0xdw"]
 
+[ext_resource type="Script" path="res://scripts/rooms/hallway.gd" id="1_4q25n"]
 [ext_resource type="Texture2D" uid="uid://ml5rio378erl" path="res://assets/rooms/hallway/Hallway-0002.png" id="1_x21f8"]
 [ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="2_u3e3j"]
+[ext_resource type="PackedScene" uid="uid://b4uwauj5ouvuy" path="res://scenes/items/item_container.tscn" id="3_iok3i"]
+[ext_resource type="Resource" uid="uid://bxsmfty04pteq" path="res://resources/items/iter_1_key.tres" id="4_ae17g"]
+[ext_resource type="PackedScene" uid="uid://c8l2ynnqjgfwy" path="res://scenes/puzzles/first_door.tscn" id="5_k6a6p"]
+[ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="6_s6qr8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06xgf"]
 size = Vector2(1152, 260)
@@ -12,7 +17,11 @@ size = Vector2(1186, 260)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojgv8"]
 size = Vector2(129, 414)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_75y1n"]
+load_path = "res://.godot/imported/Table-0003.png-063deb6bcb99f14dafa49d027ed94600.ctex"
+
 [node name="Hallway" type="Node2D"]
+script = ExtResource("1_4q25n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -4096
@@ -40,16 +49,16 @@ position = Vector2(-558, -211)
 shape = SubResource("RectangleShape2D_06xgf")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(-411, 205)
+position = Vector2(-410, 197)
 shape = SubResource("RectangleShape2D_1w0in")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(-1069.5, 126)
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(52, -132)
 shape = SubResource("RectangleShape2D_ojgv8")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(83, -133)
-shape = SubResource("RectangleShape2D_ojgv8")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundaries"]
+position = Vector2(-31, -1)
+polygon = PackedVector2Array(-943, -37, -1005, -38, -1005, 21, -943, 22, -942, 68, -1077, 68, -1078, -81, -943, -79)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
@@ -57,3 +66,30 @@ editor_draw_limits = true
 script = ExtResource("2_u3e3j")
 follow_offset = Vector2(0, -35)
 look_ahead_distance = 0.5
+
+[node name="RoomTransitionRegion" parent="." instance=ExtResource("6_s6qr8")]
+scene_path = "res://scenes/rooms/bedroom.tscn"
+
+[node name="CollisionPolygon2D" parent="RoomTransitionRegion" index="0"]
+position = Vector2(-36, 64)
+polygon = PackedVector2Array(-968, -102, -968, -43, -1000, -43, -1000, -102)
+
+[node name="PlayerEnterPos" type="Marker2D" parent="."]
+position = Vector2(-956, 4)
+
+[node name="Furniture" type="Node2D" parent="."]
+
+[node name="Table-0003" type="Sprite2D" parent="Furniture"]
+position = Vector2(-956, -77)
+texture = SubResource("CompressedTexture2D_75y1n")
+
+[node name="SecondIteration" type="Node2D" parent="."]
+
+[node name="FirstDoor" parent="SecondIteration" instance=ExtResource("5_k6a6p")]
+position = Vector2(-105, -136)
+
+[node name="FirstKey" parent="." instance=ExtResource("3_iok3i")]
+position = Vector2(-915, -88)
+item = ExtResource("4_ae17g")
+
+[editable path="RoomTransitionRegion"]

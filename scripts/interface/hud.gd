@@ -30,7 +30,6 @@ func _process(_delta):
 			inventory.visible = true 
 
 func _on_pickup_item(item: Item) -> void:
-	print(item)
 	var new_inventory_cell = inventory_cell.duplicate()
 	new_inventory_cell.visible = true 
 	new_inventory_cell.get_node("TextureRect").texture = item.texture

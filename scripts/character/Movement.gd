@@ -10,11 +10,7 @@ class_name Player
 @onready var animation_player = $AnimationPlayer
 #endregion 
 
-var collected_items = []
 var direction: Vector2 = Vector2.ZERO
-
-func _ready() -> void:
-	Global.pickup_item.connect(_on_pickup_item)
 
 func _process(_delta: float) -> void:
 	update_animation() 
@@ -33,9 +29,6 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	move_and_slide()
-
-func _on_pickup_item(item: Item) -> void:
-	collected_items.append(item)
 
 func update_animation() -> void:
 	if velocity == Vector2.ZERO: 

@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var room: PackedScene
+@export_file("*.tscn") var scene_path: String
 
 func _on_body_entered(body):
 	if body is Player:
-		Global.change_stage.emit(room) 
+		Global.change_stage.emit(load(scene_path)) 
