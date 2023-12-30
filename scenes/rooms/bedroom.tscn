@@ -141,6 +141,12 @@ shape = SubResource("RectangleShape2D_nhexv")
 [node name="MainMenuScript" type="Node2D" parent="MainMenuCamera/CameraTransitionZone"]
 script = ExtResource("10_y18ac")
 
+[node name="Iteration_Condition" type="Node" parent="MainMenuCamera"]
+script = ExtResource("5_hjeht")
+iter = 1
+condition = 0
+delete_node = true
+
 [node name="Camera_Mimic2" type="Camera2D" parent="."]
 position = Vector2(395, 71)
 zoom = Vector2(3.63, 3.63)

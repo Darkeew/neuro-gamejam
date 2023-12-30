@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bcq8ee3rjydqy"]
+[gd_scene load_steps=14 format=3 uid="uid://bcq8ee3rjydqy"]
 
 [ext_resource type="Script" path="res://scripts/interface/hud.gd" id="1_xetvg"]
 [ext_resource type="Texture2D" uid="uid://bcvsav4vwjomq" path="res://assets/items/small_pizza.png" id="2_ffhmc"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b6j6gmberryov" path="res://assets/puzzles/notw-0001.png" id="3_rhp0x"]
 [ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="5_dkt5y"]
 [ext_resource type="Texture2D" uid="uid://ciw6sitwyd48w" path="res://assets/interface/button-9patch.png" id="6_8ihac"]
+[ext_resource type="Script" path="res://scenes/interface/Cutscene.gd" id="7_rn1gd"]
+[ext_resource type="Texture2D" uid="uid://clkqufibs6a70" path="res://assets/cutscenes/comic.png" id="7_tpimn"]
 
 [sub_resource type="Theme" id="Theme_komrt"]
 Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
@@ -22,6 +24,109 @@ Label/constants/shadow_offset_y = 3
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 36
 Label/fonts/font = ExtResource("5_dkt5y")
+
+[sub_resource type="Animation" id="Animation_fgdtt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(78, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-63, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_npvdg"]
+resource_name = "cutscene1"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3, 10.6, 12.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 13.2, 15)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(395, -0.25, 0, 0.25, 0, 78, -0.25, 0, 0.25, 0, 62, -0.25, 0, 0.25, 0, -739, -0.25, 0, 0.25, 0, -775, -0.25, 0, 0.25, 0, -1615, -0.25, 0, 0.25, 0, -1641, -0.25, 0, 0.25, 0, -2445, -0.25, 0, 0.25, 0, -2487, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1, 2.8, 4, 5, 6.5, 8, 9.1, 11, 12.4)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-64, -0.25, 0, 0.25, 0, -63, -0.25, 0, 0.25, 0, -61, -0.25, 0, 0.25, 0, -58, -0.25, 0, 0.25, 0, -59, -0.25, 0, 0.25, 0, -62, -0.25, 0, 0.25, 0, -62, -0.25, 0, 0.25, 0, -67, -0.25, 0, 0.25, 0, -71, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1, 2.8, 4, 5, 6.5, 8, 9.1, 11, 12.4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5ydm"]
+_data = {
+"RESET": SubResource("Animation_fgdtt"),
+"cutscene1": SubResource("Animation_npvdg")
+}
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_xetvg")
@@ -389,5 +494,38 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Cutscene" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_rn1gd")
+
+[node name="ColorRect" type="ColorRect" parent="Cutscene"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0980392, 0.0980392, 0.0980392, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Cutscene"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 78.0
+offset_top = -63.0
+offset_right = 3682.0
+offset_bottom = 3233.0
+texture = ExtResource("7_tpimn")
+
+[node name="CutscenePlayer" type="AnimationPlayer" parent="Cutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_n5ydm")
+}
 
 [connection signal="mouse_entered" from="PasswordInputsContainer/PasswordInputs" to="PasswordInputsContainer/PasswordInputs" method="_on_mouse_entered"]

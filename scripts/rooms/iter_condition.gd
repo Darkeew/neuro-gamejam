@@ -13,25 +13,36 @@ enum show_condition {
 @export var iter : int
 @export var condition : show_condition = show_condition.GREATER_EQUAL
 
+@export var delete_node : bool = false
+
 
 func _ready():
 	var iteration = Global.current_iteration
 	#delete if not in range
 	get_parent().visible = false
+	var passed = false
 	match condition:
 		show_condition.EXACT:
 			if iteration == iter:
-				get_parent().visible = true
+				passed = true
 		show_condition.LESS_EQUAL:
 			if iteration <= iter:
-				get_parent().visible = true
+				passed = true
 		show_condition.GREATER_EQUAL:
 			if iteration >= iter:
-				get_parent().visible = true
+				passed = true
 		show_condition.LESS:
 			if iteration < iter:
-				get_parent().visible = true
+				passed = true
 		show_condition.GREATER:
 			if iteration > iter:
-				get_parent().visible = true
+				passed = true
+	
+	if passed:
+		get_parent().visible = true
+		return
+
+	if delete_node:
+		get_parent().queue_free()
+	get_parent().visible = false
 	

@@ -67,11 +67,15 @@ func next_iter():
 func _on_pickup_item(item: Item) -> void:
 	collected_items.append(item)
 
+var is_next_iter: bool = false
 func _on_start_next_iteration() -> void:
 	current_iteration += 1 
+	is_next_iter = true
 	
 	var stage_scene: PackedScene = load("res://scenes/rooms/bedroom.tscn")
 	load_stage(stage_scene, "PlayerStartPos")
+
+
 
 func load_stage(stage_scene : PackedScene, player_pos := "PlayerEnterPos"):
 	var old_scene = current_scene
@@ -96,7 +100,9 @@ func load_next_stage(stage: Node2D, old_scene: Node2D, player_pos := "PlayerEnte
 	
 	# get_tree().root.call_deferred("move_child", main_menu, -1) 
 	get_tree().root.call_deferred("move_child", hud, -2)
-
+	if is_next_iter:
+		is_next_iter = false
+		await EventBus.emit_event("cutscene")
 	tween_property(hud.name, hud.smooth_transition, "self_modulate:a", 0, 0.5)
 
 func setup_player(player_pos: String):
@@ -129,6 +135,7 @@ func tween_property(id: String, node: Node, prop: String, value: float, time := 
 
 func show_dialog(event):
 	if dialog_label == null:
+		print("dialog_label is null")
 		return
 	await dialog_label.show_dialog(event)
 

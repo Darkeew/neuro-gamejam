@@ -10,14 +10,15 @@ func _ready():
 var last_dialog = ""
 
 func show_dialog(event):
-	if event.has("dialog"):
-		var d = event.dialog.pick_random()
-		print(event)
-		while d.text == last_dialog and event.dialog.size() > 1:
-			d = event.dialog.pick_random()
-
-		text = d.text
-		Global.game_paused = true
-		await get_tree().create_timer(d.time).timeout
-		text = ""
-		Global.game_paused = false
+	var d = event.dialog.pick_random()
+	print(event)
+	while d.text == last_dialog and event.dialog.size() > 1:
+		d = event.dialog.pick_random()
+		
+	text = d.text
+	Global.game_paused = true
+	await get_tree().create_timer(d.time).timeout
+	text = ""
+	if event.has("time"):
+		await get_tree().create_timer(event.time).timeout
+	Global.game_paused = false

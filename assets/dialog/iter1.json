@@ -13,7 +13,13 @@
         ],
         "condition" : ["iter_check"],
         "iter" : 1,
-        "time" : 1,
+        "time" : 2,
         "next" : "next_iter"
+    },
+    {
+        "trigger" : "cutscene",
+        "condition" : ["iter_check"],
+        "iter" : 2,
+        "cutscene" : "cutscene1"
     }
 ]

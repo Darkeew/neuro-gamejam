@@ -18,6 +18,12 @@ func register_event(event_name,owner_node,method, args=[]):
 	else:
 		events[event_name] = [{"owner":owner_node,"method":method,"args":args}]
 
+func register_event_no_dialog(event_name,args=[]):
+	if events.has(event_name):
+		events[event_name].append({"args":args})
+	else:
+		events[event_name] = [{"args":args}]
+
 func register_condition_solver(condition_name, solver):
 	if condition_solver.has(condition_name):
 		print("Condition solver already exists for " + condition_name + ".")
@@ -45,6 +51,11 @@ func emit(event_name):
 		for listener in listeners[event_name]:
 			await listener.call()
 
+func emit_args(event_name, args):
+	if listeners.has(event_name):
+		for listener in listeners[event_name]:
+			await listener.call(args)
+
 func emit_event(event_name, recursion_safeguard_list=[]):
 	#print_all()
 	print("Emitting event " + event_name + ".")
@@ -56,17 +67,27 @@ func emit_event(event_name, recursion_safeguard_list=[]):
 		for event in events[event_name]:
 			print("Emitting event " + event_name + " with args " + str(event["args"]) + ".")
 			if not event.has("args"):
-				_emit_event_noargs(event,event_name)
+				await _emit_event_noargs(event,event_name)
+				print("Event " + event_name + " emitted. with no args")
 				continue
 			if check_conditions(event["args"]):
 				if listeners.has(event_name):
 					for listener in listeners[event_name]:
+						if not event.has("method"):
+							await listener.call(event["args"])
+							print("Event " + event_name + " emitted. with no method")
+							continue
+						if listener is Callable:
+							await listener.call(event["args"])
+							print("Event " + event_name + " emitted. with callable")
+							continue
 						if listener.has_method(event["method"]):
 							await listener[event["method"]].call(event["args"])
+							print("Event " + event_name + " emitted. with method")
 						else:
 							print("Method " + event["method"] + " not found in " + str(listener) + ".")
 				else:
-					if event["owner"].has_method(event["method"]):
+					if event.has("owner") and event["owner"].has_method(event["method"]):
 						await event["owner"][event["method"]].call(event["args"])
 				if event["args"].has("next") and event["args"]["next"] != null and event["args"]["next"] != "":
 					await emit_event(event["args"]["next"],recursion_safeguard_list)

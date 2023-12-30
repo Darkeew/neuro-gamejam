@@ -30,20 +30,8 @@ func register_dialog(dialog_field):
 		var json = load("res://assets/dialog/"+json_file)
 		var dialog = json.data
 		for i in dialog:
-			var dialogs = null
-			var next = null
-			var condition = null
-
-			if i.has("dialog"):
-				dialogs = i.dialog
-			if i.has("next"):
-				next = i.next
-			if i.has("condition"):
-				condition = i.condition
-			
-			print(str(i))
-			
-			
-			#register the event
-			EventBus.register_event(i.trigger, dialog_field, "show_dialog", i)
+			if not i.has("dialog"):
+				EventBus.register_event_no_dialog(i.trigger, i)
+			else:
+				EventBus.register_event(i.trigger, dialog_field, "show_dialog", i)
 	EventBus.print_events()
