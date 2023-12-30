@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://bilwacn6xbv8a"]
 
 [ext_resource type="Script" path="res://scripts/character/Movement.gd" id="1_evn5i"]
-[ext_resource type="Texture2D" uid="uid://70hg2m7ws2re" path="res://assets/character/notneuro.png" id="2_6jdpq"]
+[ext_resource type="Texture2D" uid="uid://dql2if2v23wla" path="res://assets/character/notneuro0.png" id="2_sb0ql"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://scripts/character/AccurateShadows.tscn" id="3_11rep"]
 [ext_resource type="PackedScene" uid="uid://2eep1kypkavl" path="res://scenes/character/collectionrange.tscn" id="4_cex7t"]
 [ext_resource type="PackedScene" uid="uid://bm3dw4juyr1wm" path="res://scenes/character/interactionrange.tscn" id="5_48kfy"]
@@ -344,7 +344,7 @@ shape = SubResource("CapsuleShape2D_86qf5")
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -39)
 scale = Vector2(2, 2)
-texture = ExtResource("2_6jdpq")
+texture = ExtResource("2_sb0ql")
 hframes = 15
 frame = 1
 region_rect = Rect2(0, 0, 724, 48)
