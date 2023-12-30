@@ -66,8 +66,6 @@ func _on_start_next_iteration() -> void:
 	
 	var stage_scene: PackedScene = load("res://scenes/rooms/bedroom.tscn")
 	load_stage(stage_scene, "PlayerStartPos")
-	
-	setup_main_menu()
 
 func load_stage(stage_scene : PackedScene, player_pos := "PlayerEnterPos"):
 	var old_scene = current_scene

@@ -20,18 +20,6 @@ func _ready():
 	Global.show_sticky_note.connect(_on_show_sticky_note)
 	Global.hide_sticky_note.connect(_on_hide_sticky_note)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if Global.game_paused:
-		inventory.visible = false 
-		return 
-	
-	if Input.is_action_just_pressed("inventory"):
-		if inventory.visible:
-			inventory.visible = false 
-		else:
-			inventory.visible = true 
-
 func _on_pickup_item(item: Item) -> void:
 	var new_inventory_cell = inventory_cell.duplicate()
 	new_inventory_cell.visible = true 
