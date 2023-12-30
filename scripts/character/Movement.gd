@@ -9,7 +9,7 @@ class_name Player
 @onready var animation_tree = $AnimationTree
 #endregion 
 
-func _process(_add_constant_forcedelta: float) -> void:
+func _process(_delta: float) -> void:
 	update_animation() 
 
 func _physics_process(delta):
