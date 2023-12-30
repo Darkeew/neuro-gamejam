@@ -8,17 +8,13 @@ func _ready() -> void:
 	regex.compile("[0-9]")	
 
 func _on_digit_text_changed(new_text: String, digit: LineEdit) -> void:
-	print(new_text)
 	var filtered_text = _filter_input(new_text)
 	digit.text = filtered_text
 	
-	print(digit.name, filtered_text.length() == 1)
 	_change_digit(digit.name, filtered_text.length() == 1)
 
 func _change_digit(current_digit_name: String, advance := true) -> void:
 	var current_digit_id := current_digit_name.replace("Digit", "") as int
-
-	print(current_digit_id)
 
 	if current_digit_id == 1 and not advance:
 		return
