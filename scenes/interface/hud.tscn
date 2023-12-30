@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcq8ee3rjydqy"]
+[gd_scene load_steps=9 format=3 uid="uid://bcq8ee3rjydqy"]
 
 [ext_resource type="Script" path="res://scripts/interface/hud.gd" id="1_xetvg"]
 [ext_resource type="Texture2D" uid="uid://bcvsav4vwjomq" path="res://assets/items/small_pizza.png" id="2_ffhmc"]
@@ -6,14 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://b6j6gmberryov" path="res://assets/puzzles/notw-0001.png" id="3_rhp0x"]
 [ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="5_dkt5y"]
 [ext_resource type="Texture2D" uid="uid://ciw6sitwyd48w" path="res://assets/interface/button-9patch.png" id="6_8ihac"]
-
-[sub_resource type="Theme" id="Theme_v0xby"]
-Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
-Label/constants/shadow_offset_x = 3
-Label/constants/shadow_offset_y = 3
-Label/constants/shadow_outline_size = 1
-Label/font_sizes/font_size = 36
-Label/fonts/font = ExtResource("5_dkt5y")
 
 [sub_resource type="Theme" id="Theme_komrt"]
 Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
@@ -81,7 +73,6 @@ grow_vertical = 2
 texture = ExtResource("2_ffhmc")
 
 [node name="PasswordInputsContainer" type="CenterContainer" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -100,19 +91,22 @@ offset_right = 604.0
 offset_bottom = 361.0
 color = Color(0, 0, 0, 0.392157)
 
-[node name="NinePatchRect" type="NinePatchRect" parent="PasswordInputsContainer/PasswordInputs"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PasswordInputsContainer/PasswordInputs"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -69.5
-offset_top = -28.0
-offset_right = 69.5
-offset_bottom = 28.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -23.0
+offset_right = 90.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+
+[node name="Digit1Rect" type="NinePatchRect" parent="PasswordInputsContainer/PasswordInputs/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("6_8ihac")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 5
@@ -122,26 +116,140 @@ patch_margin_bottom = 5
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="LineEdit" type="LineEdit" parent="PasswordInputsContainer/PasswordInputs/NinePatchRect"]
+[node name="Digit1" type="LineEdit" parent="PasswordInputsContainer/PasswordInputs/HBoxContainer/Digit1Rect"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_v0xby")
+theme_override_constants/minimum_character_width = 1
 theme_override_font_sizes/font_size = 30
-placeholder_text = "_ _ _ _"
+placeholder_text = "_"
 alignment = 1
-max_length = 4
+max_length = 1
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+virtual_keyboard_type = 2
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 flat = true
+select_all_on_focus = true
+
+[node name="Digit2Rect" type="NinePatchRect" parent="PasswordInputsContainer/PasswordInputs/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_8ihac")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Digit2" type="LineEdit" parent="PasswordInputsContainer/PasswordInputs/HBoxContainer/Digit2Rect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/minimum_character_width = 1
+theme_override_font_sizes/font_size = 30
+placeholder_text = "_"
+alignment = 1
+max_length = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+flat = true
+select_all_on_focus = true
+
+[node name="Digit3Rect" type="NinePatchRect" parent="PasswordInputsContainer/PasswordInputs/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_8ihac")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Digit3" type="LineEdit" parent="PasswordInputsContainer/PasswordInputs/HBoxContainer/Digit3Rect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/minimum_character_width = 1
+theme_override_font_sizes/font_size = 30
+placeholder_text = "_"
+alignment = 1
+max_length = 1
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+flat = true
+select_all_on_focus = true
+
+[node name="Digit4Rect" type="NinePatchRect" parent="PasswordInputsContainer/PasswordInputs/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_8ihac")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Digit4" type="LineEdit" parent="PasswordInputsContainer/PasswordInputs/HBoxContainer/Digit4Rect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/minimum_character_width = 1
+theme_override_font_sizes/font_size = 30
+placeholder_text = "_"
+alignment = 1
+max_length = 2
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+flat = true
+select_all_on_focus = true
 
 [node name="Control" type="Control" parent="PasswordInputsContainer/PasswordInputs"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -44.0
+offset_left = -73.0
 offset_top = 46.0
-offset_right = -14.0
+offset_right = 57.0
 offset_bottom = 86.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="PasswordInputsContainer/PasswordInputs/Control"]
@@ -149,8 +257,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 58.0
-offset_bottom = 6.0
+offset_right = -49.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_8ihac")
@@ -169,20 +276,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 78.0
-offset_bottom = 28.0
+offset_left = -71.0
+offset_top = -26.0
+offset_right = 94.0
+offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_komrt")
 theme_override_font_sizes/font_size = 29
-text = "Space"
+text = "Space  Close"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StickyNoteContainer" type="CenterContainer" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -226,17 +332,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Control" type="Control" parent="StickyNoteContainer/Control"]
+layout_mode = 3
 anchors_preset = 0
-offset_left = -31.0
-offset_top = 86.0
-offset_right = -31.0
-offset_bottom = 86.0
+offset_left = -66.0
+offset_top = 79.0
+offset_right = 64.0
+offset_bottom = 119.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="StickyNoteContainer/Control/Control"]
-layout_mode = 0
-offset_left = -7.0
-offset_right = 76.0
-offset_bottom = 41.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -49.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("6_8ihac")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 5
@@ -247,15 +357,20 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
 [node name="Label3" type="Label" parent="StickyNoteContainer/Control/Control"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 67.0
-offset_bottom = 42.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -26.0
+offset_right = 94.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_komrt")
 theme_override_font_sizes/font_size = 29
-text = "Space"
+text = "Space  Close"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[connection signal="text_submitted" from="PasswordInputsContainer/PasswordInputs/NinePatchRect/LineEdit" to="PasswordInputsContainer/PasswordInputs" method="_on_line_edit_text_submitted"]
