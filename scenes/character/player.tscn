@@ -276,7 +276,6 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_6jdpq")
 hframes = 15
 frame = 1
-region_enabled = true
 region_rect = Rect2(0, 0, 724, 48)
 
 [node name="Node" parent="PlayerSprite" instance=ExtResource("3_11rep")]
