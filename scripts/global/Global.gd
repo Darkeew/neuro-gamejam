@@ -7,6 +7,8 @@ var shadow_canvas_group: CanvasGroup = preload("res://scripts/global/ShadowGroup
 var main_menu: CanvasLayer = preload("res://scenes/interface/main_menu.tscn").instantiate()
 var current_scene = null
 
+var test
+
 var main_camera : CameraController
 
 # region GLOBAL VARS
