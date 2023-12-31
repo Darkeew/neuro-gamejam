@@ -14,5 +14,15 @@
 		"condition" : ["iter_check"],
 		"iter" : 5,
 		"cutscene" : "cutscene4"
+	},
+	{
+		"trigger": "read_found_note",
+		"dialog": [
+			{"text": "I should read the note I found in the safe", "time": 2.0}
+		],
+		"time": 2.5,
+		"flags": [
+			"unpaused"
+		]
 	}
 ]

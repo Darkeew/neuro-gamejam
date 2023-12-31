@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://lj41sjie0xdw"]
+[gd_scene load_steps=27 format=3 uid="uid://lj41sjie0xdw"]
 
 [ext_resource type="Script" path="res://scripts/rooms/hallway.gd" id="1_4q25n"]
 [ext_resource type="Texture2D" uid="uid://ml5rio378erl" path="res://assets/rooms/hallway/Hallway-0002.png" id="1_x21f8"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dcmmrfk6t5dlf" path="res://assets/rooms/hallway/FRAME_painting-0002.png" id="13_vgug5"]
 [ext_resource type="Script" path="res://scripts/puzzles/painting_numbers.gd" id="14_5e2oq"]
 [ext_resource type="Texture2D" uid="uid://c81chb4ay7wm1" path="res://assets/rooms/hallway/FRAME_painting-0003.png" id="17_0s52s"]
+[ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="17_xguni"]
 [ext_resource type="FontFile" uid="uid://dbj88ntk3mvwa" path="res://assets/interface/GraffitiPaintBrush.ttf" id="18_lgsmo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06xgf"]
@@ -33,6 +34,9 @@ size = Vector2(63.25, 24)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_75y1n"]
 load_path = "res://.godot/imported/Table-0003.png-063deb6bcb99f14dafa49d027ed94600.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwrqk"]
+size = Vector2(129.772, 152.41)
 
 [sub_resource type="Theme" id="Theme_1evg0"]
 Label/colors/font_shadow_color = Color(0.270588, 0.352941, 0.392157, 1)
@@ -131,7 +135,6 @@ iter = 1
 condition = 0
 
 [node name="SecondIteration" type="Node2D" parent="."]
-visible = false
 
 [node name="Iteration_Condition" type="Node" parent="SecondIteration"]
 script = ExtResource("8_wx13j")
@@ -180,6 +183,22 @@ texture = ExtResource("17_0s52s")
 position = Vector2(0.0329895, -0.010498)
 scale = Vector2(0.0542601, 0.052635)
 texture = ExtResource("11_o0ftg")
+
+[node name="EventTrigger" type="Area2D" parent="SecondIteration"]
+script = ExtResource("17_xguni")
+event_name = "paintings"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondIteration/EventTrigger"]
+position = Vector2(-727.791, -9.88048)
+shape = SubResource("RectangleShape2D_vwrqk")
+
+[node name="EventTrigger2" type="Area2D" parent="SecondIteration"]
+script = ExtResource("17_xguni")
+event_name = "hurry_up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondIteration/EventTrigger2"]
+position = Vector2(-388.763, -11.9994)
+shape = SubResource("RectangleShape2D_vwrqk")
 
 [node name="ThirdIteration" type="Node2D" parent="."]
 visible = false

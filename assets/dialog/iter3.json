@@ -25,11 +25,22 @@
 		"cutscene" : "cutscene3"
 	}, 
 	{
-		"trigger": "not_outside",
+		"trigger": "out_of_bed",
 		"dialog": [
-			{"text": "I don't want to go outside", "time": 1}
+			{
+				"text": "Yesterday when i got home, there was a safe on my parents room..",
+				"time": 2.5
+			},
+			{
+				"text": "I took it to my room, i should check it out today.",
+				"time": 1.7
+			}
 		],
-		"condition": ["iter_check_greater"],
-		"time": 2
+		"flags": [
+			"sequence",
+			"unpaused"
+		],
+		"condition" : ["iter_check"],
+		"iter" : 3,
 	}
 ]

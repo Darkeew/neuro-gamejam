@@ -16,29 +16,64 @@
 		"cutscene" : "cutscene2"
 	},
 	{
-		"trigger": "key_missing",
+		"trigger": "out_of_bed",
 		"dialog": [
 			{
-				"text": "The door is locked.",
-				"time": 1.5
+				"text": "Im always tired even after sleeping for 8 hours...",
+				"time": 3.0
 			},
 			{
-				"text": "I need a key to open this door.",
-				"time": 1.8
+				"text": "What am i even learning at school?",
+				"time": 1.7
+			}, 
+			{
+				"text": "Im probably gonna skip school tomorrow... I should get going.",
+				"time": 3.0
 			}
 		],
-		"sfx": "door_closed",
 		"flags": [
 			"sequence",
 			"unpaused"
-		]
+		],
+		"condition" : ["iter_check"],
+		"iter" : 2,
 	},
 	{
-		"trigger": "wrong_key",
+		"trigger": "paintings",
 		"dialog": [
-			{"text": "This key only works for the main door", "time": 1}
+			{
+				"text": "Paintings...? I didnt see these before...",
+				"time": 1.5
+			},
+			{
+				"text": "Whatever, im probably imagining things.",
+				"time": 1.5
+			}
 		],
-		"condition": ["iter_check_greater"],
-		"time": 2
+		"flags": [
+			"sequence",
+			"unpaused"
+		],
+		"condition" : ["iter_check"],
+		"iter" : 2,
+	},
+	{
+		"trigger": "hurry_up",
+		"dialog": [
+			{
+				"text": "I should hurry up, the key is in my pocket.",
+				"time": 2.0
+			},
+			{
+				"text": "I wonder why i have a driver just for going to school...",
+				"time": 2.0
+			}
+		],
+		"flags": [
+			"sequence",
+			"unpaused"
+		],
+		"condition" : ["iter_check"],
+		"iter" : 2,
 	}
 ]

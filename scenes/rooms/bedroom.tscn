@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=31 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Script" path="res://scripts/rooms/bedroom.gd" id="1_22h2h"]
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/First_Room-0005.png" id="1_njdfq"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://dxh5xef6a74sp" path="res://assets/rooms/bedroom/Safe_room-0001.png" id="17_h6be4"]
 [ext_resource type="Texture2D" uid="uid://bxnhqeiqdhmd0" path="res://assets/rooms/bedroom/desk_lamp-0001.png" id="18_05nnf"]
 [ext_resource type="Texture2D" uid="uid://cw2ngo5whn3af" path="res://assets/rooms/bedroom/Mirror_iter_4-0001.png" id="19_ajarl"]
+[ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="21_hil8s"]
+[ext_resource type="Script" path="res://scripts/rooms/send_signal.gd" id="22_ajkxu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33vgn"]
 size = Vector2(1172, 326)
@@ -38,6 +40,12 @@ size = Vector2(197, 173)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysu7m"]
 size = Vector2(128, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvjcf"]
+size = Vector2(103, 204)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ub8m"]
+size = Vector2(105, 205)
 
 [node name="Bedroom" type="Node2D"]
 script = ExtResource("1_22h2h")
@@ -219,17 +227,34 @@ texture = ExtResource("13_7dyyi")
 script = ExtResource("5_hjeht")
 iter = 2
 
+[node name="EventTrigger3" type="Area2D" parent="SecondIteration"]
+position = Vector2(-408, 176)
+script = ExtResource("21_hil8s")
+event_name = "out_of_bed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondIteration/EventTrigger3"]
+position = Vector2(-105.5, 93)
+shape = SubResource("RectangleShape2D_gvjcf")
+
 [node name="ThirdIteration" type="Node2D" parent="."]
-visible = false
 position = Vector2(-20, 4)
 
 [node name="Safe2" parent="ThirdIteration" instance=ExtResource("4_7o0in")]
-position = Vector2(279, -24)
+position = Vector2(238, -20)
 
 [node name="Iteration_Condition" type="Node" parent="ThirdIteration"]
 script = ExtResource("5_hjeht")
 iter = 3
 condition = 0
+
+[node name="EventTrigger2" type="Area2D" parent="ThirdIteration"]
+position = Vector2(85, -2)
+script = ExtResource("21_hil8s")
+event_name = "out_of_bed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThirdIteration/EventTrigger2"]
+position = Vector2(-105.5, 93)
+shape = SubResource("RectangleShape2D_gvjcf")
 
 [node name="FourthIteration" type="Node2D" parent="."]
 
@@ -238,15 +263,15 @@ script = ExtResource("5_hjeht")
 iter = 4
 
 [node name="SafeOpen-0001" type="Sprite2D" parent="FourthIteration"]
-position = Vector2(268, -20)
+position = Vector2(229, -16)
 texture = ExtResource("17_4yyn2")
 
 [node name="SafeRoom-0001" type="Sprite2D" parent="FourthIteration"]
-position = Vector2(259, -20)
+position = Vector2(218, -16)
 texture = ExtResource("17_h6be4")
 
 [node name="DeskLamp-0001" type="Sprite2D" parent="FourthIteration"]
-position = Vector2(194, -27)
+position = Vector2(186, -26)
 scale = Vector2(2, 2)
 texture = ExtResource("18_05nnf")
 
@@ -254,6 +279,32 @@ texture = ExtResource("18_05nnf")
 position = Vector2(204, -67)
 texture = ExtResource("19_ajarl")
 
+[node name="EventTrigger" type="Area2D" parent="FourthIteration"]
+position = Vector2(64, 1)
+script = ExtResource("21_hil8s")
+event_name = "read_found_note"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FourthIteration/EventTrigger"]
+position = Vector2(-105.5, 93)
+shape = SubResource("RectangleShape2D_gvjcf")
+
+[node name="SendSignal" type="Area2D" parent="FourthIteration"]
+script = ExtResource("22_ajkxu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FourthIteration/SendSignal"]
+position = Vector2(-42.5, 92.5)
+shape = SubResource("RectangleShape2D_6ub8m")
+
+[node name="EventTrigger4" type="Area2D" parent="."]
+position = Vector2(65, 2)
+script = ExtResource("21_hil8s")
+event_name = "out_of_bed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EventTrigger4"]
+position = Vector2(-105.5, 93)
+shape = SubResource("RectangleShape2D_gvjcf")
+
 [connection signal="on_transitioned_exited" from="MainMenuCamera/CameraTransitionZone" to="MainMenuCamera/CameraTransitionZone/MainMenuScript" method="_on_camera_transition_zone_on_transitioned_exited"]
+[connection signal="body_entered" from="FourthIteration/SendSignal" to="FourthIteration/SendSignal" method="_on_body_entered"]
 
 [editable path="RoomTransitionRegion"]

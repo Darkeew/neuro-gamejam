@@ -43,9 +43,44 @@
 	{
 		"trigger": "wrong_key",
 		"dialog": [
-			{"text": "This key only works for the main door", "time": 1}
+			{"text": "This key only works for the main door", "time": 1.5}
 		],
-		"condition": ["iter_check_greater"],
-		"time": 2
+		"time": 2,
+		"flags": [
+			"unpaused"
+		]
+	},
+	{
+		"trigger": "not_outside",
+		"dialog": [
+			{"text": "I don't want to go outside", "time": 1.5}
+		],
+		"time": 2,
+		"flags": [
+			"unpaused"
+		]
+	},
+	{
+		"trigger": "out_of_bed",
+		"dialog": [
+			{
+				"text": "I should get going to school...",
+				"time": 1.7
+			},
+			{
+				"text": "The driver is waiting for me...",
+				"time": 1.7
+			}, 
+			{
+				"text": "Why do they make us have classes so early in the morning?",
+				"time": 3.0
+			}
+		],
+		"flags": [
+			"sequence",
+			"unpaused"
+		],
+		"condition" : ["iter_check"],
+		"iter" : 1,
 	}
 ]

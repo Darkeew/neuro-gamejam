@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var password_inputs = $PasswordInputsContainer
 @onready var sticky_note = $StickyNoteContainer
 @onready var smooth_transition = $SmoothTransition
+@onready var hidden_note = $HiddenNoteContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +14,8 @@ func _ready():
 	password_inputs.modulate.a = 0
 	sticky_note.visible = false
 	sticky_note.modulate.a = 0
+	hidden_note.visible = false
+	hidden_note.modulate.a = 0
 	%StickyNoteLabel.text = Global.sticky_note_code
 
 	Global.pickup_item.connect(_on_pickup_item)
@@ -20,6 +23,8 @@ func _ready():
 	Global.hide_password_inputs.connect(_on_hide_password_inputs)
 	Global.show_sticky_note.connect(_on_show_sticky_note)
 	Global.hide_sticky_note.connect(_on_hide_sticky_note)
+	Global.show_hidden_note.connect(_on_show_hidden_note)
+	Global.hide_hidden_note.connect(_on_hide_hidden_note)
 
 func _on_pickup_item(item: Item) -> void:
 	var new_inventory_cell = inventory_cell.duplicate()
@@ -44,3 +49,13 @@ func _on_show_sticky_note() -> void:
 func _on_hide_sticky_note() -> void:
 	Global.unpause_game.emit()
 	Global.tween_property(name, sticky_note, "modulate:a", 0, 0.5, func(): sticky_note.visible = false) 
+
+func _on_show_hidden_note() -> void:
+	Global.pause_game.emit()
+	hidden_note.visible = true
+	Global.tween_property(name, hidden_note, "modulate:a", 1) 
+	
+func _on_hide_hidden_note() -> void:
+	Global.unpause_game.emit()
+	Global.tween_property(name, hidden_note, "modulate:a", 0, 0.5, func(): sticky_note.visible = false) 
+

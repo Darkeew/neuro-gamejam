@@ -6,6 +6,8 @@ signal show_password_inputs
 signal hide_password_inputs
 signal show_sticky_note
 signal hide_sticky_note
+signal show_hidden_note
+signal hide_hidden_note
 signal send_password(password: int)
 signal start_next_iteration 
 
@@ -14,7 +16,7 @@ var shadow_canvas_group: CanvasGroup
 var main_menu: PackedScene = preload("res://scenes/interface/main_menu.tscn")
 var hud: CanvasLayer = preload("res://scenes/interface/hud.tscn").instantiate()
 var current_scene = null
-var current_iteration := 1
+var current_iteration := 4
 
 #region NUMBERS SCHIZO 
 var numbers_schizo := []
