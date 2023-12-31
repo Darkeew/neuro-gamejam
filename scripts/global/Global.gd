@@ -10,8 +10,10 @@ signal show_hidden_note
 signal hide_hidden_note
 signal send_password(password: int)
 signal start_next_iteration 
+signal become_neuro 
 
 var player: CharacterBody2D
+var neuro := false 
 var shadow_canvas_group: CanvasGroup
 var main_menu: PackedScene = preload("res://scenes/interface/main_menu.tscn")
 var hud: CanvasLayer = preload("res://scenes/interface/hud.tscn").instantiate()
