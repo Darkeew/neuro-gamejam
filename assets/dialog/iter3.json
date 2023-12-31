@@ -1,35 +1,55 @@
 [
 	{
-		"trigger" : "safe_unlocked",
-		"dialog" : [
-			{"text":"The Code was correct","time":1}
+		"trigger": "safe_unlocked",
+		"dialog": [
+			{
+				"text": "The Code was correct",
+				"time": 1
+			}
 		],
-		"condition" : ["iter_check"],
-		"iter" : 3,
-		"time" : 2,
-		"next" : "next_iter"
+		"condition": [
+			"iter_check"
+		],
+		"iter": 3,
+		"time": 2,
+		"next": "next_iter"
 	},
 	{
-		"trigger" : "wrong_password",
-		"dialog" : [
-			{"text":"The Code was wrong","time":1}
+		"trigger": "wrong_password",
+		"dialog": [
+			{
+				"text": "The Code was wrong",
+				"time": 1
+			}
 		],
-		"condition" : ["iter_check"],
-		"iter" : 3,
-		"time" : 2
+		"condition": [
+			"iter_check"
+		],
+		"iter": 3,
+		"time": 2
 	},
 	{
-		"trigger" : "cutscene",
-		"condition" : ["iter_check"],
-		"iter" : 4,
-		"cutscene" : "cutscene3"
-	}, 
+		"trigger": "cutscene",
+		"condition": [
+			"iter_check"
+		],
+		"iter": 4,
+		"cutscene": "cutscene3",
+		"music": "cutscene1",
+		"music_after": "part2theme"
+	},
 	{
 		"trigger": "not_outside",
 		"dialog": [
-			{"text": "I don't want to go outside", "time": 1}
+			{
+				"text": "I don't want to go outside",
+				"time": 1
+			}
 		],
-		"condition": ["iter_check_greater"],
+		"sfx": "door_closed",
+		"condition": [
+			"iter_check_greater"
+		],
 		"time": 2
 	}
 ]
