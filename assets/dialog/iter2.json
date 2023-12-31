@@ -76,11 +76,11 @@
 		"dialog": [
 			{
 				"text": "I should hurry up, the key is in my pocket.",
-				"time": 2.0
+				"time": 3.0
 			},
 			{
 				"text": "I wonder why i have a driver just for going to school...",
-				"time": 2.0
+				"time": 3.0
 			}
 		],
 		"flags": [
