@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhmi6hrwksy1f"]
+
+[sub_resource type="Gradient" id="Gradient_fherc"]
+colors = PackedColorArray(0, 0.771347, 0.771347, 1, 0, 0.771347, 0.771347, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hb2pm"]
+gradient = SubResource("Gradient_fherc")
+
+[node name="NoteUI" type="Sprite2D"]
+z_index = -1
+position = Vector2(169, 288)
+scale = Vector2(0.1, 200)
+texture = SubResource("GradientTexture1D_hb2pm")
