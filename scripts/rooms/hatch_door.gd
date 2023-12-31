@@ -8,7 +8,6 @@ func _ready() -> void:
 	pickup_line.modulate.a = 0	
 
 	EventBus.register_condition_solver("doc_check", doc_check)
-	EventBus.register_listener("change_to_hatch_room_scene_change", change_to_hatch_room)
 
 func doc_check(_event) -> bool:
 	if Global.current_iteration == 5:
@@ -18,8 +17,6 @@ func doc_check(_event) -> bool:
 	
 	return false
 
-func change_to_hatch_room():
-	Global.change_stage.emit(scene_path)
 
 func _process(_delta) -> void:
 	if Global.game_paused or !near:
@@ -29,7 +26,7 @@ func _process(_delta) -> void:
 		if Global.current_iteration == 5:
 			for item in Global.collected_items:
 				if item.tag == "Second Key":
-					EventBus.emit_event("change_to_hatch_room")
+					Global.change_stage.emit(scene_path) 
 					return
 			EventBus.emit_event("wrong_key")
 		else:
