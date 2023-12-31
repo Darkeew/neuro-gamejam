@@ -2,12 +2,13 @@ extends Node2D
 
 @onready var pickup_line = $PickupLine
 var near_player = false
+
 func _ready() -> void: 
 	pickup_line.modulate.a = 0	
 	Global.send_password.connect(_on_send_password) 
 
 func _process(_delta) -> void:
-	if Global.game_paused or !near_player:
+	if !near_player:
 		return 
 	
 	if Input.is_action_just_pressed("choice 1"):

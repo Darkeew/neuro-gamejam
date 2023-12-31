@@ -22,6 +22,7 @@ func _init() -> void:
 		note_files.append(load(NOTE_FILE_NAME % i))
 
 func _ready():
+	Global.pause_game.emit()
 	Global.tween_property(self.name, self, "modulate:a", 1)
 
 func _process(_delta):
@@ -41,6 +42,7 @@ func check_notes():
 	#print(notes_correct)
 	if notes_correct >= len(notes_to_pass) - 1:
 		$NoteUI.current_y_pos = 200.0 * (notes_correct + 1)
+		Global.unpause_game.emit()
 		EventBus.emit_event("piano_completed")
 		
 		#print("complete")
