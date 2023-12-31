@@ -14,7 +14,7 @@ var shadow_canvas_group: CanvasGroup
 var main_menu: PackedScene = preload("res://scenes/interface/main_menu.tscn")
 var hud: CanvasLayer = preload("res://scenes/interface/hud.tscn").instantiate()
 var current_scene = null
-var current_iteration := 3
+var current_iteration := 1
 
 #region NUMBERS SCHIZO 
 var numbers_schizo := []

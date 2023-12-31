@@ -1,15 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://lj41sjie0xdw"]
+[gd_scene load_steps=25 format=3 uid="uid://lj41sjie0xdw"]
 
 [ext_resource type="Script" path="res://scripts/rooms/hallway.gd" id="1_4q25n"]
 [ext_resource type="Texture2D" uid="uid://ml5rio378erl" path="res://assets/rooms/hallway/Hallway-0002.png" id="1_x21f8"]
 [ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="2_u3e3j"]
 [ext_resource type="PackedScene" uid="uid://b4uwauj5ouvuy" path="res://scenes/items/item_container.tscn" id="3_iok3i"]
 [ext_resource type="Resource" uid="uid://bxsmfty04pteq" path="res://resources/items/iter_1_key.tres" id="4_ae17g"]
-[ext_resource type="PackedScene" uid="uid://c6gc2ipyngbw" path="res://scenes/puzzles/useless_door.tscn" id="5_dqvvi"]
-[ext_resource type="PackedScene" uid="uid://bta4sfglrup75" path="res://scenes/puzzles/iter_4_door.tscn" id="6_2d5id"]
-[ext_resource type="PackedScene" uid="uid://qu4tbiep3vyx" path="res://scenes/puzzles/main_door.tscn" id="6_hfx86"]
+[ext_resource type="PackedScene" path="res://scenes/puzzles/useless_door.tscn" id="5_dqvvi"]
+[ext_resource type="PackedScene" path="res://scenes/puzzles/iter_4_door.tscn" id="6_2d5id"]
+[ext_resource type="PackedScene" path="res://scenes/puzzles/main_door.tscn" id="6_hfx86"]
 [ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="6_s6qr8"]
-[ext_resource type="PackedScene" uid="uid://reswclgeaujl" path="res://scenes/puzzles/iter_5_door.tscn" id="7_cpwq4"]
+[ext_resource type="PackedScene" path="res://scenes/puzzles/iter_5_door.tscn" id="7_cpwq4"]
 [ext_resource type="Script" path="res://scripts/rooms/iter_condition.gd" id="8_wx13j"]
 [ext_resource type="Texture2D" uid="uid://c6m6rxqna3bi6" path="res://assets/rooms/hallway/Hallway-0004.png" id="9_1nvlr"]
 [ext_resource type="Texture2D" uid="uid://kxvd5rlxw21" path="res://assets/rooms/hallway/painting1a.png" id="10_ow75h"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b0s11gkt677k7" path="res://assets/rooms/hallway/painting2a.png" id="12_xrhov"]
 [ext_resource type="Texture2D" uid="uid://dloonvkmimdc" path="res://assets/rooms/hallway/painting3.png" id="13_61okk"]
 [ext_resource type="Script" path="res://scripts/puzzles/painting_numbers.gd" id="14_5e2oq"]
+[ext_resource type="FontFile" uid="uid://dbj88ntk3mvwa" path="res://assets/interface/GraffitiPaintBrush.ttf" id="18_w5g4n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06xgf"]
 size = Vector2(1152, 260)
@@ -32,6 +33,14 @@ size = Vector2(63.25, 24)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_75y1n"]
 load_path = "res://.godot/imported/Table-0003.png-063deb6bcb99f14dafa49d027ed94600.ctex"
+
+[sub_resource type="Theme" id="Theme_1evg0"]
+Label/colors/font_shadow_color = Color(0.270588, 0.352941, 0.392157, 1)
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 0
+Label/constants/shadow_outline_size = 2
+Label/font_sizes/font_size = 25
+Label/fonts/font = ExtResource("18_w5g4n")
 
 [node name="Hallway" type="Node2D"]
 script = ExtResource("1_4q25n")
@@ -170,26 +179,29 @@ script = ExtResource("8_wx13j")
 iter = 3
 
 [node name="Num1" type="Label" parent="ThirdIteration"]
-offset_left = -652.0
+offset_left = -677.0
 offset_top = -266.0
-offset_right = -612.0
-offset_bottom = -243.0
+offset_right = -637.0
+offset_bottom = -242.0
+theme = SubResource("Theme_1evg0")
 text = "1
 "
 
 [node name="Num2" type="Label" parent="ThirdIteration"]
-offset_left = -491.0
+offset_left = -492.0
 offset_top = -181.0
-offset_right = -451.0
-offset_bottom = -158.0
+offset_right = -452.0
+offset_bottom = -157.0
+theme = SubResource("Theme_1evg0")
 text = "2
 "
 
 [node name="Num3" type="Label" parent="ThirdIteration"]
-offset_left = -317.0
+offset_left = -320.0
 offset_top = -120.0
-offset_right = -277.0
-offset_bottom = -97.0
+offset_right = -280.0
+offset_bottom = -96.0
+theme = SubResource("Theme_1evg0")
 text = "3
 "
 
@@ -198,6 +210,7 @@ offset_left = -94.0
 offset_top = -182.0
 offset_right = -54.0
 offset_bottom = -159.0
+theme = SubResource("Theme_1evg0")
 text = "4"
 
 [editable path="RoomTransitionRegion"]
