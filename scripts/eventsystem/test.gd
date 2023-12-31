@@ -14,16 +14,21 @@ func show_dialog(event):
 	var flags = event.flags if event.has("flags") else []
 	if !flags.has("unpaused"):
 		Global.game_paused = true
+		
+	if event.has("sfx"):
+		SoundManager.play_sound.emit(event.sfx)
+		
+	if event.has("music"):
+		SoundManager.change_music.emit(event.music)
 
 	if flags.has("sequence"):
 		sequence_play(event)
 		return
-		
+
 	d = event.dialog.pick_random()
 	#print(event)
 	while d.text == last_dialog and event.dialog.size() > 1:
 		d = event.dialog.pick_random()
-		
 
 	text = d.text
 	

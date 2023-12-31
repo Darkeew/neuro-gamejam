@@ -13,7 +13,7 @@ func _process(_delta) -> void:
 		return 
 	
 	if Input.is_action_just_pressed("choice 1"):
-		SoundManager._stop_music()
+		SoundManager.stop_music.emit()
 		var minigame = piano_minigame.instantiate()
 		add_child(minigame)
 		minigame.position = Vector2(-360,-160)

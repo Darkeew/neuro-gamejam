@@ -1,27 +1,46 @@
 [
 	{
-		"trigger" : "key_missing",
-		"dialog" : [
-			{"text":"The door is locked.","time":1.5},
-			{"text": "I need a key to open this door.","time":1.8}
+		"trigger": "key_missing",
+		"dialog": [
+			{
+				"text": "The door is locked.",
+				"time": 1.5
+			},
+			{
+				"text": "I need a key to open this door.",
+				"time": 1.8
+			}
 		],
-
-		"flags" : ["sequence","unpaused"]
+		"sfx": "door_closed",
+		"flags": [
+			"sequence",
+			"unpaused"
+		]
 	},
 	{
-		"trigger" : "door_open",
-		"dialog" : [
-			{"text":"The door opens easily with this key","time":1.5}
+		"trigger": "door_open",
+		"dialog": [
+			{
+				"text": "The door opens easily with this key",
+				"time": 1.5
+			}
 		],
-		"condition" : ["iter_check"],
-		"iter" : 1,
-		"time" : 0.3,
-		"next" : "next_iter"
+		"condition": [
+			"iter_check"
+		],
+		"iter": 1,
+		"time": 0.3,
+		"sfx": "door_open",
+		"next": "next_iter"
 	},
 	{
-		"trigger" : "cutscene",
-		"condition" : ["iter_check"],
-		"iter" : 2,
-		"cutscene" : "cutscene1"
+		"trigger": "cutscene",
+		"condition": [
+			"iter_check"
+		],
+		"iter": 2,
+		"cutscene": "cutscene1",
+		"music": "cutscene1",
+		"music_after": "part2theme"
 	}
 ]
