@@ -17,5 +17,11 @@
         "condition" : ["iter_check"],
         "iter" : 3,
         "time" : 2
+    },
+    {
+        "trigger" : "cutscene",
+        "condition" : ["iter_check"],
+        "iter" : 4,
+        "cutscene" : "cutscene3"
     }
 ]

@@ -7,7 +7,7 @@ func _ready() -> void:
 	Global.send_password.connect(_on_send_password) 
 
 func _process(_delta) -> void:
-	if Global.game_paused or not near_player:
+	if Global.game_paused or !near_player:
 		return 
 	
 	if Input.is_action_just_pressed("choice 1"):

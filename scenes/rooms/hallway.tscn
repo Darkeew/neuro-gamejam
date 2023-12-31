@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://lj41sjie0xdw"]
+[gd_scene load_steps=13 format=3 uid="uid://lj41sjie0xdw"]
 
 [ext_resource type="Script" path="res://scripts/rooms/hallway.gd" id="1_4q25n"]
 [ext_resource type="Texture2D" uid="uid://ml5rio378erl" path="res://assets/rooms/hallway/Hallway-0002.png" id="1_x21f8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://bxsmfty04pteq" path="res://resources/items/iter_1_key.tres" id="4_ae17g"]
 [ext_resource type="PackedScene" uid="uid://c8l2ynnqjgfwy" path="res://scenes/puzzles/first_door.tscn" id="5_k6a6p"]
 [ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="6_s6qr8"]
+[ext_resource type="Script" path="res://scripts/rooms/iter_condition.gd" id="8_wx13j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06xgf"]
 size = Vector2(1152, 260)
@@ -86,10 +87,16 @@ texture = SubResource("CompressedTexture2D_75y1n")
 [node name="FirstDoor" parent="Furniture" instance=ExtResource("5_k6a6p")]
 position = Vector2(-854, -136)
 
-[node name="SecondIteration" type="Node2D" parent="."]
-
 [node name="FirstKey" parent="." instance=ExtResource("3_iok3i")]
 position = Vector2(-915, -88)
 item = ExtResource("4_ae17g")
+
+[node name="Iteration_Condition" type="Node" parent="FirstKey"]
+script = ExtResource("8_wx13j")
+iter = 1
+condition = 0
+delete_node = true
+
+[node name="SecondIteration" type="Node2D" parent="."]
 
 [editable path="RoomTransitionRegion"]

@@ -8,5 +8,11 @@
         "iter" : 2,
         "time" : 1,
         "next" : "next_iter"
+    },
+    {
+        "trigger" : "cutscene",
+        "condition" : ["iter_check"],
+        "iter" : 3,
+        "cutscene" : "cutscene2"
     }
 ]
