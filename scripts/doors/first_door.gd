@@ -25,6 +25,9 @@ func _process(_delta) -> void:
 					Global.change_stage.emit(scene_path) 
 					return
 			EventBus.emit_event("wrong_key")
+		if Global.current_iteration > 4:
+			EventBus.emit_event("already_been")
+		
 		
 func _on_interactible_area_entered(_area):
 	Global.tween_property(name, pickup_line, "modulate:a", 1) 

@@ -1,5 +1,4 @@
 extends Area2D
-
 class_name EventTrigger
 
 @export var event_name: String = ""
