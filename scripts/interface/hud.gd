@@ -39,6 +39,7 @@ func _on_hide_password_inputs() -> void:
 func _on_show_sticky_note() -> void:
 	Global.pause_game.emit()
 	sticky_note.visible = true
+	SoundManager.play_sound.emit("paper_pickup")
 	Global.tween_property(name, sticky_note, "modulate:a", 1) 
 	
 func _on_hide_sticky_note() -> void:

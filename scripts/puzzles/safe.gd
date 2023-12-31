@@ -31,6 +31,8 @@ func _on_interactible_area_exited(_area):
 func _on_send_password(password: String) -> void:
 	if password == Global.safe_code:
 		Global.hide_password_inputs.emit()  
+		SoundManager.play_sound.emit("safe_open")
 		EventBus.emit_event("safe_unlocked")
 	else:
+		SoundManager.play_sound.emit("safe_failed")
 		EventBus.emit_event("wrong_password")
