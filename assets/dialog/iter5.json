@@ -1,59 +1,90 @@
 [
 	{
-		"trigger" : "door_open",
-		"dialog" : [
-			{"text" : "[INSERT LINE 5]","time": 1}
+		"trigger": "door_open",
+		"dialog": [
+			{
+				"text": "[INSERT LINE 5]",
+				"time": 1
+			}
 		],
-		"condition" : ["iter_check"],
-		"iter" : 5,
-		"time" : 0.3,
-		"next" : "next_iter"
-	},
-	{
-		"trigger" : "cutscene",
-		"condition" : ["iter_check"],
-		"iter" : 6,
-		"cutscene" : "cutscene5"
-	},{
-		"trigger" : "next_iter_5",
-		"condition" : ["iter_check","doc_check"],
-		"iter" : 5,
-		"next" : "next_iter"
-	},
-	{
-		"trigger" : "inspect_hatch",
-		"dialog" : [
-			{"text" : "There is a hatch beneath this carpet","time": 1},
-			{"text" : "I wonder whats down there...","time": 1}
+		"condition": [
+			"iter_check"
 		],
-		"time" : 0.3,
-		"flags": ["sequence"],
-		"next" : "enter_hatch"
+		"iter": 5,
+		"time": 0.3,
+		"next": "next_iter"
 	},
 	{
-		"trigger" : "enter_hatch",
-		"time" : 0.3,
-		"scene" : "res://scenes/rooms/basement.tscn"
-	},
-	{
-		"trigger" : "go_out_basement",
-		"dialog" :[
-			{"text" : "I should go back up","time": 1}
+		"trigger": "cutscene",
+		"condition": [
+			"iter_check"
 		],
-		"time" : 0.5,
-		"next" : "go_out_basement_scene_change"
+		"iter": 6,
+		"cutscene": "cutscene5",
+		"music": "cutscene1",
+		"music_after": "part2theme"
 	},
 	{
-		"trigger" : "change_to_hatch_room",
-		"dialog" :[
-			{"text" : "This key opens this door too...","time": 1}
+		"trigger": "next_iter_5",
+		"condition": [
+			"iter_check",
+			"doc_check"
 		],
-		"time" : 0.5,
-		"next" : "change_to_hatch_room_scene_change"
-	},{
-		"trigger" : "closed_hatch_door",
-		"dialog" :[
-			{"text" : "I've seen all that there was in the basement","time": 1}
+		"iter": 5,
+		"next": "next_iter"
+	},
+	{
+		"trigger": "inspect_hatch",
+		"dialog": [
+			{
+				"text": "There is a hatch beneath this carpet",
+				"time": 1
+			},
+			{
+				"text": "I wonder whats down there...",
+				"time": 1
+			}
+		],
+		"time": 0.3,
+		"flags": [
+			"sequence"
+		],
+		"next": "enter_hatch"
+	},
+	{
+		"trigger": "enter_hatch",
+		"time": 0.3,
+		"scene": "res://scenes/rooms/basement.tscn"
+	},
+	{
+		"trigger": "go_out_basement",
+		"dialog": [
+			{
+				"text": "I should go back up",
+				"time": 1
+			}
+		],
+		"time": 0.5,
+		"next": "go_out_basement_scene_change"
+	},
+	{
+		"trigger": "change_to_hatch_room",
+		"dialog": [
+			{
+				"text": "This key opens this door too...",
+				"time": 1
+			}
+		],
+		"time": 0.5,
+		"next": "change_to_hatch_room_scene_change"
+	},
+	{
+		"trigger": "closed_hatch_door",
+		"dialog": [
+			{
+				"text": "I've seen all that there was in the basement",
+				"time": 1
+			}
 		]
 	}
 ]
