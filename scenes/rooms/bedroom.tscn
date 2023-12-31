@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=26 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Script" path="res://scripts/rooms/bedroom.gd" id="1_22h2h"]
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dfuim35hydl0h" path="res://assets/rooms/bedroom/Table-0003.png" id="13_lm341"]
 [ext_resource type="PackedScene" uid="uid://dgc32vat3ju3y" path="res://scenes/rooms/fifth_iteration_piano.tscn" id="14_i10t7"]
 [ext_resource type="PackedScene" uid="uid://c18nue0taqkxl" path="res://scenes/rooms/sixth_iteration_piano.tscn" id="15_mn7ln"]
+[ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="18_m1ota"]
 
 [sub_resource type="Theme" id="Theme_m5j0a"]
 Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
@@ -40,6 +41,9 @@ size = Vector2(1151, 643)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ba18x"]
 size = Vector2(197, 173)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2f4o"]
+size = Vector2(134.5, 251)
 
 [node name="Bedroom" type="Node2D"]
 script = ExtResource("1_22h2h")
@@ -236,6 +240,14 @@ texture = ExtResource("13_7dyyi")
 [node name="Iteration_Condition" type="Node" parent="SecondIteration"]
 script = ExtResource("5_hjeht")
 iter = 2
+
+[node name="EventTrigger" type="Area2D" parent="."]
+script = ExtResource("18_m1ota")
+event_name = "key_missing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EventTrigger"]
+position = Vector2(133.75, 88.5)
+shape = SubResource("RectangleShape2D_e2f4o")
 
 [connection signal="on_transitioned_exited" from="MainMenuCamera/CameraTransitionZone" to="MainMenuCamera/CameraTransitionZone/MainMenuScript" method="_on_camera_transition_zone_on_transitioned_exited"]
 

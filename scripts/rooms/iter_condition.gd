@@ -13,7 +13,7 @@ enum show_condition {
 @export var iter : int
 @export var condition : show_condition = show_condition.GREATER_EQUAL
 
-@export var delete_node : bool = false
+@export var delete_node : bool = true
 
 
 func _ready():
