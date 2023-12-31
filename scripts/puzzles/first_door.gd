@@ -2,8 +2,8 @@ extends Node2D
 
 @onready var pickup_line = $PickupLine
 
-var near = false
 
+var near = false
 func _ready() -> void: 
 	pickup_line.modulate.a = 0	
 
