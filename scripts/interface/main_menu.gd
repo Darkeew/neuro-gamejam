@@ -2,18 +2,13 @@ extends CanvasLayer
 
 @onready var anim_player := $AnimationPlayer
 
-func _on_start_button_mouse_entered() -> void:
-	if not anim_player.is_playing(): 
-		Global.tween_property(name, %StartButton, "modulate:a", 0.5)
+func _process(_delta) -> void:
+	if Input.is_action_just_pressed("escape") and not anim_player.is_playing():
+		_game_start()
 
-func _on_start_button_mouse_exited() -> void:
-	if not anim_player.is_playing(): 
-		Global.tween_property(name, %StartButton, "modulate:a", 1)
-
-func _on_start_button_pressed() -> void:
-	if not anim_player.is_playing(): 
-		SoundManager.play_sound.emit("button_press")
-		$AnimationPlayer.play("hide_menu")
-		Global.game_paused = false
-		$AnimationPlayer.animation_finished.connect(func(_anim): Global.hide_menu(), CONNECT_ONE_SHOT)
-
+func _game_start() -> void:
+	SoundManager.play_sound.emit("button_press")
+	anim_player.play("hide_menu")
+	Global.game_unpaused.emit()
+	await anim_player.animation_finished
+	self.queue_free()
