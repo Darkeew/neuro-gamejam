@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcq8ee3rjydqy"]
+[gd_scene load_steps=17 format=3 uid="uid://bcq8ee3rjydqy"]
 
 [ext_resource type="Script" path="res://scripts/interface/hud.gd" id="1_xetvg"]
 [ext_resource type="Texture2D" uid="uid://bcvsav4vwjomq" path="res://assets/items/small_pizza.png" id="2_ffhmc"]
@@ -7,7 +7,10 @@
 [ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="5_dkt5y"]
 [ext_resource type="Texture2D" uid="uid://ciw6sitwyd48w" path="res://assets/interface/button-9patch.png" id="6_8ihac"]
 [ext_resource type="Script" path="res://scenes/interface/Cutscene.gd" id="7_rn1gd"]
-[ext_resource type="Texture2D" uid="uid://clkqufibs6a70" path="res://assets/cutscenes/comic.png" id="7_tpimn"]
+[ext_resource type="Texture2D" uid="uid://5ntytm1xftdn" path="res://assets/cutscenes/1a.png" id="8_d1a3u"]
+[ext_resource type="Texture2D" uid="uid://bd3qq157jetfp" path="res://assets/cutscenes/1b.png" id="9_cuo0w"]
+[ext_resource type="Texture2D" uid="uid://crfg12bk2ikal" path="res://assets/cutscenes/1c.png" id="10_1r5nb"]
+[ext_resource type="Texture2D" uid="uid://cnhil01aq7w77" path="res://assets/cutscenes/1d.png" id="11_icrpb"]
 
 [sub_resource type="Theme" id="Theme_komrt"]
 Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
@@ -27,99 +30,231 @@ Label/fonts/font = ExtResource("5_dkt5y")
 
 [sub_resource type="Animation" id="Animation_fgdtt"]
 length = 0.001
-tracks/0/type = "value"
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:self_modulate")
+tracks/0/path = NodePath("ColorRect:color:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutScene1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:color:a")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("TextureRect:position:x")
+tracks/2/path = NodePath("CutScene1/TextureRect:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(78, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(102, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("TextureRect:position:y")
+tracks/3/path = NodePath("CutScene1/TextureRect:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-63, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CutScene1/TextureRect2:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(102, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CutScene1/TextureRect2:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CutScene1/TextureRect3:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(102, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CutScene1/TextureRect3:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CutScene1/TextureRect4:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(102, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CutScene1/TextureRect4:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_npvdg"]
 resource_name = "cutscene1"
 length = 15.0
-tracks/0/type = "value"
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:self_modulate")
+tracks/0/path = NodePath("ColorRect:color:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 3, 10.6, 12.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:color:a")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.6, 13.2, 15)
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutScene1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7, 12.8, 13.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("TextureRect:position:x")
+tracks/2/path = NodePath("CutScene1/TextureRect:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(395, -0.25, 0, 0.25, 0, 78, -0.25, 0, 0.25, 0, 62, -0.25, 0, 0.25, 0, -739, -0.25, 0, 0.25, 0, -775, -0.25, 0, 0.25, 0, -1615, -0.25, 0, 0.25, 0, -1641, -0.25, 0, 0.25, 0, -2445, -0.25, 0, 0.25, 0, -2487, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(1, 2.8, 4, 5, 6.5, 8, 9.1, 11, 12.4)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(102, -0.25, 0, 0.25, 0, -1002, -0.25, 0, 0.25, 0, -1045, -0.25, 0, 0.25, 0, -2202, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.8, 2.2, 3.8, 5.1)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("TextureRect:position:y")
+tracks/3/path = NodePath("CutScene1/TextureRect:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(-64, -0.25, 0, 0.25, 0, -63, -0.25, 0, 0.25, 0, -61, -0.25, 0, 0.25, 0, -58, -0.25, 0, 0.25, 0, -59, -0.25, 0, 0.25, 0, -62, -0.25, 0, 0.25, 0, -62, -0.25, 0, 0.25, 0, -67, -0.25, 0, 0.25, 0, -71, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(1, 2.8, 4, 5, 6.5, 8, 9.1, 11, 12.4)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.8, 2.2, 3.8, 5.1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CutScene1/TextureRect2:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(102, -0.25, 0, 0.25, 0, -966, -0.25, 0, 0.25, 0, -1013, -0.25, 0, 0.25, 0, -2150, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(4.3, 5.7, 7.1, 8.3)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CutScene1/TextureRect2:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(4.3, 5.7, 7.1, 8.3)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CutScene1/TextureRect3:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(102, -0.25, 0, 0.25, 0, -970, -0.25, 0, 0.25, 0, -982, -0.25, 0, 0.25, 0, -2239, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(7.7, 8.7, 9.9, 11.3)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CutScene1/TextureRect3:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(7.7, 8.7, 9.9, 11.3)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CutScene1/TextureRect4:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(102, -0.25, 0, 0.25, 0, -937, -0.25, 0, 0.25, 0, -1068, -0.25, 0, 0.25, 0, -2225, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(10.6, 11.8, 13.3, 14.5)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CutScene1/TextureRect4:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(10.6, 11.8, 13.3, 14.5)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n5ydm"]
@@ -514,14 +649,41 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0980392, 0.0980392, 0.0980392, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Cutscene"]
-self_modulate = Color(1, 1, 1, 0)
+[node name="CutScene1" type="Control" parent="Cutscene"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_left = 1095.0
+offset_right = 1135.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Cutscene/CutScene1"]
 layout_mode = 0
-offset_left = 78.0
-offset_top = -63.0
-offset_right = 3682.0
-offset_bottom = 3233.0
-texture = ExtResource("7_tpimn")
+offset_left = 102.0
+offset_top = 7.0
+offset_right = 1051.0
+offset_bottom = 636.0
+texture = ExtResource("8_d1a3u")
+
+[node name="TextureRect2" type="TextureRect" parent="Cutscene/CutScene1"]
+offset_left = 102.0
+offset_top = 7.0
+offset_right = 1051.0
+offset_bottom = 636.0
+texture = ExtResource("9_cuo0w")
+
+[node name="TextureRect3" type="TextureRect" parent="Cutscene/CutScene1"]
+offset_left = 102.0
+offset_top = 7.0
+offset_right = 1051.0
+offset_bottom = 636.0
+texture = ExtResource("10_1r5nb")
+
+[node name="TextureRect4" type="TextureRect" parent="Cutscene/CutScene1"]
+offset_left = 102.0
+offset_top = 7.0
+offset_right = 1051.0
+offset_bottom = 636.0
+texture = ExtResource("11_icrpb")
 
 [node name="CutscenePlayer" type="AnimationPlayer" parent="Cutscene"]
 libraries = {
