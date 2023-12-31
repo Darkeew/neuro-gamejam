@@ -68,12 +68,7 @@ func check_notes():
 	#print(notes_correct)
 	if notes_correct >= len(notes_to_pass)-1:
 		$NoteUI.current_y_pos = 200.0*(notes_correct+1)
-		var timer := Timer.new()
-		add_child(timer)
-		timer.wait_time = 2.0
-		timer.one_shot = true
-		timer.start()
-		timer.connect("timeout", next_iteration.bind())
+		EventBus.emit_event("piano_completed")
 		
 		#print("complete")
 		return
@@ -86,8 +81,3 @@ func check_notes():
 	#print("Just Pressed Note: " + str(just_pressed_note))
 	#print("Correct Note: " + str(notes_to_pass[notes_correct]))
 	#print("Amount of Notes Correct: " + str(notes_correct))
-func next_iteration():
-	Global.start_next_iteration.emit()
-	piano_prev.queue_free()
-	queue_free()
-	

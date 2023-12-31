@@ -12,22 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://crfg12bk2ikal" path="res://assets/cutscenes/1c.png" id="10_1r5nb"]
 [ext_resource type="Texture2D" uid="uid://cnhil01aq7w77" path="res://assets/cutscenes/1d.png" id="11_icrpb"]
 
-[sub_resource type="Theme" id="Theme_komrt"]
-Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
-Label/constants/shadow_offset_x = 3
-Label/constants/shadow_offset_y = 3
-Label/constants/shadow_outline_size = 1
-Label/font_sizes/font_size = 36
-Label/fonts/font = ExtResource("5_dkt5y")
-
-[sub_resource type="Theme" id="Theme_k6fm6"]
-Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
-Label/constants/shadow_offset_x = 3
-Label/constants/shadow_offset_y = 3
-Label/constants/shadow_outline_size = 1
-Label/font_sizes/font_size = 36
-Label/fonts/font = ExtResource("5_dkt5y")
-
 [sub_resource type="Animation" id="Animation_fgdtt"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -263,6 +247,22 @@ _data = {
 "cutscene1": SubResource("Animation_npvdg")
 }
 
+[sub_resource type="Theme" id="Theme_komrt"]
+Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("5_dkt5y")
+
+[sub_resource type="Theme" id="Theme_k6fm6"]
+Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("5_dkt5y")
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_xetvg")
 
@@ -311,6 +311,85 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ffhmc")
+
+[node name="SmoothTransition" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -172.0
+offset_top = -103.0
+offset_right = 245.0
+offset_bottom = 169.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Cutscene" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_rn1gd")
+
+[node name="ColorRect" type="ColorRect" parent="Cutscene"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0980392, 0.0980392, 0.0980392, 0)
+
+[node name="CutScene1" type="Control" parent="Cutscene"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_left = 1095.0
+offset_right = 1135.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Cutscene/CutScene1"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 7.0
+offset_right = 1051.0
+offset_bottom = 636.0
+texture = ExtResource("8_d1a3u")
+
+[node name="TextureRect2" type="TextureRect" parent="Cutscene/CutScene1"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 7.0
+offset_right = 1051.0
+offset_bottom = 636.0
+texture = ExtResource("9_cuo0w")
+
+[node name="TextureRect3" type="TextureRect" parent="Cutscene/CutScene1"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 7.0
+offset_right = 1051.0
+offset_bottom = 636.0
+texture = ExtResource("10_1r5nb")
+
+[node name="TextureRect4" type="TextureRect" parent="Cutscene/CutScene1"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 7.0
+offset_right = 1051.0
+offset_bottom = 636.0
+texture = ExtResource("11_icrpb")
+
+[node name="CutscenePlayer" type="AnimationPlayer" parent="Cutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_n5ydm")
+}
 
 [node name="PasswordInputsContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
@@ -615,82 +694,5 @@ theme_override_font_sizes/font_size = 29
 text = "Space  Close"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="SmoothTransition" type="ColorRect" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -172.0
-offset_top = -103.0
-offset_right = 245.0
-offset_bottom = 169.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Cutscene" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("7_rn1gd")
-
-[node name="ColorRect" type="ColorRect" parent="Cutscene"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0980392, 0.0980392, 0.0980392, 0)
-
-[node name="CutScene1" type="Control" parent="Cutscene"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 0
-offset_left = 1095.0
-offset_right = 1135.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="Cutscene/CutScene1"]
-layout_mode = 0
-offset_left = 102.0
-offset_top = 7.0
-offset_right = 1051.0
-offset_bottom = 636.0
-texture = ExtResource("8_d1a3u")
-
-[node name="TextureRect2" type="TextureRect" parent="Cutscene/CutScene1"]
-layout_mode = 0
-offset_left = 102.0
-offset_top = 7.0
-offset_right = 1051.0
-offset_bottom = 636.0
-texture = ExtResource("9_cuo0w")
-
-[node name="TextureRect3" type="TextureRect" parent="Cutscene/CutScene1"]
-layout_mode = 0
-offset_left = 102.0
-offset_top = 7.0
-offset_right = 1051.0
-offset_bottom = 636.0
-texture = ExtResource("10_1r5nb")
-
-[node name="TextureRect4" type="TextureRect" parent="Cutscene/CutScene1"]
-layout_mode = 0
-offset_left = 102.0
-offset_top = 7.0
-offset_right = 1051.0
-offset_bottom = 636.0
-texture = ExtResource("11_icrpb")
-
-[node name="CutscenePlayer" type="AnimationPlayer" parent="Cutscene"]
-libraries = {
-"": SubResource("AnimationLibrary_n5ydm")
-}
 
 [connection signal="mouse_entered" from="PasswordInputsContainer/PasswordInputs" to="PasswordInputsContainer/PasswordInputs" method="_on_mouse_entered"]

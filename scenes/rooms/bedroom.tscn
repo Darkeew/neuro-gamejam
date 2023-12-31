@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=24 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Script" path="res://scripts/rooms/bedroom.gd" id="1_22h2h"]
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://scripts/camera/main_menu_camera.gd" id="10_y18ac"]
 [ext_resource type="Texture2D" uid="uid://cg3hs2nrhctne" path="res://assets/rooms/bedroom/Rose_Flowerpot-0002.png" id="13_7dyyi"]
 [ext_resource type="Texture2D" uid="uid://dfuim35hydl0h" path="res://assets/rooms/bedroom/Table-0003.png" id="13_lm341"]
+[ext_resource type="PackedScene" uid="uid://dgc32vat3ju3y" path="res://scenes/rooms/fifth_iteration_piano.tscn" id="14_i10t7"]
+[ext_resource type="PackedScene" uid="uid://c18nue0taqkxl" path="res://scenes/rooms/sixth_iteration_piano.tscn" id="15_mn7ln"]
 
 [sub_resource type="Theme" id="Theme_m5j0a"]
 Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
@@ -199,6 +201,21 @@ texture = ExtResource("3_j433k")
 [node name="Node" parent="Furniture/BookCase-0001" instance=ExtResource("3_pmjfu")]
 shadow_offset = Vector2(-2, 5)
 static_shadow = true
+
+[node name="FifthIterationPiano" parent="." instance=ExtResource("14_i10t7")]
+
+[node name="Iteration_Condition" type="Node" parent="FifthIterationPiano"]
+script = ExtResource("5_hjeht")
+iter = 5
+condition = 0
+delete_node = true
+
+[node name="SixthIterationPiano" parent="." instance=ExtResource("15_mn7ln")]
+
+[node name="Iteration_Condition" type="Node" parent="SixthIterationPiano"]
+script = ExtResource("5_hjeht")
+iter = 6
+delete_node = true
 
 [node name="SecondIteration" type="Node2D" parent="."]
 visible = false

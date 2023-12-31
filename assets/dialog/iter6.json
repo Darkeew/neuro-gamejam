@@ -1,0 +1,12 @@
+[
+    {
+        "trigger" : "piano_completed",
+        "dialog" : [
+            {"text" : "That was fun","time": 1}
+        ],
+        "condition" : ["iter_check"],
+        "iter" : 6,
+        "time" : 1,
+        "next" : "next_iter"
+    }
+]

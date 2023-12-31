@@ -13,7 +13,7 @@
         ],
         "condition" : ["iter_check"],
         "iter" : 1,
-        "time" : 2,
+        "time" : 0.3,
         "next" : "next_iter"
     },
     {
