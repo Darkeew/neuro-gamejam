@@ -9,6 +9,6 @@ func _process(_delta) -> void:
 func _game_start() -> void:
 	SoundManager.play_sound.emit("button_press")
 	anim_player.play("hide_menu")
-	Global.game_unpaused.emit()
+	Global.unpause_game.emit()
 	await anim_player.animation_finished
 	self.queue_free()

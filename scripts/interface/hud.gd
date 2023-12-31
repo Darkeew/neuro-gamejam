@@ -28,15 +28,19 @@ func _on_pickup_item(item: Item) -> void:
 	inventory_item_container.call_deferred("add_child", new_inventory_cell)
 
 func _on_show_password_inputs() -> void:
+	Global.pause_game.emit()
 	password_inputs.visible = true
 	Global.tween_property(name, password_inputs, "modulate:a", 1, 0.5) 
 
 func _on_hide_password_inputs() -> void:
+	Global.unpause_game.emit()
 	Global.tween_property(name, password_inputs, "modulate:a", 0, 0.5, func(): password_inputs.visible = false) 
 
 func _on_show_sticky_note() -> void:
+	Global.pause_game.emit()
 	sticky_note.visible = true
 	Global.tween_property(name, sticky_note, "modulate:a", 1, 0.5) 
 	
 func _on_hide_sticky_note() -> void:
+	Global.unpause_game.emit()
 	Global.tween_property(name, sticky_note, "modulate:a", 0, 0.5, func(): sticky_note.visible = false) 

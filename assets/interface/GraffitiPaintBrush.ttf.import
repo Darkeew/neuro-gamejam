@@ -2,26 +2,26 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b4pl3jfkalcos"
-path="res://.godot/imported/First_Coffee_Pixel.ttf-05c83792f51d47d97303dbe8a7f684a0.fontdata"
+uid="uid://dbj88ntk3mvwa"
+path="res://.godot/imported/GraffitiPaintBrush.ttf-d813d428d363c3d3c6e096250b3f4c54.fontdata"
 
 [deps]
 
-source_file="res://assets/interface/First_Coffee_Pixel.ttf"
-dest_files=["res://.godot/imported/First_Coffee_Pixel.ttf-05c83792f51d47d97303dbe8a7f684a0.fontdata"]
+source_file="res://assets/interface/GraffitiPaintBrush.ttf"
+dest_files=["res://.godot/imported/GraffitiPaintBrush.ttf-d813d428d363c3d3c6e096250b3f4c54.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=0
-generate_mipmaps=false
+antialiasing=1
+generate_mipmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=0
-subpixel_positioning=0
+subpixel_positioning=1
 oversampling=10.0
 Fallbacks=null
 fallbacks=[]
@@ -31,8 +31,7 @@ preload=[{
 "chars": [],
 "glyphs": [],
 "name": "New Configuration",
-"size": Vector2i(16, 0),
-"variation_embolden": 0.0
+"size": Vector2i(16, 0)
 }]
 language_support={}
 script_support={}

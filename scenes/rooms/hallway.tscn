@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://lj41sjie0xdw"]
+[gd_scene load_steps=25 format=3 uid="uid://lj41sjie0xdw"]
 
 [ext_resource type="Script" path="res://scripts/rooms/hallway.gd" id="1_4q25n"]
 [ext_resource type="Texture2D" uid="uid://ml5rio378erl" path="res://assets/rooms/hallway/Hallway-0002.png" id="1_x21f8"]
@@ -32,6 +32,14 @@ size = Vector2(63.25, 24)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_75y1n"]
 load_path = "res://.godot/imported/Table-0003.png-063deb6bcb99f14dafa49d027ed94600.ctex"
+
+[sub_resource type="Theme" id="Theme_1evg0"]
+Label/colors/font_shadow_color = Color(0.270588, 0.352941, 0.392157, 1)
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 0
+Label/constants/shadow_outline_size = 2
+Label/font_sizes/font_size = 25
+Label/fonts/font = ExtResource("18_w5g4n")
 
 [node name="Hallway" type="Node2D"]
 script = ExtResource("1_4q25n")
@@ -107,6 +115,7 @@ texture = SubResource("CompressedTexture2D_75y1n")
 position = Vector2(-827.8, -136.137)
 
 [node name="Main_Door" parent="Furniture" instance=ExtResource("6_hfx86")]
+position = Vector2(-13, -25)
 
 [node name="FirstKey" parent="." instance=ExtResource("3_iok3i")]
 z_index = 3
@@ -178,26 +187,29 @@ script = ExtResource("8_wx13j")
 iter = 3
 
 [node name="Num1" type="Label" parent="ThirdIteration"]
-offset_left = -652.0
+offset_left = -677.0
 offset_top = -266.0
-offset_right = -612.0
-offset_bottom = -243.0
+offset_right = -637.0
+offset_bottom = -242.0
+theme = SubResource("Theme_1evg0")
 text = "1
 "
 
 [node name="Num2" type="Label" parent="ThirdIteration"]
-offset_left = -491.0
+offset_left = -492.0
 offset_top = -181.0
-offset_right = -451.0
-offset_bottom = -158.0
+offset_right = -452.0
+offset_bottom = -157.0
+theme = SubResource("Theme_1evg0")
 text = "2
 "
 
 [node name="Num3" type="Label" parent="ThirdIteration"]
-offset_left = -317.0
+offset_left = -320.0
 offset_top = -120.0
-offset_right = -277.0
-offset_bottom = -97.0
+offset_right = -280.0
+offset_bottom = -96.0
+theme = SubResource("Theme_1evg0")
 text = "3
 "
 
@@ -206,6 +218,7 @@ offset_left = -94.0
 offset_top = -182.0
 offset_right = -54.0
 offset_bottom = -159.0
+theme = SubResource("Theme_1evg0")
 text = "4"
 
 [editable path="RoomTransitionRegion"]
