@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://c45pt6iwgb5nw"]
+
+[ext_resource type="Script" path="res://scripts/items/item.gd" id="1_fu4gf"]
+[ext_resource type="Texture2D" uid="uid://cseu4c3ifuqmc" path="res://assets/items/key-0001.png" id="2_fvi4v"]
+
+[resource]
+script = ExtResource("1_fu4gf")
+tag = "Second Key"
+texture = ExtResource("2_fvi4v")

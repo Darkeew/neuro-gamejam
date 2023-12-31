@@ -1,7 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=26 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Script" path="res://scripts/rooms/bedroom.gd" id="1_22h2h"]
-[ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
+[ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/First_Room-0005.png" id="1_njdfq"]
 [ext_resource type="Texture2D" uid="uid://xuyu2o3n4x7e" path="res://assets/rooms/bedroom/Bed-0001.png" id="2_iouxf"]
 [ext_resource type="Texture2D" uid="uid://djws22iw7t47i" path="res://assets/rooms/bedroom/Book_case-0001.png" id="3_j433k"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://scripts/character/AccurateShadows.tscn" id="3_pmjfu"]
@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://dfuim35hydl0h" path="res://assets/rooms/bedroom/Table-0003.png" id="13_lm341"]
 [ext_resource type="PackedScene" uid="uid://dgc32vat3ju3y" path="res://scenes/rooms/fifth_iteration_piano.tscn" id="14_i10t7"]
 [ext_resource type="PackedScene" uid="uid://c18nue0taqkxl" path="res://scenes/rooms/sixth_iteration_piano.tscn" id="15_mn7ln"]
+[ext_resource type="Texture2D" uid="uid://dxh5xef6a74sp" path="res://assets/rooms/bedroom/Safe_room-0001.png" id="17_h6be4"]
+[ext_resource type="Texture2D" uid="uid://bxnhqeiqdhmd0" path="res://assets/rooms/bedroom/desk_lamp-0001.png" id="18_05nnf"]
+[ext_resource type="Texture2D" uid="uid://cw2ngo5whn3af" path="res://assets/rooms/bedroom/Mirror_iter_4-0001.png" id="19_ajarl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33vgn"]
 size = Vector2(1172, 326)
@@ -192,7 +195,6 @@ script = ExtResource("5_hjeht")
 iter = 6
 
 [node name="SecondIteration" type="Node2D" parent="."]
-visible = false
 position = Vector2(473, -174)
 
 [node name="StaticBody" type="StaticBody2D" parent="SecondIteration"]
@@ -226,6 +228,26 @@ position = Vector2(279, -24)
 [node name="Iteration_Condition" type="Node" parent="ThirdIteration"]
 script = ExtResource("5_hjeht")
 iter = 3
+condition = 0
+
+[node name="FourthIteration" type="Node2D" parent="."]
+
+[node name="Iteration_Condition" type="Node" parent="FourthIteration"]
+script = ExtResource("5_hjeht")
+iter = 4
+
+[node name="SafeRoom-0001" type="Sprite2D" parent="FourthIteration"]
+position = Vector2(259, -20)
+texture = ExtResource("17_h6be4")
+
+[node name="DeskLamp-0001" type="Sprite2D" parent="FourthIteration"]
+position = Vector2(194, -27)
+scale = Vector2(2, 2)
+texture = ExtResource("18_05nnf")
+
+[node name="MirrorIter4-0001" type="Sprite2D" parent="FourthIteration"]
+position = Vector2(204, -67)
+texture = ExtResource("19_ajarl")
 
 [connection signal="on_transitioned_exited" from="MainMenuCamera/CameraTransitionZone" to="MainMenuCamera/CameraTransitionZone/MainMenuScript" method="_on_camera_transition_zone_on_transitioned_exited"]
 

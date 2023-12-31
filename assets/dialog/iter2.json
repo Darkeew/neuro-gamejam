@@ -14,5 +14,31 @@
 		"condition" : ["iter_check"],
 		"iter" : 3,
 		"cutscene" : "cutscene2"
+	},
+	{
+		"trigger": "key_missing",
+		"dialog": [
+			{
+				"text": "The door is locked.",
+				"time": 1.5
+			},
+			{
+				"text": "I need a key to open this door.",
+				"time": 1.8
+			}
+		],
+		"sfx": "door_closed",
+		"flags": [
+			"sequence",
+			"unpaused"
+		]
+	},
+	{
+		"trigger": "wrong_key",
+		"dialog": [
+			{"text": "This key only works for the main door", "time": 1}
+		],
+		"condition": ["iter_check_greater"],
+		"time": 2
 	}
 ]

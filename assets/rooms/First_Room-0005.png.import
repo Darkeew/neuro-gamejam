@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://coum05tampunl"
-path="res://.godot/imported/First_Room-0005.png-7780dbd24e380650199b68f05a8cf914.ctex"
+path="res://.godot/imported/First_Room-0005.png-8439d8fbd291d349c45ca09bef0914d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/rooms/bedroom/First_Room-0005.png"
-dest_files=["res://.godot/imported/First_Room-0005.png-7780dbd24e380650199b68f05a8cf914.ctex"]
+source_file="res://assets/rooms/First_Room-0005.png"
+dest_files=["res://.godot/imported/First_Room-0005.png-8439d8fbd291d349c45ca09bef0914d2.ctex"]
 
 [params]
 

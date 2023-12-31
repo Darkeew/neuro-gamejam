@@ -39,5 +39,13 @@
 		"cutscene": "cutscene1",
 		"music": "cutscene1",
 		"music_after": "part2theme"
+	},
+	{
+		"trigger": "wrong_key",
+		"dialog": [
+			{"text": "This key only works for the main door", "time": 1}
+		],
+		"condition": ["iter_check_greater"],
+		"time": 2
 	}
 ]

@@ -3,7 +3,7 @@ extends Node2D
 @onready var pickup_line = $PickupLine
 var near_player = false
 
-func _ready() -> void: 
+func _ready() -> void: 	
 	pickup_line.modulate.a = 0	
 	Global.send_password.connect(_on_send_password) 
 

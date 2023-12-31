@@ -116,7 +116,7 @@ texture = SubResource("CompressedTexture2D_75y1n")
 [node name="FirstDoor" parent="Furniture" instance=ExtResource("5_dqvvi")]
 position = Vector2(-827.8, -136.137)
 
-[node name="Main_Door" parent="Furniture" instance=ExtResource("6_hfx86")]
+[node name="MainDoor" parent="Furniture" instance=ExtResource("6_hfx86")]
 position = Vector2(-13, -25)
 
 [node name="FirstKey" parent="." instance=ExtResource("3_iok3i")]
@@ -131,6 +131,7 @@ iter = 1
 condition = 0
 
 [node name="SecondIteration" type="Node2D" parent="."]
+visible = false
 
 [node name="Iteration_Condition" type="Node" parent="SecondIteration"]
 script = ExtResource("8_wx13j")
@@ -181,6 +182,7 @@ scale = Vector2(0.0542601, 0.052635)
 texture = ExtResource("11_o0ftg")
 
 [node name="ThirdIteration" type="Node2D" parent="."]
+visible = false
 script = ExtResource("14_5e2oq")
 
 [node name="Iteration_Condition" type="Node" parent="ThirdIteration"]
@@ -218,5 +220,8 @@ offset_right = -79.0
 offset_bottom = -166.0
 theme = SubResource("Theme_1evg0")
 text = "0 "
+
+[node name="FourthIteration" type="Node2D" parent="."]
+visible = false
 
 [editable path="RoomTransitionRegion"]
