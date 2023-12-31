@@ -19,8 +19,8 @@ func _ready() -> void:
 	Global.become_neuro.connect(_on_become_neuro)
 	
 	if Global.neuro: 
-		var texture = load("res://assets/character/neuro-Sheet.png")
-		$PlayerSprite.texture = texture 
+		$PlayerSprite.texture = load("res://assets/character/neuro-Sheet.png") 
+		$AwakeSprite.texture = load("res://assets/character/neuroawake.png")
 
 	while Global.game_paused:
 		await get_tree().process_frame
@@ -73,5 +73,5 @@ func random_footsteps_sound():
 	SoundManager.play_footstep_sound.emit()
 
 func _on_become_neuro() -> void:
-	var texture = load("res://assets/character/neuro-Sheet.png")
-	$PlayerSprite.texture = texture 
+	$PlayerSprite.texture = load("res://assets/character/neuro-Sheet.png") 
+	$AwakeSprite.texture = load("res://assets/character/neuroawake.png")

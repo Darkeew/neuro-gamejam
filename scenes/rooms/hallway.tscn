@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://lj41sjie0xdw"]
+[gd_scene load_steps=34 format=3 uid="uid://lj41sjie0xdw"]
 
 [ext_resource type="Script" path="res://scripts/rooms/hallway.gd" id="1_4q25n"]
 [ext_resource type="Texture2D" uid="uid://ml5rio378erl" path="res://assets/rooms/hallway/Hallway-0002.png" id="1_x21f8"]
@@ -18,10 +18,13 @@
 [ext_resource type="Script" path="res://scripts/puzzles/painting_numbers.gd" id="14_5e2oq"]
 [ext_resource type="Texture2D" uid="uid://c81chb4ay7wm1" path="res://assets/rooms/hallway/FRAME_painting-0003.png" id="17_0s52s"]
 [ext_resource type="FontFile" uid="uid://dbj88ntk3mvwa" path="res://assets/interface/GraffitiPaintBrush.ttf" id="18_lgsmo"]
-[ext_resource type="PackedScene" uid="uid://f700okn07mk8" path="res://scenes/doors/hatch_door.tscn" id="19_nwhae"]
+[ext_resource type="PackedScene" path="res://scenes/doors/hatch_door.tscn" id="19_nwhae"]
 [ext_resource type="PackedScene" uid="uid://4h7vptjyaeqp" path="res://scenes/doors/wallpaper_door.tscn" id="20_0v51s"]
 [ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="20_47wue"]
 [ext_resource type="Script" path="res://scripts/rooms/hatch_door.gd" id="20_gqid7"]
+[ext_resource type="Texture2D" uid="uid://c387ncauvh8e0" path="res://assets/rooms/hallway/painting1png.png" id="23_1x6nd"]
+[ext_resource type="Texture2D" uid="uid://b0w6tf4lag35t" path="res://assets/rooms/hallway/painting2.png" id="24_10sdh"]
+[ext_resource type="Texture2D" uid="uid://osh45p2cw7s" path="res://assets/rooms/hallway/painting4png.png" id="25_y5ac1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06xgf"]
 size = Vector2(1152, 260)
@@ -274,5 +277,26 @@ event_name = "next_iter_5"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FithIteration/EventTrigger"]
 position = Vector2(-76, -23)
 shape = SubResource("RectangleShape2D_66bvq")
+
+[node name="FifthIteration" type="Node2D" parent="."]
+
+[node name="Iteration_Condition" type="Node" parent="FifthIteration"]
+script = ExtResource("8_wx13j")
+iter = 5
+
+[node name="Painting1Png" type="Sprite2D" parent="FifthIteration"]
+position = Vector2(-418.754, -176.205)
+scale = Vector2(0.121922, 0.121922)
+texture = ExtResource("23_1x6nd")
+
+[node name="Painting2" type="Sprite2D" parent="FifthIteration"]
+position = Vector2(-717.259, -176.112)
+scale = Vector2(0.122543, 0.122543)
+texture = ExtResource("24_10sdh")
+
+[node name="Painting4Png" type="Sprite2D" parent="FifthIteration"]
+position = Vector2(-175.962, -176.865)
+scale = Vector2(0.206846, 0.206846)
+texture = ExtResource("25_y5ac1")
 
 [editable path="RoomTransitionRegion"]
