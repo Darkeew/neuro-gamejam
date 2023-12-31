@@ -9,6 +9,9 @@
 [ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="7_85phw"]
 [ext_resource type="PackedScene" uid="uid://hocsfpblfn07" path="res://scenes/puzzles/interactible.tscn" id="8_qt7jl"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr57u"]
+size = Vector2(60, 192)
+
 [sub_resource type="Theme" id="Theme_app15"]
 Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
 Label/constants/shadow_offset_x = 3
@@ -19,9 +22,6 @@ Label/fonts/font = ExtResource("7_85phw")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghr87"]
 radius = 5.38516
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr57u"]
-size = Vector2(60, 192)
 
 [node name="HatchRoom" type="Node2D"]
 
@@ -54,6 +54,54 @@ editor_draw_limits = true
 script = ExtResource("3_4ht8m")
 follow_offset = Vector2(0, -35)
 look_ahead_distance = 0.5
+
+[node name="RoomTransitionRegion" parent="." instance=ExtResource("4_g4gfn")]
+position = Vector2(0, 8)
+scene_path = "res://scenes/rooms/hallway.tscn"
+player_spot = "HallwayExitHatch"
+
+[node name="CollisionPolygon2D" parent="RoomTransitionRegion" index="0"]
+position = Vector2(-454, -61)
+polygon = PackedVector2Array(424, 73, 420, 96, 483, 98, 483, 72)
+
+[node name="HatchStartPos" type="Marker2D" parent="."]
+position = Vector2(-42, -55)
+
+[node name="PlayerEnterPos" type="Marker2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="Hatch_room_enter" type="Marker2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-115, -66)
+shape = SubResource("RectangleShape2D_xr57u")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(109, -66)
+shape = SubResource("RectangleShape2D_xr57u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-55, -171)
+shape = SubResource("RectangleShape2D_xr57u")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(5, -171)
+shape = SubResource("RectangleShape2D_xr57u")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(59, 98)
+shape = SubResource("RectangleShape2D_xr57u")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-60, 98)
+shape = SubResource("RectangleShape2D_xr57u")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(65, -171)
+shape = SubResource("RectangleShape2D_xr57u")
 
 [node name="Node2D2" type="Node2D" parent="."]
 position = Vector2(238, -136)
@@ -108,53 +156,8 @@ vertical_alignment = 1
 position = Vector2(-287, 83)
 shape = SubResource("CircleShape2D_ghr87")
 
-[node name="RoomTransitionRegion" parent="." instance=ExtResource("4_g4gfn")]
-position = Vector2(0, 8)
-scene_path = "res://scenes/rooms/hallway.tscn"
-player_spot = "HallwayExitHatch"
-
-[node name="CollisionPolygon2D" parent="RoomTransitionRegion" index="0"]
-position = Vector2(-454, -61)
-polygon = PackedVector2Array(424, 73, 420, 96, 483, 98, 483, 72)
-
-[node name="HatchStartPos" type="Marker2D" parent="."]
-position = Vector2(-42, -55)
-
-[node name="PlayerEnterPos" type="Marker2D" parent="."]
-position = Vector2(0, 8)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-115, -66)
-shape = SubResource("RectangleShape2D_xr57u")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(109, -66)
-shape = SubResource("RectangleShape2D_xr57u")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-55, -171)
-shape = SubResource("RectangleShape2D_xr57u")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(5, -171)
-shape = SubResource("RectangleShape2D_xr57u")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(59, 98)
-shape = SubResource("RectangleShape2D_xr57u")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-60, 98)
-shape = SubResource("RectangleShape2D_xr57u")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(65, -171)
-shape = SubResource("RectangleShape2D_xr57u")
-
 [connection signal="area_entered" from="Node2D2/Interactible" to="Node2D2" method="_on_interactible_area_entered"]
 [connection signal="area_exited" from="Node2D2/Interactible" to="Node2D2" method="_on_interactible_area_exited"]
 
-[editable path="Node2D2/Interactible"]
 [editable path="RoomTransitionRegion"]
+[editable path="Node2D2/Interactible"]
