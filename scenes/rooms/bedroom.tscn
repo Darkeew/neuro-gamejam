@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=36 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Script" path="res://scripts/rooms/bedroom.gd" id="1_22h2h"]
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/First_Room-0005.png" id="1_njdfq"]
@@ -44,6 +44,9 @@ size = Vector2(197, 173)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysu7m"]
 size = Vector2(128, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tp5vv"]
+size = Vector2(81, 228)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvjcf"]
 size = Vector2(103, 204)
@@ -228,6 +231,10 @@ position = Vector2(-330, 142)
 
 [node name="Area2D" parent="SecondIteration/Pot" index="0"]
 position = Vector2(-6, 24)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SecondIteration/Pot/Area2D" index="1"]
+position = Vector2(64, 96)
+shape = SubResource("RectangleShape2D_tp5vv")
 
 [node name="Iteration_Condition" type="Node" parent="SecondIteration"]
 script = ExtResource("5_hjeht")
