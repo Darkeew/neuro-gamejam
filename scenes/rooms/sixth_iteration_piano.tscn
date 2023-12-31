@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=3 uid="uid://c18nue0taqkxl"]
+
+[ext_resource type="Script" path="res://scripts/puzzles/piano_interact.gd" id="1_nv7pt"]
+[ext_resource type="Texture2D" uid="uid://mhcedjmlfpjo" path="res://assets/puzzles/piano-Stool.png" id="2_5osjx"]
+[ext_resource type="Texture2D" uid="uid://b7mdygqq0c2le" path="res://assets/puzzles/piano-0001.png" id="3_i1wi8"]
+[ext_resource type="Texture2D" uid="uid://ciw6sitwyd48w" path="res://assets/interface/button-9patch.png" id="4_206lq"]
+[ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="5_w1cks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y01i"]
+size = Vector2(73, 32.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36xu4"]
+size = Vector2(54, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tesbh"]
+size = Vector2(65, 39)
+
+[sub_resource type="Theme" id="Theme_vybam"]
+Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("5_w1cks")
+
+[node name="SixthIterationPiano" type="Node2D"]
+position = Vector2(132, 94)
+script = ExtResource("1_nv7pt")
+
+[node name="Interactible" type="Area2D" parent="."]
+position = Vector2(-126, -54)
+scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactible"]
+position = Vector2(-0.5, 6.125)
+shape = SubResource("RectangleShape2D_2y01i")
+debug_color = Color(0.980392, 0, 0.384314, 0.419608)
+
+[node name="Piano-stool" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-126, -65)
+scale = Vector2(2, 2)
+texture = ExtResource("2_5osjx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Piano-stool"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano-stool/StaticBody2D"]
+shape = SubResource("RectangleShape2D_36xu4")
+
+[node name="Piano" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-125, -126)
+scale = Vector2(2, 2)
+texture = ExtResource("3_i1wi8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Piano"]
+position = Vector2(-0.5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano/StaticBody2D"]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_tesbh")
+
+[node name="PickupLine" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -108.0
+offset_top = -96.0
+offset_right = -108.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PickupLine"]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 26.0
+offset_bottom = 27.0
+texture = ExtResource("4_206lq")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Label" type="Label" parent="PickupLine"]
+layout_mode = 1
+offset_left = 13.0
+offset_top = -1.0
+offset_right = 175.0
+offset_bottom = 33.0
+theme = SubResource("Theme_vybam")
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 12
+text = "Q    Play the piano"
+vertical_alignment = 1
+
+[connection signal="area_entered" from="Interactible" to="." method="_on_interactible_area_entered"]
+[connection signal="area_exited" from="Interactible" to="." method="_on_interactible_area_exited"]

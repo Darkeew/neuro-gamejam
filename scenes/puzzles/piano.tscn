@@ -1,0 +1,322 @@
+[gd_scene load_steps=32 format=3 uid="uid://brcnyejxi7bde"]
+
+[ext_resource type="Script" path="res://scripts/piano_minigame/piano.gd" id="1_ou2cu"]
+[ext_resource type="Script" path="res://scripts/piano_minigame/KeyHighlight.gd" id="2_crppi"]
+[ext_resource type="Script" path="res://scripts/piano_minigame/SongNotesGenerator.gd" id="3_7xbd4"]
+[ext_resource type="PackedScene" uid="uid://bhmi6hrwksy1f" path="res://scenes/puzzles/note_ui.tscn" id="4_clu77"]
+[ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="5_y32ls"]
+
+[sub_resource type="Gradient" id="Gradient_xrd2l"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.0421687, 0.927711, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b4j7e"]
+gradient = SubResource("Gradient_xrd2l")
+
+[sub_resource type="Gradient" id="Gradient_1wss2"]
+offsets = PackedFloat32Array(0, 0.0519481, 0.941558, 1)
+colors = PackedColorArray(0.41598, 0.41598, 0.41598, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.509286, 0.509286, 0.509286, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x1hty"]
+gradient = SubResource("Gradient_1wss2")
+
+[sub_resource type="Gradient" id="Gradient_08620"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.0421687, 0.927711, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m3asf"]
+gradient = SubResource("Gradient_08620")
+
+[sub_resource type="Gradient" id="Gradient_u5byk"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.0421687, 0.927711, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w1hgi"]
+gradient = SubResource("Gradient_u5byk")
+
+[sub_resource type="Gradient" id="Gradient_n231b"]
+offsets = PackedFloat32Array(0, 0.0519481, 0.941558, 1)
+colors = PackedColorArray(0.41598, 0.41598, 0.41598, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.509286, 0.509286, 0.509286, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x5d6b"]
+gradient = SubResource("Gradient_n231b")
+
+[sub_resource type="Gradient" id="Gradient_foh7q"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.0421687, 0.927711, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_876ou"]
+gradient = SubResource("Gradient_foh7q")
+
+[sub_resource type="Gradient" id="Gradient_l4pe5"]
+offsets = PackedFloat32Array(0, 0.0519481, 0.941558, 1)
+colors = PackedColorArray(0.41598, 0.41598, 0.41598, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.509286, 0.509286, 0.509286, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kd76y"]
+gradient = SubResource("Gradient_l4pe5")
+
+[sub_resource type="Gradient" id="Gradient_l0ssp"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.0421687, 0.927711, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o2a3g"]
+gradient = SubResource("Gradient_l0ssp")
+
+[sub_resource type="Gradient" id="Gradient_f55ws"]
+offsets = PackedFloat32Array(0, 0.0519481, 0.941558, 1)
+colors = PackedColorArray(0.41598, 0.41598, 0.41598, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.509286, 0.509286, 0.509286, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sotqi"]
+gradient = SubResource("Gradient_f55ws")
+
+[sub_resource type="Gradient" id="Gradient_dytmp"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.0421687, 0.927711, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qgxra"]
+gradient = SubResource("Gradient_dytmp")
+
+[sub_resource type="Gradient" id="Gradient_6mu40"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.0421687, 0.927711, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_btkq7"]
+gradient = SubResource("Gradient_6mu40")
+
+[sub_resource type="Gradient" id="Gradient_oasmw"]
+offsets = PackedFloat32Array(0, 0.0519481, 0.941558, 1)
+colors = PackedColorArray(0.41598, 0.41598, 0.41598, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.509286, 0.509286, 0.509286, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mvkgj"]
+gradient = SubResource("Gradient_oasmw")
+
+[sub_resource type="Gradient" id="Gradient_u4re2"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.0421687, 0.927711, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0k36d"]
+gradient = SubResource("Gradient_u4re2")
+
+[node name="Piano" type="Node2D"]
+z_index = 175
+script = ExtResource("1_ou2cu")
+
+[node name="PianoKeyD4" type="Sprite2D" parent="."]
+position = Vector2(175, 482)
+scale = Vector2(0.171875, 187.25)
+texture = SubResource("GradientTexture1D_b4j7e")
+script = ExtResource("2_crppi")
+final_color = Color(1, 1, 1, 1)
+highlight_color = Color(0.996078, 0.6, 0.819608, 1)
+
+[node name="PianoKeyD#4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.411765)
+z_index = 1
+position = Vector2(196, 447)
+scale = Vector2(0.092, 118.67)
+texture = SubResource("GradientTexture1D_x1hty")
+
+[node name="PianoKeyE4" type="Sprite2D" parent="."]
+position = Vector2(219, 482)
+scale = Vector2(0.171875, 187.25)
+texture = SubResource("GradientTexture1D_m3asf")
+script = ExtResource("2_crppi")
+final_color = Color(1, 1, 1, 1)
+highlight_color = Color(0.996078, 0.6, 0.819608, 1)
+
+[node name="PianoKeyF4" type="Sprite2D" parent="."]
+modulate = Color(0.513726, 0.513726, 0.513726, 1)
+position = Vector2(263, 481.625)
+scale = Vector2(0.171875, 187.25)
+texture = SubResource("GradientTexture1D_w1hgi")
+
+[node name="PianoKeyF#4" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(284, 447)
+scale = Vector2(0.092, 118.67)
+texture = SubResource("GradientTexture1D_x5d6b")
+script = ExtResource("2_crppi")
+highlight_color = Color(0.996078, 0.6, 0.819608, 1)
+
+[node name="PianoKeyG4" type="Sprite2D" parent="."]
+position = Vector2(307, 482)
+scale = Vector2(0.171875, 187.25)
+texture = SubResource("GradientTexture1D_876ou")
+script = ExtResource("2_crppi")
+final_color = Color(1, 1, 1, 1)
+highlight_color = Color(0.996078, 0.6, 0.819608, 1)
+
+[node name="PianoKeyG#4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.411765)
+z_index = 1
+position = Vector2(327, 447)
+scale = Vector2(0.092, 118.67)
+texture = SubResource("GradientTexture1D_kd76y")
+
+[node name="PianoKeyA4" type="Sprite2D" parent="."]
+position = Vector2(351, 482)
+scale = Vector2(0.171875, 187.25)
+texture = SubResource("GradientTexture1D_o2a3g")
+script = ExtResource("2_crppi")
+final_color = Color(1, 1, 1, 1)
+highlight_color = Color(0.996078, 0.6, 0.819608, 1)
+
+[node name="PianoKeyA#4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.411765)
+z_index = 1
+position = Vector2(371, 447)
+scale = Vector2(0.092, 118.67)
+texture = SubResource("GradientTexture1D_sotqi")
+
+[node name="PianoKeyB4" type="Sprite2D" parent="."]
+position = Vector2(395, 482)
+scale = Vector2(0.171875, 187.25)
+texture = SubResource("GradientTexture1D_qgxra")
+script = ExtResource("2_crppi")
+final_color = Color(1, 1, 1, 1)
+highlight_color = Color(0.996078, 0.6, 0.819608, 1)
+
+[node name="PianoKeyC5" type="Sprite2D" parent="."]
+modulate = Color(0.513726, 0.513726, 0.513726, 1)
+position = Vector2(439, 481.625)
+scale = Vector2(0.171875, 187.25)
+texture = SubResource("GradientTexture1D_btkq7")
+
+[node name="PianoKeyC#5" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(459, 447)
+scale = Vector2(0.092, 118.67)
+texture = SubResource("GradientTexture1D_mvkgj")
+script = ExtResource("2_crppi")
+highlight_color = Color(0.996078, 0.6, 0.819608, 1)
+
+[node name="PianoKeyD5" type="Sprite2D" parent="."]
+position = Vector2(483, 482)
+scale = Vector2(0.171875, 187.25)
+texture = SubResource("GradientTexture1D_0k36d")
+script = ExtResource("2_crppi")
+final_color = Color(1, 1, 1, 1)
+highlight_color = Color(0.996078, 0.6, 0.819608, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="NoteUI" type="Node2D" parent="."]
+script = ExtResource("3_7xbd4")
+
+[node name="NoteUI" parent="NoteUI" instance=ExtResource("4_clu77")]
+visible = false
+
+[node name="Number1" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = 158.0
+offset_top = 507.0
+offset_right = 199.0
+offset_bottom = 604.0
+theme_override_fonts/font = ExtResource("5_y32ls")
+theme_override_font_sizes/font_size = 56
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Number2" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = 202.0
+offset_top = 507.0
+offset_right = 243.0
+offset_bottom = 604.0
+theme_override_fonts/font = ExtResource("5_y32ls")
+theme_override_font_sizes/font_size = 56
+text = "2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Number4" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = 291.0
+offset_top = 507.0
+offset_right = 332.0
+offset_bottom = 604.0
+theme_override_fonts/font = ExtResource("5_y32ls")
+theme_override_font_sizes/font_size = 56
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Number5" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = 335.0
+offset_top = 507.0
+offset_right = 376.0
+offset_bottom = 604.0
+theme_override_fonts/font = ExtResource("5_y32ls")
+theme_override_font_sizes/font_size = 56
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Number6" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = 378.0
+offset_top = 507.0
+offset_right = 419.0
+offset_bottom = 604.0
+theme_override_fonts/font = ExtResource("5_y32ls")
+theme_override_font_sizes/font_size = 56
+text = "6
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Number8" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = 465.0
+offset_top = 507.0
+offset_right = 506.0
+offset_bottom = 604.0
+theme_override_fonts/font = ExtResource("5_y32ls")
+theme_override_font_sizes/font_size = 56
+text = "8
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Number3" type="Label" parent="."]
+z_index = 2
+offset_left = 265.0
+offset_top = 438.0
+offset_right = 306.0
+offset_bottom = 535.0
+theme_override_fonts/font = ExtResource("5_y32ls")
+theme_override_font_sizes/font_size = 46
+text = "3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Number7" type="Label" parent="."]
+z_index = 2
+offset_left = 439.0
+offset_top = 438.0
+offset_right = 480.0
+offset_bottom = 535.0
+theme_override_fonts/font = ExtResource("5_y32ls")
+theme_override_font_sizes/font_size = 46
+text = "7
+"
+horizontal_alignment = 1
+vertical_alignment = 1

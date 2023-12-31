@@ -18,6 +18,7 @@ var sfx_bus := AudioServer.get_bus_index("SFX")
 @onready var sounds := {
 	"key_collect": load(SFX_PATH % "key_collect.ogg"),
 	"button_press": load(SFX_PATH % "button_sound.ogg")
+	
 }
 
 @onready var footsteps := {
@@ -82,7 +83,10 @@ func _load_music_file(stage_name: String) -> void:
 	music_player.play()
 	
 	_tween_volume(0.0)
-
+	
+func _stop_music() -> void:
+	music_player.stop()
+	
 func _tween_volume(value: float, callback = null):	
 	if tweens.has("main"):
 		tweens["main"].kill()
