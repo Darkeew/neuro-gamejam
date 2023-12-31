@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dcmmrfk6t5dlf" path="res://assets/rooms/hallway/FRAME_painting-0002.png" id="13_vgug5"]
 [ext_resource type="Script" path="res://scripts/puzzles/painting_numbers.gd" id="14_5e2oq"]
 [ext_resource type="Texture2D" uid="uid://c81chb4ay7wm1" path="res://assets/rooms/hallway/FRAME_painting-0003.png" id="17_0s52s"]
+[ext_resource type="FontFile" uid="uid://dbj88ntk3mvwa" path="res://assets/interface/GraffitiPaintBrush.ttf" id="18_lgsmo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06xgf"]
 size = Vector2(1152, 260)
@@ -39,9 +40,11 @@ Label/constants/shadow_offset_x = 0
 Label/constants/shadow_offset_y = 0
 Label/constants/shadow_outline_size = 2
 Label/font_sizes/font_size = 25
+Label/fonts/font = ExtResource("18_lgsmo")
 
 [node name="Hallway" type="Node2D"]
 script = ExtResource("1_4q25n")
+metadata/_edit_horizontal_guides_ = [-247.0, -105.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -4096
@@ -139,43 +142,42 @@ position = Vector2(-493, -93)
 texture = ExtResource("9_1nvlr")
 
 [node name="FramePainting-0002" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-709, -198)
-scale = Vector2(2, 1.89655)
+position = Vector2(-674, -176)
+scale = Vector2(2.79412, 2.64959)
 texture = ExtResource("13_vgug5")
 
-[node name="Painting2a" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-709, -198)
-scale = Vector2(0.0877057, 0.0877057)
+[node name="Painting2a" type="Sprite2D" parent="SecondIteration/FramePainting-0002"]
+scale = Vector2(0.0438529, 0.0462449)
 texture = ExtResource("12_xrhov")
 
-[node name="FramePainting-0003" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-619, -148.641)
-scale = Vector2(2, 1.87446)
+[node name="Sprite2D" type="Sprite2D" parent="SecondIteration"]
+position = Vector2(-534, -176.614)
+scale = Vector2(2.79412, 2.61873)
 texture = ExtResource("13_vgug5")
 
-[node name="Painting3" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-619.083, -148.636)
-scale = Vector2(0.0874634, 0.0874634)
+[node name="Painting3" type="Sprite2D" parent="SecondIteration/Sprite2D"]
+position = Vector2(-0.0415039, 0.00267029)
+scale = Vector2(0.0437317, 0.0466606)
 texture = ExtResource("13_61okk")
 
 [node name="FramePainting-0004" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-409.243, -155.307)
-scale = Vector2(2.0182, 1.89704)
+position = Vector2(-401, -176.322)
+scale = Vector2(2.79867, 2.63065)
 texture = ExtResource("13_vgug5")
 
-[node name="Painting1a" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-409.226, -155.271)
-scale = Vector2(0.0883913, 0.0883913)
+[node name="Painting1a" type="Sprite2D" parent="SecondIteration/FramePainting-0004"]
+position = Vector2(0.00842285, 0.0189819)
+scale = Vector2(0.0437971, 0.0465943)
 texture = ExtResource("10_ow75h")
 
 [node name="FramePainting-0005" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-153.832, -159.381)
-scale = Vector2(1.9401, 2)
+position = Vector2(-176, -177)
+scale = Vector2(3.80745, 3.925)
 texture = ExtResource("17_0s52s")
 
-[node name="Painting4a" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-153.768, -159.402)
-scale = Vector2(0.10527, 0.10527)
+[node name="Painting4a" type="Sprite2D" parent="SecondIteration/FramePainting-0005"]
+position = Vector2(0.0329895, -0.010498)
+scale = Vector2(0.0542601, 0.052635)
 texture = ExtResource("11_o0ftg")
 
 [node name="ThirdIteration" type="Node2D" parent="."]
@@ -186,38 +188,35 @@ script = ExtResource("8_wx13j")
 iter = 3
 
 [node name="Num1" type="Label" parent="ThirdIteration"]
-offset_left = -677.0
-offset_top = -266.0
-offset_right = -637.0
-offset_bottom = -242.0
+offset_left = -698.0
+offset_top = -134.0
+offset_right = -658.0
+offset_bottom = -110.0
 theme = SubResource("Theme_1evg0")
-text = "1
-"
+text = "0 "
 
 [node name="Num2" type="Label" parent="ThirdIteration"]
-offset_left = -492.0
-offset_top = -181.0
-offset_right = -452.0
-offset_bottom = -157.0
+offset_left = -513.0
+offset_top = -245.0
+offset_right = -473.0
+offset_bottom = -221.0
 theme = SubResource("Theme_1evg0")
-text = "2
-"
+text = "0"
 
 [node name="Num3" type="Label" parent="ThirdIteration"]
-offset_left = -320.0
-offset_top = -120.0
-offset_right = -280.0
-offset_bottom = -96.0
+offset_left = -377.0
+offset_top = -135.0
+offset_right = -337.0
+offset_bottom = -111.0
 theme = SubResource("Theme_1evg0")
-text = "3
-"
+text = "0"
 
 [node name="Num4" type="Label" parent="ThirdIteration"]
-offset_left = -94.0
-offset_top = -182.0
-offset_right = -54.0
-offset_bottom = -159.0
+offset_left = -119.0
+offset_top = -190.0
+offset_right = -79.0
+offset_bottom = -166.0
 theme = SubResource("Theme_1evg0")
-text = "4"
+text = "0 "
 
 [editable path="RoomTransitionRegion"]
