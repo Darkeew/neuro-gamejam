@@ -1,81 +1,50 @@
 extends Node2D
 
-@onready var usable_notes = [$PianoKeyD4,$PianoKeyE4,$"PianoKeyF#4",$PianoKeyG4,$PianoKeyA4,$PianoKeyB4,$"PianoKeyC#5",$PianoKeyD5]
-var note_files = ["res://assets/sfx/note1.ogg","res://assets/sfx/note2.ogg","res://assets/sfx/note3.ogg","res://assets/sfx/note4.ogg","res://assets/sfx/note5.ogg","res://assets/sfx/note6.ogg","res://assets/sfx/note7.ogg","res://assets/sfx/note8.ogg"]
+@onready var usable_notes = [$PianoKeyD4, $PianoKeyE4, $"PianoKeyF#4", $PianoKeyG4, $PianoKeyA4, $PianoKeyB4, $"PianoKeyC#5", $PianoKeyD5]
 @onready var audio = $AudioStreamPlayer
-var just_pressed_note = 0
-var notes_to_pass = [1,8,7,5,1,8,7,5,2,6,5,4,3,4,5,7,8,5,1]
-var notes_correct = 0
-# Called when the node enters the scene tree for the first time.
+
+const POSSIBLE_NOTES := 8
+const NOTE_FILE_NAME := "res://assets/sfx/note%s.ogg"
+
+var notes_to_pass := [1, 8, 7, 5, 1, 8, 7, 5, 2, 6, 5, 4, 3, 4, 5, 7, 8, 5, 1]
+var note_files := []
+var note_inputs := []
+
+var just_pressed_note := 0
+var notes_correct := 0
 var piano_prev
 
+func _init() -> void:
+	for i in range(1, POSSIBLE_NOTES + 1):
+		note_inputs.append("Note%s" % i)
+		note_files.append(load(NOTE_FILE_NAME % i))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	#note playing
-	if Input.is_action_just_pressed("Note1"):
-		audio.stream = load(note_files[0])
-		just_pressed_note = 1
-		check_notes()
-		usable_notes[just_pressed_note-1].set_color()
-		audio.play()
-	elif Input.is_action_just_pressed("Note2"):
-		audio.stream = load(note_files[1])
-		just_pressed_note = 2
-		usable_notes[just_pressed_note-1].set_color()
-		check_notes()
-		audio.play()
-	elif Input.is_action_just_pressed("Note3"):
-		audio.stream = load(note_files[2])
-		just_pressed_note = 3
-		usable_notes[just_pressed_note-1].set_color()
-		check_notes()
-		audio.play()
-	elif Input.is_action_just_pressed("Note4"):
-		audio.stream = load(note_files[3])
-		just_pressed_note = 4
-		usable_notes[just_pressed_note-1].set_color()
-		check_notes()
-		audio.play()
-	elif Input.is_action_just_pressed("Note5"):
-		audio.stream = load(note_files[4])
-		just_pressed_note = 5
-		usable_notes[just_pressed_note-1].set_color()
-		check_notes()
-		audio.play()
-	elif Input.is_action_just_pressed("Note6"):
-		audio.stream = load(note_files[5])
-		just_pressed_note = 6
-		usable_notes[just_pressed_note-1].set_color()
-		check_notes()
-		audio.play()
-	elif Input.is_action_just_pressed("Note7"):
-		audio.stream = load(note_files[6])
-		just_pressed_note = 7
-		usable_notes[just_pressed_note-1].set_color()
-		check_notes()
-		audio.play()
-	elif Input.is_action_just_pressed("Note8"):
-		audio.stream = load(note_files[7])
-		just_pressed_note = 8
-		usable_notes[just_pressed_note-1].set_color()
-		check_notes()
-		audio.play()
-	#messup handling
+func _process(_delta):
+	for key in note_inputs:
+		if Input.is_action_just_pressed(key):
+			_play_note(key)
 	
+func _play_note(note_input: String) -> void:
+	just_pressed_note = int(note_input.replace("Note", ""))
 	
+	audio.stream = note_files[just_pressed_note - 1]
+	usable_notes[just_pressed_note - 1].set_color()
+	check_notes()
+	audio.play()
+
 func check_notes():
 	#print(notes_correct)
-	if notes_correct >= len(notes_to_pass)-1:
-		$NoteUI.current_y_pos = 200.0*(notes_correct+1)
+	if notes_correct >= len(notes_to_pass) - 1:
+		$NoteUI.current_y_pos = 200.0 * (notes_correct + 1)
 		EventBus.emit_event("piano_completed")
 		
 		#print("complete")
 		return
+
 	if just_pressed_note == notes_to_pass[notes_correct]:
 		notes_correct = notes_correct + 1
-		$NoteUI.current_y_pos = 200.0*notes_correct
-	elif just_pressed_note != notes_to_pass[notes_correct]:
+		$NoteUI.current_y_pos = 200.0 * notes_correct
+	else:
 		notes_correct = 0
 		$NoteUI.current_y_pos = 0.0
 	#print("Just Pressed Note: " + str(just_pressed_note))

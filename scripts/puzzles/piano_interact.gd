@@ -5,6 +5,7 @@ extends Node2D
 var piano_minigame = load("res://scenes/puzzles/piano.tscn")
 var isplaying = false
 var near = false
+
 func _ready() -> void: 
 	pickup_line.modulate.a = 0	
 
