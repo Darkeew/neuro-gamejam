@@ -4,7 +4,9 @@
         "dialog" : [
             {"text":"The door is locked.","time":1.5},
             {"text": "I need a key to open this door.","time":1.8}
-        ]
+        ],
+
+        "flags" : ["sequence","unpaused"]
     },
     {
         "trigger" : "door_open",

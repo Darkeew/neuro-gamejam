@@ -203,6 +203,7 @@ shadow_offset = Vector2(-2, 5)
 static_shadow = true
 
 [node name="FifthIterationPiano" parent="." instance=ExtResource("14_i10t7")]
+visible = false
 
 [node name="Iteration_Condition" type="Node" parent="FifthIterationPiano"]
 script = ExtResource("5_hjeht")
@@ -211,6 +212,7 @@ condition = 0
 delete_node = true
 
 [node name="SixthIterationPiano" parent="." instance=ExtResource("15_mn7ln")]
+visible = false
 
 [node name="Iteration_Condition" type="Node" parent="SixthIterationPiano"]
 script = ExtResource("5_hjeht")
