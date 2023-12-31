@@ -33,6 +33,7 @@ signal game_unpaused
 
 var collected_items := []
 var tweens := {}
+var is_from_bed := true 
 
 # endregion
 
@@ -112,8 +113,6 @@ func _on_start_next_iteration() -> void:
 	var stage_scene: PackedScene = load("res://scenes/rooms/bedroom.tscn")
 	load_stage(stage_scene, "PlayerStartPos")
 
-
-
 func load_stage(stage_scene : PackedScene, player_pos := "PlayerEnterPos"):
 	var old_scene = current_scene
 	var stage = stage_scene.instantiate()
@@ -143,6 +142,11 @@ func load_next_stage(stage: Node2D, old_scene: Node2D, player_pos := "PlayerEnte
 	tween_property(hud.name, hud.smooth_transition, "self_modulate:a", 0, 0.5)
 
 func setup_player(player_pos: String):
+	if player_pos == "PlayerStartPos":
+		is_from_bed = true 
+	else:
+		is_from_bed = false 
+	
 	player = preload("res://scenes/character/player.tscn").instantiate()
 	if current_scene.has_node(player_pos):
 		player.global_position = current_scene.get_node(player_pos).global_position

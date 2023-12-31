@@ -11,7 +11,7 @@
 	{
 		"trigger" : "door_open",
 		"dialog" : [
-			{"text":"The door opens easily with this key","time":1.5}
+			{"text":"The door opens easily","time":1.5}
 		],
 		"condition" : ["iter_check"],
 		"iter" : 1,

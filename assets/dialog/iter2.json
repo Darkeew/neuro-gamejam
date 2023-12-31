@@ -2,7 +2,7 @@
 	{
 		"trigger" : "door_open",
 		"dialog" : [
-			{"text" : "the key is rusty...","time": 1}
+			{"text" : "the key is rusty... the door is hard to open","time": 2.5}
 		],
 		"condition" : ["iter_check"],
 		"iter" : 2,

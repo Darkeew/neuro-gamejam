@@ -13,7 +13,7 @@ func _ready():
 	password_inputs.modulate.a = 0
 	sticky_note.visible = false
 	sticky_note.modulate.a = 0
-	%StickyNoteLabel.text = str(Global.sticky_note_code)
+	%StickyNoteLabel.text = "%d" % Global.sticky_note_code
 
 	Global.pickup_item.connect(_on_pickup_item)
 	Global.show_password_inputs.connect(_on_show_password_inputs)

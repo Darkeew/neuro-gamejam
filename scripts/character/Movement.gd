@@ -4,6 +4,7 @@ class_name Player
 @export var BASE_MAX_SPEED := 100.0
 @export var ACCELERATION := 500.0 
 @export var FRICTION := 500.0 
+@export var waking_up := false 
 
 #region NODES
 @onready var animation_tree = $AnimationTree
@@ -12,11 +13,22 @@ class_name Player
 
 var direction: Vector2 = Vector2.ZERO
 
+func _ready() -> void:
+	while Global.game_paused:
+		await get_tree().process_frame
+	
+	if Global.is_from_bed:
+		animation_tree["parameters/conditions/is_start_pos"] = true
+		animation_tree["parameters/conditions/is_enter_pos"] = false  
+	else: 
+		animation_tree["parameters/conditions/is_start_pos"] = false
+		animation_tree["parameters/conditions/is_enter_pos"] = true  
+
 func _process(_delta: float) -> void:
 	update_animation() 
 
-func _physics_process(delta):
-	if Global.game_paused:
+func _physics_process(delta):	
+	if Global.game_paused or waking_up:
 		velocity = Vector2.ZERO
 		return
 		

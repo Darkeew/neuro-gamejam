@@ -1,18 +1,18 @@
 [
-    {
-        "trigger" : "door_open",
-        "dialog" : [
-            {"text" : "[INSERT LINE 5]","time": 1}
-        ],
-        "condition" : ["iter_check"],
-        "iter" : 5,
-        "time" : 0.3,
-        "next" : "next_iter"
-    },
-    {
-        "trigger" : "cutscene",
-        "condition" : ["iter_check"],
-        "iter" : 6,
-        "cutscene" : "cutscene5"
-    }
+	{
+		"trigger" : "door_open",
+		"dialog" : [
+			{"text" : "[INSERT LINE 5]","time": 1}
+		],
+		"condition" : ["iter_check"],
+		"iter" : 5,
+		"time" : 0.3,
+		"next" : "next_iter"
+	},
+	{
+		"trigger" : "cutscene",
+		"condition" : ["iter_check"],
+		"iter" : 6,
+		"cutscene" : "cutscene5"
+	}
 ]

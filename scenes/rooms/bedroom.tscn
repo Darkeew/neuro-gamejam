@@ -151,7 +151,7 @@ position = Vector2(12.5, 1.5)
 shape = SubResource("RectangleShape2D_ba18x")
 
 [node name="PlayerStartPos" type="Marker2D" parent="."]
-position = Vector2(-106, 11)
+position = Vector2(-222, 21)
 
 [node name="PlayerEnterPos" type="Marker2D" parent="."]
 position = Vector2(388, 73)

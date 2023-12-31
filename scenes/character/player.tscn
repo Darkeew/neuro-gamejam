@@ -1,6 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://bilwacn6xbv8a"]
+[gd_scene load_steps=43 format=3 uid="uid://bilwacn6xbv8a"]
 
 [ext_resource type="Script" path="res://scripts/character/Movement.gd" id="1_evn5i"]
+[ext_resource type="Texture2D" uid="uid://bmuhn0xog4osf" path="res://assets/character/notneuroawake.png" id="2_das0b"]
 [ext_resource type="Texture2D" uid="uid://dql2if2v23wla" path="res://assets/character/notneuro0.png" id="2_yldae"]
 [ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://scripts/character/AccurateShadows.tscn" id="3_11rep"]
 [ext_resource type="PackedScene" uid="uid://2eep1kypkavl" path="res://scenes/character/collectionrange.tscn" id="4_cex7t"]
@@ -33,6 +34,66 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AwakeSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AwakeSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerSprite/Node:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:waking_up")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_7jki1"]
@@ -244,10 +305,128 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_684m8"]
+resource_name = "awake"
+length = 4.1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AwakeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 24]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AwakeSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprite/Node:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:waking_up")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_tyutr"]
+resource_name = "enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AwakeSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:waking_up")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7m078"]
 _data = {
 "RESET": SubResource("Animation_14r56"),
+"awake": SubResource("Animation_684m8"),
 "backward": SubResource("Animation_7jki1"),
+"enter": SubResource("Animation_tyutr"),
 "forward": SubResource("Animation_g5gut"),
 "idle_backwards": SubResource("Animation_kaijs"),
 "idle_forwards": SubResource("Animation_c17pv"),
@@ -282,9 +461,6 @@ min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dp61q"]
-animation = &"idle_backwards"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xkhl1"]
 animation = &"left"
 
@@ -310,6 +486,12 @@ min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_25n6o"]
+animation = &"awake"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t4is7"]
+animation = &"enter"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7x65o"]
 advance_mode = 2
 advance_condition = &"is_walking"
@@ -318,32 +500,54 @@ advance_condition = &"is_walking"
 advance_mode = 2
 advance_condition = &"idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xf4qj"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vfsos"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wb5ij"]
+switch_mode = 2
 advance_mode = 2
 advance_condition = &"is_walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ytwo"]
+advance_mode = 2
+advance_condition = &"is_enter_pos"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_blh8p"]
+advance_mode = 2
+advance_condition = &"is_walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vq4fq"]
+advance_mode = 2
+advance_condition = &"is_start_pos"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_f36uh"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_c3bmj")
 states/Idle/position = Vector2(550, 100)
-states/Start/position = Vector2(84, 100)
-"states/Starting Animation/node" = SubResource("AnimationNodeAnimation_dp61q")
-"states/Starting Animation/position" = Vector2(277, 100)
+states/Start/position = Vector2(107, 100)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_y3l6r")
 states/Walk/position = Vector2(432, 2)
-transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_7x65o"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_0k1nv"), "Start", "Starting Animation", SubResource("AnimationNodeStateMachineTransition_xf4qj"), "Starting Animation", "Walk", SubResource("AnimationNodeStateMachineTransition_vfsos")]
-graph_offset = Vector2(-99, -65)
+states/awake/node = SubResource("AnimationNodeAnimation_25n6o")
+states/awake/position = Vector2(271, -16)
+states/enter/node = SubResource("AnimationNodeAnimation_t4is7")
+states/enter/position = Vector2(303, 100)
+transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_7x65o"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_0k1nv"), "awake", "Walk", SubResource("AnimationNodeStateMachineTransition_wb5ij"), "Start", "enter", SubResource("AnimationNodeStateMachineTransition_8ytwo"), "enter", "Walk", SubResource("AnimationNodeStateMachineTransition_blh8p"), "Start", "awake", SubResource("AnimationNodeStateMachineTransition_vq4fq")]
+graph_offset = Vector2(-133, -37)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_evn5i")
+waking_up = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_86qf5")
 
+[node name="AwakeSprite" type="Sprite2D" parent="."]
+position = Vector2(-17, -25)
+scale = Vector2(2, 2)
+texture = ExtResource("2_das0b")
+hframes = 18
+vframes = 2
+region_rect = Rect2(0, 0, 724, 48)
+
 [node name="PlayerSprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -39)
 scale = Vector2(2, 2)
 texture = ExtResource("2_yldae")
@@ -352,6 +556,7 @@ frame = 1
 region_rect = Rect2(0, 0, 724, 48)
 
 [node name="Node" parent="PlayerSprite" instance=ExtResource("3_11rep")]
+disabled = true
 shadow_offset = Vector2(0, 82)
 
 [node name="Collectionrange" parent="." instance=ExtResource("4_cex7t")]
@@ -378,6 +583,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_f36uh")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/idle = false
+parameters/conditions/is_enter_pos = false
+parameters/conditions/is_start_pos = false
 parameters/conditions/is_walking = false
 parameters/Idle/blend_position = Vector2(-0.993209, 0.0194805)
 parameters/Walk/blend_position = Vector2(0, 0)
