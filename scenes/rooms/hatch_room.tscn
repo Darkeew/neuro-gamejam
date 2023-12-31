@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://brsopa23qyqah" path="res://assets/rooms/iter5_room/carpet_over_the_hatch-0001.png" id="2_p4mxj"]
 [ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="3_4ht8m"]
 [ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="4_g4gfn"]
-[ext_resource type="Script" path="res://scripts/rooms/Hatch.gd" id="4_r1r4i"]
+[ext_resource type="Script" path="res://scripts/rooms/Hatch2.gd" id="4_r1r4i"]
 [ext_resource type="Texture2D" uid="uid://ciw6sitwyd48w" path="res://assets/interface/button-9patch.png" id="6_p6fs0"]
 [ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="7_85phw"]
 [ext_resource type="PackedScene" uid="uid://hocsfpblfn07" path="res://scenes/puzzles/interactible.tscn" id="8_qt7jl"]
