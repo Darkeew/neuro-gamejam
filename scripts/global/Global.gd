@@ -14,7 +14,7 @@ var shadow_canvas_group: CanvasGroup
 var main_menu: PackedScene = preload("res://scenes/interface/main_menu.tscn")
 var hud: CanvasLayer = preload("res://scenes/interface/hud.tscn").instantiate()
 var current_scene = null
-var current_iteration := 1
+var current_iteration := 3
 
 #region NUMBERS SCHIZO 
 var numbers_schizo := []
@@ -29,7 +29,8 @@ var main_camera : CameraController
 # region GLOBAL VARS
 
 var game_paused := true
-signal game_unpaused
+signal pause_game
+signal unpause_game
 
 var collected_items := []
 var tweens := {}
@@ -64,16 +65,18 @@ func _ready():
 	if current_iteration == 1:
 		setup_main_menu()
 	else:
-		game_unpaused.emit()
+		unpause_game.emit()
 
 func connect_signals() -> void:
 	change_stage.connect(load_stage)
 	pickup_item.connect(_on_pickup_item)
 	start_next_iteration.connect(_on_start_next_iteration)
-	game_unpaused.connect(_on_game_unpaused)
+	
+	pause_game.connect(_on_game_state_change.bind(true))
+	unpause_game.connect(_on_game_state_change.bind(false))
 
-func _on_game_unpaused() -> void:
-	game_paused = false
+func _on_game_state_change(is_paused: bool) -> void:
+	game_paused = is_paused
 
 func generate_codes() -> void:
 	for num in range(4):
@@ -143,7 +146,7 @@ func load_next_stage(stage: Node2D, old_scene: Node2D, player_pos := "PlayerEnte
 	SoundManager.change_footsteps.emit(stage.name)
 	
 	# get_tree().root.call_deferred("move_child", main_menu, -1) 
-	get_tree().root.call_deferred("move_child", hud, -2)
+	get_tree().root.call_deferred("move_child", hud, -1)
 	if is_next_iter:
 		is_next_iter = false
 		await EventBus.emit_event("cutscene")

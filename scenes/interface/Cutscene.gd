@@ -6,7 +6,7 @@ func _ready():
 	EventBus.register_listener("cutscene", _on_cutscene_event)
 	
 func _on_cutscene_event(event):
-	Global.game_paused = true
+	Global.pause_game.emit()
 	
 	if event.has("music"):
 		SoundManager.change_music.emit(event.music)
@@ -17,4 +17,4 @@ func _on_cutscene_event(event):
 	if event.has("music_after"):
 		SoundManager.change_music.emit(event.music_after)
 	
-	Global.game_paused = false
+	Global.unpause_game.emit()
