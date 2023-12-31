@@ -1,17 +1,20 @@
 extends Control
 
-@onready var cutsceneplayer = $CutscenePlayer
+@onready var cutscene_player = $CutscenePlayer
 
 func _ready():
-	EventBus.register_listener("cutscene",on_cutscene_event)
-
-
-func on_cutscene_event(event):
+	EventBus.register_listener("cutscene", _on_cutscene_event)
+	
+func _on_cutscene_event(event):
 	Global.game_paused = true
 	
-	SoundManager.change_music.emit(event.music)
-	cutsceneplayer.play(event.cutscene)
-	await cutsceneplayer.animation_finished
-	SoundManager.change_music.emit(event.music_after)
+	if event.has("music"):
+		SoundManager.change_music.emit(event.music)
+
+	cutscene_player.play(event.cutscene)
+	await cutscene_player.animation_finished
+
+	if event.has("music_after"):
+		SoundManager.change_music.emit(event.music_after)
 	
 	Global.game_paused = false
