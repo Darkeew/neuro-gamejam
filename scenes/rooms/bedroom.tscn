@@ -12,9 +12,9 @@
 [ext_resource type="Script" path="res://scripts/camera/camera_mimic.gd" id="7_r2gvb"]
 [ext_resource type="Script" path="res://scripts/camera/camera_transition_zone.gd" id="8_kcjao"]
 [ext_resource type="Script" path="res://scripts/camera/main_menu_camera.gd" id="10_y18ac"]
-[ext_resource type="Texture2D" uid="uid://cg3hs2nrhctne" path="res://assets/rooms/bedroom/Rose_Flowerpot-0002.png" id="13_7dyyi"]
 [ext_resource type="Texture2D" uid="uid://dfuim35hydl0h" path="res://assets/rooms/bedroom/Table-0003.png" id="13_lm341"]
 [ext_resource type="PackedScene" uid="uid://dgc32vat3ju3y" path="res://scenes/rooms/fifth_iteration_piano.tscn" id="14_i10t7"]
+[ext_resource type="PackedScene" uid="uid://bhh46vq5uhyla" path="res://scenes/puzzles/pot.tscn" id="15_16lp6"]
 [ext_resource type="PackedScene" uid="uid://c18nue0taqkxl" path="res://scenes/rooms/sixth_iteration_piano.tscn" id="15_mn7ln"]
 [ext_resource type="Texture2D" uid="uid://bcdlcf3mya03k" path="res://assets/rooms/bedroom/Safe_open-0001.png" id="17_4yyn2"]
 [ext_resource type="Texture2D" uid="uid://dxh5xef6a74sp" path="res://assets/rooms/bedroom/Safe_room-0001.png" id="17_h6be4"]
@@ -218,10 +218,11 @@ position = Vector2(-355, 179)
 scale = Vector2(2, 2)
 texture = ExtResource("13_lm341")
 
-[node name="RoseFlowerpot-0002" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-327, 119)
-scale = Vector2(2, 2)
-texture = ExtResource("13_7dyyi")
+[node name="Pot" parent="SecondIteration" instance=ExtResource("15_16lp6")]
+position = Vector2(-330, 142)
+
+[node name="Area2D" parent="SecondIteration/Pot" index="0"]
+position = Vector2(-6, 24)
 
 [node name="Iteration_Condition" type="Node" parent="SecondIteration"]
 script = ExtResource("5_hjeht")
@@ -308,3 +309,4 @@ shape = SubResource("RectangleShape2D_gvjcf")
 [connection signal="body_entered" from="FourthIteration/SendSignal" to="FourthIteration/SendSignal" method="_on_body_entered"]
 
 [editable path="RoomTransitionRegion"]
+[editable path="SecondIteration/Pot"]
