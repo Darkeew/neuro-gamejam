@@ -3,9 +3,12 @@ extends Control
 var regex = RegEx.new()
 
 func _ready() -> void:
-	clear_digits()
+	Global.show_password_inputs.connect(_on_show_password_inputs)
 
 	regex.compile("[0-9]")	
+
+func _on_show_password_inputs() -> void:
+	clear_digits()
 
 func _on_digit_text_changed(new_text: String, digit: LineEdit) -> void:
 	var filtered_text = _filter_input(new_text)
@@ -24,6 +27,9 @@ func _change_digit(current_digit_name: String, advance := true) -> void:
 		if next_digit_id == 5:
 			_submit_password()
 			return
+
+		var current_digit := get_node("%%Digit%s" % current_digit_id)
+		current_digit.editable = false
 
 		var next_digit := get_node("%%Digit%s" % next_digit_id)
 		next_digit.editable = true

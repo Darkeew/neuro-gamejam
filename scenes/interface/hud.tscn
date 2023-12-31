@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bcq8ee3rjydqy"]
+[gd_scene load_steps=46 format=3 uid="uid://bcq8ee3rjydqy"]
 
 [ext_resource type="Script" path="res://scripts/interface/hud.gd" id="1_xetvg"]
 [ext_resource type="Texture2D" uid="uid://bcvsav4vwjomq" path="res://assets/items/small_pizza.png" id="2_ffhmc"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://4ea2mjxja44j" path="res://assets/cutscenes/5e.png" id="28_wbgvn"]
 [ext_resource type="Texture2D" uid="uid://bg1s8ud0onsmu" path="res://assets/cutscenes/5f.png" id="29_3g1ly"]
 [ext_resource type="Texture2D" uid="uid://bi6ae4rgmt3jt" path="res://assets/cutscenes/5g.png" id="30_qno1n"]
+[ext_resource type="FontFile" uid="uid://b6lejvnfura5h" path="res://assets/interface/TheJewishBitmap.ttf" id="33_jb4t5"]
 
 [sub_resource type="Animation" id="Animation_fgdtt"]
 length = 0.001
@@ -1178,6 +1179,13 @@ _data = {
 "cutscene5": SubResource("Animation_vj4qr")
 }
 
+[sub_resource type="Theme" id="Theme_xwjyl"]
+LineEdit/colors/font_uneditable_color = Color(1, 1, 1, 1)
+LineEdit/constants/minimum_character_width = 1
+LineEdit/constants/outline_size = 1
+LineEdit/font_sizes/font_size = 40
+LineEdit/fonts/font = ExtResource("33_jb4t5")
+
 [sub_resource type="Theme" id="Theme_komrt"]
 Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
 Label/constants/shadow_offset_x = 3
@@ -1539,7 +1547,6 @@ libraries = {
 }
 
 [node name="PasswordInputsContainer" type="CenterContainer" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1591,16 +1598,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/minimum_character_width = 1
-theme_override_font_sizes/font_size = 30
-placeholder_text = "_"
+mouse_filter = 2
+theme = SubResource("Theme_xwjyl")
+text = "1"
+placeholder_text = "·"
 alignment = 1
 max_length = 1
+editable = false
 context_menu_enabled = false
 virtual_keyboard_enabled = false
 virtual_keyboard_type = 2
 shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
+selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 flat = true
@@ -1626,9 +1636,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/minimum_character_width = 1
-theme_override_font_sizes/font_size = 30
-placeholder_text = "_"
+mouse_filter = 2
+theme = SubResource("Theme_xwjyl")
+placeholder_text = "·"
 alignment = 1
 max_length = 1
 editable = false
@@ -1636,6 +1646,7 @@ context_menu_enabled = false
 virtual_keyboard_enabled = false
 shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
+selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 flat = true
@@ -1661,9 +1672,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/minimum_character_width = 1
-theme_override_font_sizes/font_size = 30
-placeholder_text = "_"
+mouse_filter = 2
+theme = SubResource("Theme_xwjyl")
+placeholder_text = "·"
 alignment = 1
 max_length = 1
 editable = false
@@ -1671,6 +1682,7 @@ context_menu_enabled = false
 virtual_keyboard_enabled = false
 shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
+selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 flat = true
@@ -1696,9 +1708,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/minimum_character_width = 1
-theme_override_font_sizes/font_size = 30
-placeholder_text = "_"
+mouse_filter = 2
+theme = SubResource("Theme_xwjyl")
+placeholder_text = "·"
 alignment = 1
 max_length = 2
 editable = false
@@ -1706,6 +1718,7 @@ context_menu_enabled = false
 virtual_keyboard_enabled = false
 shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
+selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 flat = true
@@ -1744,9 +1757,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -71.0
-offset_top = -26.0
+offset_top = -28.0
 offset_right = 94.0
-offset_bottom = 22.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_komrt")
@@ -1832,10 +1845,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -71.0
-offset_top = -26.0
-offset_right = 94.0
-offset_bottom = 22.0
+offset_left = -70.0
+offset_top = -28.0
+offset_right = 95.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_komrt")
