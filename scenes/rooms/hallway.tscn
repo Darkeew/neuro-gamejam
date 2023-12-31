@@ -5,18 +5,18 @@
 [ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="2_u3e3j"]
 [ext_resource type="PackedScene" uid="uid://b4uwauj5ouvuy" path="res://scenes/items/item_container.tscn" id="3_iok3i"]
 [ext_resource type="Resource" uid="uid://bxsmfty04pteq" path="res://resources/items/iter_1_key.tres" id="4_ae17g"]
-[ext_resource type="PackedScene" uid="uid://c6gc2ipyngbw" path="res://scenes/puzzles/useless_door.tscn" id="5_dqvvi"]
-[ext_resource type="PackedScene" uid="uid://bta4sfglrup75" path="res://scenes/puzzles/iter_4_door.tscn" id="6_2d5id"]
-[ext_resource type="PackedScene" uid="uid://qu4tbiep3vyx" path="res://scenes/puzzles/main_door.tscn" id="6_hfx86"]
+[ext_resource type="PackedScene" uid="uid://c6gc2ipyngbw" path="res://scenes/doors/first_door.tscn" id="5_dqvvi"]
+[ext_resource type="PackedScene" uid="uid://qu4tbiep3vyx" path="res://scenes/doors/main_door.tscn" id="6_hfx86"]
 [ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="6_s6qr8"]
-[ext_resource type="PackedScene" uid="uid://reswclgeaujl" path="res://scenes/puzzles/iter_5_door.tscn" id="7_cpwq4"]
 [ext_resource type="Script" path="res://scripts/rooms/iter_condition.gd" id="8_wx13j"]
 [ext_resource type="Texture2D" uid="uid://c6m6rxqna3bi6" path="res://assets/rooms/hallway/Hallway-0004.png" id="9_1nvlr"]
 [ext_resource type="Texture2D" uid="uid://kxvd5rlxw21" path="res://assets/rooms/hallway/painting1a.png" id="10_ow75h"]
 [ext_resource type="Texture2D" uid="uid://bq8q1h26q1tch" path="res://assets/rooms/hallway/painting4a.png" id="11_o0ftg"]
 [ext_resource type="Texture2D" uid="uid://b0s11gkt677k7" path="res://assets/rooms/hallway/painting2a.png" id="12_xrhov"]
 [ext_resource type="Texture2D" uid="uid://dloonvkmimdc" path="res://assets/rooms/hallway/painting3.png" id="13_61okk"]
+[ext_resource type="Texture2D" uid="uid://dcmmrfk6t5dlf" path="res://assets/rooms/hallway/FRAME_painting-0002.png" id="13_vgug5"]
 [ext_resource type="Script" path="res://scripts/puzzles/painting_numbers.gd" id="14_5e2oq"]
+[ext_resource type="Texture2D" uid="uid://c81chb4ay7wm1" path="res://assets/rooms/hallway/FRAME_painting-0003.png" id="17_0s52s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06xgf"]
 size = Vector2(1152, 260)
@@ -103,19 +103,8 @@ z_index = 2
 position = Vector2(-663, 54)
 texture = SubResource("CompressedTexture2D_75y1n")
 
-[node name="Useless door" parent="Furniture" instance=ExtResource("5_dqvvi")]
-
-[node name="Iter4_door" parent="Furniture" instance=ExtResource("6_2d5id")]
-
-[node name="Iteration_Condition" type="Node" parent="Furniture/Iter4_door"]
-script = ExtResource("8_wx13j")
-iter = 4
-
-[node name="iter5_door" parent="Furniture" instance=ExtResource("7_cpwq4")]
-
-[node name="Iteration_Condition" type="Node" parent="Furniture/iter5_door"]
-script = ExtResource("8_wx13j")
-iter = 5
+[node name="FirstDoor" parent="Furniture" instance=ExtResource("5_dqvvi")]
+position = Vector2(-827.8, -136.137)
 
 [node name="Main_Door" parent="Furniture" instance=ExtResource("6_hfx86")]
 
@@ -141,25 +130,45 @@ z_index = -99
 position = Vector2(-493, -93)
 texture = ExtResource("9_1nvlr")
 
-[node name="Painting1a" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-356, -177)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("10_ow75h")
-
-[node name="Painting4a" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-136, -167)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("11_o0ftg")
+[node name="FramePainting-0002" type="Sprite2D" parent="SecondIteration"]
+position = Vector2(-709, -198)
+scale = Vector2(2, 1.89655)
+texture = ExtResource("13_vgug5")
 
 [node name="Painting2a" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-691, -178)
-scale = Vector2(0.15, 0.15)
+position = Vector2(-709, -198)
+scale = Vector2(0.0877057, 0.0877057)
 texture = ExtResource("12_xrhov")
 
+[node name="FramePainting-0003" type="Sprite2D" parent="SecondIteration"]
+position = Vector2(-619, -148.641)
+scale = Vector2(2, 1.87446)
+texture = ExtResource("13_vgug5")
+
 [node name="Painting3" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-531, -177)
-scale = Vector2(0.15, 0.15)
+position = Vector2(-619.083, -148.636)
+scale = Vector2(0.0874634, 0.0874634)
 texture = ExtResource("13_61okk")
+
+[node name="FramePainting-0004" type="Sprite2D" parent="SecondIteration"]
+position = Vector2(-409.243, -155.307)
+scale = Vector2(2.0182, 1.89704)
+texture = ExtResource("13_vgug5")
+
+[node name="Painting1a" type="Sprite2D" parent="SecondIteration"]
+position = Vector2(-409.226, -155.271)
+scale = Vector2(0.0883913, 0.0883913)
+texture = ExtResource("10_ow75h")
+
+[node name="FramePainting-0005" type="Sprite2D" parent="SecondIteration"]
+position = Vector2(-153.832, -159.381)
+scale = Vector2(1.9401, 2)
+texture = ExtResource("17_0s52s")
+
+[node name="Painting4a" type="Sprite2D" parent="SecondIteration"]
+position = Vector2(-153.768, -159.402)
+scale = Vector2(0.10527, 0.10527)
+texture = ExtResource("11_o0ftg")
 
 [node name="ThirdIteration" type="Node2D" parent="."]
 script = ExtResource("14_5e2oq")
