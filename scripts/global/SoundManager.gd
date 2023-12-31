@@ -25,6 +25,7 @@ var sfx_bus := AudioServer.get_bus_index("SFX")
 	"safe_failed": load(SFX_PATH % "failedsafe.ogg"),
 	"safe_open": load(SFX_PATH % "safeopen.ogg"),
 	"paper_pickup": load(SFX_PATH % "paperpickup.ogg"),
+	"vasebreak": load(SFX_PATH % "vasebreak.ogg"),
 }
 
 @onready var footsteps := {

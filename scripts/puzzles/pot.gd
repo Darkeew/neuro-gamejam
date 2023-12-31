@@ -12,4 +12,6 @@ func _on_area_2d_body_entered(body):
 		$Sprite2D.visible = false 
 		
 		$ItemContainer.set_deferred("visible", true)
+
+		SoundManager.play_sound.emit("vasebreak")
 		
