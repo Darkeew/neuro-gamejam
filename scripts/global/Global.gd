@@ -169,7 +169,7 @@ func setup_main_menu():
 func setup_hud():
 	get_tree().root.call_deferred("add_child", hud)
 
-func tween_property(id: String, node: Node, prop: String, value: float, time := 1.0, callback = null) -> void:
+func tween_property(id: String, node: Node, prop: String, value: float, time := 0.25, callback = null) -> void:
 	var tween_name := "%s_%s_%s" % [id, node.name, prop]
 	if tweens.has(tween_name):
 		tweens[tween_name].kill()
