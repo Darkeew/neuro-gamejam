@@ -49,6 +49,7 @@ func _ready():
 
 	EventBus.register_listener("next_iter",next_iter)
 	EventBus.register_condition_solver("iter_check", iter_check)
+	EventBus.register_condition_solver("iter_check_greater", iter_check)
 
 	if get_tree().current_scene is Control:
 		return
@@ -189,5 +190,11 @@ func show_dialog(event):
 func iter_check(event) -> bool:
 	print(str(event))
 	if event["iter"] == current_iteration:
+		return true
+	return false
+
+func iter_check(event) -> bool:
+	print(str(event))
+	if event["iter"] >= current_iteration:
 		return true
 	return false
