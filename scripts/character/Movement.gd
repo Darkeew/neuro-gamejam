@@ -17,6 +17,7 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta):
 	if Global.game_paused:
+		velocity = Vector2.ZERO
 		return
 		
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()

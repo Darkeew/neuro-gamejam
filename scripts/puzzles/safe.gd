@@ -1,13 +1,13 @@
 extends Node2D
 
 @onready var pickup_line = $PickupLine
-
+var near_player = false
 func _ready() -> void: 
 	pickup_line.modulate.a = 0	
 	Global.send_password.connect(_on_send_password) 
 
 func _process(_delta) -> void:
-	if Global.game_paused:
+	if Global.game_paused or !near_player:
 		return 
 	
 	if Input.is_action_just_pressed("choice 1"):
@@ -21,10 +21,15 @@ func _process(_delta) -> void:
 
 func _on_interactible_area_entered(_area):
 	Global.tween_property(name, pickup_line, "modulate:a", 1) 
+	near_player = true
 
 func _on_interactible_area_exited(_area):
 	Global.tween_property(name, pickup_line, "modulate:a", 0)
+	near_player = false
 
 func _on_send_password(password: int) -> void:
 	if password == 1234:
 		Global.hide_password_inputs.emit()  
+		EventBus.emit_event("safe_unlocked")
+	else:
+		EventBus.emit_event("wrong_password")

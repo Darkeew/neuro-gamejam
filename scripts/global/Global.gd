@@ -16,11 +16,13 @@ var hud: CanvasLayer = preload("res://scenes/interface/hud.tscn").instantiate()
 var current_scene = null
 var current_iteration := 1
 
+var dialog_label : Label
+
 var main_camera : CameraController
 
 # region GLOBAL VARS
 
-static var game_paused := true
+var game_paused := true
 signal game_unpaused
 
 var collected_items := []
@@ -35,6 +37,10 @@ func _ready():
 
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
+
+
+	EventBus.register_listener("next_iter",next_iter)
+	EventBus.register_condition_solver("iter_check", iter_check)
 
 	if get_tree().current_scene is Control:
 		return
@@ -55,14 +61,21 @@ func connect_signals() -> void:
 	pickup_item.connect(_on_pickup_item)
 	start_next_iteration.connect(_on_start_next_iteration)
 
+func next_iter():
+	start_next_iteration.emit()
+
 func _on_pickup_item(item: Item) -> void:
 	collected_items.append(item)
 
+var is_next_iter: bool = false
 func _on_start_next_iteration() -> void:
 	current_iteration += 1 
+	is_next_iter = true
 	
 	var stage_scene: PackedScene = load("res://scenes/rooms/bedroom.tscn")
 	load_stage(stage_scene, "PlayerStartPos")
+
+
 
 func load_stage(stage_scene : PackedScene, player_pos := "PlayerEnterPos"):
 	var old_scene = current_scene
@@ -87,12 +100,15 @@ func load_next_stage(stage: Node2D, old_scene: Node2D, player_pos := "PlayerEnte
 	
 	# get_tree().root.call_deferred("move_child", main_menu, -1) 
 	get_tree().root.call_deferred("move_child", hud, -2)
-
+	if is_next_iter:
+		is_next_iter = false
+		await EventBus.emit_event("cutscene")
 	tween_property(hud.name, hud.smooth_transition, "self_modulate:a", 0, 0.5)
 
 func setup_player(player_pos: String):
 	player = preload("res://scenes/character/player.tscn").instantiate()
-	player.global_position = current_scene.get_node(player_pos).global_position
+	if current_scene.has_node(player_pos):
+		player.global_position = current_scene.get_node(player_pos).global_position
 	current_scene.add_child(player)
 
 func setup_main_menu():
@@ -115,3 +131,16 @@ func tween_property(id: String, node: Node, prop: String, value: float, time := 
 
 	if callback is Callable:
 		tweens[tween_name].tween_callback(callback)
+
+
+func show_dialog(event):
+	if dialog_label == null:
+		print("dialog_label is null")
+		return
+	await dialog_label.show_dialog(event)
+
+func iter_check(event) -> bool:
+	print(str(event))
+	if event["iter"] == current_iteration:
+		return true
+	return false

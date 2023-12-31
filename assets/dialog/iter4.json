@@ -1,0 +1,18 @@
+[
+    {
+        "trigger" : "door_open",
+        "dialog" : [
+            {"text" : "[INSERT LINE]","time": 1}
+        ],
+        "condition" : ["iter_check"],
+        "iter" : 4,
+        "time" : 0.3,
+        "next" : "next_iter"
+    },
+    {
+        "trigger" : "cutscene",
+        "condition" : ["iter_check"],
+        "iter" : 5,
+        "cutscene" : "cutscene4"
+    }
+]

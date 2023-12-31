@@ -1,0 +1,18 @@
+[
+    {
+        "trigger" : "door_open",
+        "dialog" : [
+            {"text" : "the key is rusty...","time": 1}
+        ],
+        "condition" : ["iter_check"],
+        "iter" : 2,
+        "time" : 1,
+        "next" : "next_iter"
+    },
+    {
+        "trigger" : "cutscene",
+        "condition" : ["iter_check"],
+        "iter" : 3,
+        "cutscene" : "cutscene2"
+    }
+]
