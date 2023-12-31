@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=25 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Script" path="res://scripts/rooms/bedroom.gd" id="1_22h2h"]
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/bedroom/First_Room-0005.png" id="1_njdfq"]
@@ -11,21 +11,12 @@
 [ext_resource type="Script" path="res://scripts/rooms/iter_condition.gd" id="5_hjeht"]
 [ext_resource type="Script" path="res://scripts/camera/camera_mimic.gd" id="7_r2gvb"]
 [ext_resource type="Script" path="res://scripts/camera/camera_transition_zone.gd" id="8_kcjao"]
-[ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="8_naw2y"]
 [ext_resource type="Script" path="res://scripts/camera/main_menu_camera.gd" id="10_y18ac"]
 [ext_resource type="Texture2D" uid="uid://cg3hs2nrhctne" path="res://assets/rooms/bedroom/Rose_Flowerpot-0002.png" id="13_7dyyi"]
 [ext_resource type="Texture2D" uid="uid://dfuim35hydl0h" path="res://assets/rooms/bedroom/Table-0003.png" id="13_lm341"]
 [ext_resource type="PackedScene" uid="uid://dgc32vat3ju3y" path="res://scenes/rooms/fifth_iteration_piano.tscn" id="14_i10t7"]
 [ext_resource type="PackedScene" uid="uid://c18nue0taqkxl" path="res://scenes/rooms/sixth_iteration_piano.tscn" id="15_mn7ln"]
 [ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="18_m1ota"]
-
-[sub_resource type="Theme" id="Theme_m5j0a"]
-Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
-Label/constants/shadow_offset_x = 3
-Label/constants/shadow_offset_y = 3
-Label/constants/shadow_outline_size = 1
-Label/font_sizes/font_size = 36
-Label/fonts/font = ExtResource("8_naw2y")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33vgn"]
 size = Vector2(1172, 326)
@@ -41,6 +32,9 @@ size = Vector2(1151, 643)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ba18x"]
 size = Vector2(197, 173)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysu7m"]
+size = Vector2(128, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2f4o"]
 size = Vector2(134.5, 251)
@@ -77,25 +71,6 @@ offset_bottom = 288.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_njdfq")
-
-[node name="Puzzles" type="Node2D" parent="."]
-visible = false
-
-[node name="Label" type="Label" parent="Puzzles"]
-offset_left = 162.0
-offset_top = -117.0
-offset_right = 203.0
-offset_bottom = -94.0
-theme = SubResource("Theme_m5j0a")
-theme_override_font_sizes/font_size = 16
-text = "1234 "
-
-[node name="Safe2" parent="Puzzles" instance=ExtResource("4_7o0in")]
-position = Vector2(-205, -25)
-
-[node name="Iteration_Condition" type="Node" parent="Puzzles"]
-script = ExtResource("5_hjeht")
-iter = 3
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
 
@@ -224,6 +199,13 @@ iter = 6
 visible = false
 position = Vector2(473, -174)
 
+[node name="StaticBody" type="StaticBody2D" parent="SecondIteration"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondIteration/StaticBody"]
+position = Vector2(-292, 175)
+shape = SubResource("RectangleShape2D_ysu7m")
+disabled = true
+
 [node name="Table-0003" type="Sprite2D" parent="SecondIteration"]
 position = Vector2(-355, 179)
 scale = Vector2(2, 2)
@@ -237,6 +219,17 @@ texture = ExtResource("13_7dyyi")
 [node name="Iteration_Condition" type="Node" parent="SecondIteration"]
 script = ExtResource("5_hjeht")
 iter = 2
+
+[node name="ThirdIteration" type="Node2D" parent="."]
+visible = false
+position = Vector2(-20, 4)
+
+[node name="Safe2" parent="ThirdIteration" instance=ExtResource("4_7o0in")]
+position = Vector2(279, -24)
+
+[node name="Iteration_Condition" type="Node" parent="ThirdIteration"]
+script = ExtResource("5_hjeht")
+iter = 3
 
 [node name="ExampleTrigger" type="Area2D" parent="."]
 script = ExtResource("18_m1ota")

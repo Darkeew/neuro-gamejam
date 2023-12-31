@@ -1783,7 +1783,8 @@ offset_bottom = -35.0
 scale = Vector2(1.886, 2)
 texture = ExtResource("3_rhp0x")
 
-[node name="Label" type="Label" parent="StickyNoteContainer/Control"]
+[node name="StickyNoteLabel" type="Label" parent="StickyNoteContainer/Control"]
+unique_name_in_owner = true
 layout_mode = 2
 offset_left = -24.0
 offset_top = -44.0

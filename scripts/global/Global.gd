@@ -16,6 +16,12 @@ var hud: CanvasLayer = preload("res://scenes/interface/hud.tscn").instantiate()
 var current_scene = null
 var current_iteration := 1
 
+#region NUMBERS SCHIZO 
+var numbers_schizo := []
+var sticky_note_code: int
+var safe_code: int 
+#endregion 
+
 var dialog_label : Label
 
 var main_camera : CameraController
@@ -32,6 +38,7 @@ var tweens := {}
 
 func _ready():
 	connect_signals() 
+	generate_codes()
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
@@ -60,6 +67,36 @@ func connect_signals() -> void:
 	change_stage.connect(load_stage)
 	pickup_item.connect(_on_pickup_item)
 	start_next_iteration.connect(_on_start_next_iteration)
+
+func generate_codes() -> void:
+	for num in range(4):
+		var random_digit = randi_range(0, 9)
+		
+		while numbers_schizo.has(random_digit):
+			random_digit = randi_range(0, 9)
+		
+		numbers_schizo.append(random_digit)
+	
+	var digits = [1, 2, 3, 4]
+	var number_order = [] 
+	while len(digits) > 0: 
+		var index = randi_range(0, len(digits)-1)
+		number_order.append(digits[index])
+		digits.remove_at(index)
+	
+	var number_order_str: PackedStringArray
+	number_order_str.resize(4)
+	
+	for i in range(4): 
+		number_order_str[i] = str(number_order[i])
+	sticky_note_code = int("".join(number_order_str))
+	
+	var ordered_numbers: PackedStringArray
+	ordered_numbers.resize(4)
+	
+	for i in range(4):
+		ordered_numbers[number_order[i] - 1] = str(numbers_schizo[i])
+	safe_code = int("".join(ordered_numbers)) 
 
 func next_iter():
 	start_next_iteration.emit()

@@ -28,7 +28,7 @@ func _on_interactible_area_exited(_area):
 	near_player = false
 
 func _on_send_password(password: int) -> void:
-	if password == 1234:
+	if password == Global.safe_code:
 		Global.hide_password_inputs.emit()  
 		EventBus.emit_event("safe_unlocked")
 	else:
