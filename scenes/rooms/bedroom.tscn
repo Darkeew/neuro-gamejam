@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=37 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Script" path="res://scripts/rooms/bedroom.gd" id="1_22h2h"]
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/First_Room-0005.png" id="1_njdfq"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://c7s4fafv650lc" path="res://assets/rooms/bedroom/Book_case_iter_4-0002.png" id="24_4cu11"]
 [ext_resource type="Texture2D" uid="uid://likq7mclter6" path="res://assets/rooms/bedroom/Bed-0001-export.png" id="25_fmeyw"]
 [ext_resource type="Texture2D" uid="uid://qrvv2uweaclk" path="res://assets/rooms/bedroom/Table-0003-export.png" id="26_w330u"]
+[ext_resource type="Script" path="res://scenes/rooms/credits.gd" id="27_jxh5y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33vgn"]
 size = Vector2(1172, 326)
@@ -322,31 +323,34 @@ event_name = "out_of_bed"
 position = Vector2(-105.5, 93)
 shape = SubResource("RectangleShape2D_gvjcf")
 
-[node name="FifthIteration" type="Node2D" parent="."]
+[node name="FifthIteration2" type="Node2D" parent="."]
 
-[node name="FirstRoomIter4-0001" type="Sprite2D" parent="FifthIteration"]
+[node name="FirstRoomIter4-0001" type="Sprite2D" parent="FifthIteration2"]
 z_index = -100
 texture = ExtResource("13_vuyy7")
 
-[node name="BookCaseIter4-0002" type="Sprite2D" parent="FifthIteration"]
+[node name="BookCaseIter4-0002" type="Sprite2D" parent="FifthIteration2"]
 position = Vector2(-294, 27)
 scale = Vector2(2, 2)
 texture = ExtResource("24_4cu11")
 
-[node name="Bed-0001-export" type="Sprite2D" parent="FifthIteration"]
+[node name="Bed-0001-export" type="Sprite2D" parent="FifthIteration2"]
 position = Vector2(-258, 5)
 scale = Vector2(2, 2)
 texture = ExtResource("25_fmeyw")
 
-[node name="Table-0003-export" type="Sprite2D" parent="FifthIteration"]
+[node name="Table-0003-export" type="Sprite2D" parent="FifthIteration2"]
 z_index = -1
 position = Vector2(118, 5)
 scale = Vector2(2, 2)
 texture = ExtResource("26_w330u")
 
-[node name="Iteration_Condition" type="Node" parent="FifthIteration"]
+[node name="Iteration_Condition" type="Node" parent="FifthIteration2"]
 script = ExtResource("5_hjeht")
 iter = 5
+
+[node name="six" type="Node2D" parent="."]
+script = ExtResource("27_jxh5y")
 
 [connection signal="on_transitioned_exited" from="MainMenuCamera/CameraTransitionZone" to="MainMenuCamera/CameraTransitionZone/MainMenuScript" method="_on_camera_transition_zone_on_transitioned_exited"]
 [connection signal="body_entered" from="FourthIteration/SendSignal" to="FourthIteration/SendSignal" method="_on_body_entered"]
