@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://lj41sjie0xdw"]
+[gd_scene load_steps=35 format=3 uid="uid://lj41sjie0xdw"]
 
 [ext_resource type="Script" path="res://scripts/rooms/hallway.gd" id="1_4q25n"]
 [ext_resource type="Texture2D" uid="uid://ml5rio378erl" path="res://assets/rooms/hallway/Hallway-0002.png" id="1_x21f8"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="20_47wue"]
 [ext_resource type="Script" path="res://scripts/rooms/hatch_door.gd" id="20_gqid7"]
 [ext_resource type="Texture2D" uid="uid://c387ncauvh8e0" path="res://assets/rooms/hallway/painting1png.png" id="23_1x6nd"]
+[ext_resource type="Texture2D" uid="uid://31sdsryi300" path="res://assets/rooms/hallway/Hallway_iter_4-0002.png" id="23_4frl0"]
 [ext_resource type="Texture2D" uid="uid://b0w6tf4lag35t" path="res://assets/rooms/hallway/painting2.png" id="24_10sdh"]
 [ext_resource type="Texture2D" uid="uid://osh45p2cw7s" path="res://assets/rooms/hallway/painting4png.png" id="25_y5ac1"]
 
@@ -283,6 +284,11 @@ shape = SubResource("RectangleShape2D_66bvq")
 [node name="Iteration_Condition" type="Node" parent="FifthIteration"]
 script = ExtResource("8_wx13j")
 iter = 5
+
+[node name="HallwayIter4-0002" type="Sprite2D" parent="FifthIteration"]
+z_index = -50
+position = Vector2(-493.084, -93.9686)
+texture = ExtResource("23_4frl0")
 
 [node name="Painting1Png" type="Sprite2D" parent="FifthIteration"]
 position = Vector2(-418.754, -176.205)
