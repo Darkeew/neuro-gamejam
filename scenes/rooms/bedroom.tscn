@@ -270,6 +270,20 @@ event_name = "out_of_bed"
 position = Vector2(-105.5, 93)
 shape = SubResource("RectangleShape2D_gvjcf")
 
+[node name="FOURH" type="Node2D" parent="."]
+
+[node name="Iteration_Condition" type="Node" parent="FOURH"]
+script = ExtResource("5_hjeht")
+iter = 4
+condition = 0
+
+[node name="SendSignal" type="Area2D" parent="FOURH"]
+script = ExtResource("22_ajkxu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FOURH/SendSignal"]
+position = Vector2(-42.5, 92.5)
+shape = SubResource("RectangleShape2D_6ub8m")
+
 [node name="FourthIteration" type="Node2D" parent="."]
 
 [node name="Iteration_Condition" type="Node" parent="FourthIteration"]
@@ -306,13 +320,6 @@ shape = SubResource("RectangleShape2D_gvjcf")
 script = ExtResource("5_hjeht")
 iter = 4
 condition = 0
-
-[node name="SendSignal" type="Area2D" parent="FourthIteration"]
-script = ExtResource("22_ajkxu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FourthIteration/SendSignal"]
-position = Vector2(-42.5, 92.5)
-shape = SubResource("RectangleShape2D_6ub8m")
 
 [node name="EventTrigger4" type="Area2D" parent="."]
 position = Vector2(65, 2)
@@ -353,7 +360,7 @@ iter = 5
 script = ExtResource("27_jxh5y")
 
 [connection signal="on_transitioned_exited" from="MainMenuCamera/CameraTransitionZone" to="MainMenuCamera/CameraTransitionZone/MainMenuScript" method="_on_camera_transition_zone_on_transitioned_exited"]
-[connection signal="body_entered" from="FourthIteration/SendSignal" to="FourthIteration/SendSignal" method="_on_body_entered"]
+[connection signal="body_entered" from="FOURH/SendSignal" to="FOURH/SendSignal" method="_on_body_entered"]
 
 [editable path="RoomTransitionRegion"]
 [editable path="SecondIteration/Pot"]
