@@ -1,19 +1,29 @@
 [
 	{
-		"trigger" : "door_open",
-		"dialog" : [
-			{"text" : "the key is rusty... the door is hard to open","time": 2.5}
+		"trigger": "door_open",
+		"dialog": [
+			{
+				"text": "The key is rusty... the door is hard to open",
+				"time": 2.5
+			}
 		],
-		"condition" : ["iter_check"],
-		"iter" : 2,
-		"time" : 1,
-		"next" : "next_iter"
+		"condition": [
+			"iter_check"
+		],
+		"iter": 2,
+		"time": 1,
+		"sfx": "door_closed",
+		"next": "next_iter"
 	},
 	{
-		"trigger" : "cutscene",
-		"condition" : ["iter_check"],
-		"iter" : 3,
-		"cutscene" : "cutscene2"
+		"trigger": "cutscene",
+		"condition": [
+			"iter_check"
+		],
+		"iter": 3,
+		"cutscene": "cutscene2",
+		"music": "cutscene1",
+		"music_after": "part2theme"
 	},
 	{
 		"trigger": "out_of_bed",

@@ -20,6 +20,7 @@ func _process(_delta) -> void:
 func pickup_item() -> void:
 	var item_container = items_within_range[0] as ItemContainer 
 	Global.pickup_item.emit(item_container.item)
+	SoundManager.play_sound.emit("key_collect")
 	item_container.queue_free()
 
 func _on_area_entered(area):

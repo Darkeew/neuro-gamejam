@@ -25,8 +25,9 @@ func register_event_no_dialog(event_name,args=[]):
 		events[event_name] = [{"args":args}]
 
 func register_condition_solver(condition_name, solver):
-	if condition_solver.has(condition_name):
+	if condition_solver.has(condition_name) and condition_solver != null:
 		print("Condition solver already exists for " + condition_name + ".")
+		condition_solver[condition_name] = solver
 	else:
 		condition_solver[condition_name] = solver
 
@@ -91,9 +92,11 @@ func emit_event(event_name, recursion_safeguard_list=[]):
 						await event["owner"][event["method"]].call(event["args"])
 				if event["args"].has("next") and event["args"]["next"] != null and event["args"]["next"] != "":
 					await emit_event(event["args"]["next"],recursion_safeguard_list)
-				return
+				return true
+		return false
 	else:
 		await emit(event_name)
+	return true
 #endregion
 
 #region emitters
@@ -113,7 +116,6 @@ func check_conditions(event_obj):
 			if not condition_solver.has(condition):
 				print("Condition solver not found for " + condition + ".")
 				return false
-
 			if not condition_solver[condition].call(event_obj):
 				print("Condition " + condition + " failed.")
 				return false

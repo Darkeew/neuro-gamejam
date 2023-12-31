@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://lj41sjie0xdw"]
+[gd_scene load_steps=29 format=3 uid="uid://lj41sjie0xdw"]
 
 [ext_resource type="Script" path="res://scripts/rooms/hallway.gd" id="1_4q25n"]
 [ext_resource type="Texture2D" uid="uid://ml5rio378erl" path="res://assets/rooms/hallway/Hallway-0002.png" id="1_x21f8"]
@@ -19,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://c81chb4ay7wm1" path="res://assets/rooms/hallway/FRAME_painting-0003.png" id="17_0s52s"]
 [ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="17_xguni"]
 [ext_resource type="FontFile" uid="uid://dbj88ntk3mvwa" path="res://assets/interface/GraffitiPaintBrush.ttf" id="18_lgsmo"]
+[ext_resource type="PackedScene" uid="uid://f700okn07mk8" path="res://scenes/doors/hatch_door.tscn" id="19_nwhae"]
+[ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="20_47wue"]
+[ext_resource type="Script" path="res://scripts/rooms/hatch_door.gd" id="20_gqid7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06xgf"]
 size = Vector2(1152, 260)
@@ -45,6 +48,9 @@ Label/constants/shadow_offset_y = 0
 Label/constants/shadow_outline_size = 2
 Label/font_sizes/font_size = 25
 Label/fonts/font = ExtResource("18_lgsmo")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66bvq"]
+size = Vector2(154, 280)
 
 [node name="Hallway" type="Node2D"]
 script = ExtResource("1_4q25n")
@@ -110,6 +116,9 @@ polygon = PackedVector2Array(-968, -102, -968, -43, -1000, -43, -1000, -102)
 [node name="PlayerEnterPos" type="Marker2D" parent="."]
 position = Vector2(-956, 4)
 
+[node name="HallwayExitHatch" type="Marker2D" parent="."]
+position = Vector2(-337, -77)
+
 [node name="Furniture" type="Node2D" parent="."]
 
 [node name="Table-0003" type="Sprite2D" parent="Furniture"]
@@ -165,7 +174,7 @@ scale = Vector2(0.0437317, 0.0466606)
 texture = ExtResource("13_61okk")
 
 [node name="FramePainting-0004" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-401, -176.322)
+position = Vector2(-419, -176.322)
 scale = Vector2(2.79867, 2.63065)
 texture = ExtResource("13_vgug5")
 
@@ -201,7 +210,6 @@ position = Vector2(-388.763, -11.9994)
 shape = SubResource("RectangleShape2D_vwrqk")
 
 [node name="ThirdIteration" type="Node2D" parent="."]
-visible = false
 script = ExtResource("14_5e2oq")
 
 [node name="Iteration_Condition" type="Node" parent="ThirdIteration"]
@@ -225,9 +233,9 @@ theme = SubResource("Theme_1evg0")
 text = "0"
 
 [node name="Num3" type="Label" parent="ThirdIteration"]
-offset_left = -377.0
+offset_left = -394.0
 offset_top = -135.0
-offset_right = -337.0
+offset_right = -354.0
 offset_bottom = -111.0
 theme = SubResource("Theme_1evg0")
 text = "0"
@@ -241,6 +249,23 @@ theme = SubResource("Theme_1evg0")
 text = "0 "
 
 [node name="FourthIteration" type="Node2D" parent="."]
-visible = false
+
+[node name="FithIteration" type="Node2D" parent="."]
+
+[node name="HatchDoor" parent="FithIteration" instance=ExtResource("19_nwhae")]
+script = ExtResource("20_gqid7")
+
+[node name="Iteration_Condition" type="Node" parent="FithIteration"]
+script = ExtResource("8_wx13j")
+iter = 5
+
+[node name="EventTrigger" type="Area2D" parent="FithIteration"]
+position = Vector2(-494, -31)
+script = ExtResource("20_47wue")
+event_name = "next_iter_5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FithIteration/EventTrigger"]
+position = Vector2(-76, -23)
+shape = SubResource("RectangleShape2D_66bvq")
 
 [editable path="RoomTransitionRegion"]

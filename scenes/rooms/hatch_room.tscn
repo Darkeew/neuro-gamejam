@@ -1,0 +1,160 @@
+[gd_scene load_steps=12 format=3 uid="uid://dnmsbxp32eid2"]
+
+[ext_resource type="Texture2D" uid="uid://didldd1tsp3gr" path="res://assets/rooms/iter5_room/hatch_room-0001.png" id="1_kcg7o"]
+[ext_resource type="Texture2D" uid="uid://brsopa23qyqah" path="res://assets/rooms/iter5_room/carpet_over_the_hatch-0001.png" id="2_p4mxj"]
+[ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="3_4ht8m"]
+[ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="4_g4gfn"]
+[ext_resource type="Script" path="res://scripts/rooms/Hatch.gd" id="4_r1r4i"]
+[ext_resource type="Texture2D" uid="uid://ciw6sitwyd48w" path="res://assets/interface/button-9patch.png" id="6_p6fs0"]
+[ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="7_85phw"]
+[ext_resource type="PackedScene" uid="uid://hocsfpblfn07" path="res://scenes/puzzles/interactible.tscn" id="8_qt7jl"]
+
+[sub_resource type="Theme" id="Theme_app15"]
+Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("7_85phw")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghr87"]
+radius = 5.38516
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr57u"]
+size = Vector2(60, 192)
+
+[node name="HatchRoom" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -4096
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2150.0
+offset_top = -1683.0
+offset_right = 1925.0
+offset_bottom = 1813.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HatchRoom-0001" type="Sprite2D" parent="."]
+texture = ExtResource("1_kcg7o")
+offset = Vector2(64, -86)
+
+[node name="CarpetOverTheHatch-0001" type="Sprite2D" parent="."]
+position = Vector2(-53, -52)
+texture = ExtResource("2_p4mxj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+editor_draw_limits = true
+script = ExtResource("3_4ht8m")
+follow_offset = Vector2(0, -35)
+look_ahead_distance = 0.5
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(238, -136)
+script = ExtResource("4_r1r4i")
+
+[node name="PickupLine" type="Control" parent="Node2D2"]
+z_index = 2000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -326.0
+offset_top = 16.0
+offset_right = -326.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Node2D2/PickupLine"]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 26.0
+offset_bottom = 27.0
+texture = ExtResource("6_p6fs0")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Label" type="Label" parent="Node2D2/PickupLine"]
+layout_mode = 1
+offset_left = 13.0
+offset_top = -1.0
+offset_right = 175.0
+offset_bottom = 33.0
+theme = SubResource("Theme_app15")
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 14
+text = "Q    Inspect"
+vertical_alignment = 1
+
+[node name="Interactible" parent="Node2D2" instance=ExtResource("8_qt7jl")]
+
+[node name="CollisionShape2D" parent="Node2D2/Interactible" index="0"]
+position = Vector2(-287, 83)
+shape = SubResource("CircleShape2D_ghr87")
+
+[node name="RoomTransitionRegion" parent="." instance=ExtResource("4_g4gfn")]
+position = Vector2(0, 8)
+scene_path = "res://scenes/rooms/hallway.tscn"
+player_spot = "HallwayExitHatch"
+
+[node name="CollisionPolygon2D" parent="RoomTransitionRegion" index="0"]
+position = Vector2(-454, -61)
+polygon = PackedVector2Array(424, 73, 420, 96, 483, 98, 483, 72)
+
+[node name="HatchStartPos" type="Marker2D" parent="."]
+position = Vector2(-42, -55)
+
+[node name="PlayerStartPos" type="Marker2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-115, -66)
+shape = SubResource("RectangleShape2D_xr57u")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(109, -66)
+shape = SubResource("RectangleShape2D_xr57u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-55, -171)
+shape = SubResource("RectangleShape2D_xr57u")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(5, -171)
+shape = SubResource("RectangleShape2D_xr57u")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(59, 98)
+shape = SubResource("RectangleShape2D_xr57u")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-60, 98)
+shape = SubResource("RectangleShape2D_xr57u")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(65, -171)
+shape = SubResource("RectangleShape2D_xr57u")
+
+[connection signal="area_entered" from="Node2D2/Interactible" to="Node2D2" method="_on_interactible_area_entered"]
+[connection signal="area_exited" from="Node2D2/Interactible" to="Node2D2" method="_on_interactible_area_exited"]
+
+[editable path="Node2D2/Interactible"]
+[editable path="RoomTransitionRegion"]

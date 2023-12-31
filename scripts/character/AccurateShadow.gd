@@ -5,7 +5,6 @@ extends Node
 var dummysprite2d: Sprite2D
 var copy_transform: RemoteTransform2D
 
-@export var disabled := false 
 @export var shadow_offset: Vector2 = Vector2(0, 0)
 @export var shadow_scale_offset: Vector2 = Vector2(1, 1)
 @export var static_shadow: bool = false
@@ -27,12 +26,9 @@ func _ready():
 	Global.shadow_canvas_group.add_child.call_deferred(dummysprite2d)
 	
 
-func _physics_process(_delta):	
-	if disabled:
-		dummysprite2d.visible = false 
-	else:
-		dummysprite2d.visible = true
-	
+func _physics_process(_delta):		
+	dummysprite2d.visible = sprite.visible
+
 	if static_shadow:
 		return
 

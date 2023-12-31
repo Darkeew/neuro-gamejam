@@ -14,5 +14,33 @@
 		"condition" : ["iter_check"],
 		"iter" : 6,
 		"cutscene" : "cutscene5"
+	},{
+		"trigger" : "next_iter_5",
+		"condition" : ["iter_check","doc_check"],
+		"iter" : 5,
+		"next" : "next_iter"
+	},
+	{
+		"trigger" : "inspect_hatch",
+		"dialog" : [
+			{"text" : "There is a hatch beneath this carpet","time": 1},
+			{"text" : "I wonder whats down there...","time": 1}
+		],
+		"time" : 0.3,
+		"flags": ["sequence"],
+		"next" : "enter_hatch"
+	},
+	{
+		"trigger" : "enter_hatch",
+		"time" : 0.3,
+		"scene" : "res://scenes/rooms/basement.tscn"
+	},
+	{
+		"trigger" : "go_out_basement",
+		"dialog" :[
+			{"text" : "I should go back up","time": 1}
+		],
+		"time" : 0.5,
+		"next" : "go_out_basement_scene_change"
 	}
 ]
