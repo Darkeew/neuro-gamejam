@@ -151,7 +151,6 @@ script = ExtResource("10_y18ac")
 script = ExtResource("5_hjeht")
 iter = 1
 condition = 0
-delete_node = true
 
 [node name="Camera_Mimic2" type="Camera2D" parent="."]
 position = Vector2(395, 71)
@@ -213,7 +212,6 @@ visible = false
 script = ExtResource("5_hjeht")
 iter = 5
 condition = 0
-delete_node = true
 
 [node name="SixthIterationPiano" parent="." instance=ExtResource("15_mn7ln")]
 visible = false
@@ -221,7 +219,6 @@ visible = false
 [node name="Iteration_Condition" type="Node" parent="SixthIterationPiano"]
 script = ExtResource("5_hjeht")
 iter = 6
-delete_node = true
 
 [node name="SecondIteration" type="Node2D" parent="."]
 visible = false
@@ -241,11 +238,11 @@ texture = ExtResource("13_7dyyi")
 script = ExtResource("5_hjeht")
 iter = 2
 
-[node name="EventTrigger" type="Area2D" parent="."]
+[node name="ExampleTrigger" type="Area2D" parent="."]
 script = ExtResource("18_m1ota")
 event_name = "key_missing"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EventTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExampleTrigger"]
 position = Vector2(133.75, 88.5)
 shape = SubResource("RectangleShape2D_e2f4o")
 
