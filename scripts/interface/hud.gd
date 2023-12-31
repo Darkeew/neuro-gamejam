@@ -13,7 +13,7 @@ func _ready():
 	password_inputs.modulate.a = 0
 	sticky_note.visible = false
 	sticky_note.modulate.a = 0
-	%StickyNoteLabel.text = "%d" % Global.sticky_note_code
+	%StickyNoteLabel.text = Global.sticky_note_code
 
 	Global.pickup_item.connect(_on_pickup_item)
 	Global.show_password_inputs.connect(_on_show_password_inputs)
@@ -30,7 +30,7 @@ func _on_pickup_item(item: Item) -> void:
 func _on_show_password_inputs() -> void:
 	Global.pause_game.emit()
 	password_inputs.visible = true
-	Global.tween_property(name, password_inputs, "modulate:a", 1, 0.5) 
+	Global.tween_property(name, password_inputs, "modulate:a", 1) 
 
 func _on_hide_password_inputs() -> void:
 	Global.unpause_game.emit()
@@ -39,7 +39,7 @@ func _on_hide_password_inputs() -> void:
 func _on_show_sticky_note() -> void:
 	Global.pause_game.emit()
 	sticky_note.visible = true
-	Global.tween_property(name, sticky_note, "modulate:a", 1, 0.5) 
+	Global.tween_property(name, sticky_note, "modulate:a", 1) 
 	
 func _on_hide_sticky_note() -> void:
 	Global.unpause_game.emit()

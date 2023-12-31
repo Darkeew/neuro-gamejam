@@ -18,8 +18,8 @@ var current_iteration := 1
 
 #region NUMBERS SCHIZO 
 var numbers_schizo := []
-var sticky_note_code: int
-var safe_code: int 
+var sticky_note_code: String
+var safe_code: String
 #endregion 
 
 var dialog_label : Label
@@ -100,14 +100,17 @@ func generate_codes() -> void:
 	
 	for i in range(4): 
 		number_order_str[i] = str(number_order[i])
-	sticky_note_code = int("".join(number_order_str))
+	sticky_note_code = "".join(number_order_str)
 	
 	var ordered_numbers: PackedStringArray = []
 	ordered_numbers.resize(4)
 	
 	for i in range(4):
 		ordered_numbers[number_order[i] - 1] = str(numbers_schizo[i])
-	safe_code = int("".join(ordered_numbers)) 
+	safe_code = "".join(ordered_numbers)
+
+	print_debug("Safe code is ", safe_code)
+	print_debug("Sticky note code is ", sticky_note_code)
 
 func next_iter():
 	start_next_iteration.emit()

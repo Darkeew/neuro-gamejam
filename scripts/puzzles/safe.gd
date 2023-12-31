@@ -28,7 +28,7 @@ func _on_interactible_area_exited(_area):
 	Global.tween_property(name, pickup_line, "modulate:a", 0)
 	near_player = false
 
-func _on_send_password(password: int) -> void:
+func _on_send_password(password: String) -> void:
 	if password == Global.safe_code:
 		Global.hide_password_inputs.emit()  
 		EventBus.emit_event("safe_unlocked")

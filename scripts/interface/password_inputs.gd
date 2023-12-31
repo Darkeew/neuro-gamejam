@@ -53,7 +53,7 @@ func _submit_password() -> void:
 	var password := "%s%s%s%s" % [%Digit1.text, %Digit2.text, %Digit3.text, %Digit4.text]
 	
 	clear_digits()
-	Global.send_password.emit(password as int)
+	Global.send_password.emit(password)
 
 func clear_digits() -> void:
 	for digit in [%Digit1, %Digit2, %Digit3, %Digit4]:
