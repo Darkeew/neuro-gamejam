@@ -46,7 +46,6 @@ func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
 
-
 	EventBus.register_listener("next_iter",next_iter)
 	EventBus.register_condition_solver("iter_check", iter_check)
 
@@ -59,15 +58,22 @@ func _ready():
 
 	shadow_canvas_group = preload("res://scripts/global/ShadowGroup.tscn").instantiate()
 	current_scene.add_child(shadow_canvas_group)
-	SoundManager.change_stage.emit(current_scene.name)
 
 	setup_hud() 
-	setup_main_menu()
+
+	if current_iteration == 1:
+		setup_main_menu()
+	else:
+		game_unpaused.emit()
 
 func connect_signals() -> void:
 	change_stage.connect(load_stage)
 	pickup_item.connect(_on_pickup_item)
 	start_next_iteration.connect(_on_start_next_iteration)
+	game_unpaused.connect(_on_game_unpaused)
+
+func _on_game_unpaused() -> void:
+	game_paused = false
 
 func generate_codes() -> void:
 	for num in range(4):
@@ -85,14 +91,14 @@ func generate_codes() -> void:
 		number_order.append(digits[index])
 		digits.remove_at(index)
 	
-	var number_order_str: PackedStringArray
+	var number_order_str: PackedStringArray = []
 	number_order_str.resize(4)
 	
 	for i in range(4): 
 		number_order_str[i] = str(number_order[i])
 	sticky_note_code = int("".join(number_order_str))
 	
-	var ordered_numbers: PackedStringArray
+	var ordered_numbers: PackedStringArray = []
 	ordered_numbers.resize(4)
 	
 	for i in range(4):
@@ -118,7 +124,7 @@ func load_stage(stage_scene : PackedScene, player_pos := "PlayerEnterPos"):
 	var stage = stage_scene.instantiate()
 	current_scene = stage
 
-	SoundManager.change_stage.emit(stage.name)
+	SoundManager.change_footsteps.emit(stage.name)
 	tween_property(
 		hud.name, hud.smooth_transition, "self_modulate:a", 1,  0.5, 
 		func(): load_next_stage(stage, old_scene, player_pos)
@@ -133,6 +139,8 @@ func load_next_stage(stage: Node2D, old_scene: Node2D, player_pos := "PlayerEnte
 	setup_player(player_pos)	
 	
 	old_scene.queue_free()
+
+	SoundManager.change_footsteps.emit(stage.name)
 	
 	# get_tree().root.call_deferred("move_child", main_menu, -1) 
 	get_tree().root.call_deferred("move_child", hud, -2)
@@ -158,10 +166,6 @@ func setup_main_menu():
 func setup_hud():
 	get_tree().root.call_deferred("add_child", hud)
 
-func hide_menu():
-	get_node("/root/MainMenu").queue_free()
-	game_unpaused.emit()
-
 func tween_property(id: String, node: Node, prop: String, value: float, time := 1.0, callback = null) -> void:
 	var tween_name := "%s_%s_%s" % [id, node.name, prop]
 	if tweens.has(tween_name):
@@ -172,7 +176,6 @@ func tween_property(id: String, node: Node, prop: String, value: float, time := 
 
 	if callback is Callable:
 		tweens[tween_name].tween_callback(callback)
-
 
 func show_dialog(event):
 	if dialog_label == null:

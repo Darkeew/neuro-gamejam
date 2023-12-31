@@ -12,6 +12,7 @@ signal play_footstep_sound
 signal stop_music
 signal play_sound(sound_name: String)
 signal change_music(track_name: String)
+signal change_footsteps(bank_name: String)
 
 var music_bus := AudioServer.get_bus_index("Music")
 var sfx_bus := AudioServer.get_bus_index("SFX")
@@ -41,14 +42,17 @@ func _ready() -> void:
 	_init_players()
 
 func _connect_signals() -> void:
+	change_music.connect(_on_change_music)
+	change_footsteps.connect(_on_change_footsteps)
+	
 	play_footstep_sound.connect(_on_play_footstep_sound)
 	play_sound.connect(_on_play_sound)
-	change_music.connect(_on_change_music)
+	
 	stop_music.connect(_on_stop_music)
 
 func _init_players() -> void:
-	_load_music_file("part2theme")
-	change_footsteps_soundbank("Bedroom")
+	change_music.emit("part2theme")
+	change_footsteps.emit("Bedroom")
 	
 func _on_stop_music() -> void:
 	_tween_volume(-80.0)
@@ -63,7 +67,7 @@ func _on_change_music(track_name: String) -> void:
 
 	_tween_volume(INIT_VOLUME, callback)
 
-func change_footsteps_soundbank(bank_name: String) -> void:
+func _on_change_footsteps(bank_name: String) -> void:
 	if footsteps.has(bank_name):
 		footsteps_player.stream = footsteps[bank_name]
 	else:
