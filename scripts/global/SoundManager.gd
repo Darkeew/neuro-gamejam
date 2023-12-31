@@ -78,6 +78,7 @@ func _on_change_footsteps(bank_name: String) -> void:
 	if footsteps.has(bank_name):
 		footsteps_player.stream = footsteps[bank_name]
 	else:
+		footsteps_player.stream = footsteps["Bedroom"]
 		printerr("Footsteps sound bank %s was not found" % bank_name)
 
 func _on_play_sound(sound_name: String) -> void:
