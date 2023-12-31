@@ -118,6 +118,7 @@ script = ExtResource("8_wx13j")
 iter = 5
 
 [node name="Main_Door" parent="Furniture" instance=ExtResource("6_hfx86")]
+position = Vector2(-13, -25)
 
 [node name="FirstKey" parent="." instance=ExtResource("3_iok3i")]
 z_index = 3
