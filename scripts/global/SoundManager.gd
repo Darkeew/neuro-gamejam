@@ -65,7 +65,10 @@ func _on_change_music(track_name: String) -> void:
 	var callback := func():
 		_load_music_file(track_name)
 
-	_tween_volume(INIT_VOLUME, callback)
+	if music_player.is_playing():
+		_tween_volume(INIT_VOLUME, callback)
+	else:
+		callback.call()
 
 func _on_change_footsteps(bank_name: String) -> void:
 	if footsteps.has(bank_name):
