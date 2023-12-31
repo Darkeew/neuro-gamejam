@@ -121,9 +121,9 @@ offset_bottom = 1417.0
 
 [node name="TitleDrop" type="Label" parent="."]
 offset_left = 752.0
-offset_top = 40.0
+offset_top = 48.0
 offset_right = 1094.0
-offset_bottom = 129.0
+offset_bottom = 137.0
 theme = SubResource("Theme_f7x37")
 theme_override_font_sizes/font_size = 64
 text = "Lost Her Mind"
@@ -135,9 +135,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 808.0
-offset_top = 128.0
+offset_top = 176.0
 offset_right = -344.0
-offset_bottom = -520.0
+offset_bottom = -472.0
 grow_horizontal = 2
 grow_vertical = 2
 
