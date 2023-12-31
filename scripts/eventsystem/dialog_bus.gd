@@ -34,4 +34,4 @@ func register_dialog(dialog_field):
 				EventBus.register_event_no_dialog(i.trigger, i)
 			else:
 				EventBus.register_event(i.trigger, dialog_field, "show_dialog", i)
-	EventBus.print_events()
+	#EventBus.print_events()

@@ -11,10 +11,10 @@ var last_dialog = ""
 
 func show_dialog(event):
 	var d = event.dialog.pick_random()
-	print(event)
+	#print(event)
 	while d.text == last_dialog and event.dialog.size() > 1:
 		d = event.dialog.pick_random()
-		
+
 	text = d.text
 	Global.game_paused = true
 	await get_tree().create_timer(d.time).timeout

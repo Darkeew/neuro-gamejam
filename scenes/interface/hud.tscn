@@ -665,6 +665,7 @@ offset_bottom = 636.0
 texture = ExtResource("8_d1a3u")
 
 [node name="TextureRect2" type="TextureRect" parent="Cutscene/CutScene1"]
+layout_mode = 0
 offset_left = 102.0
 offset_top = 7.0
 offset_right = 1051.0
@@ -672,6 +673,7 @@ offset_bottom = 636.0
 texture = ExtResource("9_cuo0w")
 
 [node name="TextureRect3" type="TextureRect" parent="Cutscene/CutScene1"]
+layout_mode = 0
 offset_left = 102.0
 offset_top = 7.0
 offset_right = 1051.0
@@ -679,6 +681,7 @@ offset_bottom = 636.0
 texture = ExtResource("10_1r5nb")
 
 [node name="TextureRect4" type="TextureRect" parent="Cutscene/CutScene1"]
+layout_mode = 0
 offset_left = 102.0
 offset_top = 7.0
 offset_right = 1051.0

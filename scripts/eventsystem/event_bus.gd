@@ -65,25 +65,25 @@ func emit_event(event_name, recursion_safeguard_list=[]):
 	recursion_safeguard_list.append(event_name)
 	if events.has(event_name):
 		for event in events[event_name]:
-			print("Emitting event " + event_name + " with args " + str(event["args"]) + ".")
+			#print("Emitting event " + event_name + " with args " + str(event["args"]) + ".")
 			if not event.has("args"):
 				await _emit_event_noargs(event,event_name)
-				print("Event " + event_name + " emitted. with no args")
+				#print("Event " + event_name + " emitted. with no args")
 				continue
 			if check_conditions(event["args"]):
 				if listeners.has(event_name):
 					for listener in listeners[event_name]:
 						if not event.has("method"):
 							await listener.call(event["args"])
-							print("Event " + event_name + " emitted. with no method")
+							#print("Event " + event_name + " emitted. with no method")
 							continue
 						if listener is Callable:
 							await listener.call(event["args"])
-							print("Event " + event_name + " emitted. with callable")
+							#print("Event " + event_name + " emitted. with callable")
 							continue
 						if listener.has_method(event["method"]):
 							await listener[event["method"]].call(event["args"])
-							print("Event " + event_name + " emitted. with method")
+							#print("Event " + event_name + " emitted. with method")
 						else:
 							print("Method " + event["method"] + " not found in " + str(listener) + ".")
 				else:
