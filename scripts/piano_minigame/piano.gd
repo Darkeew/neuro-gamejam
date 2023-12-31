@@ -15,9 +15,14 @@ var notes_correct := 0
 var piano_prev
 
 func _init() -> void:
+	self.modulate.a = 0
+
 	for i in range(1, POSSIBLE_NOTES + 1):
 		note_inputs.append("Note%s" % i)
 		note_files.append(load(NOTE_FILE_NAME % i))
+
+func _ready():
+	Global.tween_property(self.name, self, "modulate:a", 1)
 
 func _process(_delta):
 	for key in note_inputs:

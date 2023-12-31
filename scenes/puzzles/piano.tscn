@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://brcnyejxi7bde"]
+[gd_scene load_steps=34 format=3 uid="uid://brcnyejxi7bde"]
 
 [ext_resource type="Script" path="res://scripts/piano_minigame/piano.gd" id="1_ou2cu"]
 [ext_resource type="Script" path="res://scripts/piano_minigame/KeyHighlight.gd" id="2_crppi"]
@@ -104,6 +104,12 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0k36d"]
 gradient = SubResource("Gradient_u4re2")
+
+[sub_resource type="Gradient" id="Gradient_epcvj"]
+colors = PackedColorArray(0.14902, 0.196078, 0.219608, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jl8hh"]
+gradient = SubResource("Gradient_epcvj")
 
 [node name="Piano" type="Node2D"]
 z_index = 175
@@ -320,3 +326,11 @@ text = "7
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -6
+offset_left = -328.0
+offset_top = -400.0
+offset_right = 944.0
+offset_bottom = 1208.0
+texture = SubResource("GradientTexture1D_jl8hh")
