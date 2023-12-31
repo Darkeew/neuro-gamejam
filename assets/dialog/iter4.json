@@ -15,29 +15,48 @@
 		"next": "next_iter"
 	},
 	{
-		"trigger" : "cutscene",
-		"condition" : ["iter_check"],
-		"iter" : 5,
-		"cutscene" : "cutscene4"
+		"trigger": "cutscene",
+		"condition": [
+			"iter_check"
+		],
+		"iter": 5,
+		"cutscene": "cutscene4",
+		"music": "cutscene1",
+		"music_after": "part2theme"
 	},
 	{
 		"trigger": "read_found_note",
 		"dialog": [
-			{"text": "I should read the note I found in the safe", "time": 2.0}
+			{
+				"text": "I should read the note I found in the safe",
+				"time": 2.0
+			}
 		],
 		"time": 2.5,
 		"flags": [
 			"unpaused"
 		]
-	},{
-		"trigger" : "whos_fault",
-		"dialog" : [
-			{"text" : "", "time" : 1.0},
-			{"text" : "...", "time" : 1.0},
-			{"text" : "what fault? and who?", "time" : 1.3}
+	},
+	{
+		"trigger": "whos_fault",
+		"dialog": [
+			{
+				"text": "",
+				"time": 1.0
+			},
+			{
+				"text": "...",
+				"time": 1.0
+			},
+			{
+				"text": "what fault? and who?",
+				"time": 1.3
+			}
 		],
-		"flags" : ["sequence"],
-		"time" : 1.3,
-		"next" :"next_iter"
+		"flags": [
+			"sequence"
+		],
+		"time": 1.3,
+		"next": "next_iter"
 	}
 ]

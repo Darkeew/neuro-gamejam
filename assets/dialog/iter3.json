@@ -42,19 +42,21 @@
 		"trigger": "out_of_bed",
 		"dialog": [
 			{
-				"text": "Yesterday when i got home, there was a safe on my parents room..",
-				"time": 2.5
+				"text": "Yesterday when I got home, there was a safe on my parents room..",
+				"time": 3.0
 			},
 			{
 				"text": "I took it to my room, i should check it out today.",
-				"time": 1.7
+				"time": 2.5
 			}
 		],
 		"flags": [
 			"sequence",
 			"unpaused"
 		],
-		"condition" : ["iter_check"],
-		"iter" : 3,
+		"condition": [
+			"iter_check"
+		],
+		"iter": 3
 	}
 ]

@@ -46,9 +46,13 @@
 	{
 		"trigger": "wrong_key",
 		"dialog": [
-			{"text": "This key only works for the main door", "time": 1.5}
+			{
+				"text": "This key only works for the main door",
+				"time": 1.5
+			}
 		],
 		"time": 2,
+		"sfx": "door_closed",
 		"flags": [
 			"unpaused"
 		]
@@ -56,7 +60,10 @@
 	{
 		"trigger": "not_outside",
 		"dialog": [
-			{"text": "I don't want to go outside", "time": 1.5}
+			{
+				"text": "I don't want to go outside",
+				"time": 1.5
+			}
 		],
 		"time": 2,
 		"flags": [
@@ -73,7 +80,7 @@
 			{
 				"text": "The driver is waiting for me...",
 				"time": 1.7
-			}, 
+			},
 			{
 				"text": "Why do they make us have classes so early in the morning?",
 				"time": 3.0
@@ -83,13 +90,18 @@
 			"sequence",
 			"unpaused"
 		],
-		"condition" : ["iter_check"],
-		"iter" : 1,
+		"condition": [
+			"iter_check"
+		],
+		"iter": 1
 	},
 	{
 		"trigger": "already_been",
 		"dialog": [
-			{"text": "I've already explored this room", "time": 1.5}
+			{
+				"text": "I've already explored this room",
+				"time": 1.5
+			}
 		],
 		"time": 2,
 		"flags": [

@@ -35,7 +35,7 @@
 			{
 				"text": "What am i even learning at school?",
 				"time": 1.7
-			}, 
+			},
 			{
 				"text": "Im probably gonna skip school tomorrow... I should get going.",
 				"time": 3.0
@@ -45,27 +45,31 @@
 			"sequence",
 			"unpaused"
 		],
-		"condition" : ["iter_check"],
-		"iter" : 2,
+		"condition": [
+			"iter_check"
+		],
+		"iter": 2
 	},
 	{
 		"trigger": "paintings",
 		"dialog": [
 			{
 				"text": "Paintings...? I didnt see these before...",
-				"time": 1.5
+				"time": 2.0
 			},
 			{
 				"text": "Whatever, im probably imagining things.",
-				"time": 1.5
+				"time": 2.0
 			}
 		],
 		"flags": [
 			"sequence",
 			"unpaused"
 		],
-		"condition" : ["iter_check"],
-		"iter" : 2,
+		"condition": [
+			"iter_check"
+		],
+		"iter": 2
 	},
 	{
 		"trigger": "hurry_up",
@@ -83,7 +87,9 @@
 			"sequence",
 			"unpaused"
 		],
-		"condition" : ["iter_check"],
-		"iter" : 2,
+		"condition": [
+			"iter_check"
+		],
+		"iter": 2
 	}
 ]

@@ -54,6 +54,7 @@ func _on_hide_sticky_note() -> void:
 func _on_show_hidden_note() -> void:
 	Global.pause_game.emit()
 	hidden_note.visible = true
+	SoundManager.play_sound.emit("paper_pickup")
 	Global.tween_property(name, hidden_note, "modulate:a", 1) 
 	
 func _on_hide_hidden_note() -> void:
