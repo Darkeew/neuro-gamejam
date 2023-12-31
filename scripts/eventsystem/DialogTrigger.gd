@@ -21,9 +21,10 @@ func _ready():
 
 func on_body_entered(body):
 	if body is Player:
-		EventBus.emit_event(event_name)
-		used_triggers.append({"name" :name,"scene": Global.current_scene.name, "event_name" : event_name})
-		queue_free()
+		var worked = await EventBus.emit_event(event_name)
+		if worked:
+			used_triggers.append({"name" :name,"scene": Global.current_scene.name, "event_name" : event_name})
+			queue_free()
 
 
 

@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://f700okn07mk8"]
+
+[ext_resource type="Script" path="res://scripts/doors/first_door.gd" id="1_i57yd"]
+[ext_resource type="PackedScene" uid="uid://hocsfpblfn07" path="res://scenes/puzzles/interactible.tscn" id="2_nwl43"]
+[ext_resource type="Texture2D" uid="uid://3ffavkpfj5i8" path="res://assets/puzzles/Door-0001.png" id="3_cjg55"]
+[ext_resource type="Texture2D" uid="uid://ciw6sitwyd48w" path="res://assets/interface/button-9patch.png" id="4_ydm8g"]
+[ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="5_phd28"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmcrg"]
+radius = 13.0
+
+[sub_resource type="Theme" id="Theme_aaf2y"]
+Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("5_phd28")
+
+[node name="HatchDoor" type="Node2D"]
+position = Vector2(-337, -136.137)
+script = ExtResource("1_i57yd")
+
+[node name="Interactible" parent="." instance=ExtResource("2_nwl43")]
+
+[node name="CollisionShape2D" parent="Interactible" index="0"]
+shape = SubResource("CircleShape2D_gmcrg")
+
+[node name="ClosedSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_cjg55")
+
+[node name="PickupLine" type="Control" parent="."]
+z_index = 2000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -28.0
+offset_right = 8.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PickupLine"]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 26.0
+offset_bottom = 27.0
+texture = ExtResource("4_ydm8g")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Label" type="Label" parent="PickupLine"]
+layout_mode = 1
+offset_left = 13.0
+offset_top = -1.0
+offset_right = 175.0
+offset_bottom = 33.0
+theme = SubResource("Theme_aaf2y")
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 12
+text = "Q    Open the door"
+vertical_alignment = 1
+
+[connection signal="area_entered" from="Interactible" to="." method="_on_interactible_area_entered"]
+[connection signal="area_exited" from="Interactible" to="." method="_on_interactible_area_exited"]
+
+[editable path="Interactible"]

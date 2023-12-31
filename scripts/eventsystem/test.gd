@@ -22,7 +22,7 @@ func show_dialog(event):
 		SoundManager.change_music.emit(event.music)
 
 	if flags.has("sequence"):
-		sequence_play(event)
+		await sequence_play(event)
 		return
 
 	d = event.dialog.pick_random()

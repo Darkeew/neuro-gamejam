@@ -1,0 +1,488 @@
+[gd_scene load_steps=29 format=3 uid="uid://djjsutu4bhka3"]
+
+[ext_resource type="Texture2D" uid="uid://b2tg7oifksed0" path="res://assets/rooms/iter5_room/basenwnt_-0003.png" id="1_66ubx"]
+[ext_resource type="Texture2D" uid="uid://6c4yqb8ms55j" path="res://assets/rooms/iter5_room/ladder-0001.png" id="2_3mrx2"]
+[ext_resource type="Texture2D" uid="uid://ns6ca21usxip" path="res://assets/rooms/iter5_room/wood_-0001.png" id="3_ghpo0"]
+[ext_resource type="Texture2D" uid="uid://bsc0gbcku2ft1" path="res://assets/rooms/iter5_room/random_box_in_basement-0001.png" id="4_wp6w3"]
+[ext_resource type="Texture2D" uid="uid://d0mbg3u2nnujw" path="res://assets/rooms/iter5_room/basement_table-0001.png" id="5_s4ncb"]
+[ext_resource type="Texture2D" uid="uid://mlfdlny51hg4" path="res://assets/rooms/iter5_room/documents_-0001.png" id="6_bvjex"]
+[ext_resource type="Texture2D" uid="uid://c5c8t0j53xir8" path="res://assets/rooms/iter5_room/box_on_top_of_the_basement_table-00.png" id="7_m85r3"]
+[ext_resource type="Texture2D" uid="uid://c4j00sj2s6hoy" path="res://assets/rooms/iter5_room/documents_torn_-0001.png" id="8_35s1i"]
+[ext_resource type="Texture2D" uid="uid://4pvxapaw13nw" path="res://assets/rooms/iter5_room/switch-0001.png" id="8_852i2"]
+[ext_resource type="Script" path="res://scenes/rooms/darkscene.gd" id="8_epb01"]
+[ext_resource type="Texture2D" uid="uid://bmqktj2v2ctab" path="res://assets/rooms/iter5_room/switch-0002.png" id="9_57rjg"]
+[ext_resource type="Script" path="res://scripts/items/item.gd" id="9_ybfok"]
+[ext_resource type="PackedScene" uid="uid://hocsfpblfn07" path="res://scenes/puzzles/interactible.tscn" id="11_x8oto"]
+[ext_resource type="Texture2D" uid="uid://ciw6sitwyd48w" path="res://assets/interface/button-9patch.png" id="12_geond"]
+[ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="13_bxcwe"]
+[ext_resource type="Script" path="res://scripts/rooms/out_ladder.gd" id="13_yk503"]
+[ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="14_1ei68"]
+[ext_resource type="Script" path="res://scripts/rooms/pickup_documents.gd" id="14_iykdj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvkju"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trdhw"]
+size = Vector2(24, 123)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjaiw"]
+size = Vector2(118, 293)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egeoa"]
+size = Vector2(649, 293)
+
+[sub_resource type="Resource" id="Resource_64g11"]
+script = ExtResource("9_ybfok")
+tag = "doc"
+texture = ExtResource("6_bvjex")
+
+[sub_resource type="Theme" id="Theme_0rgxj"]
+Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("13_bxcwe")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0okn"]
+radius = 21.0238
+
+[sub_resource type="Gradient" id="Gradient_rsejq"]
+offsets = PackedFloat32Array(0, 0.146479)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_amlol"]
+gradient = SubResource("Gradient_rsejq")
+fill = 1
+fill_from = Vector2(0.508547, 0.495726)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d2ias"]
+radius = 9.48683
+
+[node name="Basement" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -4096
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2150.0
+offset_top = -1683.0
+offset_right = 1925.0
+offset_bottom = 1813.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Basenwnt-0003" type="Sprite2D" parent="."]
+texture = ExtResource("1_66ubx")
+
+[node name="RandomBoxInBasement-0018" type="Sprite2D" parent="."]
+position = Vector2(286, 41)
+texture = ExtResource("4_wp6w3")
+
+[node name="Ladder-0001" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(279, 43)
+texture = ExtResource("2_3mrx2")
+
+[node name="Wood-0001" type="Sprite2D" parent="."]
+position = Vector2(277, 167)
+texture = ExtResource("3_ghpo0")
+
+[node name="RandomBoxInBasement-0001" type="Sprite2D" parent="."]
+z_index = 1000
+position = Vector2(177, 151)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0003" type="Sprite2D" parent="."]
+z_index = 920
+position = Vector2(113, 151)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0004" type="Sprite2D" parent="."]
+position = Vector2(134, 32)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0005" type="Sprite2D" parent="."]
+position = Vector2(43, 34)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0006" type="Sprite2D" parent="."]
+position = Vector2(52, 17)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0009" type="Sprite2D" parent="."]
+position = Vector2(-33, 34)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0010" type="Sprite2D" parent="."]
+z_index = 1500
+position = Vector2(-93, 145)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0011" type="Sprite2D" parent="."]
+position = Vector2(-82, 43)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0012" type="Sprite2D" parent="."]
+position = Vector2(-56, 17)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0013" type="Sprite2D" parent="."]
+position = Vector2(-148, 42)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0014" type="Sprite2D" parent="."]
+position = Vector2(-223, 41)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0015" type="Sprite2D" parent="."]
+z_index = 1500
+position = Vector2(-235, 145)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0016" type="Sprite2D" parent="."]
+z_index = 1500
+position = Vector2(-175, 146)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0017" type="Sprite2D" parent="."]
+z_index = 1500
+position = Vector2(-207, 125)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0007" type="Sprite2D" parent="."]
+position = Vector2(183, 32)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0008" type="Sprite2D" parent="."]
+position = Vector2(150, 16)
+texture = ExtResource("4_wp6w3")
+
+[node name="RandomBoxInBasement-0002" type="Sprite2D" parent="."]
+z_index = 1100
+position = Vector2(177, 132)
+texture = ExtResource("4_wp6w3")
+
+[node name="BasementTable-0001" type="Sprite2D" parent="."]
+position = Vector2(-291, 95)
+texture = ExtResource("5_s4ncb")
+
+[node name="BoxOnTopOfTheBasementTable-00" type="Sprite2D" parent="."]
+position = Vector2(-287, 119)
+texture = ExtResource("7_m85r3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-82, 43)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-33, 34)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(43, 33)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(52, 17)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(134, 32)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(183, 32)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(286, 41)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(286, 67)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(150, 16)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(177, 163)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(113, 165)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-93, 160)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-175, 156)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-234, 154)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-206, 156)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-148, 42)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-223, 41)
+shape = SubResource("RectangleShape2D_gvkju")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-287, 92.5)
+shape = SubResource("RectangleShape2D_trdhw")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-366, 40.5)
+shape = SubResource("RectangleShape2D_qjaiw")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-4.5, 323)
+shape = SubResource("RectangleShape2D_egeoa")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, -126)
+shape = SubResource("RectangleShape2D_egeoa")
+
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(635, 60)
+shape = SubResource("RectangleShape2D_egeoa")
+
+[node name="Wood-0002" type="Sprite2D" parent="."]
+position = Vector2(80, 43)
+texture = ExtResource("3_ghpo0")
+
+[node name="Wood-0003" type="Sprite2D" parent="."]
+position = Vector2(77, 39)
+texture = ExtResource("3_ghpo0")
+
+[node name="PlayerLadderSpot" type="Marker2D" parent="."]
+position = Vector2(222, 76)
+
+[node name="Node2D2" type="Node2D" parent="." node_paths=PackedStringArray("document")]
+script = ExtResource("14_iykdj")
+document = NodePath("Documents-0001")
+newtexture = ExtResource("8_35s1i")
+item = SubResource("Resource_64g11")
+
+[node name="Documents-0001" type="Sprite2D" parent="Node2D2"]
+position = Vector2(-289, 82)
+texture = ExtResource("6_bvjex")
+
+[node name="PickupLine" type="Control" parent="Node2D2"]
+z_index = 2000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -314.0
+offset_top = 97.0
+offset_right = -314.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Node2D2/PickupLine"]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 26.0
+offset_bottom = 27.0
+texture = ExtResource("12_geond")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Label" type="Label" parent="Node2D2/PickupLine"]
+layout_mode = 1
+offset_left = 13.0
+offset_top = -1.0
+offset_right = 175.0
+offset_bottom = 33.0
+theme = SubResource("Theme_0rgxj")
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 14
+text = "Q    Pickup"
+vertical_alignment = 1
+
+[node name="Interactible" parent="Node2D2" instance=ExtResource("11_x8oto")]
+
+[node name="CollisionShape2D" parent="Node2D2/Interactible" index="0"]
+position = Vector2(-287, 83)
+shape = SubResource("CircleShape2D_s0okn")
+
+[node name="Node2D3" type="Node2D" parent="."]
+script = ExtResource("13_yk503")
+
+[node name="PickupLine" type="Control" parent="Node2D3"]
+z_index = 2000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 246.0
+offset_top = 33.0
+offset_right = 246.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Node2D3/PickupLine"]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 26.0
+offset_bottom = 27.0
+texture = ExtResource("12_geond")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Label" type="Label" parent="Node2D3/PickupLine"]
+layout_mode = 1
+offset_left = 13.0
+offset_top = -1.0
+offset_right = 175.0
+offset_bottom = 33.0
+theme = SubResource("Theme_0rgxj")
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 14
+text = "Q    Go"
+vertical_alignment = 1
+
+[node name="Interactible" parent="Node2D3" instance=ExtResource("11_x8oto")]
+
+[node name="CollisionShape2D" parent="Node2D3/Interactible" index="0"]
+position = Vector2(263, 85)
+shape = SubResource("CircleShape2D_s0okn")
+
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("darkscreen", "switch_off", "switch_on")]
+script = ExtResource("8_epb01")
+darkscreen = NodePath("TextureRect")
+switch_off = NodePath("Switch-0001")
+switch_on = NodePath("Switch-0002")
+
+[node name="Switch-0001" type="Sprite2D" parent="Node2D"]
+position = Vector2(219, -11)
+texture = ExtResource("8_852i2")
+
+[node name="Switch-0002" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(219, -11)
+texture = ExtResource("9_57rjg")
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+z_index = 1998
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.0
+offset_top = -399.0
+offset_right = 680.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_amlol")
+
+[node name="Interactible" parent="Node2D" instance=ExtResource("11_x8oto")]
+
+[node name="CollisionShape2D" parent="Node2D/Interactible" index="0"]
+position = Vector2(219, -29)
+shape = SubResource("CircleShape2D_d2ias")
+
+[node name="PickupLine" type="Control" parent="Node2D"]
+visible = false
+z_index = 2000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 219.0
+offset_top = -28.0
+offset_right = 219.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Node2D/PickupLine"]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 26.0
+offset_bottom = 27.0
+texture = ExtResource("12_geond")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Label" type="Label" parent="Node2D/PickupLine"]
+layout_mode = 1
+offset_left = 13.0
+offset_top = -1.0
+offset_right = 175.0
+offset_bottom = 33.0
+theme = SubResource("Theme_0rgxj")
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 12
+text = "Q    Switch"
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+editor_draw_limits = true
+script = ExtResource("14_1ei68")
+follow_offset = Vector2(0, -35)
+look_ahead_distance = 0.5
+
+[connection signal="area_entered" from="Node2D2/Interactible" to="Node2D2" method="_on_interactible_area_entered"]
+[connection signal="area_exited" from="Node2D2/Interactible" to="Node2D2" method="_on_interactible_area_exited"]
+[connection signal="area_entered" from="Node2D3/Interactible" to="Node2D3" method="_on_interactible_area_entered"]
+[connection signal="area_exited" from="Node2D3/Interactible" to="Node2D3" method="_on_interactible_area_exited"]
+[connection signal="area_entered" from="Node2D/Interactible" to="Node2D" method="_on_interactible_area_entered"]
+[connection signal="area_exited" from="Node2D/Interactible" to="Node2D" method="_on_interactible_area_exited"]
+
+[editable path="Node2D2/Interactible"]
+[editable path="Node2D3/Interactible"]
+[editable path="Node2D/Interactible"]

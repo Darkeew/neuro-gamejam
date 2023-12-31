@@ -548,6 +548,7 @@ region_rect = Rect2(0, 0, 724, 48)
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 visible = false
+y_sort_enabled = true
 position = Vector2(0, -39)
 scale = Vector2(2, 2)
 texture = ExtResource("2_yldae")
