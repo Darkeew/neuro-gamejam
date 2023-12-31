@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=35 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Script" path="res://scripts/rooms/bedroom.gd" id="1_22h2h"]
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/First_Room-0005.png" id="1_njdfq"]
@@ -23,6 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://cw2ngo5whn3af" path="res://assets/rooms/bedroom/Mirror_iter_4-0001.png" id="19_ajarl"]
 [ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="21_hil8s"]
 [ext_resource type="Script" path="res://scripts/rooms/send_signal.gd" id="22_ajkxu"]
+[ext_resource type="Texture2D" uid="uid://c7s4fafv650lc" path="res://assets/rooms/bedroom/Book_case_iter_4-0002.png" id="24_4cu11"]
+[ext_resource type="Texture2D" uid="uid://likq7mclter6" path="res://assets/rooms/bedroom/Bed-0001-export.png" id="25_fmeyw"]
+[ext_resource type="Texture2D" uid="uid://qrvv2uweaclk" path="res://assets/rooms/bedroom/Table-0003-export.png" id="26_w330u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33vgn"]
 size = Vector2(1172, 326)
@@ -215,6 +218,7 @@ shape = SubResource("RectangleShape2D_ysu7m")
 disabled = true
 
 [node name="Table-0003" type="Sprite2D" parent="SecondIteration"]
+z_index = -1
 position = Vector2(-355, 179)
 scale = Vector2(2, 2)
 texture = ExtResource("13_lm341")
@@ -316,6 +320,22 @@ shape = SubResource("RectangleShape2D_gvjcf")
 [node name="FirstRoomIter4-0001" type="Sprite2D" parent="FifthIteration"]
 z_index = -100
 texture = ExtResource("13_vuyy7")
+
+[node name="BookCaseIter4-0002" type="Sprite2D" parent="FifthIteration"]
+position = Vector2(-294, 27)
+scale = Vector2(2, 2)
+texture = ExtResource("24_4cu11")
+
+[node name="Bed-0001-export" type="Sprite2D" parent="FifthIteration"]
+position = Vector2(-258, 5)
+scale = Vector2(2, 2)
+texture = ExtResource("25_fmeyw")
+
+[node name="Table-0003-export" type="Sprite2D" parent="FifthIteration"]
+z_index = -1
+position = Vector2(118, 5)
+scale = Vector2(2, 2)
+texture = ExtResource("26_w330u")
 
 [node name="Iteration_Condition" type="Node" parent="FifthIteration"]
 script = ExtResource("5_hjeht")
