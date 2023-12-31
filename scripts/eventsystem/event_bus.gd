@@ -50,12 +50,16 @@ func unregister_event(event_name,owner_node,method):
 func emit(event_name):
 	if listeners.has(event_name):
 		for listener in listeners[event_name]:
-			await listener.call()
+			var callable = listener as Callable
+			if callable.is_valid():
+				await callable.call()
 
 func emit_args(event_name, args):
 	if listeners.has(event_name):
 		for listener in listeners[event_name]:
-			await listener.call(args)
+			var callable = listener as Callable
+			if callable.is_valid():
+				await listener.call(args)
 
 func emit_event(event_name, recursion_safeguard_list=[]):
 	#print_all()

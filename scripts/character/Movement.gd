@@ -12,6 +12,8 @@ class_name Player
 #endregion 
 
 var direction: Vector2 = Vector2.ZERO
+static var lastdirection: Vector2 = Vector2.ZERO
+var latestdirection: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	Global.become_neuro.connect(_on_become_neuro)
@@ -61,7 +63,11 @@ func update_animation() -> void:
 	if direction != Vector2.ZERO:
 		animation_tree["parameters/Idle/blend_position"] = direction
 		animation_tree["parameters/Walk/blend_position"] = direction
+		latestdirection = direction
 	
+func removed():
+	lastdirection = latestdirection
+
 
 func random_footsteps_sound():
 	SoundManager.play_footstep_sound.emit()

@@ -42,5 +42,18 @@
 		],
 		"time" : 0.5,
 		"next" : "go_out_basement_scene_change"
+	},
+	{
+		"trigger" : "change_to_hatch_room",
+		"dialog" :[
+			{"text" : "This key opens this door too...","time": 1}
+		],
+		"time" : 0.5,
+		"next" : "change_to_hatch_room_scene_change"
+	},{
+		"trigger" : "closed_hatch_door",
+		"dialog" :[
+			{"text" : "I've seen all that there was in the basement","time": 1}
+		]
 	}
 ]

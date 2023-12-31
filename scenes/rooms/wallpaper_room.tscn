@@ -1,3 +1,121 @@
-[gd_scene format=3 uid="uid://cdsff62g1etep"]
+[gd_scene load_steps=12 format=3 uid="uid://cdsff62g1etep"]
+
+[ext_resource type="Texture2D" uid="uid://7itcacc2whep" path="res://assets/rooms/iter4_room/Scarry_room-0002.png" id="1_fywqi"]
+[ext_resource type="Texture2D" uid="uid://c4l4r1vpa1007" path="res://assets/items/Stool-0001.png" id="2_x5hvr"]
+[ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://scripts/character/AccurateShadows.tscn" id="3_eqbi4"]
+[ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="4_fssxl"]
+[ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="5_gib6i"]
+[ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="6_nhxbm"]
+[ext_resource type="Script" path="res://scripts/camera/camera_mimic.gd" id="7_13de0"]
+[ext_resource type="Script" path="res://scripts/camera/camera_transition_zone.gd" id="8_v1cn8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2d3b"]
+size = Vector2(268, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb0o0"]
+size = Vector2(492, 227)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge3p1"]
+size = Vector2(529, 309)
 
 [node name="WallpaperRoom" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -4096
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2622.0
+offset_top = -1999.0
+offset_right = 1453.0
+offset_bottom = 1497.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScarryRoom-0002" type="Sprite2D" parent="."]
+z_index = -415
+position = Vector2(12, -132)
+texture = ExtResource("1_fywqi")
+
+[node name="Stool-0001" type="Sprite2D" parent="."]
+position = Vector2(41, -60)
+texture = ExtResource("2_x5hvr")
+
+[node name="Node" parent="Stool-0001" instance=ExtResource("3_eqbi4")]
+shadow_offset = Vector2(0, 24)
+static_shadow = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(3, -82)
+zoom = Vector2(2, 2)
+editor_draw_limits = true
+script = ExtResource("4_fssxl")
+follow_offset = Vector2(0, -35)
+look_ahead_distance = 0.5
+
+[node name="PlayerEnterPos" type="Marker2D" parent="."]
+position = Vector2(2, 8)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-162, 52.5)
+shape = SubResource("RectangleShape2D_l2d3b")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(167, 52.5)
+shape = SubResource("RectangleShape2D_l2d3b")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-245, -87)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_l2d3b")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(243, -87)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_l2d3b")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-80, -139)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_l2d3b")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(187, -139)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_l2d3b")
+
+[node name="RoomTransitionRegion" parent="." instance=ExtResource("5_gib6i")]
+scene_path = "res://scenes/rooms/bedroom.tscn"
+
+[node name="CollisionPolygon2D" parent="RoomTransitionRegion" index="0"]
+position = Vector2(972, 128)
+polygon = PackedVector2Array(-938, -95, -938, -43, -1000, -43, -1000, -94)
+
+[node name="EventTrigger" type="Area2D" parent="."]
+script = ExtResource("6_nhxbm")
+event_name = "whos_fault"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EventTrigger"]
+position = Vector2(-9, -64.5)
+shape = SubResource("RectangleShape2D_sb0o0")
+
+[node name="CameraMimic" type="Camera2D" parent="."]
+position = Vector2(0, -103)
+zoom = Vector2(2, 2)
+script = ExtResource("7_13de0")
+transition_time = 1.5
+
+[node name="CameraTransitionZone" type="Area2D" parent="CameraMimic"]
+position = Vector2(0, 103)
+script = ExtResource("8_v1cn8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraMimic/CameraTransitionZone"]
+position = Vector2(-14.5, -94.5)
+shape = SubResource("RectangleShape2D_ge3p1")
+
+[editable path="RoomTransitionRegion"]

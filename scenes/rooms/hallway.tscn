@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://lj41sjie0xdw"]
+[gd_scene load_steps=31 format=3 uid="uid://lj41sjie0xdw"]
 
 [ext_resource type="Script" path="res://scripts/rooms/hallway.gd" id="1_4q25n"]
 [ext_resource type="Texture2D" uid="uid://ml5rio378erl" path="res://assets/rooms/hallway/Hallway-0002.png" id="1_x21f8"]
@@ -18,7 +18,8 @@
 [ext_resource type="Script" path="res://scripts/puzzles/painting_numbers.gd" id="14_5e2oq"]
 [ext_resource type="Texture2D" uid="uid://c81chb4ay7wm1" path="res://assets/rooms/hallway/FRAME_painting-0003.png" id="17_0s52s"]
 [ext_resource type="FontFile" uid="uid://dbj88ntk3mvwa" path="res://assets/interface/GraffitiPaintBrush.ttf" id="18_lgsmo"]
-[ext_resource type="PackedScene" path="res://scenes/doors/hatch_door.tscn" id="19_nwhae"]
+[ext_resource type="PackedScene" uid="uid://f700okn07mk8" path="res://scenes/doors/hatch_door.tscn" id="19_nwhae"]
+[ext_resource type="PackedScene" uid="uid://4h7vptjyaeqp" path="res://scenes/doors/wallpaper_door.tscn" id="20_0v51s"]
 [ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="20_47wue"]
 [ext_resource type="Script" path="res://scripts/rooms/hatch_door.gd" id="20_gqid7"]
 
@@ -154,7 +155,7 @@ position = Vector2(-493, -93)
 texture = ExtResource("9_1nvlr")
 
 [node name="FramePainting-0002" type="Sprite2D" parent="SecondIteration"]
-position = Vector2(-674, -176)
+position = Vector2(-717.5, -176)
 scale = Vector2(2.79412, 2.64959)
 texture = ExtResource("13_vgug5")
 
@@ -216,9 +217,9 @@ script = ExtResource("8_wx13j")
 iter = 3
 
 [node name="Num1" type="Label" parent="ThirdIteration"]
-offset_left = -698.0
+offset_left = -741.5
 offset_top = -134.0
-offset_right = -658.0
+offset_right = -701.5
 offset_bottom = -110.0
 theme = SubResource("Theme_1evg0")
 text = "0 "
@@ -248,6 +249,13 @@ theme = SubResource("Theme_1evg0")
 text = "0 "
 
 [node name="FourthIteration" type="Node2D" parent="."]
+
+[node name="WallpaperDoor" parent="FourthIteration" instance=ExtResource("20_0v51s")]
+position = Vector2(-626, -136.137)
+
+[node name="Iteration_Condition" type="Node" parent="FourthIteration"]
+script = ExtResource("8_wx13j")
+iter = 4
 
 [node name="FithIteration" type="Node2D" parent="."]
 

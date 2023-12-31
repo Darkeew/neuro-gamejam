@@ -8,6 +8,7 @@ func _ready() -> void:
 	pickup_line.modulate.a = 0	
 
 	EventBus.register_condition_solver("doc_check", doc_check)
+	EventBus.register_listener("change_to_hatch_room_scene_change", change_to_hatch_room)
 
 func doc_check(_event) -> bool:
 	if Global.current_iteration == 5:
@@ -17,6 +18,8 @@ func doc_check(_event) -> bool:
 	
 	return false
 
+func change_to_hatch_room():
+	Global.change_stage.emit(scene_path)
 
 func _process(_delta) -> void:
 	if Global.game_paused or !near:
@@ -24,14 +27,13 @@ func _process(_delta) -> void:
 	
 	if Input.is_action_just_pressed("choice 1"):
 		if Global.current_iteration == 5:
-			print("here")
-			Global.change_stage.emit(scene_path) 
-			return
 			for item in Global.collected_items:
 				if item.tag == "Second Key":
-					Global.change_stage.emit(scene_path) 
+					EventBus.emit_event("change_to_hatch_room")
 					return
 			EventBus.emit_event("wrong_key")
+		else:
+			EventBus.emit_event("closed_hatch_door")
 		
 func _on_interactible_area_entered(_area):
 	Global.tween_property(name, pickup_line, "modulate:a", 1) 

@@ -289,6 +289,11 @@ event_name = "read_found_note"
 position = Vector2(-105.5, 93)
 shape = SubResource("RectangleShape2D_gvjcf")
 
+[node name="Iteration_Condition" type="Node" parent="FourthIteration/EventTrigger"]
+script = ExtResource("5_hjeht")
+iter = 4
+condition = 0
+
 [node name="SendSignal" type="Area2D" parent="FourthIteration"]
 script = ExtResource("22_ajkxu")
 

@@ -18,7 +18,7 @@ var shadow_canvas_group: CanvasGroup
 var main_menu: PackedScene = preload("res://scenes/interface/main_menu.tscn")
 var hud: CanvasLayer = preload("res://scenes/interface/hud.tscn").instantiate()
 var current_scene = null
-var current_iteration := 4
+var current_iteration := 1
 
 #region NUMBERS SCHIZO 
 var numbers_schizo := []
@@ -39,6 +39,8 @@ signal unpause_game
 var collected_items := []
 var tweens := {}
 var is_from_bed := true 
+
+var player_direction := Vector2(0, 0)
 
 # endregion
 
@@ -145,10 +147,8 @@ func load_next_stage(stage: Node2D, old_scene: Node2D, player_pos := "PlayerEnte
 	shadow_canvas_group = preload("res://scripts/global/ShadowGroup.tscn").instantiate()
 	current_scene.add_child(shadow_canvas_group)
 	
-	get_tree().root.call_deferred("add_child", stage) 
-	
+	get_tree().root.call_deferred("add_child", stage)
 	setup_player(player_pos)	
-	
 	old_scene.queue_free()
 
 	SoundManager.change_footsteps.emit(stage.name)
@@ -165,7 +165,8 @@ func setup_player(player_pos: String):
 		is_from_bed = true 
 	else:
 		is_from_bed = false 
-	
+	if player != null:
+		player.removed()
 	player = preload("res://scenes/character/player.tscn").instantiate()
 	if current_scene.has_node(player_pos):
 		player.global_position = current_scene.get_node(player_pos).global_position

@@ -120,7 +120,7 @@ polygon = PackedVector2Array(424, 73, 420, 96, 483, 98, 483, 72)
 [node name="HatchStartPos" type="Marker2D" parent="."]
 position = Vector2(-42, -55)
 
-[node name="PlayerStartPos" type="Marker2D" parent="."]
+[node name="PlayerEnterPos" type="Marker2D" parent="."]
 position = Vector2(0, 8)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
