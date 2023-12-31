@@ -7,7 +7,7 @@ var just_pressed_note = 0
 var notes_to_pass = [1,8,7,5,1,8,7,5,2,6,5,4,3,4,5,7,8,5,1]
 var notes_correct = 0
 # Called when the node enters the scene tree for the first time.
-
+var piano_prev
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -67,15 +67,27 @@ func _process(delta):
 func check_notes():
 	#print(notes_correct)
 	if notes_correct >= len(notes_to_pass)-1:
-		$NoteUI.current_y_pos = 200.0*notes_correct
+		$NoteUI.current_y_pos = 200.0*(notes_correct+1)
+		var timer := Timer.new()
+		add_child(timer)
+		timer.wait_time = 2.0
+		timer.one_shot = true
+		timer.start()
+		timer.connect("timeout", next_iteration.bind())
+		
 		#print("complete")
 		return
 	if just_pressed_note == notes_to_pass[notes_correct]:
 		notes_correct = notes_correct + 1
-		$NoteUI.current_y_pos = 200.0*notes_correct+1
+		$NoteUI.current_y_pos = 200.0*notes_correct
 	elif just_pressed_note != notes_to_pass[notes_correct]:
 		notes_correct = 0
 		$NoteUI.current_y_pos = 0.0
 	#print("Just Pressed Note: " + str(just_pressed_note))
 	#print("Correct Note: " + str(notes_to_pass[notes_correct]))
 	#print("Amount of Notes Correct: " + str(notes_correct))
+func next_iteration():
+	Global.start_next_iteration.emit()
+	piano_prev.queue_free()
+	queue_free()
+	

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgc32vat3ju3y"]
+
+[ext_resource type="Texture2D" uid="uid://mhcedjmlfpjo" path="res://assets/puzzles/piano-Stool.png" id="1_haiwo"]
+[ext_resource type="Texture2D" uid="uid://b7mdygqq0c2le" path="res://assets/puzzles/piano-0001.png" id="2_ttku7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36xu4"]
+size = Vector2(54, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tesbh"]
+size = Vector2(65, 39)
+
+[node name="FifthIterationPiano" type="Node2D"]
+position = Vector2(132, 94)
+
+[node name="Piano-stool" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-126, -65)
+scale = Vector2(2, 2)
+texture = ExtResource("1_haiwo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Piano-stool"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano-stool/StaticBody2D"]
+shape = SubResource("RectangleShape2D_36xu4")
+
+[node name="Piano" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-125, -126)
+scale = Vector2(2, 2)
+texture = ExtResource("2_ttku7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Piano"]
+position = Vector2(-0.5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano/StaticBody2D"]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_tesbh")

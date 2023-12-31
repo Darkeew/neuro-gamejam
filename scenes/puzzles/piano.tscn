@@ -106,6 +106,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_u4re2")
 
 [node name="Piano" type="Node2D"]
+z_index = 175
 script = ExtResource("1_ou2cu")
 
 [node name="PianoKeyD4" type="Sprite2D" parent="."]
