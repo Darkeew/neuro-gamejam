@@ -83,8 +83,23 @@
 		"dialog": [
 			{
 				"text": "I've seen all that there was in the basement",
-				"time": 1
+				"time": 2
 			}
+		],
+		"flags": [
+			"unpaused"
+		]
+	},
+	{
+		"trigger": "piano_book",
+		"dialog": [
+			{
+				"text": "An old piano book... ",
+				"time": 4
+			}
+		],
+		"flags": [
+			"unpaused"
 		]
 	}
 ]

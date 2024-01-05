@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bcq8ee3rjydqy"]
+[gd_scene load_steps=48 format=3 uid="uid://bcq8ee3rjydqy"]
 
 [ext_resource type="Script" path="res://scripts/interface/hud.gd" id="1_xetvg"]
 [ext_resource type="Texture2D" uid="uid://bcvsav4vwjomq" path="res://assets/items/small_pizza.png" id="2_ffhmc"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://bg1s8ud0onsmu" path="res://assets/cutscenes/5f.png" id="29_3g1ly"]
 [ext_resource type="Texture2D" uid="uid://bi6ae4rgmt3jt" path="res://assets/cutscenes/5g.png" id="30_qno1n"]
 [ext_resource type="FontFile" uid="uid://b6lejvnfura5h" path="res://assets/interface/TheJewishBitmap.ttf" id="33_jb4t5"]
+[ext_resource type="Script" path="res://scripts/rooms/iter_condition.gd" id="35_varoc"]
 [ext_resource type="Texture2D" uid="uid://dkqqvxc0daeta" path="res://assets/puzzles/NOTE-0001.png" id="36_4het0"]
 
 [sub_resource type="Animation" id="Animation_fgdtt"]
@@ -1769,6 +1770,12 @@ text = "Space  Close"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Iteration_Condition" type="Node" parent="PasswordInputsContainer"]
+script = ExtResource("35_varoc")
+iter = 3
+condition = 0
+delete_node = false
+
 [node name="StickyNoteContainer" type="CenterContainer" parent="."]
 visible = false
 anchors_preset = 15
@@ -1875,6 +1882,12 @@ theme_override_font_sizes/font_size = 29
 text = "Space  Close"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Iteration_Condition" type="Node" parent="StickyNoteContainer"]
+script = ExtResource("35_varoc")
+iter = 3
+condition = 0
+delete_node = false
 
 [node name="HiddenNoteContainer" type="CenterContainer" parent="."]
 visible = false

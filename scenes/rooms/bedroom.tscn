@@ -43,17 +43,17 @@ size = Vector2(1151, 643)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ba18x"]
 size = Vector2(197, 173)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvjcf"]
+size = Vector2(103, 204)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysu7m"]
 size = Vector2(128, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tp5vv"]
 size = Vector2(81, 228)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvjcf"]
-size = Vector2(103, 204)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ub8m"]
-size = Vector2(105, 205)
+size = Vector2(103, 205)
 
 [node name="Bedroom" type="Node2D"]
 script = ExtResource("1_22h2h")
@@ -144,6 +144,7 @@ iter = 1
 condition = 0
 
 [node name="Camera_Mimic2" type="Camera2D" parent="."]
+visible = false
 position = Vector2(395, 71)
 zoom = Vector2(3.63, 3.63)
 script = ExtResource("7_r2gvb")
@@ -157,6 +158,7 @@ position = Vector2(12.5, 1.5)
 shape = SubResource("RectangleShape2D_ba18x")
 
 [node name="Camera_Mimic" type="Camera2D" parent="."]
+visible = false
 position = Vector2(-235, -10)
 zoom = Vector2(3.63, 3.63)
 script = ExtResource("7_r2gvb")
@@ -176,40 +178,34 @@ position = Vector2(-222, 21)
 [node name="PlayerEnterPos" type="Marker2D" parent="."]
 position = Vector2(388, 73)
 
-[node name="Furniture" type="Node2D" parent="."]
+[node name="FirstIteration" type="Node2D" parent="."]
 
-[node name="Bed-0001" type="Sprite2D" parent="Furniture"]
+[node name="Bed-0001" type="Sprite2D" parent="FirstIteration"]
 position = Vector2(-258, 5)
 scale = Vector2(2, 2)
 texture = ExtResource("2_iouxf")
 
-[node name="Node" parent="Furniture/Bed-0001" instance=ExtResource("3_pmjfu")]
+[node name="Node" parent="FirstIteration/Bed-0001" instance=ExtResource("3_pmjfu")]
 shadow_offset = Vector2(-2, 5)
 static_shadow = true
 
-[node name="BookCase-0001" type="Sprite2D" parent="Furniture"]
+[node name="BookCase-0001" type="Sprite2D" parent="FirstIteration"]
 position = Vector2(-342, -37)
 scale = Vector2(2, 2)
 texture = ExtResource("3_j433k")
 
-[node name="Node" parent="Furniture/BookCase-0001" instance=ExtResource("3_pmjfu")]
+[node name="Node" parent="FirstIteration/BookCase-0001" instance=ExtResource("3_pmjfu")]
 shadow_offset = Vector2(-2, 5)
 static_shadow = true
 
-[node name="FifthIterationPiano" parent="." instance=ExtResource("14_i10t7")]
-visible = false
+[node name="EventTrigger4" type="Area2D" parent="FirstIteration"]
+position = Vector2(33, 1)
+script = ExtResource("21_hil8s")
+event_name = "out_of_bed"
 
-[node name="Iteration_Condition" type="Node" parent="FifthIterationPiano"]
-script = ExtResource("5_hjeht")
-iter = 5
-condition = 0
-
-[node name="SixthIterationPiano" parent="." instance=ExtResource("15_mn7ln")]
-visible = false
-
-[node name="Iteration_Condition" type="Node" parent="SixthIterationPiano"]
-script = ExtResource("5_hjeht")
-iter = 6
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstIteration/EventTrigger4"]
+position = Vector2(-105.5, 93)
+shape = SubResource("RectangleShape2D_gvjcf")
 
 [node name="SecondIteration" type="Node2D" parent="."]
 position = Vector2(473, -174)
@@ -242,7 +238,7 @@ script = ExtResource("5_hjeht")
 iter = 2
 
 [node name="EventTrigger3" type="Area2D" parent="SecondIteration"]
-position = Vector2(-408, 176)
+position = Vector2(-440, 175)
 script = ExtResource("21_hil8s")
 event_name = "out_of_bed"
 
@@ -262,7 +258,7 @@ iter = 3
 condition = 0
 
 [node name="EventTrigger2" type="Area2D" parent="ThirdIteration"]
-position = Vector2(85, -2)
+position = Vector2(53, -3)
 script = ExtResource("21_hil8s")
 event_name = "out_of_bed"
 
@@ -270,97 +266,111 @@ event_name = "out_of_bed"
 position = Vector2(-105.5, 93)
 shape = SubResource("RectangleShape2D_gvjcf")
 
-[node name="FOURH" type="Node2D" parent="."]
-
-[node name="Iteration_Condition" type="Node" parent="FOURH"]
-script = ExtResource("5_hjeht")
-iter = 4
-condition = 0
-
-[node name="SendSignal" type="Area2D" parent="FOURH"]
-script = ExtResource("22_ajkxu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FOURH/SendSignal"]
-position = Vector2(-42.5, 92.5)
-shape = SubResource("RectangleShape2D_6ub8m")
-
 [node name="FourthIteration" type="Node2D" parent="."]
 
-[node name="Iteration_Condition" type="Node" parent="FourthIteration"]
+[node name="Room" type="Node2D" parent="FourthIteration"]
+
+[node name="Iteration_Condition" type="Node" parent="FourthIteration/Room"]
 script = ExtResource("5_hjeht")
 iter = 4
 
-[node name="SafeOpen-0001" type="Sprite2D" parent="FourthIteration"]
+[node name="SafeOpen-0001" type="Sprite2D" parent="FourthIteration/Room"]
 position = Vector2(229, -16)
 texture = ExtResource("17_4yyn2")
 
-[node name="SafeRoom-0001" type="Sprite2D" parent="FourthIteration"]
+[node name="SafeRoom-0001" type="Sprite2D" parent="FourthIteration/Room"]
 position = Vector2(218, -16)
 texture = ExtResource("17_h6be4")
 
-[node name="DeskLamp-0001" type="Sprite2D" parent="FourthIteration"]
+[node name="DeskLamp-0001" type="Sprite2D" parent="FourthIteration/Room"]
 position = Vector2(186, -26)
 scale = Vector2(2, 2)
 texture = ExtResource("18_05nnf")
 
-[node name="MirrorIter4-0001" type="Sprite2D" parent="FourthIteration"]
+[node name="MirrorIter4-0001" type="Sprite2D" parent="FourthIteration/Room"]
 position = Vector2(204, -67)
 texture = ExtResource("19_ajarl")
 
-[node name="EventTrigger" type="Area2D" parent="FourthIteration"]
-position = Vector2(64, 1)
+[node name="EventTrigger" type="Area2D" parent="FourthIteration/Room"]
+position = Vector2(33, 1)
 script = ExtResource("21_hil8s")
 event_name = "read_found_note"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FourthIteration/EventTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FourthIteration/Room/EventTrigger"]
 position = Vector2(-105.5, 93)
 shape = SubResource("RectangleShape2D_gvjcf")
 
-[node name="Iteration_Condition" type="Node" parent="FourthIteration/EventTrigger"]
+[node name="Iteration_Condition" type="Node" parent="FourthIteration/Room/EventTrigger"]
 script = ExtResource("5_hjeht")
 iter = 4
 condition = 0
 
-[node name="EventTrigger4" type="Area2D" parent="."]
-position = Vector2(65, 2)
-script = ExtResource("21_hil8s")
-event_name = "out_of_bed"
+[node name="LetterFromSafe" type="Node2D" parent="FourthIteration"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EventTrigger4"]
-position = Vector2(-105.5, 93)
-shape = SubResource("RectangleShape2D_gvjcf")
+[node name="Iteration_Condition" type="Node" parent="FourthIteration/LetterFromSafe"]
+script = ExtResource("5_hjeht")
+iter = 4
+condition = 0
 
-[node name="FifthIteration2" type="Node2D" parent="."]
+[node name="SendSignal" type="Area2D" parent="FourthIteration/LetterFromSafe"]
+position = Vector2(-31, 2)
+script = ExtResource("22_ajkxu")
 
-[node name="FirstRoomIter4-0001" type="Sprite2D" parent="FifthIteration2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FourthIteration/LetterFromSafe/SendSignal"]
+position = Vector2(-41.5, 92.5)
+shape = SubResource("RectangleShape2D_6ub8m")
+
+[node name="FifthIteration" type="Node2D" parent="."]
+
+[node name="Piano" parent="FifthIteration" instance=ExtResource("14_i10t7")]
+
+[node name="Iteration_Condition" type="Node" parent="FifthIteration/Piano"]
+script = ExtResource("5_hjeht")
+iter = 5
+condition = 0
+
+[node name="Room" type="Node2D" parent="FifthIteration"]
+
+[node name="FirstRoomIter4-0001" type="Sprite2D" parent="FifthIteration/Room"]
 z_index = -100
 texture = ExtResource("13_vuyy7")
 
-[node name="BookCaseIter4-0002" type="Sprite2D" parent="FifthIteration2"]
+[node name="BookCaseIter4-0002" type="Sprite2D" parent="FifthIteration/Room"]
 position = Vector2(-294, 27)
 scale = Vector2(2, 2)
 texture = ExtResource("24_4cu11")
 
-[node name="Bed-0001-export" type="Sprite2D" parent="FifthIteration2"]
+[node name="Bed-0001-export" type="Sprite2D" parent="FifthIteration/Room"]
 position = Vector2(-258, 5)
 scale = Vector2(2, 2)
 texture = ExtResource("25_fmeyw")
 
-[node name="Table-0003-export" type="Sprite2D" parent="FifthIteration2"]
+[node name="Table-0003-export" type="Sprite2D" parent="FifthIteration/Room"]
 z_index = -1
 position = Vector2(118, 5)
 scale = Vector2(2, 2)
 texture = ExtResource("26_w330u")
 
-[node name="Iteration_Condition" type="Node" parent="FifthIteration2"]
+[node name="Iteration_Condition" type="Node" parent="FifthIteration/Room"]
 script = ExtResource("5_hjeht")
 iter = 5
+
+[node name="SixthIteration" type="Node2D" parent="."]
+position = Vector2(132, 94)
+
+[node name="Piano" parent="SixthIteration" instance=ExtResource("15_mn7ln")]
+visible = false
+position = Vector2(0, 0)
+
+[node name="Iteration_Condition" type="Node" parent="SixthIteration/Piano"]
+script = ExtResource("5_hjeht")
+iter = 6
 
 [node name="six" type="Node2D" parent="."]
 script = ExtResource("27_jxh5y")
 
 [connection signal="on_transitioned_exited" from="MainMenuCamera/CameraTransitionZone" to="MainMenuCamera/CameraTransitionZone/MainMenuScript" method="_on_camera_transition_zone_on_transitioned_exited"]
-[connection signal="body_entered" from="FOURH/SendSignal" to="FOURH/SendSignal" method="_on_body_entered"]
+[connection signal="body_entered" from="FourthIteration/LetterFromSafe/SendSignal" to="FourthIteration/LetterFromSafe/SendSignal" method="_on_body_entered"]
 
 [editable path="RoomTransitionRegion"]
 [editable path="SecondIteration/Pot"]

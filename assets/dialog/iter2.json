@@ -55,11 +55,11 @@
 		"dialog": [
 			{
 				"text": "Paintings...? I didnt see these before...",
-				"time": 2.0
+				"time": 2.5
 			},
 			{
 				"text": "Whatever, im probably imagining things.",
-				"time": 2.0
+				"time": 2.5
 			}
 		],
 		"flags": [

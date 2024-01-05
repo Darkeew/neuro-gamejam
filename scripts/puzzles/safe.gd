@@ -8,7 +8,7 @@ func _ready() -> void:
 	Global.send_password.connect(_on_send_password) 
 
 func _process(_delta) -> void:
-	if !near_player:
+	if !near_player or Global.current_iteration != 3:
 		return 
 	
 	if Input.is_action_just_pressed("choice 1"):

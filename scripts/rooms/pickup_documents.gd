@@ -19,6 +19,7 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("choice 1"):
 		EventBus.emit_event("pickup_document")
+		EventBus.emit_event("piano_book")
 		document.texture = newtexture
 		pickup_line.visible = false
 		done = true

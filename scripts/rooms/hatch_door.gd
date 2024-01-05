@@ -23,6 +23,7 @@ func _process(_delta) -> void:
 		return 
 	
 	if Input.is_action_just_pressed("choice 1"):
+		print(Global.current_iteration)
 		if Global.current_iteration == 5:
 			for item in Global.collected_items:
 				if item.tag == "Second Key":

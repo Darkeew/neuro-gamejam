@@ -29,6 +29,5 @@ texture = ExtResource("3_6b1jn")
 visible = false
 position = Vector2(-18, 28)
 item = ExtResource("2_w7lfj")
-available_iteration = 4
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,18 +1,18 @@
 [
-    {
-        "trigger": "piano_completed",
-        "dialog": [
-            {
-                "text": "That was fun",
-                "time": 1
-            }
-        ],
-        "condition": [
-            "iter_check"
-        ],
-        "iter": 6,
-        "time": 1,
-        "music": "part2theme",
-        "next": "next_iter"
-    }
+	{
+		"trigger": "piano_completed",
+		"dialog": [
+			{
+				"text": "That was fun",
+				"time": 1
+			}
+		],
+		"condition": [
+			"iter_check"
+		],
+		"iter": 6,
+		"time": 1,
+		"music": "part2theme",
+		"next": "next_iter"
+	}
 ]

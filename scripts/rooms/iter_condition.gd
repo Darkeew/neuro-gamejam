@@ -40,11 +40,6 @@ func _ready():
 	
 	if passed:
 		get_parent().visible = true
-		for child in get_parent().get_children():
-			if child is StaticBody2D:
-				for collision_body in child.get_children():
-					collision_body.set_deferred("disabled", false)  
-		
 		return
 
 	if delete_node:
