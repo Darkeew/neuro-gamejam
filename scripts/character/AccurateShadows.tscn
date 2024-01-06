@@ -5,3 +5,4 @@
 [node name="Node" type="Node2D"]
 z_index = -1
 script = ExtResource("1_j82l0")
+static_shadow = true
