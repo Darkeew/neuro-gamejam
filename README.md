@@ -1,6 +1,11 @@
-# The Repository for our [Neuro-Sama's Birthday Gamejam](https://itch.io/jam/neurosama-birthday-game-jam) submission.
+# Lost Her Mind
 
-## Contributors:
+The repository for our [Neuro-sama Birthday Game Jam](https://itch.io/jam/neurosama-birthday-game-jam) submission.
+
+## [>>> PLAY THE GAME <<<](https://cjmaxik.itch.io/lost-her-mind)
+
+## Created by Team "TRIPLE AA"
+
 - darkeew - Team Leader
 - CJMAXiK - Programming
 - KotgeDev - Programming
@@ -8,6 +13,4 @@
 - MAD0990 - Pixel Artist
 - GrabThatBread - Pixel Artist
 - paccha!! - Digital Artist
-- CreepyCat - Sound Designing
-
-## You can rate the game [here!](https://itch.io/jam/neurosama-birthday-game-jam/rate/2446616)
+- CreepyCat - OST and Sound Design
