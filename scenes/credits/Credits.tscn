@@ -87,7 +87,7 @@ text = "[center]Thank you for playing our game!
 
 [font_size=30]Her story is not over yet, but you have to be patient.[/font_size]
 
-Please follow us on itch.io for more updates.
+Please follow us on [u]itch.io[/u] for more updates.
 
 
 "
@@ -113,16 +113,16 @@ custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 theme = SubResource("Theme_kac8s")
 bbcode_enabled = true
-text = "[center]Adesi
-CJMAXiK
-CreepyCat
-darkeew
-GrabThatBread
-KotgeDev
-MAD0990
-paccha!!
+text = "[center][u]darkeew[/u] - Team Leader
+[u]CJMAXiK[/u] - Programming
+[u]KotgeDev[/u] - Programming
+[u]Adesi[/u] - Programming
+[u]MAD0990[/u] - Pixel Artist
+[u]GrabThatBread[/u] - Pixel Artist
+[u]paccha!![/u] - Digital Artist
+[u]CreepyCat[/u] - OST and Sound Design
 
-[font_size=26]Built with Godot[/font_size]"
+[font_size=26]Built with Godot 4.2[/font_size]"
 fit_content = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
