@@ -3,8 +3,8 @@
 		"trigger": "safe_unlocked",
 		"dialog": [
 			{
-				"text": "The Code was correct",
-				"time": 1
+				"text": "The code was correct. Let's see...",
+				"time": 3.0
 			}
 		],
 		"condition": [
@@ -18,8 +18,8 @@
 		"trigger": "wrong_password",
 		"dialog": [
 			{
-				"text": "The Code was wrong",
-				"time": 1
+				"text": "The code was wrong... Maybe I should try to change the order...",
+				"time": 5.0
 			}
 		],
 		"condition": [
@@ -42,12 +42,12 @@
 		"trigger": "out_of_bed",
 		"dialog": [
 			{
-				"text": "Yesterday when I got home, there was a safe on my parents room..",
+				"text": "Yesterday, when I got home, there was a safe in my parents room...",
 				"time": 3.0
 			},
 			{
-				"text": "I took it to my room, i should check it out today.",
-				"time": 2.5
+				"text": "I took it to my room, I should check it out today.",
+				"time": 3.0
 			}
 		],
 		"flags": [

@@ -5,7 +5,7 @@ class_name ItemContainer
 @onready var pickup_line = $PickupLine
 
 func _ready() -> void:
-	$Sprite2D.texture = item.texture
+	$ItemSprite.texture = item.texture
 	pickup_line.modulate.a = 0
 
 func show_pickup_line() -> void:

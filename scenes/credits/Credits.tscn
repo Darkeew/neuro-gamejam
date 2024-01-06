@@ -38,9 +38,9 @@ tracks/2/path = NodePath("CenterContainer:modulate:a")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(16, 20)
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sb34w"]
@@ -57,7 +57,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,27 +70,44 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 648.0
-offset_bottom = 648.003
+offset_bottom = 0.00317383
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+theme = SubResource("Theme_kac8s")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[center]Thank you for playing our game!
+
+[font_size=30]Her story is not over yet, but you have to be patient.[/font_size]
+
+Please follow us on itch.io for more updates.
+
+
+"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/HBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 theme = SubResource("Theme_kac8s")
 bbcode_enabled = true
 text = "[center]Game by 
 Team \"TRIPLE AA\"
-
 [img]assets/credits/TRIPLE_AA-0002.png[/img]"
 fit_content = true
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CenterContainer/HBoxContainer"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 clip_contents = false
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 2

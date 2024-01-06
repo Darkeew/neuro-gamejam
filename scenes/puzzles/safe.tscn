@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://v22c1pxub37n"]
+[gd_scene load_steps=9 format=3 uid="uid://v22c1pxub37n"]
 
 [ext_resource type="Script" path="res://scripts/puzzles/safe.gd" id="1_cfu21"]
 [ext_resource type="Texture2D" uid="uid://bpfj8em5ueju8" path="res://assets/puzzles/Safe_closed-0001.png" id="1_si7e2"]
 [ext_resource type="PackedScene" uid="uid://hocsfpblfn07" path="res://scenes/puzzles/interactible.tscn" id="2_omxew"]
+[ext_resource type="PackedScene" uid="uid://4vg6i33v8mry" path="res://scripts/character/BasicShadows.tscn" id="3_hc04a"]
 [ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="4_2wby4"]
 [ext_resource type="Texture2D" uid="uid://ciw6sitwyd48w" path="res://assets/interface/button-9patch.png" id="4_jtvqg"]
 
@@ -24,6 +25,10 @@ script = ExtResource("1_cfu21")
 
 [node name="CollisionShape2D" parent="Interactible" index="0"]
 shape = SubResource("CircleShape2D_gmcrg")
+
+[node name="BasicShadows" parent="." instance=ExtResource("3_hc04a")]
+position = Vector2(-1, 6)
+scale = Vector2(0.199998, 0.120001)
 
 [node name="ClosedSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_si7e2")

@@ -5,6 +5,7 @@ extends Node2D
 
 const POSSIBLE_NOTES := 8
 const NOTE_FILE_NAME := "res://assets/sfx/note%s.ogg"
+const BASE_POS := 200.0
 
 var notes_to_pass := [1, 8, 7, 5, 1, 8, 7, 5, 2, 6, 5, 4, 3, 4, 5, 7, 8, 5, 1]
 var note_files := []
@@ -41,7 +42,7 @@ func _play_note(note_input: String) -> void:
 func check_notes():
 	#print(notes_correct)
 	if notes_correct >= len(notes_to_pass) - 1:
-		$NoteUI.current_y_pos = 200.0 * (notes_correct + 1)
+		$NoteUI.current_y_pos = BASE_POS * (notes_correct + 1)
 		Global.unpause_game.emit()
 		EventBus.emit_event("piano_completed")
 		
@@ -50,7 +51,7 @@ func check_notes():
 
 	if just_pressed_note == notes_to_pass[notes_correct]:
 		notes_correct = notes_correct + 1
-		$NoteUI.current_y_pos = 200.0 * notes_correct
+		$NoteUI.current_y_pos = BASE_POS * notes_correct
 	else:
 		notes_correct = 0
 		$NoteUI.current_y_pos = 0.0

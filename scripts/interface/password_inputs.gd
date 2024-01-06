@@ -13,7 +13,11 @@ func _on_show_password_inputs() -> void:
 func _on_digit_text_changed(new_text: String, digit: LineEdit) -> void:
 	var filtered_text = _filter_input(new_text)
 	digit.text = filtered_text
-	
+
+	var last_symbol = new_text[-1]
+	if not regex.search(last_symbol):
+		return 
+
 	_change_digit(digit.name, filtered_text.length() == 1)
 
 func _change_digit(current_digit_name: String, advance := true) -> void:

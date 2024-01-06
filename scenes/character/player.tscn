@@ -546,6 +546,10 @@ hframes = 18
 vframes = 2
 region_rect = Rect2(0, 0, 724, 48)
 
+[node name="Node" parent="AwakeSprite" instance=ExtResource("3_11rep")]
+shadow_offset = Vector2(-0.575, 11.555)
+static_shadow = false
+
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 visible = false
 y_sort_enabled = true
@@ -558,6 +562,7 @@ region_rect = Rect2(0, 0, 724, 48)
 
 [node name="Node" parent="PlayerSprite" instance=ExtResource("3_11rep")]
 shadow_offset = Vector2(0, 44)
+static_shadow = false
 
 [node name="Collectionrange" parent="." instance=ExtResource("4_cex7t")]
 

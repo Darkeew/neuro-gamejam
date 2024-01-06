@@ -1,10 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://lj41sjie0xdw"]
+[gd_scene load_steps=37 format=3 uid="uid://lj41sjie0xdw"]
 
 [ext_resource type="Script" path="res://scripts/rooms/hallway.gd" id="1_4q25n"]
 [ext_resource type="Texture2D" uid="uid://ml5rio378erl" path="res://assets/rooms/hallway/Hallway-0002.png" id="1_x21f8"]
 [ext_resource type="Script" path="res://scripts/camera/camera_controller.gd" id="2_u3e3j"]
 [ext_resource type="PackedScene" uid="uid://b4uwauj5ouvuy" path="res://scenes/items/item_container.tscn" id="3_iok3i"]
 [ext_resource type="Resource" uid="uid://bxsmfty04pteq" path="res://resources/items/iter_1_key.tres" id="4_ae17g"]
+[ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://scripts/character/AccurateShadows.tscn" id="5_076ri"]
 [ext_resource type="PackedScene" uid="uid://c6gc2ipyngbw" path="res://scenes/doors/first_door.tscn" id="5_dqvvi"]
 [ext_resource type="PackedScene" uid="uid://qu4tbiep3vyx" path="res://scenes/doors/main_door.tscn" id="6_hfx86"]
 [ext_resource type="PackedScene" uid="uid://bjifi78fl6xtd" path="res://scenes/rooms/room_transition_region.tscn" id="6_s6qr8"]
@@ -18,7 +19,7 @@
 [ext_resource type="Script" path="res://scripts/puzzles/painting_numbers.gd" id="14_5e2oq"]
 [ext_resource type="Texture2D" uid="uid://c81chb4ay7wm1" path="res://assets/rooms/hallway/FRAME_painting-0003.png" id="17_0s52s"]
 [ext_resource type="FontFile" uid="uid://dbj88ntk3mvwa" path="res://assets/interface/GraffitiPaintBrush.ttf" id="18_lgsmo"]
-[ext_resource type="PackedScene" path="res://scenes/doors/hatch_door.tscn" id="19_nwhae"]
+[ext_resource type="PackedScene" uid="uid://10comntoe4cs" path="res://scenes/doors/hatch_door.tscn" id="19_nwhae"]
 [ext_resource type="Texture2D" uid="uid://3ffavkpfj5i8" path="res://assets/puzzles/Door-0001.png" id="20_4ddsv"]
 [ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="20_47wue"]
 [ext_resource type="Script" path="res://scripts/rooms/hatch_door.gd" id="20_gqid7"]
@@ -42,6 +43,9 @@ size = Vector2(63.25, 24)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_75y1n"]
 load_path = "res://.godot/imported/Table-0003.png-063deb6bcb99f14dafa49d027ed94600.ctex"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27er6"]
+size = Vector2(80, 28)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwrqk"]
 size = Vector2(129.772, 152.41)
 
@@ -49,8 +53,8 @@ size = Vector2(129.772, 152.41)
 Label/colors/font_shadow_color = Color(0.270588, 0.352941, 0.392157, 1)
 Label/constants/shadow_offset_x = 0
 Label/constants/shadow_offset_y = 0
-Label/constants/shadow_outline_size = 2
-Label/font_sizes/font_size = 25
+Label/constants/shadow_outline_size = 3
+Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("18_lgsmo")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66bvq"]
@@ -126,25 +130,31 @@ position = Vector2(-337, -77)
 [node name="FirstIteration" type="Node2D" parent="."]
 
 [node name="Table-0003" type="Sprite2D" parent="FirstIteration"]
-z_index = 2
-position = Vector2(-663, 54)
+position = Vector2(-657, -87)
 texture = SubResource("CompressedTexture2D_75y1n")
 
-[node name="FirstDoor" parent="FirstIteration" instance=ExtResource("5_dqvvi")]
-position = Vector2(-827.8, -136.137)
+[node name="Node" parent="FirstIteration/Table-0003" instance=ExtResource("5_076ri")]
 
-[node name="MainDoor" parent="FirstIteration" instance=ExtResource("6_hfx86")]
-position = Vector2(-13, -25)
+[node name="StaticBody2D" type="StaticBody2D" parent="FirstIteration/Table-0003"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstIteration/Table-0003/StaticBody2D"]
+position = Vector2(31, -2)
+shape = SubResource("RectangleShape2D_27er6")
 
 [node name="FirstKey" parent="FirstIteration" instance=ExtResource("3_iok3i")]
-z_index = 3
-position = Vector2(-642, 43)
+position = Vector2(-637, -102)
 item = ExtResource("4_ae17g")
 
 [node name="Iteration_Condition" type="Node" parent="FirstIteration/FirstKey"]
 script = ExtResource("8_wx13j")
 iter = 1
 condition = 0
+
+[node name="FirstDoor" parent="FirstIteration" instance=ExtResource("5_dqvvi")]
+position = Vector2(-827.8, -136.137)
+
+[node name="MainDoor" parent="FirstIteration" instance=ExtResource("6_hfx86")]
+position = Vector2(-13, -25)
 
 [node name="SecondIteration" type="Node2D" parent="."]
 
@@ -213,6 +223,7 @@ position = Vector2(-388.763, -11.9994)
 shape = SubResource("RectangleShape2D_vwrqk")
 
 [node name="ThirdIteration" type="Node2D" parent="."]
+modulate = Color(0.470588, 0.564706, 0.611765, 1)
 script = ExtResource("14_5e2oq")
 
 [node name="Iteration_Condition" type="Node" parent="ThirdIteration"]
@@ -220,40 +231,49 @@ script = ExtResource("8_wx13j")
 iter = 3
 
 [node name="Num1" type="Label" parent="ThirdIteration"]
-offset_left = -741.5
-offset_top = -134.0
-offset_right = -701.5
-offset_bottom = -110.0
+offset_left = -743.0
+offset_top = -132.0
+offset_right = -724.0
+offset_bottom = -112.0
 theme = SubResource("Theme_1evg0")
-text = "0 "
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Num2" type="Label" parent="ThirdIteration"]
-offset_left = -513.0
-offset_top = -245.0
-offset_right = -473.0
-offset_bottom = -221.0
+offset_left = -517.0
+offset_top = -239.0
+offset_right = -501.0
+offset_bottom = -220.0
 theme = SubResource("Theme_1evg0")
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Num3" type="Label" parent="ThirdIteration"]
-offset_left = -394.0
-offset_top = -135.0
-offset_right = -354.0
-offset_bottom = -111.0
+offset_left = -392.0
+offset_top = -131.0
+offset_right = -377.0
+offset_bottom = -112.0
 theme = SubResource("Theme_1evg0")
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Num4" type="Label" parent="ThirdIteration"]
-offset_left = -119.0
-offset_top = -190.0
-offset_right = -79.0
-offset_bottom = -166.0
+offset_left = -122.0
+offset_top = -187.0
+offset_right = -104.0
+offset_bottom = -168.0
 theme = SubResource("Theme_1evg0")
-text = "0 "
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="FourthIteration" type="Node2D" parent="."]
 
 [node name="Door-0001" type="Sprite2D" parent="FourthIteration"]
+visible = false
 position = Vector2(-626.53, -137.062)
 texture = ExtResource("20_4ddsv")
 
@@ -267,6 +287,11 @@ iter = 4
 z_index = -50
 position = Vector2(-493.084, -93.9686)
 texture = ExtResource("23_4frl0")
+
+[node name="Painting3" type="Sprite2D" parent="FithIteration"]
+position = Vector2(-533.978, -176.508)
+scale = Vector2(0.122743, 0.121776)
+texture = ExtResource("13_61okk")
 
 [node name="Painting1Png" type="Sprite2D" parent="FithIteration"]
 position = Vector2(-418.754, -176.205)

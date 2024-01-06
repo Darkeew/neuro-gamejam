@@ -1,10 +1,18 @@
 [
 	{
-		"trigger" : "there_was_nothing_more",
-		"dialog" : [
-			{"text" : "There was nothing more to that room.","time": 1},
-			{"text" : "I Don't want to go in there again","time": 1}
+		"trigger": "there_was_nothing_more",
+		"dialog": [
+			{
+				"text": "There was nothing more to that room...",
+				"time": 1.5
+			},
+			{
+				"text": "I don't want to go in there again...",
+				"time": 1.5
+			}
 		],
-		"flags" : ["sequence"]
+		"flags": [
+			"sequence"
+		]
 	}
 ]

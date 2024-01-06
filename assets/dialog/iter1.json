@@ -3,11 +3,11 @@
 		"trigger": "key_missing",
 		"dialog": [
 			{
-				"text": "The door is locked.",
+				"text": "The door is locked",
 				"time": 1.5
 			},
 			{
-				"text": "I need a key to open this door.",
+				"text": "I need a key to open this door",
 				"time": 1.8
 			}
 		],
@@ -74,11 +74,11 @@
 		"trigger": "out_of_bed",
 		"dialog": [
 			{
-				"text": "I should get going to school...",
+				"text": "I should get going to school",
 				"time": 1.7
 			},
 			{
-				"text": "The driver is waiting for me...",
+				"text": "My driver is waiting...",
 				"time": 1.7
 			},
 			{

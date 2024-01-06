@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4uwauj5ouvuy"]
+[gd_scene load_steps=7 format=3 uid="uid://b4uwauj5ouvuy"]
 
 [ext_resource type="Script" path="res://scripts/items/item_container.gd" id="1_kyiie"]
 [ext_resource type="Texture2D" uid="uid://ciw6sitwyd48w" path="res://assets/interface/button-9patch.png" id="2_damgv"]
+[ext_resource type="PackedScene" uid="uid://4vg6i33v8mry" path="res://scripts/character/BasicShadows.tscn" id="2_skaiy"]
 [ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="3_qmt5m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4r7h8"]
@@ -20,7 +21,11 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_kyiie")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BasicShadows" parent="." instance=ExtResource("2_skaiy")]
+position = Vector2(0, 5)
+scale = Vector2(0.200001, 0.125687)
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4r7h8")

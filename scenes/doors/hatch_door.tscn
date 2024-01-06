@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://f700okn07mk8"]
+[gd_scene load_steps=8 format=3 uid="uid://10comntoe4cs"]
 
 [ext_resource type="Script" path="res://scripts/doors/first_door.gd" id="1_i57yd"]
 [ext_resource type="PackedScene" uid="uid://hocsfpblfn07" path="res://scenes/puzzles/interactible.tscn" id="2_nwl43"]

@@ -3,9 +3,7 @@ extends Node2D
 var ignore := false 
 
 func _ready() -> void:
-	if Global.current_iteration >= 4: 
-		$Broken.visible = true 
-		$Sprite2D.visible = false 
+	_toggle_vase(Global.current_iteration >= 5) 
 
 func _on_area_2d_body_entered(body):
 	if not body is Player:
@@ -13,9 +11,15 @@ func _on_area_2d_body_entered(body):
 	
 	if Global.current_iteration == 4 and not ignore:
 		ignore = true  
-		$Broken.visible = true 
-		$Sprite2D.visible = false 
+		_toggle_vase(true)
 		
-		$ItemContainer.set_deferred("visible", true)
+		$KeyContainer.set_deferred("visible", true)
 
 		SoundManager.play_sound.emit("vasebreak")
+
+func _toggle_vase(is_broken := true) -> void:
+	$Broken.visible = is_broken
+	$BrokenShadow.visible = is_broken
+
+	$Base.visible = not is_broken
+	$BaseShadow.visible = not is_broken

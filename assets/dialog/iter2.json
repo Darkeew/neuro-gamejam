@@ -3,7 +3,7 @@
 		"trigger": "door_open",
 		"dialog": [
 			{
-				"text": "The key is rusty... the door is hard to open",
+				"text": "The key is rusty... The door is hard to open...",
 				"time": 2.5
 			}
 		],
@@ -33,11 +33,11 @@
 				"time": 3.0
 			},
 			{
-				"text": "What am i even learning at school?",
-				"time": 1.7
+				"text": "What am I even learning at school?",
+				"time": 2.0
 			},
 			{
-				"text": "Im probably gonna skip school tomorrow... I should get going.",
+				"text": "I'll probably skip school tomorrow... I should get going.",
 				"time": 3.0
 			}
 		],
@@ -54,11 +54,11 @@
 		"trigger": "paintings",
 		"dialog": [
 			{
-				"text": "Paintings...? I didnt see these before...",
+				"text": "Paintings? I did not see these before...",
 				"time": 2.5
 			},
 			{
-				"text": "Whatever, im probably imagining things.",
+				"text": "Whatever, I'm probably imagining things...",
 				"time": 2.5
 			}
 		],
@@ -75,12 +75,12 @@
 		"trigger": "hurry_up",
 		"dialog": [
 			{
-				"text": "I should hurry up, the key is in my pocket.",
-				"time": 3.0
+				"text": "I wonder why I have a driver just for going to school...",
+				"time": 3.5
 			},
 			{
-				"text": "I wonder why i have a driver just for going to school...",
-				"time": 3.0
+				"text": "Nevermind, I should hurry up...",
+				"time": 2.5
 			}
 		],
 		"flags": [

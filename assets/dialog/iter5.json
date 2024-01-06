@@ -38,17 +38,18 @@
 		"dialog": [
 			{
 				"text": "There is a hatch beneath this carpet",
-				"time": 1
+				"time": 3.0
 			},
 			{
 				"text": "I wonder whats down there...",
-				"time": 1
+				"time": 3.0
 			}
 		],
 		"time": 0.3,
 		"flags": [
 			"sequence"
 		],
+		"sfx": "catch_open",
 		"next": "enter_hatch"
 	},
 	{
@@ -61,9 +62,10 @@
 		"dialog": [
 			{
 				"text": "I should go back up",
-				"time": 1
+				"time": 2.5
 			}
 		],
+		"sfx": "catch_closed",
 		"time": 0.5,
 		"next": "go_out_basement_scene_change"
 	},
@@ -72,7 +74,7 @@
 		"dialog": [
 			{
 				"text": "This key opens this door too...",
-				"time": 1
+				"time": 2.5
 			}
 		],
 		"time": 0.5,
@@ -83,7 +85,7 @@
 		"dialog": [
 			{
 				"text": "I've seen all that there was in the basement",
-				"time": 2
+				"time": 2.0
 			}
 		],
 		"flags": [
@@ -94,12 +96,17 @@
 		"trigger": "piano_book",
 		"dialog": [
 			{
-				"text": "An old piano book... ",
-				"time": 4
+				"text": "An old piano book...",
+				"time": 3.0
+			},
+			{
+				"text": "Cannot see anything here...",
+				"time": 3.0
 			}
 		],
 		"flags": [
 			"unpaused"
-		]
+		],
+		"sfx": "paper_tear"
 	}
 ]

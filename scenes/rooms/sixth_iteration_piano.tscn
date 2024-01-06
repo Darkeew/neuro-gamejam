@@ -1,19 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://c18nue0taqkxl"]
+[gd_scene load_steps=9 format=3 uid="uid://c18nue0taqkxl"]
 
 [ext_resource type="Script" path="res://scripts/puzzles/piano_interact.gd" id="1_nv7pt"]
-[ext_resource type="Texture2D" uid="uid://mhcedjmlfpjo" path="res://assets/puzzles/piano-Stool.png" id="2_5osjx"]
-[ext_resource type="Texture2D" uid="uid://b7mdygqq0c2le" path="res://assets/puzzles/piano-0001.png" id="3_i1wi8"]
+[ext_resource type="Texture2D" uid="uid://dykikstal5dtg" path="res://assets/puzzles/combined-piano.png" id="2_j8xpq"]
+[ext_resource type="PackedScene" uid="uid://ca1gfedaepukb" path="res://scripts/character/AccurateShadows.tscn" id="3_dplft"]
 [ext_resource type="Texture2D" uid="uid://ciw6sitwyd48w" path="res://assets/interface/button-9patch.png" id="4_206lq"]
 [ext_resource type="FontFile" uid="uid://b4pl3jfkalcos" path="res://assets/interface/First_Coffee_Pixel.ttf" id="5_w1cks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y01i"]
-size = Vector2(73, 32.75)
+size = Vector2(38.5, 32.75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_36xu4"]
-size = Vector2(54, 26)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tesbh"]
-size = Vector2(65, 39)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gs4ri"]
+size = Vector2(76, 71)
 
 [sub_resource type="Theme" id="Theme_vybam"]
 Label/colors/font_shadow_color = Color(0.14902, 0.196078, 0.219608, 1)
@@ -34,33 +31,23 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactible"]
-position = Vector2(-0.5, 6.125)
+position = Vector2(17, 6)
 shape = SubResource("RectangleShape2D_2y01i")
 debug_color = Color(0.980392, 0, 0.384314, 0.419608)
 
-[node name="Piano-stool" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(-126, -65)
+[node name="CombinedPiano" type="Sprite2D" parent="."]
+position = Vector2(-126, -93)
 scale = Vector2(2, 2)
-texture = ExtResource("2_5osjx")
+texture = ExtResource("2_j8xpq")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Piano-stool"]
+[node name="Node" parent="CombinedPiano" instance=ExtResource("3_dplft")]
+shadow_offset = Vector2(-2, 5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano-stool/StaticBody2D"]
-shape = SubResource("RectangleShape2D_36xu4")
+[node name="StaticBody2D" type="StaticBody2D" parent="CombinedPiano"]
 
-[node name="Piano" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(-125, -126)
-scale = Vector2(2, 2)
-texture = ExtResource("3_i1wi8")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Piano"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombinedPiano/StaticBody2D"]
 position = Vector2(-0.5, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Piano/StaticBody2D"]
-position = Vector2(0, 11.5)
-shape = SubResource("RectangleShape2D_tesbh")
+shape = SubResource("RectangleShape2D_gs4ri")
 
 [node name="PickupLine" type="Control" parent="."]
 layout_mode = 3

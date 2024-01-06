@@ -170,6 +170,7 @@ func setup_player(player_pos: String):
 	player = preload("res://scenes/character/player.tscn").instantiate()
 	if current_scene.has_node(player_pos):
 		player.global_position = current_scene.get_node(player_pos).global_position
+	player.z_index = 69
 	current_scene.add_child(player)
 
 func setup_main_menu():
