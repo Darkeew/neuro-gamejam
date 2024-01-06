@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="Lost Her Mind"
+config/description="Press Space to FIND HER"
+config/version="1.0.0.0"
 run/main_scene="res://scenes/rooms/bedroom.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
-boot_splash/fullsize=false
-boot_splash/use_filter=false
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
+
+[audio]
+
+driver/mix_rate.web=44100
 
 [autoload]
 
