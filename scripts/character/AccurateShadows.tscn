@@ -2,5 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/character/AccurateShadow.gd" id="1_j82l0"]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node2D"]
+z_index = -1
 script = ExtResource("1_j82l0")

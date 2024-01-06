@@ -46,11 +46,11 @@ func _physics_process(_delta):
 	if dummysprite2d.is_inside_tree() and copy_transform == null:
 		copy_transform = RemoteTransform2D.new()
 		copy_transform.remote_path = dummysprite2d.get_path()
-		copy_transform.position = sprite.position
+		#copy_transform.position = sprite.position
 		sprite.add_child(copy_transform)
 	
 	if copy_transform != null:
-		copy_transform.position = sprite.position + shadow_offset
+		copy_transform.position = shadow_offset
 	
 	dummysprite2d.flip_h = sprite.flip_h
 	
@@ -71,16 +71,20 @@ func _draw():
 	#print("Drawing shadow")
 	if _sprite == null:
 		_sprite = get_parent()
+		if _sprite == null:
+			return
 		if _sprite is Sprite2D:
 			editor_texture = _sprite.texture
 		elif _sprite is AnimatedSprite2D:
 			editor_texture = _sprite.sprite_frames.get_frame_texture(_sprite.animation,_sprite.frame)
 		else:
-			editor_texture = null
-	
+			return
+	if editor_texture == null:
+		return
+
 	var r = Rect2(0,0,editor_texture.get_width(),editor_texture.get_height())
 	#center the position
-	r.position = _sprite.position + shadow_offset + _sprite.offset
+	r.position = shadow_offset + _sprite.offset
 	r.position -= Vector2(0, _sprite.offset.y)*2
 	r.position -= r.size/2
 	r.size = Vector2(r.size.x, -r.size.y)

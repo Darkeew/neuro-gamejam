@@ -557,7 +557,7 @@ frame = 1
 region_rect = Rect2(0, 0, 724, 48)
 
 [node name="Node" parent="PlayerSprite" instance=ExtResource("3_11rep")]
-shadow_offset = Vector2(0, 82)
+shadow_offset = Vector2(0, 44)
 
 [node name="Collectionrange" parent="." instance=ExtResource("4_cex7t")]
 
