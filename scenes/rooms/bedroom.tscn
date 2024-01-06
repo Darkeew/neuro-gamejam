@@ -187,7 +187,6 @@ texture = ExtResource("2_iouxf")
 
 [node name="Node" parent="FirstIteration/Bed-0001" instance=ExtResource("3_pmjfu")]
 shadow_offset = Vector2(-2, 5)
-static_shadow = true
 
 [node name="BookCase-0001" type="Sprite2D" parent="FirstIteration"]
 position = Vector2(-342, -37)
@@ -196,7 +195,6 @@ texture = ExtResource("3_j433k")
 
 [node name="Node" parent="FirstIteration/BookCase-0001" instance=ExtResource("3_pmjfu")]
 shadow_offset = Vector2(-2, 5)
-static_shadow = true
 
 [node name="EventTrigger4" type="Area2D" parent="FirstIteration"]
 position = Vector2(33, 1)
@@ -223,6 +221,9 @@ position = Vector2(-355, 179)
 scale = Vector2(2, 2)
 texture = ExtResource("13_lm341")
 
+[node name="Node" parent="SecondIteration/Table-0003" instance=ExtResource("3_pmjfu")]
+shadow_offset = Vector2(0, 8.89)
+
 [node name="Pot" parent="SecondIteration" instance=ExtResource("15_16lp6")]
 position = Vector2(-330, 142)
 
@@ -232,6 +233,9 @@ position = Vector2(-6, 24)
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SecondIteration/Pot/Area2D" index="1"]
 position = Vector2(64, 96)
 shape = SubResource("RectangleShape2D_tp5vv")
+
+[node name="Node" parent="SecondIteration/Pot/Sprite2D" index="0" instance=ExtResource("3_pmjfu")]
+shadow_offset = Vector2(0, 41.92)
 
 [node name="Iteration_Condition" type="Node" parent="SecondIteration"]
 script = ExtResource("5_hjeht")
@@ -287,6 +291,9 @@ position = Vector2(186, -26)
 scale = Vector2(2, 2)
 texture = ExtResource("18_05nnf")
 
+[node name="Node" parent="FourthIteration/Room/DeskLamp-0001" instance=ExtResource("3_pmjfu")]
+shadow_offset = Vector2(0, 15.455)
+
 [node name="MirrorIter4-0001" type="Sprite2D" parent="FourthIteration/Room"]
 position = Vector2(204, -67)
 texture = ExtResource("19_ajarl")
@@ -321,6 +328,7 @@ position = Vector2(-41.5, 92.5)
 shape = SubResource("RectangleShape2D_6ub8m")
 
 [node name="FifthIteration" type="Node2D" parent="."]
+visible = false
 
 [node name="Piano" parent="FifthIteration" instance=ExtResource("14_i10t7")]
 
