@@ -15,7 +15,7 @@ func _on_area_2d_body_entered(body):
 		
 		$KeyContainer.set_deferred("visible", true)
 
-		SoundManager.play_sound.emit("vasebreak")
+		SoundManager.play_sound.emit("vase_break")
 
 func _toggle_vase(is_broken := true) -> void:
 	$Broken.visible = is_broken

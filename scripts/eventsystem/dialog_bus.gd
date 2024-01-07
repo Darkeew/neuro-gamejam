@@ -26,7 +26,7 @@ func register_dialog(dialog_field):
 
 	#load all json files
 	for json_file in json_files:
-		print("loading dialog file: "+json_file)
+		# print("loading dialog file: "+json_file)
 		var json = load("res://assets/dialog/"+json_file)
 		var dialog = json.data
 		for i in dialog:

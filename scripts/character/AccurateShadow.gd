@@ -29,7 +29,7 @@ func _ready() -> void:
 
 	_apply_transform()	
 			
-	print(dummysprite2d.name, shadow_scale_offset, sprite.scale * shadow_scale_offset)
+	# print(dummysprite2d.name, shadow_scale_offset, sprite.scale * shadow_scale_offset)
 	Global.shadow_canvas_group.add_child.call_deferred(dummysprite2d)
 	
 func _process(_delta):

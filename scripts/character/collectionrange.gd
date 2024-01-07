@@ -24,7 +24,7 @@ func pickup_item() -> void:
 	item_container.queue_free()
 
 func _on_area_entered(area):
-	print("AREA ENTEREDA!!!!")
+	# print("AREA ENTEREDA!!!!")
 	items_within_range.append(area)
 
 func _on_area_exited(area):

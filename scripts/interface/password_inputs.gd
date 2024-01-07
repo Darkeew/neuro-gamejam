@@ -38,6 +38,8 @@ func _change_digit(current_digit_name: String, advance := true) -> void:
 		var next_digit := get_node("%%Digit%s" % next_digit_id)
 		next_digit.editable = true
 		next_digit.grab_focus()
+
+		SoundManager.play_sound.emit("safe_input")
 	else:
 		var prev_digit_id := current_digit_id - 1
 		var prev_digit := get_node("%%Digit%s" % prev_digit_id)

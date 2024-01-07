@@ -142,17 +142,17 @@ texture = ExtResource("4_wp6w3")
 
 [node name="RandomBoxInBasement-0015" type="Sprite2D" parent="."]
 z_index = 1500
-position = Vector2(-235, 145)
+position = Vector2(-18, 145)
 texture = ExtResource("4_wp6w3")
 
 [node name="RandomBoxInBasement-0016" type="Sprite2D" parent="."]
 z_index = 1500
-position = Vector2(-175, 146)
+position = Vector2(42, 146)
 texture = ExtResource("4_wp6w3")
 
 [node name="RandomBoxInBasement-0017" type="Sprite2D" parent="."]
 z_index = 1500
-position = Vector2(-207, 125)
+position = Vector2(10, 125)
 texture = ExtResource("4_wp6w3")
 
 [node name="RandomBoxInBasement-0007" type="Sprite2D" parent="."]
@@ -305,10 +305,10 @@ size_flags_vertical = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Node2D2/PickupLine"]
 layout_mode = 1
-offset_left = 7.0
-offset_top = 8.0
-offset_right = 26.0
-offset_bottom = 27.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 27.0
+offset_bottom = 25.0
 texture = ExtResource("12_geond")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 5
@@ -357,10 +357,10 @@ size_flags_vertical = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Node2D3/PickupLine"]
 layout_mode = 1
-offset_left = 7.0
-offset_top = 8.0
-offset_right = 26.0
-offset_bottom = 27.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 27.0
+offset_bottom = 25.0
 texture = ExtResource("12_geond")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 5

@@ -3,30 +3,32 @@
 		"trigger": "safe_unlocked",
 		"dialog": [
 			{
-				"text": "The code was correct. Let's see...",
+				"text": "\nThe code was correct. Let's see...",
 				"time": 3.0
 			}
 		],
 		"condition": [
 			"iter_check"
 		],
+		"sfx": "safe_open",
 		"iter": 3,
-		"time": 2,
+		"time": 0.5,
 		"next": "next_iter"
 	},
 	{
 		"trigger": "wrong_password",
 		"dialog": [
 			{
-				"text": "The code was wrong... Maybe I should try to change the order...",
+				"text": "\nThe code was wrong...\nMaybe I should try something with the order...",
 				"time": 5.0
 			}
 		],
 		"condition": [
 			"iter_check"
 		],
+		"sfx": "safe_failed",
 		"iter": 3,
-		"time": 2
+		"time": 0.5
 	},
 	{
 		"trigger": "cutscene",
@@ -42,11 +44,11 @@
 		"trigger": "out_of_bed",
 		"dialog": [
 			{
-				"text": "Yesterday, when I got home, there was a safe in my parents room...",
+				"text": "Yesterday, when I got home,\nthere was a safe in my parents room...",
 				"time": 3.0
 			},
 			{
-				"text": "I took it to my room, I should check it out today.",
+				"text": "I took it to my room,\nI should check it out today.",
 				"time": 3.0
 			}
 		],

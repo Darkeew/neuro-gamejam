@@ -13,7 +13,7 @@ func show_dialog(event):
 	var d = event.dialog[0]
 	var flags = event.flags if event.has("flags") else []
 	if !flags.has("unpaused"):
-		Global.game_paused = true
+		Global.pause_game.emit()
 		
 	if event.has("sfx"):
 		SoundManager.play_sound.emit(event.sfx)
@@ -37,7 +37,7 @@ func show_dialog(event):
 	if event.has("time"):
 		await get_tree().create_timer(event.time).timeout
 	if flags.has("unpaused"):
-		Global.game_paused = false
+		Global.unpause_game.emit()
 
 func sequence_play(event):
 	var sequence = event.dialog
@@ -52,4 +52,4 @@ func sequence_play(event):
 	if event.has("time"):
 		await get_tree().create_timer(event.time).timeout
 	if flags.has("unpaused"):
-		Global.game_paused = false
+		Global.unpause_game.emit()

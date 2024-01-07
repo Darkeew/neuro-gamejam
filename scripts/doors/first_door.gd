@@ -19,12 +19,15 @@ func _process(_delta) -> void:
 					EventBus.emit_event("wrong_key")
 					return
 			EventBus.emit_event("key_missing")
+		
 		if Global.current_iteration == 4:
 			for item in Global.collected_items:
 				if item.tag == "Second Key":
+					SoundManager.stop_music.emit()
 					Global.change_stage.emit(scene_path) 
 					return
 			EventBus.emit_event("wrong_key")
+
 		if Global.current_iteration > 4:
 			EventBus.emit_event("already_been")
 		

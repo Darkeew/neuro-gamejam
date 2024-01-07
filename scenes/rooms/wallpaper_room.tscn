@@ -45,11 +45,10 @@ position = Vector2(41, -60)
 texture = ExtResource("2_x5hvr")
 
 [node name="Node" parent="Stool-0001" instance=ExtResource("3_eqbi4")]
-shadow_offset = Vector2(0, 24)
-static_shadow = true
+shadow_offset = Vector2(-2, 5)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(3, -82)
+position = Vector2(3, -67)
 zoom = Vector2(2, 2)
 editor_draw_limits = true
 script = ExtResource("4_fssxl")

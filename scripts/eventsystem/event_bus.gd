@@ -26,7 +26,7 @@ func register_event_no_dialog(event_name,args=[]):
 
 func register_condition_solver(condition_name, solver):
 	if condition_solver.has(condition_name) and condition_solver != null:
-		print("Condition solver already exists for " + condition_name + ".")
+		# print("Condition solver already exists for " + condition_name + ".")
 		condition_solver[condition_name] = solver
 	else:
 		condition_solver[condition_name] = solver
@@ -63,7 +63,7 @@ func emit_args(event_name, args):
 
 func emit_event(event_name, recursion_safeguard_list=[]):
 	#print_all()
-	print("Emitting event " + event_name + ".")
+	# print("Emitting event " + event_name + ".")
 	if recursion_safeguard_list.has(event_name):
 		printerr("Recursion safeguard triggered for " + event_name + ".")
 		return
@@ -90,7 +90,8 @@ func emit_event(event_name, recursion_safeguard_list=[]):
 							await listener[event["method"]].call(event["args"])
 							#print("Event " + event_name + " emitted. with method")
 						else:
-							print("Method " + event["method"] + " not found in " + str(listener) + ".")
+							# print("Method " + event["method"] + " not found in " + str(listener) + ".")
+							pass
 				else:
 					if event.has("owner") and event["owner"].has_method(event["method"]):
 						await event["owner"][event["method"]].call(event["args"])
@@ -110,7 +111,8 @@ func _emit_event_noargs(event,event_name):
 			if listener.has_method(event["method"]):
 				await listener[event["method"]].call()
 			else:
-				print("Method " + event["method"] + " not found in " + str(listener) + ".")
+				# print("Method " + event["method"] + " not found in " + str(listener) + ".")
+				pass
 #endregion
 
 #region Conditions
@@ -118,10 +120,10 @@ func check_conditions(event_obj):
 	if event_obj.has("condition") and event_obj["condition"] != null:
 		for condition in event_obj["condition"]:
 			if not condition_solver.has(condition):
-				print("Condition solver not found for " + condition + ".")
+				# print("Condition solver not found for " + condition + ".")
 				return false
 			if not condition_solver[condition].call(event_obj):
-				print("Condition " + condition + " failed.")
+				# print("Condition " + condition + " failed.")
 				return false
 	return true
 #endregion

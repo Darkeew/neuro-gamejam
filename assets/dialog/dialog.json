@@ -4,11 +4,11 @@
 		"dialog": [
 			{
 				"text": "There was nothing more to that room...",
-				"time": 1.5
+				"time": 2.0
 			},
 			{
 				"text": "I don't want to go in there again...",
-				"time": 1.5
+				"time": 2.0
 			}
 		],
 		"flags": [

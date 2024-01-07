@@ -98,7 +98,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(500, 300)
+custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
 theme = SubResource("Theme_kac8s")
 bbcode_enabled = true
@@ -123,6 +123,16 @@ text = "[center][u]darkeew[/u] - Team Leader
 [u]CreepyCat[/u] - OST and Sound Design
 
 [font_size=26]Built with Godot 4.2[/font_size]"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+theme = SubResource("Theme_kac8s")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "
+[center]Special Thank You to [u]Vedal and Neuro-sama[/u] for the Game Jam!"
 fit_content = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

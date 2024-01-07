@@ -25,17 +25,20 @@
 		"music_after": "part2theme"
 	},
 	{
-		"trigger": "read_found_note",
+		"trigger": "out_of_bed_note",
 		"dialog": [
 			{
-				"text": "I should read the note I found in the safe...",
-				"time": 3.0
+				"text": "I should read the note\nI found in the safe...",
+				"time": 2.5
 			}
 		],
-		"time": 3.0,
 		"flags": [
-			"unpaused"
-		]
+			"sequence"
+		],
+		"condition": [
+			"iter_check"
+		],
+		"iter": 4
 	},
 	{
 		"trigger": "whos_fault",
@@ -46,13 +49,13 @@
 			},
 			{
 				"text": "What fault? And who?",
-				"time": 3.0
+				"time": 8.0
 			}
 		],
 		"flags": [
 			"sequence"
 		],
-		"time": 0.5,
+		"time": 2.0,
 		"next": "next_iter"
 	}
 ]

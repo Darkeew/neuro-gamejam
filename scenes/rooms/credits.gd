@@ -5,3 +5,6 @@ func _ready():
 		var creditscene = preload("res://scenes/credits/Credits.tscn").instantiate()
 		Global.hud.add_child(creditscene)
 
+		SoundManager.change_music.emit("softerparttheme")
+		SoundManager.stop_wind.emit()
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://lj41sjie0xdw"]
+[gd_scene load_steps=38 format=3 uid="uid://lj41sjie0xdw"]
 
 [ext_resource type="Script" path="res://scripts/rooms/hallway.gd" id="1_4q25n"]
 [ext_resource type="Texture2D" uid="uid://ml5rio378erl" path="res://assets/rooms/hallway/Hallway-0002.png" id="1_x21f8"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://3ffavkpfj5i8" path="res://assets/puzzles/Door-0001.png" id="20_4ddsv"]
 [ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="20_47wue"]
 [ext_resource type="Script" path="res://scripts/rooms/hatch_door.gd" id="20_gqid7"]
+[ext_resource type="Texture2D" uid="uid://bhjej58eipixm" path="res://assets/rooms/hallway/Table_iter_4-0003.png" id="22_u7xg7"]
 [ext_resource type="Texture2D" uid="uid://c387ncauvh8e0" path="res://assets/rooms/hallway/painting1png.png" id="23_1x6nd"]
 [ext_resource type="Texture2D" uid="uid://31sdsryi300" path="res://assets/rooms/hallway/Hallway_iter_4-0002.png" id="23_4frl0"]
 [ext_resource type="Texture2D" uid="uid://b0w6tf4lag35t" path="res://assets/rooms/hallway/painting2.png" id="24_10sdh"]
@@ -130,15 +131,17 @@ position = Vector2(-337, -77)
 [node name="FirstIteration" type="Node2D" parent="."]
 
 [node name="Table-0003" type="Sprite2D" parent="FirstIteration"]
-position = Vector2(-657, -87)
+position = Vector2(-623, -90)
 texture = SubResource("CompressedTexture2D_75y1n")
+region_enabled = true
+region_rect = Rect2(63, 0, 65, 28)
 
 [node name="Node" parent="FirstIteration/Table-0003" instance=ExtResource("5_076ri")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="FirstIteration/Table-0003"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FirstIteration/Table-0003/StaticBody2D"]
-position = Vector2(31, -2)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_27er6")
 
 [node name="FirstKey" parent="FirstIteration" instance=ExtResource("3_iok3i")]
@@ -282,6 +285,19 @@ script = ExtResource("8_wx13j")
 iter = 4
 
 [node name="FithIteration" type="Node2D" parent="."]
+
+[node name="Table-0003" type="Sprite2D" parent="FithIteration"]
+position = Vector2(-623, -90.04)
+scale = Vector2(0.666667, 0.8775)
+texture = ExtResource("22_u7xg7")
+region_enabled = true
+region_rect = Rect2(32, 0, 96, 32)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FithIteration/Table-0003"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FithIteration/Table-0003/StaticBody2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_27er6")
 
 [node name="HallwayIter4-0002" type="Sprite2D" parent="FithIteration"]
 z_index = -50

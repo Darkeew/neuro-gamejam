@@ -3,12 +3,12 @@
 		"trigger": "out_of_bed_with_piano",
 		"dialog": [
 			{
-				"text": "This book... has notes in it",
+				"text": "This book... has music notes in it!",
 				"time": 2.5
 			},
 			{
 				"text": "Maybe I should try the piano...",
-				"time": 2.5
+				"time": 3.0
 			}
 		],
 		"flags": [
@@ -25,7 +25,7 @@
 		"dialog": [
 			{
 				"text": "That was fun!",
-				"time": 2.0
+				"time": 2.5
 			},
 			{
 				"text": "Wait... What is this?",
@@ -40,7 +40,7 @@
 		],
 		"iter": 6,
 		"time": 0.5,
-		"music": "part2theme",
+		"sfx": "safe_open",
 		"next": "next_iter"
 	}
 ]

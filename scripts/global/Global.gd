@@ -18,7 +18,11 @@ var shadow_canvas_group: CanvasGroup
 var main_menu: PackedScene = preload("res://scenes/interface/main_menu.tscn")
 var hud: CanvasLayer = preload("res://scenes/interface/hud.tscn").instantiate()
 var current_scene = null
+
 var current_iteration := 1
+var last_iteration := current_iteration - 1
+
+var hidden_note_shown := false
 
 #region NUMBERS SCHIZO 
 var numbers_schizo := []
@@ -48,6 +52,8 @@ func _ready():
 	connect_signals() 
 	generate_codes()
 	
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	var root = get_tree().root
@@ -74,18 +80,42 @@ func _ready():
 	else:
 		unpause_game.emit()
 
+func _process(_delta) -> void:
+	if current_iteration != last_iteration:
+		print("Current Iteration: %d" % current_iteration)
+		last_iteration = current_iteration
+
+	if Input.is_action_just_pressed("fullscreen_toggle"):
+		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+	if OS.is_debug_build() and Input.is_action_just_pressed("fast_dev"):
+		if Engine.time_scale == 1.0:
+			Engine.time_scale = 5.0
+		else:
+			Engine.time_scale = 1.0
+
 func connect_signals() -> void:
 	change_stage.connect(load_stage)
 	pickup_item.connect(_on_pickup_item)
 	start_next_iteration.connect(_on_start_next_iteration)
+
+	show_hidden_note.connect(_on_show_hidden_note)
 	
 	pause_game.connect(_on_game_state_change.bind(true))
 	unpause_game.connect(_on_game_state_change.bind(false))
 
+func _on_show_hidden_note() -> void:
+	hidden_note_shown = true
+
 func _on_game_state_change(is_paused: bool) -> void:
-	game_paused = is_paused
+	print("Game Paused: %s" % is_paused)
 
 func generate_codes() -> void:
+	randomize()
+
 	for num in range(4):
 		var random_digit = randi_range(0, 9)
 		
@@ -115,8 +145,8 @@ func generate_codes() -> void:
 		ordered_numbers[number_order[i] - 1] = str(numbers_schizo[i])
 	safe_code = "".join(ordered_numbers)
 
-	print_debug("Safe code is ", safe_code)
-	print_debug("Sticky note code is ", sticky_note_code)
+	print("Safe code is ", safe_code)
+	print("Sticky note code is ", sticky_note_code)
 
 func next_iter():
 	start_next_iteration.emit()
@@ -197,13 +227,13 @@ func show_dialog(event):
 	await dialog_label.show_dialog(event)
 
 func iter_check(event) -> bool:
-	print(str(event))
+	# print(str(event))
 	if event["iter"] == current_iteration:
 		return true
 	return false
 
 func iter_check_greater(event) -> bool:
-	print(str(event))
+	# print(str(event))
 	if event["iter"] >= current_iteration:
 		return true
 	return false

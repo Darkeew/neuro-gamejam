@@ -47,9 +47,9 @@ size_flags_vertical = 3
 [node name="NinePatchRect" type="NinePatchRect" parent="PickupLine"]
 layout_mode = 1
 offset_left = 7.0
-offset_top = 8.0
+offset_top = 6.0
 offset_right = 26.0
-offset_bottom = 27.0
+offset_bottom = 25.0
 texture = ExtResource("4_gd270")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 5

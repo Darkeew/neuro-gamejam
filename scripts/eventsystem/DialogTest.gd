@@ -20,10 +20,10 @@ func show_dialog(text):
 				break
 		Global.test.text = d
 		used_dialogs.append(d)
-	Global.game_paused = true
+	Global.pause_game.emit()
 	await get_tree().create_timer(1.5).timeout
 	Global.test.text = ""
-	Global.game_paused = false
+	Global.unpause_game.emit()
 	dialogs_used+=1
 
 func _on_body_entered(_body:Node2D):

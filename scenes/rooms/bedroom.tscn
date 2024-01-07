@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://d0vo28sl5gwxi"]
+[gd_scene load_steps=41 format=3 uid="uid://d0vo28sl5gwxi"]
 
 [ext_resource type="Script" path="res://scripts/rooms/bedroom.gd" id="1_22h2h"]
 [ext_resource type="Texture2D" uid="uid://coum05tampunl" path="res://assets/rooms/First_Room-0005.png" id="1_njdfq"]
@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://cw2ngo5whn3af" path="res://assets/rooms/bedroom/Mirror_iter_4-0001.png" id="19_ajarl"]
 [ext_resource type="Script" path="res://scripts/eventsystem/DialogTrigger.gd" id="21_hil8s"]
 [ext_resource type="Script" path="res://scripts/rooms/send_signal.gd" id="22_ajkxu"]
+[ext_resource type="Texture2D" uid="uid://c4l4r1vpa1007" path="res://assets/items/Stool-0001.png" id="23_sl53y"]
+[ext_resource type="Texture2D" uid="uid://jq7apieseshr" path="res://assets/rooms/bedroom/desk_lamp_normal-0001.png" id="23_xjfmb"]
 [ext_resource type="Texture2D" uid="uid://c7s4fafv650lc" path="res://assets/rooms/bedroom/Book_case_iter_4-0002.png" id="24_4cu11"]
 [ext_resource type="Texture2D" uid="uid://likq7mclter6" path="res://assets/rooms/bedroom/Bed-0001-export.png" id="25_fmeyw"]
 [ext_resource type="Texture2D" uid="uid://qrvv2uweaclk" path="res://assets/rooms/bedroom/Table-0003-export.png" id="26_w330u"]
@@ -200,12 +202,12 @@ texture = ExtResource("3_j433k")
 [node name="Node" parent="FirstIteration/BookCase-0001" instance=ExtResource("3_pmjfu")]
 shadow_offset = Vector2(-2, 5)
 
-[node name="EventTrigger4" type="Area2D" parent="FirstIteration"]
+[node name="EventTrigger1" type="Area2D" parent="FirstIteration"]
 position = Vector2(33, 1)
 script = ExtResource("21_hil8s")
 event_name = "out_of_bed"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstIteration/EventTrigger4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstIteration/EventTrigger1"]
 position = Vector2(-105.5, 93)
 shape = SubResource("RectangleShape2D_gvjcf")
 
@@ -252,12 +254,12 @@ shape = SubResource("RectangleShape2D_tp5vv")
 script = ExtResource("5_hjeht")
 iter = 2
 
-[node name="EventTrigger3" type="Area2D" parent="SecondIteration"]
+[node name="EventTrigger2" type="Area2D" parent="SecondIteration"]
 position = Vector2(-440, 175)
 script = ExtResource("21_hil8s")
 event_name = "out_of_bed"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondIteration/EventTrigger3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondIteration/EventTrigger2"]
 position = Vector2(-105.5, 93)
 shape = SubResource("RectangleShape2D_gvjcf")
 
@@ -272,12 +274,12 @@ script = ExtResource("5_hjeht")
 iter = 3
 condition = 0
 
-[node name="EventTrigger2" type="Area2D" parent="ThirdIteration"]
+[node name="EventTrigger3" type="Area2D" parent="ThirdIteration"]
 position = Vector2(53, -3)
 script = ExtResource("21_hil8s")
 event_name = "out_of_bed"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ThirdIteration/EventTrigger2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThirdIteration/EventTrigger3"]
 position = Vector2(-105.5, 93)
 shape = SubResource("RectangleShape2D_gvjcf")
 
@@ -321,20 +323,6 @@ texture = ExtResource("18_05nnf")
 position = Vector2(204, -67)
 texture = ExtResource("19_ajarl")
 
-[node name="EventTrigger" type="Area2D" parent="FourthIteration/Room"]
-position = Vector2(33, 1)
-script = ExtResource("21_hil8s")
-event_name = "read_found_note"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FourthIteration/Room/EventTrigger"]
-position = Vector2(-105.5, 93)
-shape = SubResource("RectangleShape2D_gvjcf")
-
-[node name="Iteration_Condition" type="Node" parent="FourthIteration/Room/EventTrigger"]
-script = ExtResource("5_hjeht")
-iter = 4
-condition = 0
-
 [node name="LetterFromSafe" type="Node2D" parent="FourthIteration"]
 
 [node name="Iteration_Condition" type="Node" parent="FourthIteration/LetterFromSafe"]
@@ -350,6 +338,15 @@ script = ExtResource("22_ajkxu")
 position = Vector2(-41.5, 92.5)
 shape = SubResource("RectangleShape2D_6ub8m")
 
+[node name="EventTrigger4" type="Area2D" parent="FourthIteration"]
+position = Vector2(53, -3)
+script = ExtResource("21_hil8s")
+event_name = "out_of_bed_note"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FourthIteration/EventTrigger4"]
+position = Vector2(-105.5, 93)
+shape = SubResource("RectangleShape2D_gvjcf")
+
 [node name="FifthIteration" type="Node2D" parent="."]
 
 [node name="Piano" parent="FifthIteration" instance=ExtResource("14_i10t7")]
@@ -361,6 +358,24 @@ iter = 5
 condition = 0
 
 [node name="Room" type="Node2D" parent="FifthIteration"]
+
+[node name="Stool" type="Sprite2D" parent="FifthIteration/Room"]
+position = Vector2(-313, 43)
+texture = ExtResource("23_sl53y")
+
+[node name="Node" parent="FifthIteration/Room/Stool" instance=ExtResource("3_pmjfu")]
+shadow_offset = Vector2(-2, 5)
+
+[node name="NormalDeskLamp" type="Node" parent="FifthIteration/Room"]
+
+[node name="BaseShadow" parent="FifthIteration/Room/NormalDeskLamp" instance=ExtResource("18_bbufp")]
+position = Vector2(182, -11)
+scale = Vector2(0.2, 0.0746272)
+
+[node name="DeskLamp-0001" type="Sprite2D" parent="FifthIteration/Room/NormalDeskLamp"]
+position = Vector2(186, -26)
+scale = Vector2(2, 2)
+texture = ExtResource("23_xjfmb")
 
 [node name="FirstRoomIter4-0001" type="Sprite2D" parent="FifthIteration/Room"]
 z_index = -100
@@ -387,15 +402,30 @@ texture = ExtResource("26_w330u")
 script = ExtResource("5_hjeht")
 iter = 5
 
+[node name="FirstRoomIter4-0002" type="Sprite2D" parent="FifthIteration/Room"]
+z_index = -100
+texture = ExtResource("13_vuyy7")
+region_rect = Rect2(488, 176, 120, 73)
+region_filter_clip_enabled = true
+
+[node name="EventTrigger5" type="Area2D" parent="FifthIteration"]
+position = Vector2(53, -3)
+script = ExtResource("21_hil8s")
+event_name = "out_of_bed_hatch"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FifthIteration/EventTrigger5"]
+position = Vector2(-105.5, 93)
+shape = SubResource("RectangleShape2D_gvjcf")
+
 [node name="SixthIteration" type="Node2D" parent="."]
 position = Vector2(131, 77)
 
-[node name="EventTrigger4" type="Area2D" parent="SixthIteration"]
+[node name="EventTrigger6" type="Area2D" parent="SixthIteration"]
 position = Vector2(-106, -75)
 script = ExtResource("21_hil8s")
 event_name = "out_of_bed_with_piano"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SixthIteration/EventTrigger4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SixthIteration/EventTrigger6"]
 position = Vector2(-105.5, 93)
 shape = SubResource("RectangleShape2D_gvjcf")
 

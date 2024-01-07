@@ -15,6 +15,27 @@
 		"next": "next_iter"
 	},
 	{
+		"trigger": "out_of_bed_hatch",
+		"dialog": [
+			{
+				"text": "Can't remember anything from last night...",
+				"time": 3.0
+			},
+			{
+				"text": "There is another door in the hallway...\nI should check it now...",
+				"time": 3.0
+			}
+		],
+		"flags": [
+			"sequence",
+			"unpaused"
+		],
+		"condition": [
+			"iter_check"
+		],
+		"iter": 5
+	},
+	{
 		"trigger": "cutscene",
 		"condition": [
 			"iter_check"
@@ -37,11 +58,7 @@
 		"trigger": "inspect_hatch",
 		"dialog": [
 			{
-				"text": "There is a hatch beneath this carpet",
-				"time": 3.0
-			},
-			{
-				"text": "I wonder whats down there...",
+				"text": "There is a hatch beneath this carpet...\nI wonder what's down there...",
 				"time": 3.0
 			}
 		],
@@ -49,7 +66,7 @@
 		"flags": [
 			"sequence"
 		],
-		"sfx": "catch_open",
+		"sfx": "hatch_open",
 		"next": "enter_hatch"
 	},
 	{
@@ -65,7 +82,7 @@
 				"time": 2.5
 			}
 		],
-		"sfx": "catch_closed",
+		"sfx": "hatch_close",
 		"time": 0.5,
 		"next": "go_out_basement_scene_change"
 	},
@@ -96,17 +113,18 @@
 		"trigger": "piano_book",
 		"dialog": [
 			{
-				"text": "An old piano book...",
-				"time": 3.0
+				"text": "An old piano book?",
+				"time": 2.5
 			},
 			{
-				"text": "Cannot see anything here...",
-				"time": 3.0
+				"text": "Ugh, it's so dark here...",
+				"time": 2.5
 			}
 		],
 		"flags": [
+			"sequence",
 			"unpaused"
 		],
-		"sfx": "paper_tear"
+		"sfx": "book_rip"
 	}
 ]

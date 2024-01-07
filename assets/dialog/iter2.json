@@ -3,7 +3,7 @@
 		"trigger": "door_open",
 		"dialog": [
 			{
-				"text": "The key is rusty... The door is hard to open...",
+				"text": "The key is rusty...\nThe door is hard to open...",
 				"time": 2.5
 			}
 		],
@@ -12,7 +12,7 @@
 		],
 		"iter": 2,
 		"time": 1,
-		"sfx": "door_closed",
+		"sfx": "door_open",
 		"next": "next_iter"
 	},
 	{
@@ -29,16 +29,16 @@
 		"trigger": "out_of_bed",
 		"dialog": [
 			{
-				"text": "Im always tired even after sleeping for 8 hours...",
+				"text": "I'm always tired\neven after sleeping for 8 hours...",
 				"time": 3.0
 			},
 			{
 				"text": "What am I even learning at school?",
-				"time": 2.0
+				"time": 2.5
 			},
 			{
-				"text": "I'll probably skip school tomorrow... I should get going.",
-				"time": 3.0
+				"text": "I'll probably skip school tomorrow...\nI should get going.",
+				"time": 3.5
 			}
 		],
 		"flags": [
@@ -75,12 +75,12 @@
 		"trigger": "hurry_up",
 		"dialog": [
 			{
-				"text": "I wonder why I have a driver just for going to school...",
-				"time": 3.5
+				"text": "I wonder why I have a driver\njust for going to school...",
+				"time": 3.0
 			},
 			{
 				"text": "Nevermind, I should hurry up...",
-				"time": 2.5
+				"time": 2.0
 			}
 		],
 		"flags": [

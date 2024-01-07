@@ -4,11 +4,11 @@
 		"dialog": [
 			{
 				"text": "The door is locked",
-				"time": 1.5
+				"time": 2.0
 			},
 			{
 				"text": "I need a key to open this door",
-				"time": 1.8
+				"time": 2.0
 			}
 		],
 		"sfx": "door_closed",
@@ -22,7 +22,7 @@
 		"dialog": [
 			{
 				"text": "The door opens easily",
-				"time": 1.5
+				"time": 2.5
 			}
 		],
 		"condition": [
@@ -47,8 +47,8 @@
 		"trigger": "wrong_key",
 		"dialog": [
 			{
-				"text": "This key only works for the main door",
-				"time": 1.5
+				"text": "This key only works on the main door",
+				"time": 3.0
 			}
 		],
 		"time": 2,
@@ -62,7 +62,7 @@
 		"dialog": [
 			{
 				"text": "I don't want to go outside",
-				"time": 1.5
+				"time": 2.5
 			}
 		],
 		"time": 2,
@@ -75,14 +75,14 @@
 		"dialog": [
 			{
 				"text": "I should get going to school",
-				"time": 1.7
+				"time": 2.5
 			},
 			{
 				"text": "My driver is waiting...",
-				"time": 1.7
+				"time": 2.5
 			},
 			{
-				"text": "Why do they make us have classes so early in the morning?",
+				"text": "Why do they make us have classes\nso early in the morning?",
 				"time": 3.0
 			}
 		],
@@ -100,7 +100,7 @@
 		"dialog": [
 			{
 				"text": "I've already explored this room",
-				"time": 1.5
+				"time": 2.5
 			}
 		],
 		"time": 2,
