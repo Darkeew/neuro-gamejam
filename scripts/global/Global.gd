@@ -111,7 +111,7 @@ func _on_show_hidden_note() -> void:
 	hidden_note_shown = true
 
 func _on_game_state_change(is_paused: bool) -> void:
-	print("Game Paused: %s" % is_paused)
+	game_paused = is_paused
 
 func generate_codes() -> void:
 	randomize()
